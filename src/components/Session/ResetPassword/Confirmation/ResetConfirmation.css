@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+
+.parentcontainer {
+  display: inline;
+  width: 100%;
+}
+
+.reset-confirmation-main-container {
+  padding-top: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  height: 100%;
+  width: 100%;
+  background-color: #f6f6f6;
+}
+
+.reset-confirmation-form {
+  width: 494px;
+  height: 367px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
+}
+
+.reset-confirmation-form-div {
+  margin-left: 77px;
+  margin-right: 77px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reset-confirmation-title {
+  height: 27px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.7);
+  margin-top: 0;
+  margin-bottom: 19px;
+}
+
+.reset-confirmation-image {
+  width: 193px;
+  height: 193px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+.reset-confirmation-link {
+  text-decoration: none;
+  height: 18px;
+  opacity: 0.8;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #35a9db;
+}

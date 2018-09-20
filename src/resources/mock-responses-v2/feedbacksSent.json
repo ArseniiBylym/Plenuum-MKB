@@ -1,0 +1,37 @@
+[
+    {
+        "updatedAt": "2017-10-07T15:33:19.819Z",
+        "createdAt": "2017-10-07T15:33:19.819Z",
+        "senderId": "59d8edb764979300105afabb",
+        "recipientId": "59d8f1f064979300105afac0",
+        "message": "it was your nephew!",
+        "type": "CONSIDER",
+        "requestId": "",
+        "_id": "59d8f3bf64979300105afac5",
+        "tags": [],
+        "privacy": []
+    },
+    {
+        "updatedAt": "2017-10-09T13:39:50.380Z",
+        "createdAt": "2017-10-09T13:39:50.380Z",
+        "senderId": "59d8edb764979300105afabb",
+        "recipientId": "59db2cd264979300105afacd",
+        "message": "yes, sure",
+        "type": "CONSIDER",
+        "requestId": "59db2d6f64979300105afad0",
+        "_id": "59db7c26318d3e001005619b",
+        "tags": [],
+        "privacy": []
+    },
+    {
+        "updatedAt": "2017-10-09T13:55:21.911Z",
+        "createdAt": "2017-10-09T13:55:21.911Z",
+        "recipientId": "59d8f40464979300105afac6",
+        "message": "Message text ",
+        "type": "CONSIDER",
+        "senderId": "59d8edb764979300105afabb",
+        "_id": "59db7fc9318d3e00100561a9",
+        "tags": [],
+        "privacy": []
+    }
+]

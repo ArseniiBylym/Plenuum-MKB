@@ -1,0 +1,81 @@
+.skills-competence-card {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 416px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+}
+
+.skills-competence-title {
+  display: flex;
+  flex-direction: column;
+  margin: 42px 40px 16px 40px;
+}
+
+.skills-competence-title .title {
+  margin: 0;
+  font-family: 'Nunito Sans';
+  font-size: 18px;
+  color: #4a4a4a;
+  line-height: 1.11;
+}
+
+.skills-competence-title .answers {
+  height: 19px;
+  font-family: 'Nunito Sans';
+  font-size: 14px;
+  color: #bdbdbd;
+  margin: 3px 0px 0px 0px;
+}
+
+.skills-competence-scores {
+  display: flex;
+  justify-content: space-between;
+  margin: 11px 40px 38px 40px;
+}
+
+.skills-score-negative {
+  background-color: rgb(245, 209, 65);
+  height: 100%;
+}
+
+.score-progressbar {
+  border-radius: 16px;
+  margin: auto 0px;
+  height: 6px;
+  width: 200px;
+  overflow: hidden;
+}
+
+.skills-score-positive {
+  background-color: rgb(6, 214, 160);
+  height: 100%;
+  border-radius: 16px 0 0 16px;
+}
+
+.skills-progress {
+  font-family: 'Nunito Sans';
+  font-size: 30px;
+  font-weight: 200;
+  text-align: right;
+  color: #4a4a4a;
+}
+
+.skills-competence-card.inactive {
+  cursor: default;
+}
+
+.skills-competence-card.inactive .skills-score-negative .skills-score-positive {
+  background-color: #e7e7e7;
+}
+
+.skills-competence-card.inactive .skills-score-negative {
+  background-color: #e7e7e7;
+}
+
+.skills-competence-card.inactive .skills-competence-title .title {
+  color: rgba(74, 74, 74, 0.6);
+}

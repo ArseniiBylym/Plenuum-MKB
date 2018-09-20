@@ -1,0 +1,10 @@
+{
+  "updatedAt": "2017-10-09T13:55:50.052Z",
+  "createdAt": "2017-10-09T13:55:50.052Z",
+  "requestMessage": "Request message",
+  "senderId": "59d8edb764979300105afabb",
+  "_id": "59db7fe6318d3e00100561aa",
+  "recipientId": [
+    "59d8f40464979300105afac6"
+  ]
+}

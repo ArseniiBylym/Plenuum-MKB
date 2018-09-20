@@ -1,0 +1,105 @@
+[{
+  "_id": "5943f45a4d0d550007d865e6",
+  "firstName": "Roman",
+  "lastName": "Huti",
+  "email": "roman.huti@hipteam.io",
+  "managerId": "",
+  "pictureUrl": "https://storage.googleapis.com/plenuum.appspot.com/plenuum/userPictures/5943f45a4d0d550007d865e6.jpg"
+}, {
+  "_id": "586fd0306f66250004500d1d",
+  "firstName": "Zoltan",
+  "lastName": "Kiricsi",
+  "email": "zoltan.kiricsi@hipteam.io",
+  "managerId": "58736d9b46c7ff00046df94f",
+  "pictureUrl": "https://storage.googleapis.com/plenuum.appspot.com/plenuum/userPictures/586fd0306f66250004500d1d.jpg",
+  "role": "MENTOR"
+}, {
+  "_id": "586fd3d66f66250004500d1e",
+  "firstName": "Peter",
+  "lastName": "Szabo",
+  "email": "peter.szabo@hipteam.io",
+  "managerId": "58736d9b46c7ff00046df94f",
+  "pictureUrl": "http://storage.googleapis.com/plenuum.appspot.com/plenuum/userPictures/586fd3d66f66250004500d1e.jpg"
+}, {
+  "_id": "58736d9b46c7ff00046df94f",
+  "firstName": "Andreas",
+  "lastName": "Rabenseifner",
+  "email": "andreas.rabenseifner@hipteam.io",
+  "managerId": "58736d9b46c7ff00046df94f",
+  "pictureUrl": "http://storage.googleapis.com/plenuum.appspot.com/plenuum/userPictures/58736d9b46c7ff00046df94f.jpg"
+}, {
+  "_id": "5873752746c7ff00046df950",
+  "firstName": "Franclin",
+  "lastName": "Cabral",
+  "email": "franclin.cabral@hipteam.io",
+  "managerId": "58736d9b46c7ff00046df94f",
+  "pictureUrl": "https://storage.googleapis.com/plenuum.appspot.com/plenuum/userPictures/5873752746c7ff00046df950.jpg",
+  "role": "MENTOR"
+}, {
+  "_id": "5873759f46c7ff00046df951",
+  "firstName": "Lydia",
+  "lastName": "Mastori",
+  "email": "lydia.mastori@hipteam.io",
+  "managerId": "58736d9b46c7ff00046df94f"
+}, {
+  "_id": "5875f540ef63a50004ff31be",
+  "firstName": "Máté",
+  "lastName": "Baksa",
+  "email": "mate.baksa@hipteam.io",
+  "managerId": "0",
+  "pictureUrl": "https://storage.googleapis.com/plenuum.appspot.com/plenuum/userPictures/5875f540ef63a50004ff31be.png"
+}, {
+  "_id": "5943f45a4d0d550007d865e6",
+  "firstName": "Roman",
+  "lastName": "Huti",
+  "email": "roman.huti@hipteam.io",
+  "managerId": "",
+  "pictureUrl": "https://storage.googleapis.com/plenuum.appspot.com/plenuum/userPictures/5943f45a4d0d550007d865e6.jpg"
+}, {
+  "_id": "595fa0ec54499c00057f39d2",
+  "firstName": "Zoltan",
+  "lastName": "Kiricsi2",
+  "email": "zoltan.kiricsi2@hipteam.io",
+  "managerId": "",
+  "pictureUrl": "",
+  "role": "MENTOR"
+}, {
+  "_id": "59648b8554499c00057f3a17",
+  "firstName": "Zoltan",
+  "lastName": "Kiricsi Jr",
+  "email": "zoltan.kiricsijr@hipteam.io",
+  "managerId": "",
+  "pictureUrl": "",
+  "role": "STUDENT"
+}, {
+  "_id": "59648c7b54499c00057f3a19",
+  "firstName": "Zoltan",
+  "lastName": "Kiricsi4",
+  "email": "zoltan@nada.email",
+  "managerId": "",
+  "pictureUrl": "",
+  "role": "MENTOR"
+}, {
+  "_id": "59688fda3ef086000508754f",
+  "firstName": "test",
+  "lastName": "test2",
+  "email": "testingwhatever@hipteam.io",
+  "managerId": "",
+  "pictureUrl": "",
+  "role": "STUDENT"
+}, {
+  "_id": "5968900eacc4c781ca7e9ce5",
+  "firstName": "test",
+  "lastName": "test3",
+  "email": "test@whate.io",
+  "managerId": "",
+  "pictureUrl": "",
+  "role": "STUDENT"
+}, {
+  "_id": "596893feeb9a2b00054c765d",
+  "firstName": "test",
+  "lastName": "test1",
+  "email": "testingapp@mailinator.com",
+  "managerId": "",
+  "pictureUrl": ""
+}]

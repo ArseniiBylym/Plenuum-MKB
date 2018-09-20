@@ -1,0 +1,134 @@
+
+
+/*         QUESTION TEXT STYLE        */
+.question {
+  width: 100%;
+  height: 54px;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: #4a4a4a;
+  letter-spacing: 0.3px;
+}
+
+
+/*         INPUT STATES        */
+.survey-input-conteiner {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 4px 4px 0 0;
+  padding: 6px 16px;
+  min-height: 236px;
+  margin-top: 10px;
+  border-bottom: none;
+  overflow-y: auto;
+}
+.survey-input-conteiner.notEmpty {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.54);
+}
+.survey-input-conteiner:hover {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.54);
+}
+.survey-input-conteiner.notEmpty:hover {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.54);
+}
+.survey-input-conteiner:focus-within {
+  outline: none;
+  border-bottom: 2px solid #187697 !important;
+}
+.survey-input-conteiner.errorBorder {
+  outline: none;
+  border-bottom: 2px solid #b00020 !important;
+}
+.survey-input-conteiner.errorBorder:focus-within {
+  outline: none;
+  border-bottom: 2px solid #b00020 !important;
+}
+
+
+/*         TEXTAREA INPUT COMPONENT STATES        */
+.survey-input {
+  width: 480px;
+  height: 144px;
+  font-size: 16px !important;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+}
+.input-field label {
+  font-size: 16px !important;
+  height: 24px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  color: #4a4a4a;
+}
+.input-field.col label {
+     left: 0 !important; 
+}
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+textarea.materialize-textarea:focus:not([readonly]) label {
+  font-size: 16px;
+  letter-spacing: 0.2;
+  font-weight: normal;
+}
+
+textarea.materialize-textarea:focus:not([readonly])+label {
+  color: #4a4a4a;
+}
+.input-field label:not(.label-icon).active {
+  color: #187697 !important;
+}
+.input-field label:not(.label-icon) {
+  color: #4a4a4a !important;
+}
+.input-field label:not(.label-icon).errorLabel {
+  color: #b00020 !important;
+}
+.input-field label:not(.label-icon).active.errorLabel {
+  color: #b00020 !important;
+}
+
+
+/*        FIELD DESCRIPTIONS STATES         */
+.field-description {
+  height: 16px;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: 0.4px;
+  color: #4a4a4a;
+  margin-left: 16px !important;
+}
+.field-description.norm-description {
+  color: #4a4a4a;
+}
+.field-description.active-description {
+  color: #187697;
+}
+.field-description.error-description {
+  color: #b00020;
+}
+
+.selectManager {
+  height: 16px;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: 0.4px;
+  color: #b00020;
+  margin-left: 16px !important;
+}

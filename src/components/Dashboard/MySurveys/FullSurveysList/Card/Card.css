@@ -1,0 +1,117 @@
+.Card {
+    /* width: 416px;
+    height: 187px; */
+    border-radius: 2px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.14);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    padding: 30px 50px;
+    margin-bottom: 50px;
+}
+
+.Card__title {
+    font-family: 'NunitoSans', sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 10px;
+    padding: 5px 0;
+    max-width: 300px;
+}
+.Card__statistic{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.Card__statistic--icon{
+    width: 22px;
+    height: 20px;
+    margin-right: 20px;
+    background: url('../../../../../resources/filter-active.svg') no-repeat;
+    background-size: auto;
+    background-position: left center;
+}
+.Card__statistic--numbers{
+    font-family: 'NunitoSans', sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    color: #707070;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.Card__date{
+    display: flex;
+    flex-flow: row nowrap;
+    font-family: 'NunitoSans', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  color: #707070;
+  padding: 5px 0;
+
+}
+
+.Card__statistic--open >span:first-child {
+    color: #06d6a0;
+}
+.Card__statistic--closed > span:first-child {
+    color: #f4d141;
+}
+
+.Card__date--date {
+    margin-left: 5px;
+}
+
+.Card__download-buttons{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 30px;
+    font-family: 'NunitoSans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.11;
+  letter-spacing: normal;
+  text-align: center;
+  color: #187697;
+}
+.downloadButton{
+    margin-left: 150px;
+    display: flex;
+    flex-flow: row nowrap;
+    color: #187697;
+}
+.downloadButton--arrow{
+    width: 18px;
+    height: 16px;
+    background: url('../../../../../resources/dowload-arrow.svg') no-repeat;
+    background-size: auto;
+    background-position: center center;
+    margin-right: 10px;
+
+
+}
+.detailsButton{
+    margin-left: 30px;
+    color: #187697;
+}

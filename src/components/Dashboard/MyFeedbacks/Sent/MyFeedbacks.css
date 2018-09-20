@@ -1,0 +1,49 @@
+body, html{
+  background-color: #f6f6f6;
+}
+
+.myfeedbacks-main-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f6f6f6;
+  position: relative;
+  margin-top: 64px;
+}
+
+.myfeedbacks-nav-actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-self: stretch;
+  height: 64px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
+}
+
+.myfeedbacks-content {
+
+}
+
+.myfeedbacks-segmentedcontrol {
+
+}
+
+.myfeedbacks-more-actions {
+
+}
+
+.feedback-incoming-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.sent-request-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}

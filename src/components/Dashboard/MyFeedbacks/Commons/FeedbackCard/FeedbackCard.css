@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900');
+.feedback-container {
+  display: flex;
+  margin: 10px 10px 10px 0;
+  width: 416px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+}
+
+/*For IE*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .feedback-container {
+    display: block !important
+  }
+  .feedback-content-container {
+    width: 70% !important;
+    float: right !important;
+  }
+  .feedback-wing-overlap {
+    display: inline-block !important;
+  }
+}
+
+.feedback-wing-overlap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 21px;
+  margin-top: 26px;
+  margin-left: 26px;
+}
+
+.feedback-wing-overlap img {
+  width: 42px;
+  height: 42px;
+}
+
+.feedback-content-container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  margin-top: 36px;
+  margin-left: 26px;
+  margin-right: 29px;
+  margin-bottom: 0;
+
+}
+
+.feedback-content-message {
+  margin-top: 0;
+  word-wrap: normal;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: #39393a;
+  word-break: break-word;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .feedback-content-message {
+    word-break: break-all;
+  }
+}
+
+.feedback-content-context {
+  word-wrap: normal;
+  opacity: 0.5;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #39393a;
+}
+
+.feedback-icons {
+  display: flex;
+  align-self: flex-end;
+  margin-right: 0;
+  margin-bottom: 19px;
+}
+
+.feedback-separate-icon {
+  margin: auto 7px;
+}
+
+.feedback-card-tags {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: 0;
+  margin-right: 0;
+}

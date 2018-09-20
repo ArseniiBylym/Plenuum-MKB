@@ -1,0 +1,429 @@
+html, body {
+    background-color: #f6f6f6 !important;
+}
+
+.compass-main-container {
+    display: flex;
+    display:-webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/* This is for the card */
+.compass-card {
+    display: flex;
+    flex-direction: column;
+    height: 318px;
+    width: 300px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.14), 0 4px 4px 0 rgba(0, 0, 0, 0.14);
+}
+
+.compass-component {
+    display:-webkit-flex;
+    height: 400px;
+    display: flex;
+    /*justify-content: center;*/
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    -webkit-bottom: 150px;
+    position: relative;
+    margin-top: 74px;
+}
+
+.compass-skip {
+    word-break: break-word;
+    text-align: right;
+    width: 25%;
+    justify-content: flex-end;
+    opacity: 0.4;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: right;
+    color: #4a4a4a;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.compass-card > img {
+    align-self: center;
+}
+
+.compass-card-top {
+    display: flex;
+    flex-direction: column;
+    height: 20%;
+    margin: 28px 26px 0 26px;
+}
+
+.compass-card-order {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.compass-card-order p {
+    margin-bottom: 0;
+}
+
+.compass-card-amount {
+    height: 20px;
+    opacity: 0.4;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-align: center;
+    color: #4a4a4a;
+    margin-bottom: 0;
+}
+
+.compass-card-sentence-title {
+    word-break: break-word;
+    height: 19px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #35a9db;
+    text-transform: uppercase;
+    margin-top: 7px;
+}
+
+.compass-card-skip {
+    justify-content: flex-end;
+    opacity: 0.4;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: right;
+    color: #4a4a4a;
+    margin-bottom: 0;
+}
+
+.compass-card-sentence {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.compass-card-sentence > p {
+    word-break: break-word;
+    margin-top: 49px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    color: #4a4a4a;
+}
+
+.compass-ready-to-send {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-self: center;
+
+}
+
+.compass-ready-to-send > img {
+    margin: auto;
+    margin-top: 96px;
+    width: 144px;
+    height: 89px;
+}
+
+.compass-ready-to-send > p {
+    margin-top: 59px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    color: rgba(74, 74, 74, 0.4);
+}
+
+.compass-send-feedback-button {
+    padding: 10px;
+    background-color: #35a9db;
+}
+
+.compass-buttons {
+    display:-webkit-flex;
+    display: flex;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
+    /*margin-top: 60px;*/
+    margin-bottom: 1.5em;
+}
+
+.compass-buttons > .disagree {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 160px;
+    height: 54px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #f5d141;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.compass-buttons > .agree {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 160px;
+    height: 54px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #06d6a0;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.compass-buttons > .done {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 320px;
+    height: 54px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #35a9db;
+    cursor: pointer;
+
+}
+
+.done:focus {outline:0 !important;}
+
+.compass-main-container > .compass {
+    margin-bottom: 80px;
+    height: 368px;
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.14), 0 4px 4px 0 rgba(0, 0, 0, 0.14);
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.disagre {
+    animation-name: disagree-animation;
+    animation-duration: 0.3s;
+}
+
+
+.compass-users-list {
+    display: flex;
+}
+
+.compass-nav-buttons {
+    display: flex;
+    margin-right: 38px;
+}
+
+.compass-nav-buttons .compass-nav-buttons-replay {
+    margin: auto;
+    width: 24px;
+    height: 24px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background: url('../../../resources/ic-replay-black-24-px.svg') no-repeat;
+    background-size: auto;
+    cursor: pointer;
+}
+
+.compass-nav-buttons .compass-nav-buttons-close {
+    margin: auto;
+    width: 24px;
+    height: 24px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background: url('../../../resources/ic-close-black-24-px.svg') no-repeat;
+    background-size: auto;
+    background-position: center;
+    cursor: pointer;
+}
+
+.compass-nav-buttons img {
+    margin: auto;
+}
+
+.compass-nav-buttons .compass-nav-buttons-replay:hover {
+    background: url('../../../resources/ic-replay-black-24-px-hover.svg') no-repeat;
+    background-size: auto;
+}
+
+.compass-nav-buttons .compass-nav-buttons-close:hover {
+    background: url('../../../resources/ic-close-black-24-px-hover.svg') no-repeat;
+    background-size: auto;
+    background-position: center;
+}
+
+/* Animations */
+.agree-enter {
+    opacity: 0.01;
+}
+
+.agree-enter.agree-enter-active {
+    opacity: 1;
+    transition: opacity 5000ms ease-in;
+}
+
+.agree-leave {
+    z-index: 99 !important;
+    opacity: 1;
+}
+
+.agree-leave.agree-leave-active {
+    opacity: 0.01;
+    z-index: 99 !important;
+    transform: translateX(400px);
+    transition: 200ms ease-in;
+
+}
+
+.disagree-enter {
+
+}
+
+.disagree-enter.disagree-enter-active {
+
+}
+
+.disagree-leave {
+    opacity: 1;
+    z-index: 99 !important;
+}
+
+.disagree-leave.disagree-leave-active {
+    opacity: 0.01;
+    z-index: 99 !important;
+    transform: translateX(-400px);
+    transition: 200ms ease-in;
+}
+
+.skip-enter {
+
+}
+
+.skip-enter.skip-enter-active {
+
+}
+
+.skip-leave {
+    z-index: 99 !important;
+    opacity: 1;
+}
+
+.skip-leave.skip-leave-active {
+    opacity: 0.01;
+    z-index: 99 !important;
+    transform: translateY(400px);
+    transition: 200ms ease-in;
+}
+
+.compass-transition-container {
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    display:-webkit-flex;
+    height: 400px;
+    width: 100%;
+}
+
+.compass-users-list-components {
+    overflow-y: auto;
+    height: calc(100% - 64px);
+    width: calc(100% - 256px);
+    position: absolute;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #ffffff;
+    margin-top: 64px;
+    padding-top: 10px;
+}
+
+.answers-navigation {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+.answers-navigation-title {
+    font-family: 'Nunito Sans';
+    font-size: 32px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.answers-navigation-back {
+    cursor: pointer;
+}
+
+.close-feedback{
+    align-self: flex-end;
+    margin-right: 6px;
+    font-size: 32px;
+    color: rgba(0, 0, 0, 0.7);
+    -webkit-text-stroke: 4px white;
+    cursor: pointer
+}
+
+.compass-pre-container {
+    display: flex;
+    position: relative;
+}
+
+.compass-component-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.select-users {
+    align-self: center;
+}

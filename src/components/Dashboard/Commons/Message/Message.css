@@ -1,0 +1,82 @@
+.message-container {
+  display: flex;
+  width: 512px;
+  margin: 0;
+}
+
+.message-text-area {
+
+}
+
+.feedback-message-style{
+  width: 512px;
+  height: 112px !important;
+  padding-top: 12px;
+  padding-left: 12px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #d8d8d8;
+  resize: none;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.feedback-message-style:focus {
+  outline: none;
+  border: solid 1px #187697;
+}
+
+::-webkit-input-placeholder {
+  height: 26px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  height: 26px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  height: 26px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+:-ms-input-placeholder {
+  height: 26px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.3);
+}

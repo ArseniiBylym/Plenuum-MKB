@@ -1,0 +1,36 @@
+.CreateNewButton {
+    /* margin: 20px; */
+
+    height: 60%;
+    margin-right: 10%;
+    padding: 20px 40px;
+    border: 1px solid #ffffff;
+    border-radius: 2px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.CreateNewButton:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+.CreateNewButton:active {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.CreateNewButton__icon{
+    background: url('../../../../resources/ic-add-white.svg') no-repeat;
+    background-size: auto;
+    background-position: center center;
+}
+
+.CreateNewButton__text {
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #ffffff;
+    text-align: center;
+}

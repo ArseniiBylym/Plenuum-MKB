@@ -1,0 +1,13 @@
+{
+  "updatedAt": "2017-10-09T08:03:59.109Z",
+  "createdAt": "2017-10-09T08:03:59.109Z",
+  "requestMessage": "Testing request",
+  "senderId": "59db2cd264979300105afacd",
+  "_id": "59db2d6f64979300105afad0",
+  "recipientId": [
+    "59d8f1f064979300105afac0",
+    "59d8f23964979300105afac2",
+    "59d8edb764979300105afabb",
+    "59d8ef7364979300105afabd"
+  ]
+}

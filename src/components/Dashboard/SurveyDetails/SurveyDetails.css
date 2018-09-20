@@ -1,0 +1,14 @@
+.back-button-title--survey-header{
+    width: 24px;
+    height: 24px; 
+    color: #a4a4a4;
+    margin-left: 20px;
+    background-image: url('../../../resources/down-arrow.svg');
+    transform: rotate(90deg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center center;
+    padding-left: 20px;
+    background-position-y: 0.3em;
+    cursor: pointer;
+}

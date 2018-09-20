@@ -1,0 +1,82 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+.main-container input[type=text] {
+  width: 382px;
+  height: 44px !important;
+  border: none;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.5);
+  transition: border 0.3s;
+  font-size: 16px;
+  background-color: #ffffff;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  background-image: url('../../../../resources/ic-search-black-24-px.svg');
+  margin-bottom: 5px;
+  box-sizing: border-box !important;
+}
+
+.main-container input[type=text]:focus {
+  width: 382px;
+  outline: none;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.5) !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.filter-users-myfeedbacks input[type=text] {
+  /*width: 320px;*/
+  height: 44px !important;
+  border: none;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.5);
+  transition: border 0.3s;
+  font-size: 16px;
+  background-color: #ffffff;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 10px 20px 8px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  background-image: url('../../../../resources/ic-search-black-24-px.svg');
+  margin-bottom: 5px;
+  box-sizing: border-box;
+}
+
+.filter-users-myfeedbacks input[type=text]:focus {
+  /*width: 320px;*/
+  outline: none;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.5) !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.filter-users-myfeedbacks.typing input[type=text] {
+  background-image: url('../../../../resources/ic-search-blue.svg');
+  border-bottom: solid 1px rgb(53, 169, 219);
+}
+
+.filter-by-content input[type=text]::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    rgba(121, 121, 121, 0.6);
+}
+.filter-by-content input[type=text]::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    rgba(121, 121, 121, 0.6);
+}
+.filter-by-content input[type=text]::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    rgba(121, 121, 121, 0.6);
+}
+.filter-by-content input[type=text]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    rgba(121, 121, 121, 0.6);
+}
+.filter-by-content input[type=text]:-ms-input-placeholder { /* Microsoft Edge */
+   color:    rgba(121, 121, 121, 0.6);
+}
+
+.search-img {
+  width: 16px;
+  margin-right: 6px;
+}

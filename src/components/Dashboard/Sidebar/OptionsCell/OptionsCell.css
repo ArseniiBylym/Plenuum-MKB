@@ -1,0 +1,161 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.interact-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  height: 22px;
+  width: 22px;
+  background: url('../../../../resources/interact-normal.svg') no-repeat;
+  background-size: auto;
+  background-position: center top;
+}
+
+.skills-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  /* margin-top: 20px; */
+  height: 22px;
+  width: 22px;
+  background: url('../../../../resources/skills-icon-active.svg') no-repeat;
+  background-size: auto;
+  background-position: center top;
+}
+
+.myfeedbacks-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-top: 2px;
+  height: 22px;
+  width: 22px;
+  background: url('../../../../resources/my-feedbacks-normal.svg') no-repeat;
+  background-size: auto;
+  background-position: center top;
+}
+
+.survey-option{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  /* margin-top: 20px; */
+  height: 22px;
+  width: 22px;
+  background: url('../../../../resources/surveys.svg') no-repeat;
+  background-size: auto;
+  background-position: center bottom;
+}
+
+.options-image {
+  display: flex;
+  align-self: flex-start;
+  background-color: #ffffff;
+  margin-top: 2px;
+}
+
+.options-name {
+  display: flex;
+  font-family: 'Nunito Sans', sans-serif;;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #929292;
+  margin-left: 12px;
+}
+.options-name:hover{
+   color: #187697;
+   text-decoration: none;
+}
+.options-name:active{
+   color: #187697;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+a.active {
+  font-family: 'Nunito Sans', sans-serif;;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #187697;
+  margin-left: 12px;
+  text-decoration: none;
+}
+
+a.active .interact-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  height: 22px;
+  width: 22px;
+  background: url('../../../../resources/interact-selected.svg') no-repeat;
+  background-size: auto;
+  background-position: center top;
+}
+
+a.active .myfeedbacks-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  height: 22px;
+  width: 22px;
+  background: url('../../../../resources/my-feedbacks-selected.svg') no-repeat;
+  background-size: auto;
+  background-position: center top;
+}
+
+a.active .skills-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  height: 22px;
+  width: 22px;
+  background: url('../../../../resources/skills-icon-selected.svg') no-repeat;
+  background-size: auto;
+  background-position: center top;
+}
+
+a.active .survey-option{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  height: 22px;
+  width: 22px;
+  background: url('../../../../resources/surveys-selected.svg') no-repeat;
+  background-size: auto;
+  /* background-size: 80% 80%; */
+  background-position: center bottom;
+}
+
+
+.options-container {
+  display: flex;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.options-container:nth-child(even)  {
+ margin-top: 20px;
+}
+
+.options-container:last-child  {
+ margin-top: 20px;
+}

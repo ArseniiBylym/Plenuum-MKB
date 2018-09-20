@@ -1,0 +1,22 @@
+[
+  {
+    "updatedAt": "2017-10-09T13:39:25.283Z",
+    "createdAt": "2017-10-09T13:39:25.283Z",
+    "requestMessage": "please hold the Wall",
+    "senderId": "59d8edb764979300105afabb",
+    "_id": "59db7c0d318d3e0010056199",
+    "recipientId": [
+      "59d8f23964979300105afac2"
+    ]
+  },
+  {
+    "updatedAt": "2017-10-09T13:39:35.642Z",
+    "createdAt": "2017-10-09T13:39:35.642Z",
+    "requestMessage": "I need obsydian",
+    "senderId": "59d8edb764979300105afabb",
+    "_id": "59db7c17318d3e001005619a",
+    "recipientId": [
+      "59d8f1f064979300105afac0"
+    ]
+  }
+]

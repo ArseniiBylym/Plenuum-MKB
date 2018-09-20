@@ -1,0 +1,93 @@
+.sentence-main-container {
+  margin: 74px auto;
+  display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 874px;
+}
+
+.full-container {
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #f6f6f6;
+}
+
+.sentence-competence-card {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 416px;
+  height: 219px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
+  cursor: default;
+}
+
+.sentence-competence-title {
+  display: flex;
+  flex-direction: column;
+  margin: 42px 40px 16px 40px;
+}
+
+.sentence-competence-title .title {
+  margin: 0;
+  font-family: 'Nunito Sans';
+  font-size: 18px;
+  color: #4a4a4a;
+  line-height: 23px;
+}
+
+.sentence-competence-title .answers {
+  height: 19px;
+  font-family: 'Nunito Sans';
+  font-size: 14px;
+  color: #bdbdbd;
+  margin: 3px 0px 0px 0px;
+}
+
+.sentence-competence-scores {
+  display: flex;
+  justify-content: space-between;
+  margin: 11px 40px 38px 40px;
+}
+
+.sentence-score-negative {
+  height: 6px;
+  width: 200px;
+  background-color: rgb(245, 209, 65);
+  border-radius: 16px;
+  margin: auto 0px;
+}
+
+.sentence-score-positive {
+  border-radius: 16px 0 0 16px;
+  background-color: rgb(6, 214, 160);
+  height: 100%;
+}
+
+.sentence-progress {
+  font-family: 'Nunito Sans';
+  font-size: 30px;
+  font-weight: 200;
+  text-align: right;
+  color: #4a4a4a;
+}
+
+.sentence-competence-card.inactive {
+  cursor: default;
+}
+
+.sentence-competence-card.inactive .sentence-score-negative .sentence-score-positive {
+  background-color: #e7e7e7;
+}
+
+.sentence-competence-card.inactive .sentence-score-negative {
+  background-color: #e7e7e7;
+}
+
+.sentence-competence-card.inactive .sentence-competence-title .title {
+  color: rgba(74, 74, 74, 0.6);
+}

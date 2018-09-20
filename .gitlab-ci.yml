@@ -1,0 +1,133 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - test
+  - review
+  - deploy
+
+before_script:
+  - docker info
+  - apk update
+  - apk upgrade
+  - apk add git openssh
+  - mkdir -p ~/.ssh
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - eval "$(ssh-agent -s)"
+  - ssh-add ~/.ssh/id_rsa
+  - ssh-keyscan -H '188.166.86.88' >> ~/.ssh/known_hosts
+  - docker build -t plenuumwebapp .
+
+testing:
+  script:
+    - echo "Solve first the problem with jest, then the tests will be the next"
+    #- docker run -d -it --name plenuumwebapp plenuumwebapp:latest
+    #- docker exec -i plenuumwebapp npm test
+  stage: test
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+
+deploy_to_dev_v1:
+  stage: deploy
+  environment:
+    name: dev/$CI_COMMIT_REF_NAME
+  script:
+    - git push $DEV_SERVER:$APP_DEV master
+  only:
+    - develop-v1
+  when: manual
+  dependencies:
+    - testing
+
+deploy_to_staging_v1:
+  stage: deploy
+  environment:
+    name: staging/$CI_COMMIT_REF_NAME
+  script:
+    - git push $STAGING_SERVER:$APP_STAGING master
+  only:
+    - develop-v1
+  when: manual
+  dependencies:
+      - testing
+
+deploy_to_dev_v2:
+  stage: deploy
+  environment:
+    name: dev/$CI_COMMIT_REF_NAME
+  script:
+    - git push $DEV_SERVER:$APP_DEV master
+  only:
+    - develop-v2
+  when: manual
+  dependencies:
+      - testing
+
+deploy_to_staging_v2:
+  stage: deploy
+  environment:
+    name: staging/$CI_COMMIT_REF_NAME
+  script:
+    - git push $STAGING_SERVER:$APP_STAGING master
+  only:
+    - develop-v2
+  when: manual
+  dependencies:
+      - testing
+
+deploy_to_prod_v1:
+  stage: deploy
+  environment:
+    name: production/$CI_COMMIT_REF_NAME
+  script:
+    - git push $DEV_SERVER:$APP_PROD master
+  only:
+    - develop-v2
+  when: manual
+  dependencies:
+      - testing
+
+deploy_to_prod_v2:
+  stage: deploy
+  environment:
+    name: production/$CI_COMMIT_REF_NAME
+  script:
+    - git push $DEV_SERVER:$APP_PROD master
+  only:
+    - develop-v2
+  when: manual
+  dependencies:
+      - testing
+
+deploy_to_aws_staging:
+  before_script:
+  - npm i --silent
+  - npm run build || true
+  stage: deploy
+  image: node:8.4.0
+  script:
+  - apt-get update
+  - apt-get install -y python python-pip python-dev curl unzip groff
+  - pip install awsebcli
+  - curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && unzip awscli-bundle.zip && ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+  - aws s3 sync build/ s3://plenuum-frontend-staging --cache-control max-age=172800 --delete
+  - aws cloudfront create-invalidation --distribution-id EKPXLWYRDL7XF --paths "/*"
+  when: manual
+
+deploy_to_aws_live:
+  before_script:
+  - npm i --silent
+  - npm run build || true
+  stage: deploy
+  image: node:8.4.0
+  script:
+  - apt-get update
+  - apt-get install -y python python-pip python-dev curl unzip groff
+  - pip install awsebcli
+  - curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && unzip awscli-bundle.zip && ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+  - aws s3 sync build/ s3://plenuum-frontend-v2 --cache-control max-age=172800 --delete
+  - aws cloudfront create-invalidation --distribution-id E3IEE81GOC9AP4 --paths "/*"
+  when: manual

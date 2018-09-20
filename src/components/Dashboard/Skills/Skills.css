@@ -1,0 +1,20 @@
+.skills-main-container {
+  margin: 64px auto 0px auto;
+  display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 874px;
+    padding-top: 10px;
+}
+
+.full-container {
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #f6f6f6;
+}
+
+.full-container .nav .segmented-item .segmented-cell:hover{
+  background-color: transparent !important;
+}

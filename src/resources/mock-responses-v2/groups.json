@@ -1,0 +1,94 @@
+[
+  {
+    "_id": "59d8f28c64979300105afac4",
+    "answerCardRelations": [
+      "59d8f28c64979300105afac4"
+    ],
+    "createdAt": "2017-10-07T15:28:12.148Z",
+    "name": "GoT",
+    "skills": [
+      {
+        "_id": "59db6073318d3e0010055fb0",
+        "createdAt": "2017-10-09T11:41:39.334Z",
+        "inactiveSentences": [],
+        "name": "New RH skill",
+        "sentences": [
+          {
+            "_id": "59db60aa318d3e0010055fb4",
+            "message": "First RH sentence",
+            "updatedAt": "2017-10-09T11:42:34.390Z",
+            "createdAt": "2017-10-09T11:42:34.390Z"
+          },
+          {
+            "_id": "59db60aa318d3e0010055fb3",
+            "message": "FirstDo you know something, John Snow?",
+            "updatedAt": "2017-10-09T11:42:34.390Z",
+            "createdAt": "2017-10-09T11:42:34.390Z"
+          },
+          {
+            "_id": "59db60aa318d3e0010055fb2",
+            "message": "Valar Morgylis",
+            "updatedAt": "2017-10-09T11:42:34.390Z",
+            "createdAt": "2017-10-09T11:42:34.390Z"
+          }
+        ],
+        "updatedAt": "2017-10-09T11:42:34.389Z"
+      },
+      {
+        "updatedAt": "2017-10-09T11:49:03.763Z",
+        "createdAt": "2017-10-09T11:49:03.763Z",
+        "name": "GoT Open questions",
+        "_id": "59db622f318d3e0010055fb6",
+        "inactiveSentences": [],
+        "sentences": [
+          {
+            "updatedAt": "2017-10-09T11:49:03.762Z",
+            "createdAt": "2017-10-09T11:49:03.762Z",
+            "message": "Who was Liana?",
+            "_id": "59db622f318d3e0010055fb9"
+          },
+          {
+            "updatedAt": "2017-10-09T11:49:03.762Z",
+            "createdAt": "2017-10-09T11:49:03.762Z",
+            "message": "Who killed Ned Stark?",
+            "_id": "59db622f318d3e0010055fb8"
+          },
+          {
+            "updatedAt": "2017-10-09T11:49:03.762Z",
+            "createdAt": "2017-10-09T11:49:03.762Z",
+            "message": "Who is spider?",
+            "_id": "59db622f318d3e0010055fb7"
+          }
+        ]
+      }
+    ],
+    "todoCardRelations": [],
+    "updatedAt": "2017-10-09T13:25:09.751Z",
+    "users": [
+      {
+        "firstName": "John",
+        "lastName": "Snow",
+        "email": "john.s@hipteam.io",
+        "_id": "59d8f23964979300105afac2"
+      },
+      {
+        "firstName": "Daenerys",
+        "lastName": "Targaryen",
+        "email": "dany.t@hipteam.io",
+        "_id": "59d8f1f064979300105afac0"
+      },
+      {
+        "firstName": "Roman",
+        "lastName": "Huti",
+        "email": "roman.huti@hipteam.io",
+        "_id": "59d8edb764979300105afabb"
+      },
+      {
+        "firstName": "Ygriete",
+        "lastName": "Wild",
+        "email": "yiegrete.w@hipteam.io",
+        "_id": "59d8f40464979300105afac6"
+      }
+    ]
+  }
+]

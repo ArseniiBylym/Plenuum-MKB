@@ -1,0 +1,106 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+
+.tag-normal {
+  margin: 5px;
+  padding: 4px 14px;
+  display: flex;
+  justify-content: center;
+  height: 28px;
+  border-radius: 2px;
+  border: solid 1px rgba(0, 0, 0, 0.3);
+}
+
+.tag-normal p {
+  margin: auto;
+  height: 19px;
+  font-family: 'Nunito Sans', sans-serif;;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.tag-enabled {
+  margin: 5px;
+  padding: 4px 14px;
+  display: flex;
+  justify-content: center;
+  height: 28px;
+  border-radius: 2px;
+  background-color: #35a9db;
+  border: solid 1px #35a9db;
+}
+
+.tag-enabled p {
+  margin: auto;
+  height: 19px;
+  font-family: 'Nunito Sans', sans-serif;;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.tag-disabled {
+  margin: 5px;
+  padding: 4px 14px;
+  display: flex;
+  justify-content: center;
+  height: 28px;
+  border-radius: 2px;
+  border: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+.createFeedback-feedback-tags .tag-normal:hover {
+  border: solid 1px #35a9db;
+}
+
+.createFeedback-feedback-tags .tag-normal:hover p {
+  color: #35a9db;
+}
+
+.tag-disabled p {
+  margin: auto;
+  height: 19px;
+  font-family: 'Nunito Sans', sans-serif;;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.tag-custom {
+  margin: 3px;
+  padding: 4px 14px;
+  display: flex;
+  justify-content: center;
+  height: 23px;
+  border-radius: 2px;
+  border: solid 1px rgba(0, 0, 0, 0.25);
+}
+
+.tag-custom p {
+  margin: auto;
+  height: 19px;
+  font-family: 'Nunito Sans', sans-serif;;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.4);
+}

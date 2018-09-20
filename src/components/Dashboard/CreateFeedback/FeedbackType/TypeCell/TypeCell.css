@@ -1,0 +1,157 @@
+.type-cell{
+  height: 48px !important;
+  cursor: pointer;
+  font-family: 'Nunito Sans';
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.type-cell-selected>div>div>.fa.fa-caret-down{
+  display: block!important;
+  align-self: center;
+}
+
+.type-cell.default > .dropdown-type {
+   display: block;
+
+}
+
+.type-cell.default > .dropdown-type > .fa.fa-caret-down {
+  display: block;
+}
+
+.type-cell.default p {
+  font-family: 'Nunito Sans' sans-serif;
+  font-size: 16px;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+
+.border-div-options .consider .dropdown-type, .border-div-options .continue .dropdown-type {
+  display: none;
+}
+
+.dropdown-type {
+  margin: auto;
+  margin-right: 16px;
+  align-self: center;
+}
+
+.type-cell-selected> .type-cell {
+   border: solid 1px #b2b2b2;
+}
+
+.type-cell-selected> .continue {
+  background-color: #00d6a5;
+  color: white;
+  border: 1px solid #00d6a5;
+}
+.type-cell-selected> .consider {
+  background-color: #f4d141;
+  color: white;
+  border: 1px solid #f4d141;
+}
+
+.type-cell-selected> .consider > p {
+  align-self: center;
+}
+
+.type-cell-selected> .continue .fa.fa-caret-down {
+  display: block;
+  margin: auto;
+}
+
+.type-cell-selected> .consider .fa.fa-caret-down {
+  display: block;
+  margin: auto;
+}
+
+.type-cell.default>div>img{
+  display: none;
+}
+
+.type-cell img {
+  width: 16px;
+  height: 16px;
+}
+
+.border-div-single {
+  margin: 0;
+  margin-top: -1px;
+  display: flex;
+  z-index: 999 !important;
+  width: 512px;
+  height: 48px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background-color: #fdfdfd;
+  border: solid 1px #d8d8d8
+}
+
+.border-div-options {
+  display: flex;
+  margin-top: -1px;
+  position: absolute;
+  z-index: 999 !important;
+  flex-direction: column;
+  width: 512px;
+  height: 144px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background-color: #fdfdfd;
+  border: solid 1px #d8d8d8
+
+}
+
+.border-div-options > .type-cell {
+
+}
+
+.border-div-options > .continue {
+  font-family: 'Nunito Sans' sans-serif;
+  font-size: 16px;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.3);
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.border-div-options > .continue img {
+  height: 32px;
+  width: 32px;
+}
+
+.border-div-options > .consider {
+  font-family: 'Nunito Sans' sans-serif;
+  font-size: 16px;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.3);
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.border-div-options > .consider img {
+  height: 32px;
+  width: 32px;
+}
+
+.type-cell-single {
+  display: flex;
+  width: 100%;
+}
+
+.type-cell-single img {
+  margin-left: 10px;
+  height: 38px;
+  width: 38px;
+}
+
+.type-cell-single p {
+  margin: auto 16px;
+  align-self: center;
+}

@@ -1,0 +1,119 @@
+.avatar {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar img {
+  object-fit: cover;
+  margin: 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.avatar p {
+  margin: 0 auto;
+}
+
+.profile-name {
+  display: flex;
+  margin-top: 1em;
+  color: #39393a ;
+  margin-left: 45px;
+  cursor: pointer;
+}
+.profile-name:hover {
+   color: #187697!important
+}
+.name:hover {
+   color: #187697!important
+}
+
+.name{
+ font-family: 'Nunito Sans', sans-serif !important;
+ font-size: 14px !important;
+ text-align: center !important;
+ margin: auto !important;
+
+   font-weight: 500 !important;
+}
+
+
+.profile-options {
+  display: flex;
+  flex-direction: column;
+  margin-left: 38px;
+  margin-top: 26px;
+}
+
+.profile-options p {
+  cursor: pointer;
+}
+
+
+
+.profile-options a{
+  margin: 10px;
+  height: 19px;
+  font-family: 'Nunito Sans', sans-serif !important;
+  font-size: 14px;
+  color: #929292;
+  text-decoration: none;
+}
+
+.profile-options a:hover {
+  text-decoration: none;
+  color: #187697;
+}
+
+.profile-options a.active {
+  font-family: 'Nunito Sans', sans-serif;;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #187697;
+  opacity: 1.0;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.logout {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+
+}
+
+.chevron {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background: url('../../../resources/chevron-normal.svg') no-repeat;
+  background-position: center;
+  margin-right: 20px;
+}
+
+.profile-name:hover > .chevron {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background: url('../../../resources/chevron-hover.svg') no-repeat;
+  background-position: center;
+  margin-right: 20px;
+}
+
+.chevron-clicked {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background: url('../../../resources/chevron-selected.svg') no-repeat;
+  background-position: center;
+  margin-right: 20px;
+}
+
+.primary{
+   color: #187697;
+}

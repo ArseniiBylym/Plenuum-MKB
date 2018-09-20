@@ -1,0 +1,68 @@
+.main-container-selectedUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 8px 0px;
+  cursor: pointer;
+}
+
+.selectedUser-picture {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+.selectedUser-picture img {
+  object-fit: cover;
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  margin: auto 8px;
+}
+
+.selectedUser-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: auto 10px auto auto;
+}
+
+.selectedUser-name > p {
+  margin: auto;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.selectedUser-delete {
+
+}
+
+.main-container-selectedUser:hover {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+.main-container-selectedUser .close-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+}
+
+.main-container-selectedUser .close-icon a {
+  display: none;
+}
+
+.main-container-selectedUser:hover > .close-icon a {
+  display: block;
+
+}
+
+.main-container-selectedUser:hover > .close-icon .fa-times {
+  color: #C9C9C9;
+  width: 24px;
+  height: 24px;
+}

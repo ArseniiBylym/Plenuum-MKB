@@ -1,0 +1,12 @@
+.FullSurveysList {
+    position: fixed;
+    width: calc(100% - 256px);
+    height: calc(100% - 64px);
+    bottom: 0;
+    right: 0;
+    padding: 20px 0;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+}

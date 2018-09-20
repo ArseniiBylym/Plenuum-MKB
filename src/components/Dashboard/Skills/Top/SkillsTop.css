@@ -1,0 +1,41 @@
+.skills-top-main-container {
+  margin: 0 auto;
+  display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 874px;
+}
+
+.top-full-container {
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #f6f6f6;
+}
+
+.skills-top-header {
+  color: #35a9db;
+  font-family: 'Nunito Sans';
+  font-size: 16px;
+  font-weight: 600;
+  margin: 98px 0 10px 36px;
+  display: inline-block;
+}
+
+.skills-top-header2 {
+  color: #35a9db;
+  font-family: 'Nunito Sans';
+  font-size: 16px;
+  font-weight: 600;
+  margin: 34px 0 10px 36px;
+  display: inline-block;
+}
+
+.skills-top-main-container .skills-competence-card {
+  cursor: default;
+}
+
+.nav > li > a:focus {
+    background-color: #ffffff;
+}

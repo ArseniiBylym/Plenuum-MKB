@@ -1,0 +1,40 @@
+[
+    {
+        "updatedAt": "2017-10-07T16:35:24.999Z",
+        "createdAt": "2017-10-07T16:35:24.999Z",
+        "senderId": "59d8f23964979300105afac2",
+        "recipientId": "59d8edb764979300105afabb",
+        "message": "jkbhjvvhj",
+        "type": "CONSIDER",
+        "requestId": "",
+        "_id": "59d9024c64979300105afacb",
+        "tags": [],
+        "privacy": []
+    },
+    {
+        "updatedAt": "2017-10-09T13:40:10.503Z",
+        "createdAt": "2017-10-09T13:40:10.503Z",
+        "senderId": "59d8f23964979300105afac2",
+        "recipientId": "59d8edb764979300105afabb",
+        "message": "not bad feedback",
+        "type": "CONTINUE",
+        "requestId": "",
+        "_id": "59db7c3a318d3e001005619c",
+        "tags": [],
+        "privacy": [
+            "PRIVATE"
+        ]
+    },
+    {
+        "updatedAt": "2017-10-09T13:40:22.195Z",
+        "createdAt": "2017-10-09T13:40:22.195Z",
+        "senderId": "59d8f23964979300105afac2",
+        "recipientId": "59d8edb764979300105afabb",
+        "message": "ok man, no worries.",
+        "type": "CONTINUE",
+        "requestId": "59db7c0d318d3e0010056199",
+        "_id": "59db7c46318d3e001005619d",
+        "tags": [],
+        "privacy": []
+    }
+]

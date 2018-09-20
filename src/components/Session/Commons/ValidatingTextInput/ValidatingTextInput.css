@@ -1,0 +1,72 @@
+
+.change-password input {
+  height: 44px;
+  font-family: 'Nunito Sans';
+  outline: 0;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 3px;
+  border: solid 1px rgba(151, 151, 151, 0.4);
+}
+
+.change-password .focus > input {
+  border: solid 1px #35a9db;
+}
+
+.change-password.focus > .title {
+  color: #35a9db;
+}
+
+.change-password.focus > .error-message {
+  visibility: hidden;
+}
+
+.change-password.error > input {
+  border: solid 1px #e77a7a;
+}
+
+.change-password.error > .title {
+  color: #e77a7a;
+}
+
+.change-password.error > .error-message {
+  visibility: visible;
+}
+
+.change-password .error {
+  border: solid 1px #e77a7a;
+}
+
+input:focus {
+  border: solid 1px #35a9db;
+}
+
+.change-password {
+  margin: 22px 0px 0px 0px;
+}
+
+.change-password .title {
+  color: #e77a7a;
+}
+
+.change-password .title {
+  font-family: 'Nunito Sans';
+  font-size: 12px;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 6px;
+  font-weight: normal;
+}
+
+.error-message {
+  visibility:visible;
+  float: right;
+  font-family: 'Nunito Sans';
+  font-size: 12px;
+  text-align: right;
+  color: #e77a7a;
+}

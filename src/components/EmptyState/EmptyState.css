@@ -1,0 +1,44 @@
+.empty-state-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+}
+
+.empty-state-container img {
+  width: 189px;
+  height: 226px;
+}
+
+.empty-state-container p {
+  margin-top: 24px;
+  height: 19px;
+  opacity: 0.5;
+  font-family: 'Nunito Sans', sans-serif;
+  text-align: center;
+  line-height: 1.11;
+  text-align: center;
+  font-size: 14px;
+ color: rgba(74, 74, 74, 0.5);
+}
+
+.empty-state-close {
+  width: 18px;
+  height: 18px;
+}
+
+.skills-top-main-container .empty-state-container {
+    height: 200px;
+}
+
+.skills-top-main-container .empty-state-container img {
+    display: none;
+}
+
+.skills-top-main-container .empty-state-container p {
+  font-size: 18px;
+  color: rgba(74, 74, 74, 0.6);
+}

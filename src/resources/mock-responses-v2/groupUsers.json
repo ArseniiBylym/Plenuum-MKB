@@ -1,0 +1,20 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Snow",
+    "email": "john.s@hipteam.io",
+    "_id": "59d8f23964979300105afac2"
+  },
+  {
+    "firstName": "Daenerys",
+    "lastName": "Targaryen",
+    "email": "dany.t@hipteam.io",
+    "_id": "59d8f1f064979300105afac0"
+  },
+  {
+    "firstName": "Ygriete",
+    "lastName": "Wild",
+    "email": "yiegrete.w@hipteam.io",
+    "_id": "59d8f40464979300105afac6"
+  }
+]

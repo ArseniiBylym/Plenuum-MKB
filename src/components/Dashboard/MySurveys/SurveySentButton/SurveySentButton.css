@@ -1,0 +1,13 @@
+.SurveySentButton{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background-color: #06d6a0;
+    border-radius: 2px;
+    padding: 10px 30px;
+    color: #fff;
+    font-family: 'NunitoSans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}

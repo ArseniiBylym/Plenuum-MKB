@@ -1,0 +1,20 @@
+{
+  "_id": "59d8f28c64979300105afac4",
+  "answerCardRelations": [
+    "59d8f28c64979300105afac4"
+  ],
+  "createdAt": "2017-10-07T15:28:12.148Z",
+  "name": "GoT",
+  "skills": [
+    "59db6073318d3e0010055fb0",
+    "59db622f318d3e0010055fb6"
+  ],
+  "todoCardRelations": [],
+  "updatedAt": "2017-10-09T13:25:09.751Z",
+  "users": [
+    "59d8f23964979300105afac2",
+    "59d8f1f064979300105afac0",
+    "59d8edb764979300105afabb",
+    "59d8f40464979300105afac6"
+  ]
+}
