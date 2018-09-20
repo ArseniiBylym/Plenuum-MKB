@@ -1,0 +1,44 @@
+.FormContainer {
+    width: 50%;
+}
+
+.FormContainer h1 {
+    font-family: 'NunitoSans', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #4a4a4a;
+}
+
+.FormContainer input{
+    margin-top: 50px;
+    border: none !important;
+}
+.FormContainer textarea.materialize-textarea{
+    border: none !important;
+    margin: 0;
+    min-height: .5rem;
+    padding: 0;
+    font-size: 16px;
+    /* line-height: 1; */
+    /* padding-top: 15px; */
+    /* line-height: 1.42857143; */
+}
+
+.FormContainer input:focus {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.FormContainer .input-field {
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    padding: 10px 15px;
+    letter-spacing: 0.2px;
+    color: rgba(0, 0, 0, 1);
+    border: none !important;
+}

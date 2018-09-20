@@ -1,0 +1,34 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="84" viewBox="0 0 512 84">
+    <defs>
+        <path id="a" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+        <path id="c" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <rect width="511" height="83" x=".5" y=".5" fill="#FFF" fill-rule="nonzero" stroke="#888" rx="4"/>
+        <g opacity=".6">
+            <g transform="translate(9 10)">
+                <mask id="b" fill="#fff">
+                    <use xlink:href="#a"/>
+                </mask>
+                <g fill="#000" fill-opacity=".54" mask="url(#b)">
+                    <path d="M0 0h24v24H0z"/>
+                </g>
+            </g>
+            <text fill="#000" fill-opacity=".87" font-family="NunitoSans-Regular, Nunito Sans" font-size="16" letter-spacing=".153" transform="translate(9 10)">
+                <tspan x="36" y="16">Yes</tspan>
+            </text>
+            <g transform="translate(9 50)">
+                <mask id="d" fill="#fff">
+                    <use xlink:href="#c"/>
+                </mask>
+                <g fill="#000" fill-opacity=".54" mask="url(#d)">
+                    <path d="M0 0h24v24H0z"/>
+                </g>
+            </g>
+            <text fill="#000" fill-opacity=".87" font-family="NunitoSans-Regular, Nunito Sans" font-size="16" letter-spacing=".153" transform="translate(9 10)">
+                <tspan x="36" y="56">No</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
