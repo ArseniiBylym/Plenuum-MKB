@@ -12,7 +12,6 @@ function SwitchContainer(props) {
     console.log(isChecked)
     return(
         <div className='SwitchContainer'>
-            {/* <Input name='on' type='switch' checked={isChecked} onLabel=" " offLabel=" " value='0' onChange={() => console.log('changed')}/> */}
             <Input name='on' type='switch' checked={isChecked} onLabel=" " offLabel=" " value='0' onChange={props.click}/>
             <div className='SwitchContainer__text'>Send to everyone in MKB Bank</div>
         </div>

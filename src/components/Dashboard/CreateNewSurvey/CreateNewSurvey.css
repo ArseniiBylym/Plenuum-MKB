@@ -5,7 +5,9 @@
     bottom: 0;
     right: 0;
     /* background-color: rgba(0,0,0,.3); */
-    overflow: hidden;
+    /* overflow: hidden; */
+    /* overflow-y: hidden; */
+    /* overflow-x: initial; */
 }
 .request-pre-container--create-new-part1,
 .request-pre-container--create-new-part2{
@@ -22,10 +24,12 @@
     /* background-color: grey; */
 }
 .create-new--left{
+    /* left: -100%; */
     transform: translateX(-100%)
 }
 .create-new--right{
     transform: translateX(100%)
+    /* left: 100%; */
 }
 .create-new--center{
     transform: translateX(0)
@@ -42,6 +46,10 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    /* overflow-y: auto; */
+    overflow: hidden;
+}
+.CreateNew__left-screen-wrapper{
     overflow-y: auto;
 }
 .CreateNew__right-screen-wrapper {

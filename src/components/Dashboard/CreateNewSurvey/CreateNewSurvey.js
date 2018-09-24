@@ -23,7 +23,7 @@ class CreateNewSurvey extends Component {
         this.currentUser.status == true
         
         this.state = {
-            screenSide: 'right',
+            screenSide: 'left',
             isFormCorrect: true,
             isSwitchOn: false,
             title: '',
@@ -82,7 +82,7 @@ class CreateNewSurvey extends Component {
             })
     }
 
-    addAnoterQuestion = (event) => {
+    addAnoterQuestion = () => {
 
         this.setState((prevState) => {
             return {
