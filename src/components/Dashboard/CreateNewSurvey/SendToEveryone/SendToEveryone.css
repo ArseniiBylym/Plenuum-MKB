@@ -1,0 +1,30 @@
+.SendToEveryone {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    color: red;
+}
+.SendToEveryone__icon {
+    color: red;
+    width: 150px;
+    height: 150px;
+    background: url('../../../../resources/report_problem-active.svg') no-repeat;
+    background-size: auto;
+    background-position: center center
+}
+.SendToEveryone__text {
+    font-family: 'NunitoSans', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  color: #919191;
+}

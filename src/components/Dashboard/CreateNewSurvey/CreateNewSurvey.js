@@ -7,6 +7,9 @@ import DefaultNavigationBarContainer from '../Commons/DefaultNavigationBar/index
 import Button from './Button/Button';
 import AddAnoterButton from './AddAnotherButton/AddAnotherButton';
 import FormContainer from './FormContainer/FormContainer';
+import SelectUsersForSurvey from './SelectUsersForSurvey/SelectUsersForSurvey'
+import SwitchContainer from './SwitchContainer/SwitchContainer'
+import SendToEveryone from './SendToEveryone/SendToEveryone';
 import './CreateNewSurvey.css';
 
 class CreateNewSurvey extends Component {
@@ -17,10 +20,12 @@ class CreateNewSurvey extends Component {
         const { currentUser } = this.store.getState();
         this.currentUser = currentUser;
         this.userId = currentUser._id;
+        this.currentUser.status == true
         
         this.state = {
-            screenSide: 'left',
+            screenSide: 'right',
             isFormCorrect: true,
+            isSwitchOn: false,
             title: '',
             description: '',
             open_until: '',
@@ -52,6 +57,7 @@ class CreateNewSurvey extends Component {
     }
 
     componentDidUpdate = (prevProps, prevState) => {
+        console.log(this.state.screenSide)
         if (prevState.questions.length < this.state.questions.length) {
 
             let wrapper = document.querySelector('.CreateNew__left-screen-wrapper')
@@ -64,17 +70,16 @@ class CreateNewSurvey extends Component {
     }
 
     switchBack = () => {
+        console.log('click back')
         this.setState({
             screenSide: 'left'
         })
     }
 
     showNextScreen = (event) => {
-        // if (this.state.isFormCorrect) {
-        //     this.setState({
-        //         screenSide: 'right'
-        //     })
-        // } else return;
+            this.setState({
+                screenSide: 'right'
+            })
     }
 
     addAnoterQuestion = (event) => {
@@ -125,6 +130,13 @@ class CreateNewSurvey extends Component {
         console.log('go to next')
     }
 
+    switchSwitcher = () => {
+        this.setState((prevState) => ({
+            isSwitchOn: !prevState.isSwitchOn
+        })
+        )
+    }
+
     render() {
 
         let backSwitchButton = <div className='back-button-title--survey-header' onClick={this.switchBack}></div>
@@ -162,7 +174,9 @@ class CreateNewSurvey extends Component {
                         backButton={backSwitchButton}
                         right={closeButton}
                     />
+                   <SwitchContainer isOn={this.state.isSwitchOn} click={this.switchSwitcher}/>
                     <div className='CreateNew__right-screen-wrapper'>
+                        {this.state.isSwitchOn ? <SendToEveryone /> : <SelectUsersForSurvey />}
                         <div className='CreateNew__footer-wrapper'>
                             <Button text='SEND SURVEY' />
                         </div>

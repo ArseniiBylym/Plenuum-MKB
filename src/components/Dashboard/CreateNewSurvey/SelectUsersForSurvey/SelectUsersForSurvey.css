@@ -1,0 +1,26 @@
+.SelectUsersForSurvey {
+    /* position: relative; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: hidden;
+}
+.SelectUsersForSurvey .navi-navbar-default {
+    display: none;
+}
+
+.SelectUsersForSurvey .create-request-container {
+    position: relative;
+    width: auto;
+    overflow: auto;
+    margin-top: 0;
+}
+.SelectUsersForSurvey .button-send-request  {
+    display: none;
+}
+
+.SelectUsersForSurvey .create-request-components-container {
+
+}

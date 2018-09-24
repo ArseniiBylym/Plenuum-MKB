@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import NavigationBar from '../NavigationBar/NavigationBar.js'
 // import logo from './DefaultNavigationBar.css';
 
-class DefaultNavigationBar extends React.Component {
+class DefaultNavigationBar extends Component {
   
   render () {
     const {title, right, backButton, className} = this.props;
