@@ -5,15 +5,23 @@
 .QuestionItem .select-wrapper .caret {
     display: none;
 }
+.QuestionItem .QuestionItem__select-wrapper .input-field{
+    padding-left: 0;
+    padding-right: 0;
+}
+.QuestionItem .QuestionItem__select-wrapper .select-wrapper input{
+   margin: 0 15px;
+}
+.QuestionItem .QuestionItem__select-wrapper .initialized input{
+    margin: 0 15px
+} 
+.QuestionItem .input-field ul{
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+    margin-top: -10px;
+    border-radius: 2px;
+}
 
-.QuestionItem .input-field:first-child ul{
-    transition: none;
-    transform: scale(1.13) translateY(0px)
-}
-.QuestionItem .input-field:last-child ul{
-    transition: none;
-    transform: scale(1.13) translateY(-5px)
-}
+
 .QuestionItem ul span{
     color: black;
 }
@@ -24,50 +32,74 @@
     justify-content: space-between;
 }
 .QuestionItem__select-wrapper .input-field{
-    width: 45%;
+    /* width: 45%; */
+    width: 100%;
 }
 .QuestionItem__preview-container{
     margin-top: 20px
 }
-.QuestionItem__preview-img{
-    width: 100%;
-    height: 200px;
+/* .QuestionItem__preview-container.freeText-answer{
 
 }
+.QuestionItem__preview-container.yesNo-answer{
+
+}
+.QuestionItem__preview-container.oneToSix-answer{
+
+} */
+.QuestionItem__preview-img{
+    width: 100%;
+}
 .QuestionItem__preview-img.freeText-img{
-    background: url('./img/prev-text.svg') no-repeat;
+    /* background: url('./img/prev-text.svg') no-repeat; */
+    background: url('./img/prev-text@3x.png') no-repeat;
     background-size: contain;
     background-position: left top;
+    height: 150px;
 }
 .QuestionItem__preview-img.yesNo-img{
-    background: url('./img/prev-yes-no.svg') no-repeat;
+    /* background: url('./img/prev-yes-no.svg') no-repeat; */
+    background: url('./img/prev-yes-no@3x.png') no-repeat;
     background-size: contain;
     background-position: left top;
+    height: 100px;
 }
 .QuestionItem__preview-img.oneToSix-img{
-    background: url('./img/prev-1-6.svg') no-repeat;
+    /* background: url('./img/prev-1-6.svg') no-repeat; */
+    background: url('./img/prev-1-6@3x.png') no-repeat;
     background-size: contain;
     background-position: left top;
+    height: 280px;
+}
+.QuestionItem:hover .BasketContainer {
+    display: flex;
 }
 
 .BasketContainer{
+    display: none;
     position: absolute;
     width: 80px;
-    height: 100px;
+    /* width: 100%; */
+    /* height: 100px; */
+    height: 100%;
     top: 0;
     right: 0;
     margin-right: -80px;
     padding: 0 10px;
-    display: flex;
+    /* display: flex; */
     flex-flow: column nowrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 
+}
+.BasketContainer > div {
+    height: 15%;
 }
 
 .BasketContainer__item.basket{
     width: 100%;
-    height: 30%;
+    /* height: 30%; */
+    /* height: 40px; */
     background: url('../../../../../resources/delete-disabled.svg') no-repeat;
     background-size: auto;
     background-position: center center;
@@ -75,7 +107,7 @@
 }
 .BasketContainer__item.basket.active{
     width: 100%;
-    height: 30%;
+    /* height: 30%; */
     background: url('../../../../../resources/delete-active.svg') no-repeat;
     background-size: auto;
     background-position: center center;
@@ -83,17 +115,34 @@
 }
 .BasketContainer__item.arrow-up{
     width: 100%;
-    height: 30%;
+    /* height: 30%; */
     background: url('../../../../../resources/arrow-up-disabled.svg') no-repeat;
+    background-size: auto;
+    background-position: center center;
+    cursor: pointer;
+}
+.BasketContainer__item.arrow-up.active {
+    width: 100%;
+    /* height: 30%; */
+    background: url('../../../../../resources/arrow-up-active.svg') no-repeat;
     background-size: auto;
     background-position: center center;
     cursor: pointer;
 }
 .BasketContainer__item.arrow-down{
     width: 100%;
-    height: 30%;
+    /* height: 30%; */
     background: url('../../../../../resources/arrow-up-disabled.svg') no-repeat;
     transform: rotate(180deg);
+    background-size: auto;
+    background-position: center center;    
+    cursor: pointer;
+}
+.BasketContainer__item.arrow-down.active{
+    width: 100%;
+    /* height: 30%; */
+    background: url('../../../../../resources/arrow-down-active.svg') no-repeat;
+    transform: rotate(0);
     background-size: auto;
     background-position: center center;    
     cursor: pointer;
@@ -105,4 +154,17 @@
     left: 10px;
     color: #b00020;
     font-size: 12px;
+}
+.input__question-type-select-wrapper{
+position: relative;
+}
+.triangle-for-question-type-select{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+     font-size: 16px;
+    line-height: 50px; 
+     width: 20px; 
+     cursor: pointer;
+    /* height: 20px;  */
 }

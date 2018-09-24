@@ -11,11 +11,13 @@
     line-height: 1.33;
     letter-spacing: normal;
     color: #4a4a4a;
+    margin-top: 30px;
 }
 
 .FormContainer input{
     margin-top: 50px;
     border: none !important;
+    color: rgba(0, 0, 0, 0.87)
 }
 .FormContainer textarea.materialize-textarea{
     border: none !important;
@@ -23,10 +25,42 @@
     min-height: .5rem;
     padding: 0;
     font-size: 16px;
-    /* line-height: 1; */
-    /* padding-top: 15px; */
-    /* line-height: 1.42857143; */
+   
 }
+
+/*Styles for react-materialize date picker*/
+.picker__date-display{
+    background-color: white;
+    color: black;
+}
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected{
+    background-color: #b31b34;
+    color: white;
+}
+.picker__today,
+.picker__close,
+.picker__clear,
+.picker__day.picker__day--today{
+    color: #b31b34;
+}
+button.picker__today:focus,
+button.picker__clear:focus,
+button.picker__close:focus,
+.picker__nav--prev:hover,
+.picker__nav--next:hover{
+    background-color: #d97d8c
+}
+/*Styles for react-materialize date picker*/
+.FormContainer input[name="on"]::after {
+    content: "hello";
+    /* position: absolute; */
+    width: 20px;
+    height: 20px;
+    background-color: pink;
+}
+
+
+
 
 .FormContainer input:focus {
     border: none !important;
@@ -41,4 +75,18 @@
     letter-spacing: 0.2px;
     color: rgba(0, 0, 0, 1);
     border: none !important;
+}
+.input__date-select-wrapper {
+    position:relative;
+}
+.triangle-for-select {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 0;
+    font-size: 16px;
+    line-height: 50px;
+    /* background: url('') auto/ center center no-repeat; */
+    
 }

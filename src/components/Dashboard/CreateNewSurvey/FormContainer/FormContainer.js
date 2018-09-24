@@ -8,20 +8,35 @@ class FormContainer extends Component {
 
     }
 
+    changeDate = (event) => {
+        let target = event.target;
+        let date = new Date(target.value);
+        // transformDate(date)
+        let tarnsformedDate = transformDate(date)
+        
+        // target.value = 'Open until ' + target.value;
+        target.value = 'Open until ' + tarnsformedDate;
+    }
+
     render() {
         const { title, description, open_until, questions } = this.props.config;
 
         let questionsArr = questions.map((item, i) => {
-            return <QuestionItem key={item.id} config={item} index={i} 
-                    deleteLastQuestion={this.props.deleteLastQuestion}
+            return <QuestionItem key={item.id} config={item} index={i} id={item.id}
+                    deleteCurrentQuestion={this.props.deleteCurrentQuestion}
+                    goToPrev={this.props.goToPrev}
+                    goToNext={this.props.goToNext}
                     length={this.props.length}/>
         })
         return (
             <div className='FormContainer'>
                 <h1>Survey information</h1>
-                <Input placeholder="Survey title" s={12} />
-                <Input type='textarea' placeholder="Description (optional)" s={12} />
-                <Input name='on' type='date' placeholder='Open till' onChange={function(e, value) {}} />
+                <Input placeholder="Survey title" s={12} maxLength="80"/>
+                <Input type='textarea' placeholder="Description (optional)" s={12} maxLength="200"/>
+                <div className='input__date-select-wrapper'>
+                    <Input name='on' type='date' placeholder='Open till' onChange={this.changeDate} />
+                    <div className='triangle-for-select'>&#9662;</div>
+                </div>
                 <h1>Questions</h1>
                 {questionsArr}
             </div>
@@ -31,3 +46,16 @@ class FormContainer extends Component {
 }
 
 export default FormContainer
+
+function transformDate(date) {
+    let year = date.getFullYear();
+    let month = +date.getMonth() + 1;
+    if(month < 10) {
+        month = '0' + month;
+    }
+    let day = +date.getDate() 
+    if (day < 10) {
+        day = '0' + day;
+    }
+    return(year + '.' + month + '.' + day)
+}

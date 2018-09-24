@@ -65,7 +65,6 @@ export default class MySurveys extends Component {
     }
 
     render() {
-
         let cardList = null
         if (this.state.list.length == 0) {
             cardList = <EmptySurveysList />
