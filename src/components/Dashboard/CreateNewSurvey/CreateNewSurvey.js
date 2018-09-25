@@ -19,7 +19,7 @@ class CreateNewSurvey extends Component {
         const { currentUser } = this.store.getState();
         this.currentUser = currentUser;
         this.userId = currentUser._id;
-        this.currentUser.status == true
+        this.currentUser.status = false // the identifier for user for HR rights
 
         this.state = {
             screenSide: 'left',
@@ -37,13 +37,16 @@ class CreateNewSurvey extends Component {
                 }
             ],
             users: '',
-            selectedUsers: []
+            selectedUsers: [],
+            selectedUsersBuffer: [],
+            selectedUsersMaxLength: 3,
+            isSelectedUsersArrFull: false,
         }
     }
 
     componentDidMount = () => {
-        console.log(this.props)
-        console.log(this.context)
+        // console.log(this.props)
+        // console.log(this.context)
         const orgId = this.currentUser.orgId;
         Api.users(orgId)
             .then((response) => {
@@ -145,13 +148,11 @@ class CreateNewSurvey extends Component {
         }
     }
     onChangeQuestionItemValue = (index) => {
-        console.log(index)
+        // console.log(index)
     }
 
     onChangeValue = (event, index) => {
         const target = event.target;
-        console.log(event.target.name)
-        console.log(index)
 
         switch (target.name) {
             case "title":
@@ -223,7 +224,47 @@ class CreateNewSurvey extends Component {
         }
     }
 
+    addUsersToCurrentList = (usersArr) => {
+        // console.log(usersArr.length)
+       
+
+        if (usersArr.length != this.state.selectedUsers.length) {
+
+            if (this.state.selectedUsers.length == this.state.selectedUsersMaxLength
+                && usersArr.length > this.state.selectedUsersMaxLength
+                && this.currentUser.status == false) {
+                    return
+                }
+            if (this.state.selectedUsers.length == this.state.selectedUsersMaxLength - 1
+                && usersArr.length > this.state.selectedUsersMaxLength - 1
+                && this.currentUser.status == false) {
+                this.setState({
+                    selectedUsers: usersArr,
+                    isSelectedUsersArrFull: true
+                })
+                return
+            }
+            if (this.state.selectedUsers.length == this.state.selectedUsersMaxLength
+                && usersArr.length < this.state.selectedUsersMaxLength
+                && this.currentUser.status == false) {
+                this.setState({
+                    selectedUsers: usersArr,
+                    isSelectedUsersArrFull: false
+                })
+                return
+            } else {
+                this.setState({
+                    selectedUsers: usersArr
+                })
+            }
+        }
+    }
+
     render() {
+        let classNameForUsersContainer = 'SelectUsersForSurvey'
+        if (this.state.isSelectedUsersArrFull) {
+            classNameForUsersContainer += ' usersListFull'
+        }
 
         let backSwitchButton = <div className='back-button-title--survey-header' onClick={this.switchBack}></div>
         let closeButton = <a href="javascript:history.back()" className="close-button-title--create-new-header"></a>
@@ -262,9 +303,13 @@ class CreateNewSurvey extends Component {
                         backButton={backSwitchButton}
                         right={closeButton}
                     />
-                    <SwitchContainer isOn={this.state.isSwitchOn} click={this.switchSwitcher} />
+                    {this.currentUser.status && <SwitchContainer isOn={this.state.isSwitchOn} click={this.switchSwitcher} />}
                     <div className='CreateNew__right-screen-wrapper'>
-                        {this.state.isSwitchOn ? <SendToEveryone /> : <SelectUsersForSurvey />}
+                        {this.state.isSwitchOn ?
+                            <SendToEveryone /> :
+                            <SelectUsersForSurvey addUsersToCurrentList={this.addUsersToCurrentList}
+                                className={classNameForUsersContainer} />
+                        }
                         <div className='CreateNew__footer-wrapper'>
                             <ButtonNext text='SEND SURVEY' />
                         </div>

@@ -10,8 +10,8 @@ class SelectUsersForSurvey extends Component {
 
     render() {
         return(
-            <div className='SelectUsersForSurvey'> 
-                <CreateFeedbackRequestContainer />
+            <div className={this.props.className}> 
+                <CreateFeedbackRequestContainer addUsersToCurrentList={this.props.addUsersToCurrentList}/>
             </div>
         )
     }

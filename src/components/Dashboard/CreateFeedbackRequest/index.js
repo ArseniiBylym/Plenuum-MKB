@@ -246,6 +246,13 @@ class CreateFeedbackRequestContainer extends Component {
             })
             .catch((error) => { console.log(error.message) });
     }
+    componentDidUpdate = () => {
+        // console.log(this.state)
+        if(this.props.addUsersToCurrentList) {
+            let selectedUsersArr = this.state.selectedUsers.slice()
+            this.props.addUsersToCurrentList(selectedUsersArr)
+        }
+    }
 
     componentWillUpdate(nextProps, nextState){
         if (!this.userId) {

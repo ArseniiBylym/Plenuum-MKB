@@ -11,6 +11,7 @@
     width: 100%;
     height: 100%;
     transition: transform .5s ease-in-out;
+    background-color: white;
 }
 .request-pre-container--create-new-part1{
 
@@ -98,4 +99,17 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+}
+.SelectUsersForSurvey.usersListFull .create-request-components-container > div:last-child{
+    position: relative;
+    filter: contrast(50%) brightness(1.7);
+
+}
+.SelectUsersForSurvey.usersListFull .create-request-components-container > div:last-child::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.1);
+    /* filter: grayscale(80%); */
 }
