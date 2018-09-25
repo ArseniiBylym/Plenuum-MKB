@@ -1,10 +1,9 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Api from '../../../lib/api.js';
-import {Utils} from '../../../lib/utils';
+import { Utils } from '../../../lib/utils';
 import DefaultNavigationBarContainer from '../Commons/DefaultNavigationBar/index.js';
-import Button from './Button/Button';
+import ButtonNext from './ButtonNext/ButtonNext';
 import AddAnoterButton from './AddAnotherButton/AddAnotherButton';
 import FormContainer from './FormContainer/FormContainer';
 import SelectUsersForSurvey from './SelectUsersForSurvey/SelectUsersForSurvey'
@@ -21,7 +20,7 @@ class CreateNewSurvey extends Component {
         this.currentUser = currentUser;
         this.userId = currentUser._id;
         this.currentUser.status == true
-        
+
         this.state = {
             screenSide: 'left',
             isFormCorrect: true,
@@ -33,11 +32,12 @@ class CreateNewSurvey extends Component {
                 {
                     id: Date.now() + Math.random(),
                     text: '',
-                    type: '',
-                    isRequired: ''
+                    type: 'free_text',
+                    isRequired: 'optional'
                 }
             ],
-            users: ''
+            users: '',
+            selectedUsers: []
         }
     }
 
@@ -51,13 +51,13 @@ class CreateNewSurvey extends Component {
                     return element._id !== this.userId;
                 });
                 this.users = searchedUsers;
-                this.setState({users: searchedUsers});
+                this.setState({ users: searchedUsers });
             })
             .catch((error) => { console.log(error.message) });
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-        console.log(this.state.screenSide)
+        console.log(this.state)
         if (prevState.questions.length < this.state.questions.length) {
 
             let wrapper = document.querySelector('.CreateNew__left-screen-wrapper')
@@ -77,9 +77,9 @@ class CreateNewSurvey extends Component {
     }
 
     showNextScreen = (event) => {
-            this.setState({
-                screenSide: 'right'
-            })
+        this.setState({
+            screenSide: 'right'
+        })
     }
 
     addAnoterQuestion = () => {
@@ -90,8 +90,8 @@ class CreateNewSurvey extends Component {
                     {
                         id: Date.now() + Math.random(),
                         text: '',
-                        type: '',
-                        isRequired: ''
+                        type: 'free_text',
+                        isRequired: 'optional'
                     }
                 ])
             }
@@ -115,26 +115,112 @@ class CreateNewSurvey extends Component {
     }
 
     goToPrev = (index) => {
-        if(index == 0 ) return
+        if (index == 0) return
         let questionsList = document.getElementsByClassName('QuestionItem');
-        questionsList[index - 1].scrollIntoView({behavior: "smooth", block: "start"})
+        questionsList[index - 1].scrollIntoView({ behavior: "smooth", block: "start" })
         console.log(questionsList)
         console.log('go to prev')
     }
 
     goToNext = (index) => {
         console.log(this.state.questions.length)
-        if(index == this.state.questions.length - 1 || this.state.questions.length == 1) return 
+        if (index == this.state.questions.length - 1 || this.state.questions.length == 1) return
         let questionsList = document.getElementsByClassName('QuestionItem');
-        questionsList[index + 1].scrollIntoView({behavior: "smooth",  block: "start"})
+        questionsList[index + 1].scrollIntoView({ behavior: "smooth", block: "start" })
         console.log('go to next')
     }
 
     switchSwitcher = () => {
-        this.setState((prevState) => ({
-            isSwitchOn: !prevState.isSwitchOn
-        })
-        )
+        if (!this.state.isSwitchOn) {
+            let usersArr = this.state.users.slice();
+            this.setState((prevState) => ({
+                isSwitchOn: true,
+                selectedUsers: usersArr
+            }))
+        } else {
+            this.setState((prevState) => ({
+                isSwitchOn: false,
+                selectedUsers: []
+            }))
+        }
+    }
+    onChangeQuestionItemValue = (index) => {
+        console.log(index)
+    }
+
+    onChangeValue = (event, index) => {
+        const target = event.target;
+        console.log(event.target.name)
+        console.log(index)
+
+        switch (target.name) {
+            case "title":
+                this.setState({
+                    title: target.value
+                })
+                break
+            case "description":
+                this.setState({
+                    description: target.value
+                })
+                break
+            case "date":
+                this.setState({
+                    date: target.value
+                })
+                break
+            case "question":
+                let questionTextArr = this.state.questions.map((item, i) => {
+                    if (index == i) {
+                        return {
+                            ...item,
+                            text: target.value
+                        }
+                    } else {
+                        return item;
+                    }
+                })
+
+                this.setState({
+                    questions: questionTextArr
+                })
+
+                break
+            case "question_type":
+                let questionTypeArr = this.state.questions.map((item, i) => {
+                    if (index == i) {
+                        return {
+                            ...item,
+                            type: target.value
+                        }
+                    } else {
+                        return item;
+                    }
+                })
+
+                this.setState({
+                    questions: questionTypeArr
+                })
+                break
+            case "question_required":
+                let questionIsRequiredArr = this.state.questions.map((item, i) => {
+                    if (index == i) {
+                        return {
+                            ...item,
+                            isRequired: target.value
+                        }
+                    } else {
+                        return item;
+                    }
+                })
+
+                this.setState({
+                    questions: questionIsRequiredArr
+                })
+                break
+            default:
+                break
+        }
     }
 
     render() {
@@ -157,11 +243,13 @@ class CreateNewSurvey extends Component {
                             deleteCurrentQuestion={this.deleteCurrentQuestion}
                             goToNext={this.goToNext}
                             goToPrev={this.goToPrev}
-                            length={this.state.questions.length} />
+                            length={this.state.questions.length}
+                            onChangeValue={this.onChangeValue}
+                            onChangeQuestionItemValue={this.onChangeQuestionItemValue} />
 
                         <div className='CreateNew__footer-wrapper'>
                             <AddAnoterButton text='ADD ANOTHER QUESTION' onClickAction={this.addAnoterQuestion} />
-                            <Button text='NEXT' onClickAction={this.showNextScreen} />
+                            <ButtonNext text='NEXT' onClickAction={this.showNextScreen} />
                         </div>
                     </div>
                 </div>
@@ -174,11 +262,11 @@ class CreateNewSurvey extends Component {
                         backButton={backSwitchButton}
                         right={closeButton}
                     />
-                   <SwitchContainer isOn={this.state.isSwitchOn} click={this.switchSwitcher}/>
+                    <SwitchContainer isOn={this.state.isSwitchOn} click={this.switchSwitcher} />
                     <div className='CreateNew__right-screen-wrapper'>
                         {this.state.isSwitchOn ? <SendToEveryone /> : <SelectUsersForSurvey />}
                         <div className='CreateNew__footer-wrapper'>
-                            <Button text='SEND SURVEY' />
+                            <ButtonNext text='SEND SURVEY' />
                         </div>
                     </div>
                 </div>

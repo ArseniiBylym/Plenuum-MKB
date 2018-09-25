@@ -11,10 +11,11 @@ class FormContainer extends Component {
     changeDate = (event) => {
         let target = event.target;
         let date = new Date(target.value);
-        // transformDate(date)
+
+        this.props.onChangeValue(event)
+
         let tarnsformedDate = transformDate(date)
         
-        // target.value = 'Open until ' + target.value;
         target.value = 'Open until ' + tarnsformedDate;
     }
 
@@ -26,15 +27,23 @@ class FormContainer extends Component {
                     deleteCurrentQuestion={this.props.deleteCurrentQuestion}
                     goToPrev={this.props.goToPrev}
                     goToNext={this.props.goToNext}
-                    length={this.props.length}/>
+                    length={this.props.length}
+                    onChangeValue={this.props.onChangeValue}/>
         })
         return (
             <div className='FormContainer'>
                 <h1>Survey information</h1>
-                <Input placeholder="Survey title" s={12} maxLength="80"/>
-                <Input type='textarea' placeholder="Description (optional)" s={12} maxLength="200"/>
+                <Input name='title' placeholder="Survey title" s={12} 
+                    maxLength="80" 
+                    onBlur={this.props.onChangeValue}
+                />
+                <Input name='description' type='textarea' 
+                    placeholder="Description (optional)" s={12} 
+                    maxLength="200"
+                    onBlur={this.props.onChangeValue}
+                />
                 <div className='input__date-select-wrapper'>
-                    <Input name='on' type='date' placeholder='Open till' onChange={this.changeDate} />
+                    <Input name='date' type='date' placeholder='Open till' onChange={this.changeDate} />
                     <div className='triangle-for-select'>&#9662;</div>
                 </div>
                 <h1>Questions</h1>

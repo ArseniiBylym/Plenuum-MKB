@@ -4,8 +4,8 @@ import './QuestionItem.css';
 
 class QuestionItem extends Component {
     state = {
-        typeSelectValue: 1,
-        isRequiredSelectValue: 1,
+        typeSelectValue: 'free_text',
+        isRequiredSelectValue: 'optional',
 
     }
     componentDidMount = () => {
@@ -16,19 +16,21 @@ class QuestionItem extends Component {
         this.setState({
             typeSelectValue: e.target.value
         })
+        this.props.onChangeValue(e, this.props.index)
     }
     changeIsRequiredSelectValue = (e) => {
         this.setState({
             isRequiredSelectValue: e.target.value
         })
+        this.props.onChangeValue(e, this.props.index)
     }
     render() {
         let classNameForImg = 'QuestionItem__preview-img'
-        if (this.state.typeSelectValue == 1) {
+        if (this.state.typeSelectValue == 'free_text') {
             classNameForImg += ' freeText-img';
-        } else if (this.state.typeSelectValue == 2) {
+        } else if (this.state.typeSelectValue == 'yes_no') {
             classNameForImg += ' yesNo-img';
-        } else if (this.state.typeSelectValue == 3) {
+        } else if (this.state.typeSelectValue == '1_to_6') {
             classNameForImg += ' oneToSix-img'
         }
 
@@ -38,11 +40,11 @@ class QuestionItem extends Component {
         }
 
         let classForPreviewContainer = 'QuestionItem__preview-container'
-        if (this.state.typeSelectValue == 1) {
+        if (this.state.typeSelectValue == 'free_text') {
             classForPreviewContainer += ' freeText-answer'
-        } else if (this.state.typeSelectValue == 2) {
+        } else if (this.state.typeSelectValue == 'yes_no') {
             classForPreviewContainer += ' yesNo-answer'
-        } else if (this.state.typeSelectValue == 3) {
+        } else if (this.state.typeSelectValue == '1_to_6') {
             classForPreviewContainer += ' oneToSix-answer'
         }
 
@@ -58,20 +60,20 @@ class QuestionItem extends Component {
 
                 {this.props.index == 0 && answerIsRequired()}
 
-                <Input placeholder="Enter question" s={12} />
+                <Input name='question' placeholder="Enter question"  maxLength="200" s={12} onBlur={(event)=>this.props.onChangeValue(event, this.props.index)}/>
                 <div className='QuestionItem__select-wrapper'>
                     <div className='input__question-type-select-wrapper'>
-                        <Input s={12} type='select' label="" defaultValue='1' onChange={this.changeTypeSelectValue}>
-                            <option value='1'>Free text answer</option>
-                            <option value='2'>Yes-no choice</option>
-                            <option value='3'>1 to 6 choice</option>
+                        <Input name='question_type' s={12} type='select' label="" defaultValue='free_text' onChange={this.changeTypeSelectValue}>
+                            <option value='free_text'>Free text answer</option>
+                            <option value='yes_no'>Yes-no choice</option>
+                            <option value='1_to_6'>1 to 6 choice</option>
                         </Input>
                         <div className='triangle-for-question-type-select'>&#9662;</div>
                     </div>
                     <div className='input__question-type-select-wrapper'>
-                        <Input s={12} type='select' label="" defaultValue='1' onChange={this.changeIsRequiredSelectValue}>
-                            <option value='1'>Optional answer</option>
-                            <option value='2'>Required answer</option>
+                        <Input name='question_required' s={12} type='select' label="" defaultValue='optional' onChange={this.changeIsRequiredSelectValue}>
+                            <option value='optional'>Optional answer</option>
+                            <option value='required'>Required answer</option>
                         </Input>
                         <div className='triangle-for-question-type-select'>&#9662;</div>
                     </div>
