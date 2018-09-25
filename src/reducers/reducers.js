@@ -74,6 +74,29 @@ const currentUser = (state = {}, action) => {
     }
 };
 
+const createSurvey = (state = {my_surveys: []}, action) => {
+    switch (action.type) {
+        case Constants.ReducersActionType.CREATE_NEW_SURVEY:
+
+            const survey = {
+                title: action.newSurvey.title,
+                description: action.newSurvey.description,
+                start_date: Date.now(),
+                finish_date: new Date(action.newSurvey.open_until).getTime(),
+                questions: action.newSurvey.questions,
+                selected_users: action.newSurvey.selectedUsers,
+                total_answers: action.newSurvey.selectedUsers.length,
+                done_answers: 0,
+            }
+            return {
+                ...state,
+                my_surveys: state.my_surveys.concat(survey)
+            }
+        default: 
+            return state;
+    }
+}
+
 const rememberMe = (state, action) => {
     switch (action.type) {
         case Constants.ReducersActionType.FORGET_ME:
@@ -140,7 +163,8 @@ const reducers = combineReducers({
     rememberMe,
     composeCompass,
     surveysState,
-    notificationState
+    notificationState,
+    createSurvey
 });
 
 export default reducers;

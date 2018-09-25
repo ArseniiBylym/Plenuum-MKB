@@ -9,6 +9,7 @@ import FormContainer from './FormContainer/FormContainer';
 import SelectUsersForSurvey from './SelectUsersForSurvey/SelectUsersForSurvey'
 import SwitchContainer from './SwitchContainer/SwitchContainer'
 import SendToEveryone from './SendToEveryone/SendToEveryone';
+import { connect } from 'react-redux';
 import './CreateNewSurvey.css';
 
 class CreateNewSurvey extends Component {
@@ -279,6 +280,7 @@ class CreateNewSurvey extends Component {
             return
         }
 
+        this.props.createNewSurvey(this.state)
         console.log('New survey was successful created!')
         console.log(this.state)
     }
@@ -356,4 +358,10 @@ CreateNewSurvey.contextTypes = {
     router: PropTypes.object.isRequired
 };
 
-export default CreateNewSurvey
+const mapDispatchToProps = dispatch => {
+    return {
+        createNewSurvey: (survey) => dispatch({type: "CREATE_NEW_SURVEY", newSurvey: survey})
+    }
+};
+
+export default connect(null, mapDispatchToProps)(CreateNewSurvey)
