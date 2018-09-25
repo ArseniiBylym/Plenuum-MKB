@@ -2,6 +2,7 @@ import _ from 'lodash';
 
 import {combineReducers} from 'redux';
 import Constants from "../lib/constants";
+import {mySurveysDefaultStore} from './statesForTesting';
 
 /*
   This file might have change to manage states in a local store
@@ -74,7 +75,7 @@ const currentUser = (state = {}, action) => {
     }
 };
 
-const createSurvey = (state = {my_surveys: []}, action) => {
+const createSurvey = (state = mySurveysDefaultStore, action) => {
     switch (action.type) {
         case Constants.ReducersActionType.CREATE_NEW_SURVEY:
 

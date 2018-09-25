@@ -10,6 +10,7 @@ import SelectUsersForSurvey from './SelectUsersForSurvey/SelectUsersForSurvey'
 import SwitchContainer from './SwitchContainer/SwitchContainer'
 import SendToEveryone from './SendToEveryone/SendToEveryone';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import './CreateNewSurvey.css';
 
 class CreateNewSurvey extends Component {
@@ -40,14 +41,12 @@ class CreateNewSurvey extends Component {
             users: '',
             selectedUsers: [],
             selectedUsersBuffer: [],
-            selectedUsersMaxLength: 3,
+            selectedUsersMaxLength: 20,
             isSelectedUsersArrFull: false,
         }
     }
 
     componentDidMount = () => {
-        // console.log(this.props)
-        // console.log(this.context)
         const orgId = this.currentUser.orgId;
         Api.users(orgId)
             .then((response) => {
@@ -259,24 +258,28 @@ class CreateNewSurvey extends Component {
         }
     }
 
-    createSurveyHandler = () => {
+    createSurveyHandler = (e) => {
         console.log('into handler')
         if(this.state.title.trim().length == 0) {
             console.log('Please, fill the title of the survey to continue');
+            e.preventDefault();
             return
         }
         if(this.state.open_until.trim().length == 0) {
             console.log(`Please, chose the date of the survey's end to continue`)
+            e.preventDefault();
             return
         }
         for (let item of this.state.questions) {
             if(item.text.trim().length == 0) {
                 console.log('Please, fill the all questions fields to continue')
+                e.preventDefault();
                 return
             }
         }
         if(this.state.selectedUsers.length == 0) {
             console.log('Plese, chose at least one user to continue')
+            e.preventDefault();
             return
         }
 
@@ -335,9 +338,9 @@ class CreateNewSurvey extends Component {
                             <SelectUsersForSurvey addUsersToCurrentList={this.addUsersToCurrentList}
                                 className={classNameForUsersContainer} />
                         }
-                        <div className='CreateNew__footer-wrapper' onClick={this.createSurveyHandler}>
+                        <NavLink to='/my_surveys' className='CreateNew__footer-wrapper' onClick={this.createSurveyHandler}>
                             <ButtonNext text='SEND SURVEY' />
-                        </div>
+                        </NavLink>
                     </div>
                 </div>
             </div >

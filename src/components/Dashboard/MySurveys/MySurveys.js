@@ -6,70 +6,79 @@
 // import { spinner } from "../../Commons/Spinner/spinner";
 // import SearchContainer from '../Commons/Search/index.js';
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import DefaultNavigationBarContainer from '../Commons/DefaultNavigationBar/index.js';
 import EmptySurveysList from './EmptySurveysList/EmptySurveysList'
 import FullSurveysList from './FullSurveysList/FullSurveysList'
 import CreateNewButton from './CreateNewButton/CreateNewButton'
+import { connect } from 'react-redux';
 
 
 import './MySurveys.css';
 
-export default class MySurveys extends Component {
+class MySurveys extends Component {
     state = {
         list: [
-            {
-                id:  Date.now() + Math.random(),
-                // title: 'Survey title in one line ',
-                title: 'Survey title in one line Survey title in one lineSurvey title in one line Survey title in one lineSurvey title in one line',
-                totalAnswers: 21,
-                doneAnswers: 10,
-                startDate: `2018.06.01`,
-                finishDate: `2018.09.01`,
-                members: [
+            // {
+            //     id:  Date.now() + Math.random(),
+            //     title: 'Survey title in one line Survey title in one lineSurvey title in one line Survey title in one lineSurvey title in one line',
+            //     totalAnswers: 21,
+            //     doneAnswers: 10,
+            //     startDate: `2018.06.01`,
+            //     finishDate: `2018.09.01`,
+            //     members: [
 
-                ],
-                questions: [
+            //     ],
+            //     questions: [
 
-                ]
-            },
-            {
-                id:  Date.now() + Math.random(),
-                title: 'Survey title in one line',
-                totalAnswers: 10,
-                doneAnswers: 4,
-                startDate: '2018.04.21',
-                finishDate: '2018.11.05',
-                members: [
+            //     ]
+            // },
+            // {
+            //     id:  Date.now() + Math.random(),
+            //     title: 'Survey title in one line',
+            //     totalAnswers: 10,
+            //     doneAnswers: 4,
+            //     startDate: '2018.04.21',
+            //     finishDate: '2018.11.05',
+            //     members: [
 
-                ],
-                questions: [
+            //     ],
+            //     questions: [
 
-                ]
-            },
-            {
-                id:  Date.now() + Math.random(),
-                title: 'Survey title in one line',
-                totalAnswers: 15,
-                doneAnswers: 0,
-                startDate: '2018.10.01',
-                finishDate: '2018.11.13',
-                members: [
+            //     ]
+            // },
+            // {
+            //     id:  Date.now() + Math.random(),
+            //     title: 'Survey title in one line',
+            //     totalAnswers: 15,
+            //     doneAnswers: 0,
+            //     startDate: '2018.10.01',
+            //     finishDate: '2018.11.13',
+            //     members: [
 
-                ],
-                questions: [
+            //     ],
+            //     questions: [
 
-                ]
-            }
+            //     ]
+            // }
         ]
     }
+    componentDidMount = () => {
+        // console.log(this.props.mySurveys)
+    }
 
-    render() {
+
+    renderPage() {
+
+        if(!this.props.mySurveys) return null
+        // console.log(this.props.mySurveys)
+        // console.log(this.props.mySurveys.my_surveys.length)
+
         let cardList = null
-        if (this.state.list.length == 0) {
+        if (this.props.mySurveys.my_surveys.length == 0) {
             cardList = <EmptySurveysList />
         } else {
-            cardList = <FullSurveysList list={this.state.list}/>
+            cardList = <FullSurveysList list={this.props.mySurveys.my_surveys}/>
         }
         let createButton = <CreateNewButton text='New survey' />
         return (
@@ -83,4 +92,23 @@ export default class MySurveys extends Component {
             </div>
         )
     }
+
+
+    render() {
+		return(
+            <div>
+                {this.renderPage()}
+            </div>
+		)
+	}
 }
+
+
+const mapStateToProps = state => {
+    return {
+        mySurveys: state.createSurvey
+    }
+}
+
+export default connect(mapStateToProps, null)(MySurveys)
+
