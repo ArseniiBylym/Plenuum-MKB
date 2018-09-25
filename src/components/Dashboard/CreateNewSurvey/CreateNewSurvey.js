@@ -167,7 +167,7 @@ class CreateNewSurvey extends Component {
                 break
             case "date":
                 this.setState({
-                    date: target.value
+                    open_until: target.value
                 })
                 break
             case "question":
@@ -225,8 +225,6 @@ class CreateNewSurvey extends Component {
     }
 
     addUsersToCurrentList = (usersArr) => {
-        // console.log(usersArr.length)
-       
 
         if (usersArr.length != this.state.selectedUsers.length) {
 
@@ -258,6 +256,31 @@ class CreateNewSurvey extends Component {
                 })
             }
         }
+    }
+
+    createSurveyHandler = () => {
+        console.log('into handler')
+        if(this.state.title.trim().length == 0) {
+            console.log('Please, fill the title of the survey to continue');
+            return
+        }
+        if(this.state.open_until.trim().length == 0) {
+            console.log(`Please, chose the date of the survey's end to continue`)
+            return
+        }
+        for (let item of this.state.questions) {
+            if(item.text.trim().length == 0) {
+                console.log('Please, fill the all questions fields to continue')
+                return
+            }
+        }
+        if(this.state.selectedUsers.length == 0) {
+            console.log('Plese, chose at least one user to continue')
+            return
+        }
+
+        console.log('New survey was successful created!')
+        console.log(this.state)
     }
 
     render() {
@@ -310,7 +333,7 @@ class CreateNewSurvey extends Component {
                             <SelectUsersForSurvey addUsersToCurrentList={this.addUsersToCurrentList}
                                 className={classNameForUsersContainer} />
                         }
-                        <div className='CreateNew__footer-wrapper'>
+                        <div className='CreateNew__footer-wrapper' onClick={this.createSurveyHandler}>
                             <ButtonNext text='SEND SURVEY' />
                         </div>
                     </div>
