@@ -26,7 +26,8 @@ const mySurveysDefaultStore = {
             total_answers: 1,
             done_answers: 0,
         }
-    ]
+    ],
+    survey_has_sended: false
 }
 
 export {mySurveysDefaultStore}

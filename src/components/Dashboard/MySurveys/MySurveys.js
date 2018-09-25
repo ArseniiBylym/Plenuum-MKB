@@ -66,6 +66,10 @@ class MySurveys extends Component {
     componentDidMount = () => {
         // console.log(this.props.mySurveys)
     }
+    
+    componentWillUnmount = () => {
+        this.props.clearSurveySendState()
+    }
 
 
     renderPage() {
@@ -78,7 +82,8 @@ class MySurveys extends Component {
         if (this.props.mySurveys.my_surveys.length == 0) {
             cardList = <EmptySurveysList />
         } else {
-            cardList = <FullSurveysList list={this.props.mySurveys.my_surveys}/>
+            cardList = <FullSurveysList list={this.props.mySurveys.my_surveys} 
+                                        isShowSendNotification={this.props.mySurveys.survey_has_sended}/>
         }
         let createButton = <CreateNewButton text='New survey' />
         return (
@@ -110,5 +115,11 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(MySurveys)
+const mapDispatchToProps = dispatch => {
+    return {
+        clearSurveySendState: () => {dispatch({type: "CLEAR_SURVEY_HAS_SENDED"})}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MySurveys)
 

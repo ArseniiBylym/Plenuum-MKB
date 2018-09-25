@@ -91,8 +91,16 @@ const createSurvey = (state = mySurveysDefaultStore, action) => {
             }
             return {
                 ...state,
-                my_surveys: state.my_surveys.concat(survey)
+                my_surveys: state.my_surveys.concat(survey),
+                survey_has_sended: true
             }
+
+        case Constants.ReducersActionType.CLEAR_SURVEY_HAS_SENDED: 
+            return {
+                ...state,
+                survey_has_sended: false
+            }
+            
         default: 
             return state;
     }
