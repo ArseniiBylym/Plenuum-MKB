@@ -8,6 +8,7 @@ import SurveyCardContainer from './SurveyCard/index.js'
 import RequestList from './RequestList.js';
 import EmptyStateContainer from '../../EmptyState/index.js';
 import {spinner} from "../../Commons/Spinner/spinner";
+import { connect } from 'react-redux';
 
 import { NotificationStack } from 'react-notification';
 
@@ -22,6 +23,7 @@ class RequestListContainer extends Component {
             users:undefined
         };
     }
+
 
     componentDidMount(){
         const { currentUser } = this.store.getState();
@@ -59,14 +61,15 @@ class RequestListContainer extends Component {
         })
     }
 
-    createRequestAndTodosComponents( requestsAndTodos, users ){
-        return requestsAndTodos.map((object) => {
+    createRequestAndTodosComponents( incoming_surveys, users ){
+        return incoming_surveys.map((object, index) => {
             if ( object ) {
-                if( object.survey ){
+                if( object.questions ){
                     return SurveyCardContainer({
                         key:object._id,
-                        title:object.survey.title,
-                        survey:object
+                        title:object.title,
+                        survey:object,
+                        index: index
                     })
                 }
 
@@ -97,6 +100,45 @@ class RequestListContainer extends Component {
             }
         });
     }
+
+    // createRequestAndTodosComponents( requestsAndTodos, users ){
+    //     return requestsAndTodos.map((object) => {
+    //         if ( object ) {
+    //             if( object.survey ){
+    //                 return SurveyCardContainer({
+    //                     key:object._id,
+    //                     title:object.survey.title,
+    //                     survey:object
+    //                 })
+    //             }
+
+    //             else if ( object.about !== undefined && users ) {
+    //                 const aboutUser = users.find((element) => {
+    //                     return element._id === object.about;
+    //                 });
+
+    //                 return TodoCardContainer({
+    //                     key:object._id,
+    //                     todo:object,
+    //                     aboutUser});
+    //             }
+
+    //             else if ( object.senderId && users ) {
+
+    //                 const user = users.find((element) => {
+    //                     return element._id === object.senderId
+    //                 });
+
+    //                 if ( user ) {
+    //                     return RequestCardContainer({
+    //                         key:object._id,
+    //                         request:object,
+    //                         user});
+    //                 }
+    //             }
+    //         }
+    //     });
+    // }
 
     notification = ( mes, col ) => (
         <NotificationStack
@@ -139,12 +181,17 @@ class RequestListContainer extends Component {
         const { notificationState } = this.store.getState();
 
         const { requestsAndTodos, users } = this.state;
+        
+        const {incoming_surveys} = this.props;
+        if(!incoming_surveys) return null;
+        
         const { location } = this.context.router.route;
 
-        // if ( requestsAndTodos.length && users !== undefined ) {
-        if ( requestsAndTodos ) {
+        // if ( requestsAndTodos.length && users !== undefined ) {  !!!!!!!!!!!!! It was already comited
 
-            if (requestsAndTodos.length === 0 ) {
+        if ( incoming_surveys ) {
+
+            if (incoming_surveys.length === 0 ) {
                 return (
                     <EmptyStateContainer
                         {...this.props}
@@ -154,7 +201,7 @@ class RequestListContainer extends Component {
                 );
             }
 
-            const requestsCards = this.createRequestAndTodosComponents( requestsAndTodos, users );
+            const requestsCards = this.createRequestAndTodosComponents( incoming_surveys, users );
 
             return RequestList({
                 requestsAndTodos:requestsCards,
@@ -168,6 +215,32 @@ class RequestListContainer extends Component {
         }else{
             return spinner();
         }
+        // if ( requestsAndTodos ) {
+
+        //     if (requestsAndTodos.length === 0 ) {
+        //         return (
+        //             <EmptyStateContainer
+        //                 {...this.props}
+        //                 {...this.context}
+        //                 container={location.pathname}
+        //             />
+        //         );
+        //     }
+
+        //     const requestsCards = this.createRequestAndTodosComponents( requestsAndTodos, users );
+
+        //     return RequestList({
+        //         requestsAndTodos:requestsCards,
+        //         title:"Interact",
+        //         showMessage:notificationState.showMessage,
+        //         notification:this.notification.bind(this),
+        //         mes:notificationState.message,
+        //         col:notificationState.color
+        //     });
+
+        // }else{
+        //     return spinner();
+        // }
     }
 }
 
@@ -176,4 +249,10 @@ RequestListContainer.contextTypes = {
     store: PropTypes.object
 };
 
-export default RequestListContainer;
+const mapStateToProps = state => {
+    return {
+        incoming_surveys: state.incomingSurveys.list
+    }
+}
+
+export default connect(mapStateToProps, null)(RequestListContainer);

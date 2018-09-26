@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import {combineReducers} from 'redux';
 import Constants from "../lib/constants";
-import {mySurveysDefaultStore} from './statesForTesting';
+import {mySurveysDefaultStore, incoming_surv} from './statesForTesting';
 
 /*
   This file might have change to manage states in a local store
@@ -106,6 +106,13 @@ const createSurvey = (state = mySurveysDefaultStore, action) => {
     }
 }
 
+const incomingSurveys = (state = incoming_surv, action) => {
+    switch (action.type) {
+        default: 
+            return state;
+    }
+}
+
 const rememberMe = (state, action) => {
     switch (action.type) {
         case Constants.ReducersActionType.FORGET_ME:
@@ -173,7 +180,8 @@ const reducers = combineReducers({
     composeCompass,
     surveysState,
     notificationState,
-    createSurvey
+    createSurvey,
+    incomingSurveys
 });
 
 export default reducers;
