@@ -12,7 +12,6 @@
 }
 .DetailsContainer {
    width: 50%;
-    /* background-color: pink; */
 }
 .DetailsContainer > div {
     margin: 15px 0;
@@ -61,4 +60,14 @@
     border-radius: 4px;
     background-color: #ffffff;
     border: solid 1px #888888;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+}
+
+.DetailsContainer__users-container .main-container-selectedUser{
+    cursor: default;
+}
+.DetailsContainer__users-container .main-container-selectedUser .close-icon{
+    display: none;
 }

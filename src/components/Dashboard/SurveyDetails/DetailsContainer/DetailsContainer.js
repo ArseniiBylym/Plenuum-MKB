@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DetailsQuestions from './DetailsQuestions/DetailsQuestions'
+import SelectedUserContainer from '../../../Dashboard/CreateFeedbackRequest/SelectedUser/index';
 import moment from 'moment';
 import './DetailsContainer.css';
 
@@ -26,6 +27,10 @@ class DetailsContainer extends Component {
                             </div>
         }
 
+        const users = selected_users.map((user, i) => {
+            return <SelectedUserContainer  key={user.id} user={user} />
+        })
+
         return(
             <div className='DetailsContainer-wrapper'>
             <div className='DetailsContainer'>
@@ -36,7 +41,7 @@ class DetailsContainer extends Component {
                     {done_answers} / {total_answers} answers
                 </div>
                 {dateContainer}
-                <div className="DetailsContainer__users-container">Users</div>
+                <div className="DetailsContainer__users-container">{users}</div>
                 <div className="DetailsContainer__questions-container">
                     {questionsArr}
                 </div>
