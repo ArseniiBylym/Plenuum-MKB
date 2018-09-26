@@ -41,7 +41,7 @@ class CreateNewSurvey extends Component {
             users: '',
             selectedUsers: [],
             selectedUsersBuffer: [],
-            selectedUsersMaxLength: 3,
+            selectedUsersMaxLength: 20,
             isSelectedUsersArrFull: false,
         }
     }

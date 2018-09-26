@@ -10,7 +10,7 @@ const mySurveysDefaultStore = {
                     id: 1537878013498.3554,
                     text: 'Some question',
                     type: 'free_text',
-                    isRequired: 'optional'
+                    isRequired: 'required'
                 }
             ],
             selected_users: [
