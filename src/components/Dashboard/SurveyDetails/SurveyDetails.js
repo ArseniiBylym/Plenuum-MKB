@@ -2,7 +2,10 @@
 import React, { Component } from 'react';
 import DefaultNavigationBarContainer from '../Commons/DefaultNavigationBar/index.js';
 import DownloadAnswersButton from './DownloadAnswersButton/DownloadAnswersButton';
-import BackButton from '../Commons/BackButton/BackButton'
+import DetailsContainer from './DetailsContainer/DetailsContainer';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
+// import BackButton from '../Commons/BackButton/BackButton'
 
 import './SurveyDetails.css';
 
@@ -11,7 +14,16 @@ class SurveyDetails extends Component {
 
     }
 
-    render() {
+    componentDidMount = () => {
+        console.log(this.props)
+    }
+
+    renderPage() {
+
+        if(!this.props.mySyrveys) return null
+
+        let currentSyrvey = this.props.mySyrveys[this.props.match.params.id]
+        console.log(currentSyrvey)
 
         let downloadButton = <DownloadAnswersButton text='Download answers' />
         let backButton = <a href="javascript:history.back()" className="back-button-title--survey-header"></a>
@@ -24,11 +36,25 @@ class SurveyDetails extends Component {
                     backButton={backButton}
                     right={downloadButton}
                 />
+                <DetailsContainer config={currentSyrvey}/>
                 
             </div>
 
         )
     }
+
+    render() {
+        return(
+            <div>
+                {this.renderPage()}
+            </div>
+        )
+    }
 }
 
-export default SurveyDetails
+const mapStateToProps = state => {
+    return {
+        mySyrveys: state.createSurvey.my_surveys
+    }
+}
+export default connect(mapStateToProps, null)(withRouter(SurveyDetails))
