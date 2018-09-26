@@ -26,6 +26,7 @@ import PrivacyPolicy from '../components/Dashboard/PrivacyPolicy/index';
 import MySurveys from '../components/Dashboard/MySurveys/MySurveys';
 import CreateNewSurvey from '../components/Dashboard/CreateNewSurvey/CreateNewSurvey'
 import SurveyDetails from '../components/Dashboard/SurveyDetails/SurveyDetails'
+import SurveyForm from '../components/Dashboard/SurveyForm/SurveyForm';
 
 const MainRoute = (params) => (
     <BrowserRouter onUpdate={params.logPageView()}>
@@ -97,6 +98,11 @@ const DashboardRoutes = (params) => (
 
         <Route exact path={Constants.Route.SURVEY} render={(props) => (addPropsToComponent({
             MyComponent: SurveyConteiner,
+            rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
+        }))}/>
+
+        <Route exact path='/survey/:id' render={(props) => (addPropsToComponent({
+            MyComponent: SurveyForm,
             rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
         }))}/>
 

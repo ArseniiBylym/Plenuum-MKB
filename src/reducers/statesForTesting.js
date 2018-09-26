@@ -38,6 +38,7 @@ const incoming_surv = {
             description: 'Incoming survey description 1',
             start_date: 1537878023317,
             finish_date: 1537736400000,
+            completed: false,
             questions: [
                 {
                     id: 1537878013498.3554,
@@ -61,6 +62,7 @@ const incoming_surv = {
             description: 'Incoming survey description 2',
             start_date: 1537878023317,
             finish_date: 1537736400000,
+            completed: false,
             questions: [
                 {
                     id: 1537878013498.3531,
@@ -84,6 +86,7 @@ const incoming_surv = {
             description: 'Incoming survey description 3',
             start_date: 1537878023317,
             finish_date: 1537736400000,
+            completed: false,
             questions: [
                 {
                     id: 1537878013498.3574,
