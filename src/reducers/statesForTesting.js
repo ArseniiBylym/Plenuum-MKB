@@ -42,9 +42,27 @@ const incoming_surv = {
             questions: [
                 {
                     id: 1537878013498.3554,
-                    text: 'Some question',
+                    text: 'Some question 1',
                     type: 'free_text',
                     isRequired: 'optional'
+                },
+                {
+                    id: 1537878013498.3664,
+                    text: 'Some question checkbox1',
+                    type: 'yes_no',
+                    isRequired: 'optional'
+                },
+                {
+                    id: 1537878013498.3664,
+                    text: 'Some question checkbox 2',
+                    type: 'yes_no',
+                    isRequired: 'required'
+                },
+                {
+                    id: 1537878013498.3664,
+                    text: 'Some question checkbox 3',
+                    type: '1_to_6',
+                    isRequired: 'required'
                 }
             ],
             sender: {

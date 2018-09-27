@@ -5,6 +5,9 @@ import { withRouter } from 'react-router';
 // import QuestionSurveyItem from './QuestionSurveyItem/QuestionSurveyItem';
 import DefaultNavigationBarContainer from '../../Dashboard/Commons/DefaultNavigationBar/index';
 import QuestionBlock from '../../Dashboard/SurveyConteiner/components/QuestionBlock/QuestionBlock';
+import Yes_no_checkbox from './Yes_no_checkbox/Yes_no_checkbox';
+import From_1_to_6_checkbox from './From_1_to_6_checkbox/From_1_to_6_checkbox';
+import CompleteSurveyButton from './CompleteSurveyButton/CompleteSurveyButton';
 
 class SurveyForm extends Component {
     state = {
@@ -79,21 +82,24 @@ class SurveyForm extends Component {
             if (item.type == 'free_text') {
 
                 let labelForInput = item.isRequired == 'required' ? 'Answer' : item.isRequired == 'optional' ? 'Answer(optional)' : null;
-                let required = item.isRequired == 'required' ? true : false;
-                let text = item.text;
-                if(item.isRequired == 'required') {
-                    text += ' *'
-                }
+                // let required = item.isRequired == 'required' ? true : false;
+                // const required = false;
+                // let text = item.text;
+                // if(item.isRequired == 'required') {
+                //     text += ' *'
+                // }
+                let isRequiredQuestion = item.isRequired == 'required' ? 'required' : item.isRequired == 'optional' ? 'optional' : null;
                 // let text = item.isRequired == 'required' ? `${item.text}*` : item.isRequired == 'optional' ? item.text : null;
 
-                return <QuestionBlock
+                return <div className={isRequiredQuestion}>
+                    <QuestionBlock
                     labelForInput={labelForInput}
-                    question={text}
+                    question={item.text}
                     maxLengthOfText='500'
-                    minLengthOfText=''
+                    minLengthOfText={null}
                     fieldDescription=''
                     itemsIndex={index}
-                    required={required}
+                    required={false}
                     key={item.id}
                     id={item.id}
                     onInvalid={this.onInvalid.bind(this)}
@@ -105,14 +111,22 @@ class SurveyForm extends Component {
                     updateAnswersStatusArr={this.updateAnswersStatusArr.bind(this)}
                     submitError={this.state.submitError}
                 />
+                </div>
             }
             if (item.type == 'yes_no') {
-
+                return <Yes_no_checkbox 
+                    question={item.text}
+                    required={item.isRequired == 'required' ? true : false}
+                    index={index}
+                />
             }
             if (item.type == '1_to_6') {
-
+                return <From_1_to_6_checkbox 
+                    question={item.text}
+                    required={item.isRequired == 'required' ? true : false}
+                    index={index}
+                />
             }
-            // return <QuestionSurveyItem key={item.id} config={item} />
         })
         let closeButton = <a href="javascript:history.back()" className="close-button-title--create-new-header"></a>
         return (
@@ -126,8 +140,10 @@ class SurveyForm extends Component {
                     <div className="SurveyForm">
                         <div className="SurveyForm__header">{this.state.title}</div>
                         <div className="SurveyForm__description">{this.state.description}</div>
-                        <div className="SurveyForm__required-notification"><sup>&#10033;</sup>Required</div>
+                        <div className="SurveyForm__required-notification">*Required</div>
+                        <hr/>
                         {questionsList}
+                        <CompleteSurveyButton />
                     </div>
                 </div>
             </div>

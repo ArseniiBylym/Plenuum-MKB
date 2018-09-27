@@ -39,5 +39,11 @@
     letter-spacing: 0.4px;
     color: #b00020;
     padding: 5px 0;
-    padding-bottom: 15px;
+}
+.SurveyForm .required span.question::after{
+    content: ' *';
+    color:#b00020;
+}
+.SurveyForm hr:last-of-type{
+    /* display: none; */
 }

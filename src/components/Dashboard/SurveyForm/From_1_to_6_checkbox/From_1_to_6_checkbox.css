@@ -1,0 +1,27 @@
+.From_1_to_6_checkbox {
+    padding: 10px 0;
+    font-family: 'NunitoSans', sans-serif;
+    font-size: 18px;
+    color: #4a4a4a;
+}
+.From_1_to_6_checkbox__title{
+    padding-bottom: 10px;
+}
+.From_1_to_6_checkbox__input-container label{
+    font-family: 'NunitoSans', sans-serif;
+    font-size: 16px;
+    color: #4a4a4a;
+
+}
+
+.From_1_to_6_checkbox__input-container [type="radio"]:not(:checked)+label, 
+.From_1_to_6_checkbox__input-container [type="radio"]:checked+label {
+    font-family: 'NunitoSans', sans-serif;
+    font-size: 16px;
+    color: #4a4a4a;
+    font-weight: normal;
+} 
+
+.From_1_to_6_checkbox span {
+    color: #b00020;
+}
