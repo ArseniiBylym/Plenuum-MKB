@@ -16,10 +16,10 @@
 }
 .DetailQuestion__question-start{
     display: none;
-    font-size: 8px;
+    font-size: 10px;
     color: #b9213a;
-    transform: translateY(-10px);
+    /* transform: translateY(-10px); */
 }
 .DetailQuestion__question-start.asterics--show{
-    display: inline-block;
+    display: inline;
 }

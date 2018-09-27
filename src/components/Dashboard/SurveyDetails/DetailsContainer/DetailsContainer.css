@@ -9,6 +9,7 @@
     flex-flow: column nowrap;
     align-items: center;
     justify-content: flex-start;
+    overflow-y: auto;
 }
 .DetailsContainer {
    width: 50%;

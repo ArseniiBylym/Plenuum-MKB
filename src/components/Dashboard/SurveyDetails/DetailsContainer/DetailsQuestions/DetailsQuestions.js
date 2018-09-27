@@ -19,7 +19,7 @@ function DetailsQuestions(props) {
     
     return (
         <div className='DetailsQuestions'>
-            <div className="DetailQuestion__question"><span>{text}</span><span className={starClassName}>&#10033;</span></div>
+            <div className="DetailQuestion__question"><span>{text}</span><sup className={starClassName}> &#10033;</sup></div>
             <div className="DetailQuestion__answer">{answerType}</div>
         </div>
     )
