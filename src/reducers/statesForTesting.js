@@ -44,7 +44,7 @@ const incoming_surv = {
                     id: 1537878013498.3554,
                     text: 'Some question',
                     type: 'free_text',
-                    isRequired: 'required'
+                    isRequired: 'optional'
                 }
             ],
             sender: {

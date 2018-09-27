@@ -1,0 +1,43 @@
+.SurveyForm-container {
+    position: fixed;
+    width: calc(100% - 256px);
+    height: calc(100% - 64px);
+    bottom: 0;
+    right: 0;
+    padding: 20px 0;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+    /* background-color: pink; */
+    font-family: 'NunitoSans', sans-serif;
+}
+.SurveyForm {
+    width: 50%;
+    /* background-color: bisque; */
+    padding: 20px 0;
+}
+
+.SurveyForm__header {
+    font-size: 24px;
+    font-weight: bold;
+    font-style: normal;
+    color: #4a4a4a;
+    padding:  5px 0;
+}
+
+.SurveyForm__description {
+    font-size: 16px;
+    color: #707070;
+    padding: 5px 0;
+}
+
+.SurveyForm__required-notification {
+    font-family: 'Nunito', serif;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    color: #b00020;
+    padding: 5px 0;
+    padding-bottom: 15px;
+}
