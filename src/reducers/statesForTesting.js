@@ -40,35 +40,41 @@ const incoming_surv = {
             finish_date: 1537736400000,
             completed: false,
             questions: [
-                // {
-                //     id: 1537878013498.1554,
-                //     text: 'Some question 11',
-                //     type: 'free_text',
-                //     isRequired: 'required'
-                // },
-                // {
-                //     id: 1537878013498.2554,
-                //     text: 'Some question 12',
-                //     type: 'free_text',
-                //     isRequired: 'optional'
-                // },
-                // {
-                //     id: 1537878013498.3554,
-                //     text: 'Some question 13',
-                //     type: 'free_text',
-                //     isRequired: 'optional'
-                // },
-                // {
-                //     id: 1537878343498.3664,
-                //     text: 'Some question checkbox1',
-                //     type: 'yes_no',
-                //     isRequired: 'optional'
-                // },
+                {
+                    id: 1537878013498.1554,
+                    text: 'Some question 11',
+                    type: 'free_text',
+                    isRequired: 'required'
+                },
+                {
+                    id: 1537878013498.2554,
+                    text: 'Some question 12',
+                    type: 'free_text',
+                    isRequired: 'optional'
+                },
+                {
+                    id: 1537878013498.3554,
+                    text: 'Some question 13',
+                    type: 'free_text',
+                    isRequired: 'optional'
+                },
+                {
+                    id: 1537878343498.3664,
+                    text: 'Some question checkbox1',
+                    type: 'yes_no',
+                    isRequired: 'optional'
+                },
                 {
                     id: 1537878016798.3664,
                     text: 'Some question checkbox 2',
                     type: 'yes_no',
                     isRequired: 'required'
+                },
+                {
+                    id: 1637873414498.3664,
+                    text: 'Some question checkbox 3',
+                    type: '1_to_6',
+                    isRequired: 'optional'
                 },
                 {
                     id: 1537873414498.3664,

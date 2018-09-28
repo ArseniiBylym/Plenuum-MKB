@@ -3,7 +3,6 @@ import './Free_text_input.css';
 import { Row, Input } from 'react-materialize'
 
 function Free_text_input(props) {
-    console.log(props)
 
     let classForCounter = (props.question.isContainValue == true) ? 'Free_text_input-counter visibleCounter' : 'Free_text_input-counter hiddenCounter'
     let symbolsLength = ''
@@ -16,7 +15,7 @@ function Free_text_input(props) {
                 <span className="question">{props.question.text}</span>
                 <div className={"survey-input-conteiner question-" + props.index} tabIndex="5">
                     <Input
-                        onChange={(event) => { console.log('click'); props.onChangeHandler(event, props.index) }}
+                        onChange={(event) => { props.onChangeHandler(event, props.index) }}
                         minLength='0'
                         maxLength='500'
                         type='textarea'

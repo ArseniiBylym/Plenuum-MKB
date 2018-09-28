@@ -12,6 +12,7 @@ function Yes_no_checkbox(props) {
             input.checked = false;
         }
         currentRadioButton.checked = !currentValue
+        props.onChangeHandler(props.index, type, !currentValue)
        
     }
     let asterics = props.required ? <span className='asterics'> *</span> : null;

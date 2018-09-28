@@ -3,7 +3,6 @@ import './SurveyForm.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import DefaultNavigationBarContainer from '../../Dashboard/Commons/DefaultNavigationBar/index';
-import QuestionBlock from '../../Dashboard/SurveyConteiner/components/QuestionBlock/QuestionBlock';
 import Free_text_input from './Free_text_input/Free_text_input';
 import Yes_no_checkbox from './Yes_no_checkbox/Yes_no_checkbox';
 import From_1_to_6_checkbox from './From_1_to_6_checkbox/From_1_to_6_checkbox';
@@ -12,31 +11,19 @@ import CompleteSurveyButton from './CompleteSurveyButton/CompleteSurveyButton';
 class SurveyForm extends Component {
     state = {
         questions: null,
-      
     }
 
     componentDidMount = () => {
         const questionsFromProps = this.props.incoming_surveys[this.props.match.params.id]
-        console.log(questionsFromProps)
         this.setState({
             ...this.state,
             ...questionsFromProps,
         })
     }
-
-    componentDidUpdate = () => {
-        console.log(this.state)
-    }
-
-    sendSurveyHandler = () => {
-        console.log(this.state)
-    }
-
+    
     onChangeInputHandler = (e, index) => {
-        console.log(index)
         let newQuestionsArr = this.state.questions.map((item, i) => {
             if(index == i) {
-
                 let isContainValue = e.target.value.length == 0 ? false : true;
                 return {
                     ...item,
@@ -45,15 +32,43 @@ class SurveyForm extends Component {
                 }
             } else return item
         });
-
+        
         this.setState({
             questions: newQuestionsArr
         })
-
+        
     }
-    render() {
-        console.log(this.state)
+    
+    onChangeRadiobuttonHandler = (index, type, value) => {
+        let newQuestionsArr = this.state.questions.map((item, i) => {
+            if(index == i ) {
+                if(value == false) {
+                    return {
+                        ...item,
+                        value: '',
+                        isContainValue: false
+                    }
+                } else {
+                    return {
+                        ...item, 
+                        value: type,
+                        isContainValue: true
+                    }
+                }
+            } else return item 
+        })
+        
+        this.setState({
+            questions: newQuestionsArr
+        })
+    }
 
+    sendSurveyHandler = () => {
+        console.log(this.state)
+    }
+    
+    render() {
+        
         if (!this.state.questions) return null
 
         const questionsList = this.state.questions.map((item, index) => {
@@ -82,6 +97,8 @@ class SurveyForm extends Component {
                     question={item.text}
                     required={item.isRequired == 'required' ? true : false}
                     index={index}
+                    onChangeHandler={this.onChangeRadiobuttonHandler}
+                    
                 />
             }
             if (item.type == '1_to_6') {
@@ -90,6 +107,7 @@ class SurveyForm extends Component {
                     question={item.text}
                     required={item.isRequired == 'required' ? true : false}
                     index={index}
+                    onChangeHandler={this.onChangeRadiobuttonHandler}
                 />
             }
         })

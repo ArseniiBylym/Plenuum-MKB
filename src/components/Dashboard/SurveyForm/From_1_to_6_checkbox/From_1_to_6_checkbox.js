@@ -1,6 +1,5 @@
 import React from 'react';
 import './From_1_to_6_checkbox.css';
-import { Row, Input } from 'react-materialize';
 
 function From_1_to_6_checkbox(props) {
 
@@ -13,6 +12,8 @@ function From_1_to_6_checkbox(props) {
             input.checked = false;
         }
         currentRadioButton.checked = !currentValue
+
+        props.onChangeHandler(props.index, type, !currentValue)
        
     }
 
