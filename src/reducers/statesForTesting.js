@@ -58,24 +58,24 @@ const incoming_surv = {
                 //     type: 'free_text',
                 //     isRequired: 'optional'
                 // },
-                {
-                    id: 1537878343498.3664,
-                    text: 'Some question checkbox1',
-                    type: 'yes_no',
-                    isRequired: 'optional'
-                },
                 // {
-                //     id: 1537878016798.3664,
-                //     text: 'Some question checkbox 2',
+                //     id: 1537878343498.3664,
+                //     text: 'Some question checkbox1',
                 //     type: 'yes_no',
-                //     isRequired: 'required'
+                //     isRequired: 'optional'
                 // },
-                // {
-                //     id: 1537873414498.3664,
-                //     text: 'Some question checkbox 3',
-                //     type: '1_to_6',
-                //     isRequired: 'required'
-                // }
+                {
+                    id: 1537878016798.3664,
+                    text: 'Some question checkbox 2',
+                    type: 'yes_no',
+                    isRequired: 'required'
+                },
+                {
+                    id: 1537873414498.3664,
+                    text: 'Some question checkbox 3',
+                    type: '1_to_6',
+                    isRequired: 'required'
+                }
             ],
             sender: {
                 _id: "5984342227cd340363dc84bb",
