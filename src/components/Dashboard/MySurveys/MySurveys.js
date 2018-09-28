@@ -12,6 +12,7 @@ import EmptySurveysList from './EmptySurveysList/EmptySurveysList'
 import FullSurveysList from './FullSurveysList/FullSurveysList'
 import CreateNewButton from './CreateNewButton/CreateNewButton'
 import { connect } from 'react-redux';
+import { Row, Input } from 'react-materialize';
 
 
 import './MySurveys.css';
@@ -66,15 +67,18 @@ class MySurveys extends Component {
     componentDidMount = () => {
         // console.log(this.props.mySurveys)
     }
-    
+
     componentWillUnmount = () => {
         this.props.clearSurveySendState()
     }
 
 
+    testRadiobutton = (e) => {
+        e.preventDefault();
+    }
     renderPage() {
 
-        if(!this.props.mySurveys) return null
+        if (!this.props.mySurveys) return null
         // console.log(this.props.mySurveys)
         // console.log(this.props.mySurveys.my_surveys.length)
 
@@ -82,8 +86,8 @@ class MySurveys extends Component {
         if (this.props.mySurveys.my_surveys.length == 0) {
             cardList = <EmptySurveysList />
         } else {
-            cardList = <FullSurveysList list={this.props.mySurveys.my_surveys} 
-                                        isShowSendNotification={this.props.mySurveys.survey_has_sended}/>
+            cardList = <FullSurveysList list={this.props.mySurveys.my_surveys}
+                isShowSendNotification={this.props.mySurveys.survey_has_sended} />
         }
         let createButton = <CreateNewButton text='New survey' />
         return (
@@ -94,18 +98,24 @@ class MySurveys extends Component {
                     right={createButton}
                 />
                 {cardList}
+                <Row style={{position: 'absolute', top: '300px', left: '300px'}}>
+                    <Input name='group1' type='radio' value='red' label='Red' onChange={this.testRadiobutton}/>
+                    <Input name='group1' type='radio' value='yellow' label='Yellow' />
+                    <Input name='group1' type='radio' value='green' label='Green' className='with-gap' />
+                    <Input name='group1' type='radio' value='brown' label='Brown' disabled='disabled' />
+                </Row>
             </div>
         )
     }
 
 
     render() {
-		return(
+        return (
             <div>
                 {this.renderPage()}
             </div>
-		)
-	}
+        )
+    }
 }
 
 
@@ -117,7 +127,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        clearSurveySendState: () => {dispatch({type: "CLEAR_SURVEY_HAS_SENDED"})}
+        clearSurveySendState: () => { dispatch({ type: "CLEAR_SURVEY_HAS_SENDED" }) }
     }
 }
 

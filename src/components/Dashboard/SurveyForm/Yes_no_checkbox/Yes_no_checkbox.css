@@ -13,14 +13,14 @@
     color: #4a4a4a;
 
 }
-
+/* 
 .Yes_no_checkbox__input-container [type="radio"]:not(:checked)+label, 
 .Yes_no_checkbox__input-container [type="radio"]:checked+label {
     font-family: 'NunitoSans', sans-serif;
     font-size: 16px;
     color: #4a4a4a;
     font-weight: normal;
-} 
+}  */
 
 .Yes_no_checkbox span {
     color: #b00020;
