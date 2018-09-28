@@ -24,7 +24,6 @@ function Free_text_input(props) {
                         s={12}
                         className="survey-input"
                         style={{ height: "180px", padding: "0", border: "none" }}
-                        // onInvalid={ props.onInvalid }
                         value={props.value}
                         autoComplete="off"
 

@@ -7,12 +7,56 @@
 .Yes_no_checkbox__title{
     padding-bottom: 10px;
 }
-.Yes_no_checkbox__input-container label{
+.Yes_no_checkbox__radio-wrapper{
+    display: flex;
+    flex-flow: column nowrap
+}
+.Yes_no_checkbox__radio-item{
+    display: inline-block;
+}
+
+.Yes_no_checkbox [type="radio"]:not(:checked)+label, 
+.Yes_no_checkbox [type="radio"]:checked+label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    font-size: 1rem;
+    transition: .28s ease;
+    font-family: 'NunitoSans', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  color: rgba(0, 0, 0, 0.87);
+
+}
+.Yes_no_checkbox label:hover:before{
+    border-color:#187697 !important;
+}
+.Yes_no_checkbox  [type="radio"]:checked+label:before{
+    border-color: #187697 !important;
+}
+.Yes_no_checkbox  [type="radio"]:checked+label:after {
+    background-color: #187697;
+    border-color: #187697;
+    transform: scale(.5);
+}
+
+
+
+
+
+/* .Yes_no_checkbox__input-container label{
     font-family: 'NunitoSans', sans-serif;
     font-size: 16px;
     color: #4a4a4a;
 
-}
+} */
 /* 
 .Yes_no_checkbox__input-container [type="radio"]:not(:checked)+label, 
 .Yes_no_checkbox__input-container [type="radio"]:checked+label {
@@ -22,6 +66,6 @@
     font-weight: normal;
 }  */
 
-.Yes_no_checkbox span {
+.Yes_no_checkbox span.asterics {
     color: #b00020;
 }
