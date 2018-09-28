@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './SurveyForm.css';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-// import QuestionSurveyItem from './QuestionSurveyItem/QuestionSurveyItem';
 import DefaultNavigationBarContainer from '../../Dashboard/Commons/DefaultNavigationBar/index';
 import QuestionBlock from '../../Dashboard/SurveyConteiner/components/QuestionBlock/QuestionBlock';
+import Free_text_input from './Free_text_input/Free_text_input';
 import Yes_no_checkbox from './Yes_no_checkbox/Yes_no_checkbox';
 import From_1_to_6_checkbox from './From_1_to_6_checkbox/From_1_to_6_checkbox';
 import CompleteSurveyButton from './CompleteSurveyButton/CompleteSurveyButton';
@@ -12,11 +12,7 @@ import CompleteSurveyButton from './CompleteSurveyButton/CompleteSurveyButton';
 class SurveyForm extends Component {
     state = {
         questions: null,
-        answers: [],
-        answerText: '',
-        answersMatching: [],
-        ifAllAnswersTrue:false,
-        submitError:false,
+      
     }
 
     componentDidMount = () => {
@@ -32,96 +28,65 @@ class SurveyForm extends Component {
         console.log(this.state)
     }
 
-    //Methods from index.QuestionBlock
-    onInvalid(){
-        this.setState({ showMessage:{ show:true, message:"Please correct the errors", color:"#f5d141" } }, this.scrollToTop )
+    sendSurveyHandler = () => {
+        console.log(this.state)
     }
 
-    answersArr(answerObj){
-        const answers = this.state.answers.slice();
-        answers.push( answerObj );
-        this.setState({ answers: answers })
-    }
+    onChangeInputHandler = (e, index) => {
+        console.log(index)
+        let newQuestionsArr = this.state.questions.map((item, i) => {
+            if(index == i) {
 
+                let isContainValue = e.target.value.length == 0 ? false : true;
+                return {
+                    ...item,
+                    value: e.target.value,
+                    isContainValue: isContainValue
+                }
+            } else return item
+        });
 
-    answerTextHandling( answerText ){
-        this.setState({ answerText })
-    }
+        this.setState({
+            questions: newQuestionsArr
+        })
 
-    updateAnswerArr( updated, index ){
-        const { answers } = this.state
-        answers[index].answerText = updated
-        this.setState({ answers })
     }
-    answersStatusArr( answerStatus ){
-        const answers = this.state.answersMatching;
-        answers.push( answerStatus )
-        this.setState({ answersMatching: answers })
-    }
-    updateAnswersStatusArr( status, index ){
-        const { answersMatching } = this.state;
-        answersMatching[index] = status;
-        this.setState({ answersMatching }, this.checkAllAnswers)
-    }
-    checkAllAnswers(){
-        this.setState({ ifAllAnswersTrue: this.state.answersMatching.every((answerStatus) => (answerStatus === true)) })
-        return this.state.ifAllAnswersTrue
-    }
-    scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" })
-    }
-    //
-
     render() {
-        console.log(this.state.questions)
+        console.log(this.state)
 
         if (!this.state.questions) return null
 
         const questionsList = this.state.questions.map((item, index) => {
-            console.log(item)
             if (item.type == 'free_text') {
 
-                let labelForInput = item.isRequired == 'required' ? 'Answer' : item.isRequired == 'optional' ? 'Answer(optional)' : null;
-                // let required = item.isRequired == 'required' ? true : false;
-                // const required = false;
-                // let text = item.text;
-                // if(item.isRequired == 'required') {
-                //     text += ' *'
-                // }
+                let label = item.isRequired == 'required' ? 'Answer' : item.isRequired == 'optional' ? 'Answer(optional)' : null;
                 let isRequiredQuestion = item.isRequired == 'required' ? 'required' : item.isRequired == 'optional' ? 'optional' : null;
-                // let text = item.isRequired == 'required' ? `${item.text}*` : item.isRequired == 'optional' ? item.text : null;
 
-                return <div className={isRequiredQuestion}>
-                    <QuestionBlock
-                    labelForInput={labelForInput}
-                    question={item.text}
-                    maxLengthOfText='500'
-                    minLengthOfText={null}
-                    fieldDescription=''
-                    itemsIndex={index}
-                    required={false}
-                    key={item.id}
-                    id={item.id}
-                    onInvalid={this.onInvalid.bind(this)}
-                    answersArr={this.answersArr.bind(this)}
-                    answerText={this.state.answerText}
-                    answerTextHandling={this.answerTextHandling.bind(this)}
-                    updateAnswerArr={this.updateAnswerArr.bind(this)}
-                    answersStatusArr={this.answersStatusArr.bind(this)}
-                    updateAnswersStatusArr={this.updateAnswersStatusArr.bind(this)}
-                    submitError={this.state.submitError}
-                />
-                </div>
+                return (
+                    <div className={isRequiredQuestion} key={item.id} >
+                        <Free_text_input
+                            question={item}
+                            label={label}
+                            required={item.isRequired == 'required' ? true : false}
+                            index={index}
+                            onChangeHandler={this.onChangeInputHandler}
+                            onInvalid={true}
+                            value={item.value}
+                        />
+                    </div>
+                )
             }
             if (item.type == 'yes_no') {
-                return <Yes_no_checkbox 
+                return <Yes_no_checkbox
+                    key={item.id}
                     question={item.text}
                     required={item.isRequired == 'required' ? true : false}
                     index={index}
                 />
             }
             if (item.type == '1_to_6') {
-                return <From_1_to_6_checkbox 
+                return <From_1_to_6_checkbox
+                    key={item.id}
                     question={item.text}
                     required={item.isRequired == 'required' ? true : false}
                     index={index}
@@ -141,9 +106,10 @@ class SurveyForm extends Component {
                         <div className="SurveyForm__header">{this.state.title}</div>
                         <div className="SurveyForm__description">{this.state.description}</div>
                         <div className="SurveyForm__required-notification">*Required</div>
-                        <hr/>
+                        <hr />
                         {questionsList}
-                        <CompleteSurveyButton />
+                        <CompleteSurveyButton click={this.sendSurveyHandler} />
+                       
                     </div>
                 </div>
             </div>
@@ -164,3 +130,5 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SurveyForm))
+
+

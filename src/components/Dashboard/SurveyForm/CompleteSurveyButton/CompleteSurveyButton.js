@@ -1,9 +1,9 @@
 import React from 'react';
 import './CompleteSurveyButton.css';
 
-function CompleteSurveyButton(prop) {
+function CompleteSurveyButton(props) {
     return(
-        <div className="CompleteSurveyButton">COMPLETE SURVEY</div>
+        <div className="CompleteSurveyButton" onClick={props.click}>COMPLETE SURVEY</div>
     )
 }
 

@@ -1,0 +1,40 @@
+.Free_text_input {
+    
+}
+.Free_text_input-header{
+    font-family: 'NunitoSans', sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #4a4a4a;
+    padding-bottom: 20px;
+    background-color: bisque;
+}
+.SurveyForm .survey-input-conteiner textarea{
+    cursor: pointer;
+    font-family: 'NunitoSans', sans-serif;
+    font-size: 16px;
+    
+    color: rgba(0, 0, 0, 0.87);
+    margin-top: 5px;
+}
+
+.Free_text_input-counter {
+    margin-left: 10px;
+   color: #187697;
+}
+.Free_text_input-counter.hiddenCounter{
+    visibility: hidden;
+}
+.Free_text_input-counter.visibleCounter {
+    visibility: visible;
+}
+
+
+
+.Free_text_input-error-container{
+    display: none;
+}

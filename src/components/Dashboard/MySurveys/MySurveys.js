@@ -12,7 +12,6 @@ import EmptySurveysList from './EmptySurveysList/EmptySurveysList'
 import FullSurveysList from './FullSurveysList/FullSurveysList'
 import CreateNewButton from './CreateNewButton/CreateNewButton'
 import { connect } from 'react-redux';
-import { Row, Input } from 'react-materialize';
 
 
 import './MySurveys.css';
@@ -79,8 +78,6 @@ class MySurveys extends Component {
     renderPage() {
 
         if (!this.props.mySurveys) return null
-        // console.log(this.props.mySurveys)
-        // console.log(this.props.mySurveys.my_surveys.length)
 
         let cardList = null
         if (this.props.mySurveys.my_surveys.length == 0) {
@@ -98,12 +95,6 @@ class MySurveys extends Component {
                     right={createButton}
                 />
                 {cardList}
-                <Row style={{position: 'absolute', top: '300px', left: '300px'}}>
-                    <Input name='group1' type='radio' value='red' label='Red' onChange={this.testRadiobutton}/>
-                    <Input name='group1' type='radio' value='yellow' label='Yellow' />
-                    <Input name='group1' type='radio' value='green' label='Green' className='with-gap' />
-                    <Input name='group1' type='radio' value='brown' label='Brown' disabled='disabled' />
-                </Row>
             </div>
         )
     }
