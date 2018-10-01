@@ -1,7 +1,9 @@
 import React from 'react';
 import './SentRequestCard.css';
+import moment from 'moment';
 
 const SentRequestCard = (props) => {
+  console.log(props)
 
   return (
     <div className="sentRequest-container" onClick={props.onClick}>
@@ -17,6 +19,9 @@ const SentRequestCard = (props) => {
           <div className="sentRequest-content">
             <p className="sentRequest-content-message">{props.request.requestMessage}</p>
             <p className="sentRequest-content-recipient">{props.userNames}</p>
+          </div>
+          <div className="feedback-content-date">
+            {moment(props.request.createdAt).format('YYYY.MM.DD • HH.MM')}
           </div>
         </div>
       </div>

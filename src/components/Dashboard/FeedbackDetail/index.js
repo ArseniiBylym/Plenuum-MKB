@@ -14,6 +14,7 @@ import ProfilePicDefault from '../../../resources/profile.svg';
 import SentAsDefaultPic from '../../../resources/profile.svg';
 import Constants from '../../../lib/constants'
 import {spinner} from "../../Commons/Spinner/spinner";
+import moment from 'moment';
 
 const ReactGA = require('react-ga');
 
@@ -108,9 +109,12 @@ class FeedbackDetailContainer extends Component {
             "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
         ];
         const createdAt = new Date(feedback.createdAt);
-        const dateString = createdAt.getDate() + "."
-            + monthNames[createdAt.getMonth()] + "."
-            + createdAt.getFullYear();
+        // const dateString = createdAt.getDate() + "."
+        //     + monthNames[createdAt.getMonth()] + "."
+        //     + createdAt.getFullYear();
+        const dateString = moment(createdAt).format('YYYY.MM.DD • HH.MM')
+        console.log(dateString)    
+        
         let anonymous = false;
         let privacy = false;
         if (feedback.privacy) {
