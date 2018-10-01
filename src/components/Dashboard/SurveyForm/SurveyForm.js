@@ -7,10 +7,12 @@ import Free_text_input from './Free_text_input/Free_text_input';
 import Yes_no_checkbox from './Yes_no_checkbox/Yes_no_checkbox';
 import From_1_to_6_checkbox from './From_1_to_6_checkbox/From_1_to_6_checkbox';
 import CompleteSurveyButton from './CompleteSurveyButton/CompleteSurveyButton';
+import { NavLink } from 'react-router-dom';
 
 class SurveyForm extends Component {
     state = {
         questions: null,
+        isShowErrorMessages: false
     }
 
     componentDidMount = () => {
@@ -20,10 +22,10 @@ class SurveyForm extends Component {
             ...questionsFromProps,
         })
     }
-    
+
     onChangeInputHandler = (e, index) => {
         let newQuestionsArr = this.state.questions.map((item, i) => {
-            if(index == i) {
+            if (index == i) {
                 let isContainValue = e.target.value.length == 0 ? false : true;
                 return {
                     ...item,
@@ -32,17 +34,17 @@ class SurveyForm extends Component {
                 }
             } else return item
         });
-        
+
         this.setState({
             questions: newQuestionsArr
         })
-        
+
     }
-    
+
     onChangeRadiobuttonHandler = (index, type, value) => {
         let newQuestionsArr = this.state.questions.map((item, i) => {
-            if(index == i ) {
-                if(value == false) {
+            if (index == i) {
+                if (value == false) {
                     return {
                         ...item,
                         value: '',
@@ -50,25 +52,41 @@ class SurveyForm extends Component {
                     }
                 } else {
                     return {
-                        ...item, 
+                        ...item,
                         value: type,
                         isContainValue: true
                     }
                 }
-            } else return item 
+            } else return item
         })
-        
+
         this.setState({
             questions: newQuestionsArr
         })
     }
 
-    sendSurveyHandler = () => {
+    sendSurveyHandler = (e) => {
         console.log(this.state)
+        let isAllRequiredFieldsFill = this.state.questions.some((item, i) => {
+            if(item.isRequired == 'required' && !item.value) return true
+            else return false 
+        })
+        if(isAllRequiredFieldsFill) {
+            e.preventDefault();
+            this.setState({
+                isShowErrorMessages: true
+            })
+        } else {
+            this.props.completeSurvey(this.props.match.params.id)
+            this.setState({
+                isShowErrorMessages: false
+            })
+        }
+
     }
-    
+
     render() {
-        
+
         if (!this.state.questions) return null
 
         const questionsList = this.state.questions.map((item, index) => {
@@ -98,7 +116,8 @@ class SurveyForm extends Component {
                     required={item.isRequired == 'required' ? true : false}
                     index={index}
                     onChangeHandler={this.onChangeRadiobuttonHandler}
-                    
+                    value={item.value}
+
                 />
             }
             if (item.type == '1_to_6') {
@@ -108,6 +127,7 @@ class SurveyForm extends Component {
                     required={item.isRequired == 'required' ? true : false}
                     index={index}
                     onChangeHandler={this.onChangeRadiobuttonHandler}
+                    value={item.value}
                 />
             }
         })
@@ -119,15 +139,16 @@ class SurveyForm extends Component {
                     className="interact"
                     right={closeButton}
                 />
-                <div className="SurveyForm-container">
+                <div className={this.state.isShowErrorMessages ? "SurveyForm-container show-error-message" : "SurveyForm-container"} >
                     <div className="SurveyForm">
                         <div className="SurveyForm__header">{this.state.title}</div>
                         <div className="SurveyForm__description">{this.state.description}</div>
                         <div className="SurveyForm__required-notification">*Required</div>
                         <hr />
                         {questionsList}
-                        <CompleteSurveyButton click={this.sendSurveyHandler} />
-                       
+                        <NavLink to='/interact' className='' onClick={this.sendSurveyHandler}>
+                            <CompleteSurveyButton click={this.sendSurveyHandler} />
+                        </NavLink>
                     </div>
                 </div>
             </div>

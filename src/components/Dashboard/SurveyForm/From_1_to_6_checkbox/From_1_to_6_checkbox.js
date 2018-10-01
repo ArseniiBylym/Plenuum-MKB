@@ -2,6 +2,8 @@ import React from 'react';
 import './From_1_to_6_checkbox.css';
 
 function From_1_to_6_checkbox(props) {
+    console.log(props)
+    console.log(props.value)
 
     function radioButtonClick (e, type) {
       
@@ -17,7 +19,11 @@ function From_1_to_6_checkbox(props) {
        
     }
 
-    let asterics = props.required ? <span> *</span> : null;
+    let asterics = props.required ? <span className='asterics'> *</span> : null;
+    let answerRequiredStyle = 'Free_text_input-error-container' 
+    if(props.required && props.value) {
+        answerRequiredStyle += ' error-message--hidden'
+    }
     return (
         <div className={`From_1_to_6_checkbox item__${props.index}`}>
             <div className="From_1_to_6_checkbox__title">{props.question}{asterics}</div>
@@ -62,6 +68,7 @@ function From_1_to_6_checkbox(props) {
                 </div>
 
             </div>
+            {props.required && <div className={answerRequiredStyle}>Answer required.</div>}
             <hr />
         </div>
     )

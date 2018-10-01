@@ -108,6 +108,21 @@ const createSurvey = (state = mySurveysDefaultStore, action) => {
 
 const incomingSurveys = (state = incoming_surv, action) => {
     switch (action.type) {
+        case Constants.ReducersActionType.COMPLETE_SURVEY:
+            const survey_list = state.list.map((item, i) => {
+                if(action.index == i) {
+                    return {
+                        ...item, 
+                        completed: true
+                    }
+                } else return item
+            })
+
+            return {
+                ...state,
+                list: survey_list,
+                just_completed: true,
+            }
         default: 
             return state;
     }

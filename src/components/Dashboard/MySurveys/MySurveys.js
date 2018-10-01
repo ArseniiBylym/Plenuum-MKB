@@ -72,9 +72,6 @@ class MySurveys extends Component {
     }
 
 
-    testRadiobutton = (e) => {
-        e.preventDefault();
-    }
     renderPage() {
 
         if (!this.props.mySurveys) return null
@@ -95,6 +92,7 @@ class MySurveys extends Component {
                     right={createButton}
                 />
                 {cardList}
+                
             </div>
         )
     }
@@ -112,7 +110,7 @@ class MySurveys extends Component {
 
 const mapStateToProps = state => {
     return {
-        mySurveys: state.createSurvey
+        mySurveys: state.createSurvey,
     }
 }
 

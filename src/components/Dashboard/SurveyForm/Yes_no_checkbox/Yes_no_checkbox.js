@@ -16,6 +16,11 @@ function Yes_no_checkbox(props) {
        
     }
     let asterics = props.required ? <span className='asterics'> *</span> : null;
+
+    let answerRequiredStyle = 'Free_text_input-error-container' 
+    if(props.required && props.value) {
+        answerRequiredStyle += ' error-message--hidden'
+    }
     return (
         <div className={`Yes_no_checkbox item__${props.index}`}>
             <div className="Yes_no_checkbox__title">{props.question}{asterics}</div>
@@ -35,6 +40,7 @@ function Yes_no_checkbox(props) {
 
 
             </div>
+            {props.required && <div className={answerRequiredStyle}>Answer required.</div>}
             <hr />
         </div>
     )

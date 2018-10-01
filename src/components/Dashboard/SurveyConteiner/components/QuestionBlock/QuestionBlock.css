@@ -26,25 +26,37 @@
   overflow-y: auto;
 }
 .survey-input-conteiner.notEmpty {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.54);
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.54);
+  border-bottom: none;
+  /* border-bottom: 2px solid rgba(0, 0, 0, 0.54); */
 }
 .survey-input-conteiner:hover {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.54);
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.54);
+  border-bottom: none;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.54); */
 }
 .survey-input-conteiner.notEmpty:hover {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.54);
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.54);
+  border-bottom: none;
+  /* border-bottom: 2px solid rgba(0, 0, 0, 0.54); */
 }
 .survey-input-conteiner:focus-within {
   outline: none;
-  border-bottom: 2px solid #187697 !important;
+  box-shadow: 0 2px 0 0 #187697;
+  border-bottom: none !important;
+  /* border-bottom: 2px solid #187697 !important; */
 }
 .survey-input-conteiner.errorBorder {
   outline: none;
-  border-bottom: 2px solid #b00020 !important;
+  box-shadow: 0 2px 0 0 #b00020;
+  border-bottom: none !important;
+  /* border-bottom: 2px solid #b00020 !important; */
 }
 .survey-input-conteiner.errorBorder:focus-within {
   outline: none;
-  border-bottom: 2px solid #b00020 !important;
+  box-shadow: 0 2px 0 0 #b00020;
+  border-bottom: none !important
+  /* border-bottom: 2px solid #b00020 !important; */
 }
 
 

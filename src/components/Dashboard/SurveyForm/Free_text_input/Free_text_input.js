@@ -9,6 +9,10 @@ function Free_text_input(props) {
     if (props.question.value) {
         symbolsLength = 500 - parseInt(props.value.length)
     }
+    let answerRequiredStyle = 'Free_text_input-error-container' 
+    if(props.required && props.question.value) {
+        answerRequiredStyle += ' error-message--hidden'
+    }
     return (
         <div className=''>
             <div>
@@ -22,18 +26,23 @@ function Free_text_input(props) {
                         label={props.label}
                         s={12}
                         className="survey-input"
-                        style={{ height: "180px", padding: "0", border: "none" }}
+                        style={{ height: "120px", padding: "0", border: "none" }}
                         value={props.value}
                         autoComplete="off"
 
                     />
                 </div>
                 <div className={classForCounter}>{symbolsLength} characters left</div>
+                {props.required && <div className={answerRequiredStyle}>Answer required.</div>}
+                {/* <div className={props.required && !props.question.value ?
+                    'Free_text_input-error-container' :
+                    'Free_text_input-error-container--hidden'}>Answer required.</div> */}
                 <hr />
             </div>
-            <div className='Free_text_input-error-container'>Answer required</div>
-        </div>
+        </div >
     )
 }
 
 export default Free_text_input
+
+                // {props.required && !props.question.value && <div className='Free_text_input-error-container'>Answer required.</div>}

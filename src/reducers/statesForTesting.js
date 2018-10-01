@@ -31,6 +31,7 @@ const mySurveysDefaultStore = {
 }
 
 const incoming_surv = {
+    just_completed: false,
     list: [
         {
             _id: Date.now() + Math.random(),
@@ -53,10 +54,10 @@ const incoming_surv = {
                     isRequired: 'optional'
                 },
                 {
-                    id: 1537878013498.3554,
-                    text: 'Some question 13',
-                    type: 'free_text',
-                    isRequired: 'optional'
+                    id: 1537878016798.3664,
+                    text: 'Some question checkbox 2',
+                    type: 'yes_no',
+                    isRequired: 'required'
                 },
                 {
                     id: 1537878343498.3664,
@@ -65,9 +66,9 @@ const incoming_surv = {
                     isRequired: 'optional'
                 },
                 {
-                    id: 1537878016798.3664,
-                    text: 'Some question checkbox 2',
-                    type: 'yes_no',
+                    id: 1537873414498.3664,
+                    text: 'Some question checkbox 3',
+                    type: '1_to_6',
                     isRequired: 'required'
                 },
                 {
@@ -76,12 +77,6 @@ const incoming_surv = {
                     type: '1_to_6',
                     isRequired: 'optional'
                 },
-                {
-                    id: 1537873414498.3664,
-                    text: 'Some question checkbox 3',
-                    type: '1_to_6',
-                    isRequired: 'required'
-                }
             ],
             sender: {
                 _id: "5984342227cd340363dc84bb",
