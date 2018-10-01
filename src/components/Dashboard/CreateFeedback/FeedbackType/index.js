@@ -11,19 +11,19 @@ class FeedbackTypeContainer extends Component {
         this.options = [{
             color: 'rgba(0, 0, 0, 0.3)',
             image: undefined,
-            text: "Set feedback type",
+            text: "Visszajelzés típusa",
             type: 0,
             style: "border-div-single"
         },{
             color: '#f4d141',
             image: Consider38,
-            text: "consider this",
+            text: "fontold meg",
             type: 1,
             style: "type-cell-selected consider"
         },{
             color: '#00d6a5',
             image: Continue38,
-            text: "continue this",
+            text: "így tovább",
             type: 2,
             style: "type-cell-selected continue"
         }

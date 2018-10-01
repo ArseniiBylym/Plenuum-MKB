@@ -210,11 +210,11 @@ class CreateFeedbackRequestContainer extends Component {
         }
 
         if (this.state.page === 0) {
-            let groupTitle = "No Results";
+            let groupTitle = "Nincs találat";
             if ((this.state.searchQuery === "") || this.state.users.length === this.users.length) {
-                groupTitle = "All";
+                groupTitle = "Mindenki";
             }else if (this.state.users.length > 0 && this.state.users.length < this.users.length){
-                groupTitle = "Results";
+                groupTitle = "Találatok";
             }
             this.userList = (<UserListContainer users={this.state.users} handleUserClick={this.handleUserClick} accessory={true}/>);
             this.components = userComponent({selectedUsers:this.selectedUsers,
@@ -267,13 +267,13 @@ class CreateFeedbackRequestContainer extends Component {
             button = {
                 handler: this.nextButton,
                 classSytle: this.state.selectedUsers.length > 0 ? "button-next-enable" : "button-next-disabled" ,
-                title: "Next"
+                title: "Következő"
             }
         }else{
             button = {
                 handler: this.nextButton,
                 classSytle: this.state.selectedUsers.length > 0 && this.state.message.length > 4 ? "button-create-feedback-enable margin-top-1" : "button-create-feedback-disabled margin-top-1" ,
-                title: "Send Request"
+                title: "Elküldés"
             }
         }
 

@@ -15,8 +15,8 @@ const ResetConfirmation = (props) => {
             <div className="reset-confirmation-image">
               <img alt="" src={MailImage}></img>
             </div>
-            <p className="reset-confirmation-title">Check your mailbox!</p>
-            <NavLink to="/login" className="reset-confirmation-link">Back to Login</NavLink>
+            <p className="reset-confirmation-title">Nézd meg a postaládád!</p>
+            <NavLink to="/login" className="reset-confirmation-link">Vissza a bejelentkezéshez</NavLink>
           </div>
         </div>
       </div>

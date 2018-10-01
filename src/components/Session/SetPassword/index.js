@@ -75,7 +75,7 @@ class SetPasswordContainer extends Component {
         if ( !password || !passwordagain || password.length < 1 || passwordagain.length < 1){
             alert('Passwords can not be empty.')
         }else if ( password.length < minLength || passwordagain.length < minLength ) {
-            alert('Passwords should be at least 6 characters long.')
+            alert('Legalább 6 betű.')
         } else {
             if (password === passwordagain && token ) {
                 Api.setPassword(token, password)

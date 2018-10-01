@@ -9,7 +9,7 @@ const Search = (props) => {
       <input
         type="text"
         name="search"
-        placeholder="Search..."
+        placeholder="Keresés..."
         defaultValue={props.defaultValue} autoFocus/>
     </div>
   );

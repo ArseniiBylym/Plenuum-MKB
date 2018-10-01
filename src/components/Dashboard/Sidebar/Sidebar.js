@@ -44,21 +44,21 @@ const Sidebar = (props) => {
                 replace={props.replace}
                 activeClassName='active'
                 >
-                New feedback
+                Új visszajelzés
               </NavLink>
               <NavLink className='action-button'
                 to={props.createRequest.pathname}
                 activeClassName='active'
                 replace={props.replace}
                 >
-                Request feedback
+                Visszajelzés kérése
               </NavLink>
               <NavLink className='action-button'
                 to={props.answerCards.pathname}
                 activeClassName='active'
                 replace={props.replace}
                 >
-                Skill assessment
+                Készség értékelés
               </NavLink>
             </div>
           </div>

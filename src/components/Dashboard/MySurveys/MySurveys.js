@@ -83,7 +83,7 @@ class MySurveys extends Component {
             cardList = <FullSurveysList list={this.props.mySurveys.my_surveys}
                 isShowSendNotification={this.props.mySurveys.survey_has_sended} />
         }
-        let createButton = <CreateNewButton text='New survey' />
+        let createButton = <CreateNewButton text='Új kérdőív' />
         return (
             <div className="request-pre-container request-pre-container--my-surveys">
                 <DefaultNavigationBarContainer

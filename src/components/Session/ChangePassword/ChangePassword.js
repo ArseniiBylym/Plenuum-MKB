@@ -36,7 +36,7 @@ const ChangePassword = (props) => {
       <div className="overlay" onClick={ props.handleCloseAlert.bind(this, false)}>
       </div>
       <div className="change-password-alert">
-        <div className="change-password-header">Set your new password</div>
+        <div className="change-password-header">Új jelszó mentése</div>
         {inputs}
         <div className="change-password-button">
           <button type="submit" onClick={ props.functions.changePassword}>Set my password</button>

@@ -41,7 +41,7 @@ export const filterComponent = (props) => {
     return (
         <div className="mycontent-filter">
             <div className="mycontent-filter-query">
-                <p>Filter: &nbsp;</p>
+                <p>Szűrés: &nbsp;</p>
                 <p>{props.name}</p>
             </div>
             <a className='mycontent-close' onClick={props.cancelQuery}>
@@ -57,7 +57,7 @@ export const overlayComponent = () => {
 };
 
 export const searchUsersComponent = (props) => {
-  const { searchTitle="Filter by people" }=props
+  const { searchTitle="Emberek szerinti szűrés" }=props
     return (
         <div className={"mycontent-search-container " + props.className }>
             <div className='container-fluid'>

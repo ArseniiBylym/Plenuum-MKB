@@ -12,7 +12,7 @@ const Compass=(props) => {
         </div>
         :
         <div className="compass-buttons">
-          <button disabled={props.disabled} className="done" onClick={props.post.action}>Done</button>
+          <button disabled={props.disabled} className="done" onClick={props.post.action}>Kész</button>
         </div>
       }
 

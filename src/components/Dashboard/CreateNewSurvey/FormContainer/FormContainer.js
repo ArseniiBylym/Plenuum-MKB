@@ -38,7 +38,7 @@ class FormContainer extends Component {
                     onBlur={this.props.onChangeValue}
                 />
                 <Input name='description' type='textarea' 
-                    placeholder="Description (optional)" s={12} 
+                    placeholder="Description (opcionális)" s={12} 
                     maxLength="200"
                     onBlur={this.props.onChangeValue}
                 />

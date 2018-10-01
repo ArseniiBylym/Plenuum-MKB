@@ -145,9 +145,9 @@ class FeedbackDetailContainer extends Component {
                 text:requestObj.requestMessage});
             }
         } else {
-            const options = anonymous ? {imageSrc:MaskAnon, text:'Sent as Anonymous'} :
+            const options = anonymous ? {imageSrc:MaskAnon, text:'Névtelenül küldve'} :
                 {imageSrc:currentUser.pictureUrl !== "" ? currentUser.pictureUrl :
-                    SentAsDefaultPic, text:"Sent as " + currentUser.firstName};
+                    SentAsDefaultPic, text:currentUser.firstName + " ként küldve"};
             sentAs = sentAsComponent(options);
         }
 
@@ -161,7 +161,7 @@ class FeedbackDetailContainer extends Component {
         }
 
         if (anonymous && type !== 1) {
-            username = "Anonymous";
+            username = "Névtelenül";
             userPic = ProfileAnon;
         }
 

@@ -19,11 +19,11 @@ class DetailsContainer extends Component {
         let dateContainer = null;
         if(new Date().getTime() > finish_date) {
             dateContainer = <div className="DetailsContainer__date-container closed">
-                                <span>Closed</span> on {moment(finish_date).format("YYYY.MM.DD")} &#9679; Sent {moment(start_date).format("YYYY.MM.DD")}
+                                <span>Closed</span> on {moment(finish_date).format("YYYY.MM.DD")} &#9679; Elküldött {moment(start_date).format("YYYY.MM.DD")}
                             </div>
         } else {
             dateContainer = <div className="DetailsContainer__date-container open">
-                                <span>Open</span> till {moment(finish_date).format("YYYY.MM.DD")} &#9679; Sent {moment(start_date).format("YYYY.MM.DD")}
+                                <span>Open</span> till {moment(finish_date).format("YYYY.MM.DD")} &#9679; Elküldött {moment(start_date).format("YYYY.MM.DD")}
                             </div>
         }
 
@@ -38,7 +38,7 @@ class DetailsContainer extends Component {
                 <div className="DetailsContainer__description">{description}</div>
                 <div className="DetailsContainer__statistic">
                     <div className='Card__statistic--icon'></div>
-                    {done_answers} / {total_answers} answers
+                    {done_answers} / {total_answers} válasz
                 </div>
                 {dateContainer}
                 <div className="DetailsContainer__users-container">{users}</div>

@@ -162,9 +162,9 @@ class MyContentContainer extends Component {
         const segmentedControl = (
             <SegmentedContainer
                 options={
-                    [{path: Constants.Route.FEEDBACK_INCOMING, title: 'Incoming'},
-                        {path: Constants.Route.FEEDBACK_SENT, title: 'Sent'},
-                        {path: Constants.Route.SENT_REQUESTS, title: 'Sent Requests'}]
+                    [{path: Constants.Route.FEEDBACK_INCOMING, title: 'Beérkező'},
+                        {path: Constants.Route.FEEDBACK_SENT, title: 'Elküldött'},
+                        {path: Constants.Route.SENT_REQUESTS, title: 'Visszaj. kéréseid'}]
                 }
             />);
 
@@ -190,11 +190,11 @@ class MyContentContainer extends Component {
 
         if (searchPage && users) {
             if (searchedUsers.length - 1 === users.length - 1) {
-                groupTitle = "All";
+                groupTitle = "Mindenki";
             } else if (searchedUsers.length > 0 && searchedUsers.length < users.length - 1) {
-                groupTitle = "Results";
+                groupTitle = "Találatok";
             } else {
-                groupTitle = "No Results";
+                groupTitle = "Nincs találat";
             }
 
             const userList = (<UserListContainer

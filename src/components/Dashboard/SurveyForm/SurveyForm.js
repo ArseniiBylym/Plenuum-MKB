@@ -92,7 +92,7 @@ class SurveyForm extends Component {
         const questionsList = this.state.questions.map((item, index) => {
             if (item.type == 'free_text') {
 
-                let label = item.isRequired == 'required' ? 'Answer' : item.isRequired == 'optional' ? 'Answer(optional)' : null;
+                let label = item.isRequired == 'required' ? 'Válasz' : item.isRequired == 'optional' ? 'Válasz(opcionális)' : null;
                 let isRequiredQuestion = item.isRequired == 'required' ? 'required' : item.isRequired == 'optional' ? 'optional' : null;
 
                 return (
@@ -135,7 +135,7 @@ class SurveyForm extends Component {
         return (
             <div className='SurveyForm-wrapper'>
                 <DefaultNavigationBarContainer
-                    title='Survey'
+                    title='Válaszok'
                     className="interact"
                     right={closeButton}
                 />
@@ -143,7 +143,7 @@ class SurveyForm extends Component {
                     <div className="SurveyForm">
                         <div className="SurveyForm__header">{this.state.title}</div>
                         <div className="SurveyForm__description">{this.state.description}</div>
-                        <div className="SurveyForm__required-notification">*Required</div>
+                        <div className="SurveyForm__required-notification">*Kötelező</div>
                         <hr />
                         {questionsList}
                         <NavLink to='/interact' className='' onClick={this.sendSurveyHandler}>

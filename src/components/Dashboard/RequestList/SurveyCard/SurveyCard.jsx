@@ -58,7 +58,7 @@ const SurveyCard = (props) => {
         }}
        onClick={onClickHandler}
       >
-        Start Survey
+        Kérdőív kitöltése
       </NavLink>
     </div>
   );

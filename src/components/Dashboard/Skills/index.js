@@ -76,8 +76,8 @@ class SkillsContainer extends Component {
         const segmentedControl = (
             <SegmentedContainer
                 options={
-                    [{path: Constants.Route.SKILLS, title: 'Skills'},
-                        {path: Constants.Route.SKILLS_TOP, title: 'Top'}]
+                    [{path: Constants.Route.SKILLS, title: 'Készségek'},
+                        {path: Constants.Route.SKILLS_TOP, title: 'Fő'}]
                 }
             />);
         return <NavigationBarContainer barContent={segmentedControl}/>

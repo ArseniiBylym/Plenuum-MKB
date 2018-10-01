@@ -38,7 +38,7 @@ class ResetPasswordContainer extends Component {
                     history.replace({ pathname: 'reset_confirmation', state: {email} })
                 });
         }else{
-            alert("Enter a valid email address.");
+            alert("Érvénytelen email cím");
         }
     }
 

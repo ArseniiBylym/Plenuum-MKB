@@ -303,7 +303,7 @@ class CreateNewSurvey extends Component {
                     'request-pre-container request-pre-container--create-new-part1 create-new--center' :
                     'request-pre-container request-pre-container--create-new-part1 create-new--left'}>
                     <DefaultNavigationBarContainer
-                        title='New survey (1/2)'
+                        title='Új kérdőív (1/2)'
                         className="interact"
                         right={closeButton}
                     />
@@ -318,7 +318,7 @@ class CreateNewSurvey extends Component {
 
                         <div className='CreateNew__footer-wrapper'>
                             <AddAnoterButton text='ADD ANOTHER QUESTION' onClickAction={this.addAnoterQuestion} />
-                            <ButtonNext text='NEXT' onClickAction={this.showNextScreen} />
+                            <ButtonNext text='Következő' onClickAction={this.showNextScreen} />
                         </div>
                     </div>
                 </div>
@@ -326,7 +326,7 @@ class CreateNewSurvey extends Component {
                     'request-pre-container request-pre-container--create-new-part1 create-new--center' :
                     'request-pre-container request-pre-container--create-new-part1 create-new--right'}>
                     <DefaultNavigationBarContainer
-                        title='New survey (2/2)'
+                        title='Új kérdőív (2/2)'
                         className="interact"
                         backButton={backSwitchButton}
                         right={closeButton}

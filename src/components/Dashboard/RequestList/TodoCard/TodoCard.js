@@ -11,9 +11,9 @@ const TodoCard = (props) => {
         <p>Plenuumbot</p>
       </div>
       <div className="todo-message">
-        <p>Hi there, please help <span className="todo-user-name">
+        <p><span className="todo-user-name">
             {props.aboutUser.firstName + " " + props.aboutUser.lastName}
-            </span> with answering a few questions!</p>
+            </span> számára fontos a véleményed. Mondd el, hogy mit gondolsz a munkájáról!</p>
       </div>
       <NavLink
         className="todo-link-feedback"
@@ -22,7 +22,7 @@ const TodoCard = (props) => {
           state: props.linkProperties.state
         }}
         >
-        Okay, let’s start!
+        Oké, kezdjük!
       </NavLink>
     </div>
   );

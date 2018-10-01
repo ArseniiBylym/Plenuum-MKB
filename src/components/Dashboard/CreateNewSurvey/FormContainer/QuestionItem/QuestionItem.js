@@ -72,8 +72,8 @@ class QuestionItem extends Component {
                     </div>
                     <div className='input__question-type-select-wrapper'>
                         <Input name='question_required' s={12} type='select' label="" defaultValue='optional' onChange={this.changeIsRequiredSelectValue}>
-                            <option value='optional'>Optional answer</option>
-                            <option value='required'>Required answer</option>
+                            <option value='optional'>Opcionális mező</option>
+                            <option value='required'>Kötelező mező</option>
                         </Input>
                         <div className='triangle-for-question-type-select'>&#9662;</div>
                     </div>
@@ -121,6 +121,6 @@ function BasketContainer(props) {
 
 function answerIsRequired() {
     return (
-        <div className='QuestionItem__answer-required'>Answer required</div>
+        <div className='QuestionItem__answer-required'>Kötelező mező</div>
     )
 }

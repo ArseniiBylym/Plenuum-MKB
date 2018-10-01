@@ -35,7 +35,7 @@ class CreateFeedbackContainer extends Component {
             message: "",
             type: undefined,
             context: "",
-            title: "New Feedback",
+            title: "Új visszajelzés",
             ready: false,
             tags: undefined,
             selectedTags: [],
@@ -65,7 +65,7 @@ class CreateFeedbackContainer extends Component {
                   handleText={this.handleFeedbackMessage}
                   value={this.state.message}
               />
-              <div className="button-next" onClick={this.nextButton}>Next</div>
+              <div className="button-next" onClick={this.nextButton}>Következő</div>
             </div>
         );
         ReactGA.event({
@@ -73,7 +73,7 @@ class CreateFeedbackContainer extends Component {
             action: 'Click',
             label: 'Select recipient from list'
         });
-        this.setState({user: user._id, page: this.state.page + 1,title: "New Feedback"});
+        this.setState({user: user._id, page: this.state.page + 1,title: "Új visszajelzés"});
     }
 
     handleCheckBox(e){
@@ -129,7 +129,7 @@ class CreateFeedbackContainer extends Component {
             });
             this.createPost();
         }else{
-            this.setState({page: 1, title: "New Feedback"});
+            this.setState({page: 1, title: "Új visszajelzés"});
         }
     }
 
@@ -216,11 +216,11 @@ class CreateFeedbackContainer extends Component {
 
     createComponent(){
         if (this.state.page === 0) {
-            let groupTitle = "No Results";
+            let groupTitle = "Nincs találat";
             if (this.state.users.length === this.users.length) {
-                groupTitle = "All";
+                groupTitle = "Mindenki";
             }else if (this.state.users.length > 0 && this.state.users.length < this.users.length){
-                groupTitle = "Results";
+                groupTitle = "Találatok";
             }
 
             this.userList = (<UserListContainer users={this.state.users} handleUserClick={this.handleUserClick}/>);

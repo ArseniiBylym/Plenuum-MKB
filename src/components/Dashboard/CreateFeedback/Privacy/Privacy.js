@@ -12,7 +12,7 @@ const Privacy = (props) => {
                   name="anonimity"
                   onChange={props.handleChange}
               />
-              <label htmlFor="anonimity">Send anonymous</label>
+              <label htmlFor="anonimity">Küldés névtelenül</label>
           </div>
 
       </div>

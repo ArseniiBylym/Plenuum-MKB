@@ -31,9 +31,9 @@ class ProfileCardContainer extends Component {
             this.setState({opened: false});
         }else {
             this.options=[
-                  <NavLink key="profile" to={{ pathname: '/profile' }} activeClassName="active">Profile settings</NavLink>,
-                  <NavLink key="privacy_policy" to={{pathname: '/privacy'}}>Privacy policy</NavLink>,
-                  <NavLink key="login" to="/login" activeClassName="active" onClick={this.logout}>Log out</NavLink>
+                  <NavLink key="profile" to={{ pathname: '/profile' }} activeClassName="active">Profilbeállítások</NavLink>,
+                  <NavLink key="privacy_policy" to={{pathname: '/privacy'}}>Adatvédelmi irányelvek</NavLink>,
+                  <NavLink key="login" to="/login" activeClassName="active" onClick={this.logout}>Kijelentkezés</NavLink>
             ];
             this.setState({opened: true});
         }

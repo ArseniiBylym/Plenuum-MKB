@@ -9,7 +9,7 @@ const CompetenceCard = (props) => {
     <div key={props.element._id} className={ props.type + "-competence-card" + (props.numberOfAnswers > 0 ? "" : " inactive")} onClick={props.skillClicked}>
       <div className={ props.type + "-competence-title"}>
         <p className="title">{props.name}</p>
-        <p className="answers">{props.numberOfAnswers ? compName + props.numberOfAnswers + " answers" : "No answers yet"}</p>
+        <p className="answers">{props.numberOfAnswers ? compName + props.numberOfAnswers + " válasz" : "Még nem érkezett válasz."}</p>
       </div>
       <div className={ props.type + "-competence-scores"}>
         <div className="score-progressbar">

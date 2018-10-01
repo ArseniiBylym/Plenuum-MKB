@@ -34,11 +34,11 @@ const SetPassword = (props) => {
 export const createComponent = (object) => {
     let title, message, buttonTitle;
     if (object.welcome) {
-        title=(<p className="set-password-title">{"Welcome to Plenuum, " + object.userName}</p>);
+        title=(<p className="set-password-title">{"Üdvözlünk a Plenuumban, " + object.userName}</p>);
         message=(<p className="set-password-subtitle">Set password for <strong>{object.email}</strong> to start</p>);
         buttonTitle="Set password & log in"
     }else{
-        title=(<p className="set-password-title">{"Set your new password"}</p>);
+        title=(<p className="set-password-title">{"Új jelszó mentése"}</p>);
         message=<p className="set-password-subtitle">{"Set your new password for the account " + object.email}</p>;
         buttonTitle="Set password"
     }

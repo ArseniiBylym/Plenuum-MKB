@@ -11,7 +11,7 @@ function FullSurveysList(props) {
     return(
         <div className='FullSurveysList'> 
             {items}
-            {props.isShowSendNotification && <SurveySentButton text='Survey sent' />}
+            {props.isShowSendNotification && <SurveySentButton text='Válaszok elküldve!' />}
         </div>
     )
 }

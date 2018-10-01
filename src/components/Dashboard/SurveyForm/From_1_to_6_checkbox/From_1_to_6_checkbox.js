@@ -68,7 +68,7 @@ function From_1_to_6_checkbox(props) {
                 </div>
 
             </div>
-            {props.required && <div className={answerRequiredStyle}>Answer required.</div>}
+            {props.required && <div className={answerRequiredStyle}>Kötelező mező</div>}
             <hr />
         </div>
     )

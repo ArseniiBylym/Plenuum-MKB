@@ -12,7 +12,7 @@ const SetPicture = (props, context) => {
       <div className="overlay-setpicture" onClick={ props.handlePictureChange}></div>
       <div className="dropzone-container">
         <div className="setpicture-title">
-          <p>Set your profile picture</p>
+          <p>Profilkép beállítása</p>
         </div>
         <Dropzone
             className='dropzone-lib' activeStyle={{borderColor: '#35a9db'}}
@@ -20,10 +20,10 @@ const SetPicture = (props, context) => {
             maxSize={maxSize}
         >
           {props.image}
-          <p>Drop an image here or click to upload one.</p>
+          <p>Húzz ide egy képet, vagy kattints a feltöltéshez!</p>
         </Dropzone>
         <div className={props.buttonClass} onClick={ props.submitPicture }>
-          <p>Set my profile picture</p>
+          <p>Profilkép beállítása</p>
         </div>
       </div>
     </div>

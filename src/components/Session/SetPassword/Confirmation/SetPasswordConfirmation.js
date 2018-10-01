@@ -50,7 +50,7 @@ export const TokenHasExpired = (props) => {
               undefined :
               <p className="resend-link" onClick={props.resendLink}>Resend link</p>
             }
-            <NavLink to="login" className="set-password-confirmation-link">Back to Login</NavLink>
+            <NavLink to="login" className="set-password-confirmation-link">Vissza a bejelentkezéshez</NavLink>
           </div>
         </div>
       </div>
@@ -73,12 +73,12 @@ export const createComponent = (location) => {
                 title: location.state ? 'One moment please' :'Success',
                 image: (<img alt='' src={UpdateImage} />),
                 button: undefined,
-                buttonMessage: location.state ? 'Not logged in automatically? Back to login' : 'Back to Login'
+                buttonMessage: location.state ? 'Not logged in automatically? Vissza a bejelentkezéshez' : 'Vissza a bejelentkezéshez'
             }
         }
     }else{
         return {
-            message: <p className="set-password-confirmation-message">Something went wrong. Please try again!</p>,
+            message: <p className="set-password-confirmation-message">Ajjaj, valami elromlott! Próbáld újra</p>,
             title: 'Oopps',
             image: undefined,
             button: undefined

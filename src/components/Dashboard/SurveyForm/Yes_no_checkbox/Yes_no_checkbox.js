@@ -40,7 +40,7 @@ function Yes_no_checkbox(props) {
 
 
             </div>
-            {props.required && <div className={answerRequiredStyle}>Answer required.</div>}
+            {props.required && <div className={answerRequiredStyle}>Kötelező mező</div>}
             <hr />
         </div>
     )

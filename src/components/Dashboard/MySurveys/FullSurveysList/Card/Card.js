@@ -18,7 +18,7 @@ export default function Card(props) {
             <div className='Card__title'>{title}</div>
             <div className='Card__statistic'>
                 <div className='Card__statistic--icon'></div>
-                <div className='Card__statistic--numbers'>{done_answers} / {total_answers} answers</div>
+                <div className='Card__statistic--numbers'>{done_answers} / {total_answers} válasz</div>
             </div>
             <div className='Card__date'>
                 <div className='Card__date--status'>{isOpen}</div>
@@ -27,9 +27,9 @@ export default function Card(props) {
             <div className='Card__download-buttons'>
                 <NavLink to='#' className="downloadButton">
                     <div className='downloadButton--arrow'></div>
-                    Answers
+                    Válasz
                 </NavLink>
-                <NavLink to={`/my_surveys/${index}`} className="detailsButton">Details</NavLink>
+                <NavLink to={`/my_surveys/${index}`} className="detailsButton">Részletek</NavLink>
             </div>
         </div>
     )

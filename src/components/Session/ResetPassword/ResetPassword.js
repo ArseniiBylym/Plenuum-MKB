@@ -12,17 +12,17 @@ const ResetPassword=(props) => {
         <div className="reset-password-container-form">
           <div className="reset-password-container-form-div">
             <div className="reset-password-title-container">
-              <p className="reset-password-title">Forgot your password?</p>
-              <p className="reset-password-subtitle">Enter your email address to reset your password. You may need to check your spam folder.</p>
+              <p className="reset-password-title">Elfelejtetted a jelszavad?</p>
+              <p className="reset-password-subtitle">Add meg az email címed a jelszó visszaállításához. Előfordulhat, hogy a levél a spam mappába kerül.</p>
             </div>
-            <p className="reset-password-email-label">EMAIL ADDRESS</p>
+            <p className="reset-password-email-label">EMAIL CÍM</p>
             <input type="text" name="reset-email" ref={props.getRefEmail} onChange={props.handleChangeEmail}/>
               <div className="reset-password-button-div">
                 <NavLink className="reset-password-back-login"
                   to="/login"
-                  >Back to login</NavLink>
+                  >Vissza a bejelentkezéshez</NavLink>
                 <div className="reset-password-button" onClick={props.resetPassword}>
-                  <p>Reset my password</p>
+                  <p>Elfelejtetted a jelszavad?</p>
                 </div>
               </div>
           </div>

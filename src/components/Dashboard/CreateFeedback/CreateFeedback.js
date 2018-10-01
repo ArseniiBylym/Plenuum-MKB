@@ -63,7 +63,7 @@ export const bottomContainer = (props) => {
                 (props.message.length > 4 && props.type) ?
                     props.nextButton : undefined
             } >
-                Send Feedback
+                Visszajelzés elküldése
             </button>
         </div>
     );
@@ -109,7 +109,7 @@ export const createFeedbackUI = (props) => {
                         <MessageContainer
                             myStyle="feedback-message-style"
                             name="feedbackMessage"
-                            placeholder="Add your feedback"
+                            placeholder="Visszajelzés hozzáadása"
                             maxLength={200}
                             handleText={props.handleFeedbackMessage}
                             value={props.message}

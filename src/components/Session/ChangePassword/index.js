@@ -68,7 +68,7 @@ class ChangePasswordContainer extends Component {
                     }.bind(this), 2000);
                 })
                 .catch((error) => {
-                    this.state.validationErrors["currentPassword"] = "Incorrect password";
+                    this.state.validationErrors["currentPassword"] = "Hibás jelszó";
                     this.setState({showErrors:true});
                     console.log(error.message);
                 });

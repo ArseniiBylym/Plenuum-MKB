@@ -52,7 +52,7 @@ export const messageComponent = (props) => {
             <MessageContainer
                 myStyle="feedback-message-style"
                 name="requestMessage"
-                placeholder="Add request message"
+                placeholder="Írd le a készséget vagy helyzetet, amire visszajelzést kérsz"
                 maxLength={200}
                 handleText={props.handleRequestMessage}
                 value={props.message}

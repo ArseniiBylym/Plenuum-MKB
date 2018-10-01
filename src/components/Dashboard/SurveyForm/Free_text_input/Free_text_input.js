@@ -32,8 +32,8 @@ function Free_text_input(props) {
 
                     />
                 </div>
-                <div className={classForCounter}>{symbolsLength} characters left</div>
-                {props.required && <div className={answerRequiredStyle}>Answer required.</div>}
+                <div className={classForCounter}>{symbolsLength} betű maradt</div>
+                {props.required && <div className={answerRequiredStyle}>Kötelező mező</div>}
                 <hr />
             </div>
         </div >
@@ -42,4 +42,4 @@ function Free_text_input(props) {
 
 export default Free_text_input
 
-                // {props.required && !props.question.value && <div className='Free_text_input-error-container'>Answer required.</div>}
+                // {props.required && !props.question.value && <div className='Free_text_input-error-container'>Kötelező mező</div>}

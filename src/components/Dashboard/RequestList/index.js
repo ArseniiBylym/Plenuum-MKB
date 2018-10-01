@@ -209,7 +209,7 @@ class RequestListContainer extends Component {
 
             return RequestList({
                 requestsAndTodos:requestsCards,
-                title:"Interact",
+                title:"Feladatok",
                 showMessage:notificationState.showMessage,
                 notification:this.notification.bind(this),
                 mes:notificationState.message,

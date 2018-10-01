@@ -30,9 +30,9 @@ class OptionsListContainer extends Component {
 
     getItems(strings) {
         return [
-            { title: "Interact", path: '/interact', class: 'interact-option' },
-            { title: strings["sidebar-myfeedbacks"], path: '/feedback', class: 'myfeedbacks-option' },
-            { title: "Skills", path: '/skills', class: 'skills-option' },
+            { title: "Feladatok", path: '/interact', class: 'interact-option' },
+            { title: "Visszajelzéseim", path: '/feedback', class: 'myfeedbacks-option' },
+            { title: "Készségek", path: '/skills', class: 'skills-option' },
             { title: "My surveys", path: '/my_surveys', class: 'survey-option' }
 
         ];

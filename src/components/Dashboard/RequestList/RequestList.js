@@ -19,8 +19,8 @@ const RequestList = (props) => {
           }
 
           { props.requestsAndTodos }
-          {/* <SurveySentButton text='Answer sent' /> */}
-          {props.showCompleteSurveyNotification && <SurveySentButton text='Answer sent' />}
+          {/* <SurveySentButton text='Válaszok elküldve' /> */}
+          {props.showCompleteSurveyNotification && <SurveySentButton text='Válaszok elküldve' />}
         </div>
     </div>
     </div>

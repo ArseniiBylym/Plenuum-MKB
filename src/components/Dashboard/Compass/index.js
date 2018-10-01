@@ -22,9 +22,9 @@ const strings = new LocalizedStrings(myLocalization);
 const ReactGA = require('react-ga');
 
 const CompassAnswer = {
-    AGREE:"AGREE",
-    DISAGREE:"DISAGREE",
-    SKIP:"SKIP"
+    AGREE:"Egyetértek",
+    DISAGREE:"Nem értek egyet",
+    SKIP:"Átugrás"
 };
 
 ReactGA.initialize(EnvVariable.googleAnalyticsId);
@@ -79,11 +79,11 @@ const createUserList = (users, allusers, click, searchFor, title, cancelButton) 
 
     let groupTitle;
     if (users.length === allusers.length && users.length > 0) {
-        groupTitle = "All";
+        groupTitle = "Mindenki";
     }else if (users.length > 0 && users.length < allusers.length) {
-        groupTitle = "Results";
+        groupTitle = "Találatok";
     }else{
-        groupTitle = "No Results";
+        groupTitle = "Nincs találat";
     }
 
     return (
@@ -272,7 +272,7 @@ class CompassContainer extends Component {
         ReactGA.event({
             category: 'UI',
             action: 'Click',
-            label: fromTodo ? 'Okay, let’s start!' : 'Answer cards button'
+            label: fromTodo ? 'Oké, kezdjük!' : 'Answer cards button'
         });
         const {currentUser} = this.store.getState();
         const orgId = currentUser.orgId;
