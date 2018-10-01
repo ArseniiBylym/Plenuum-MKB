@@ -36,10 +36,17 @@
 
 }
 .From_1_to_6_checkbox label:hover:before{
-    border-color:#187697 !important;
+    border-color: rgba(0, 0, 0, 0.54) !important;
+    background-color: rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.12);
 }
 .From_1_to_6_checkbox  [type="radio"]:checked+label:before{
     border-color: #187697 !important;
+}
+.From_1_to_6_checkbox  [type="radio"]:checked+label:hover:before{
+    border-color:#187697 !important;
+    background-color: #d9ebf1;
+    box-shadow: 0 0 0 6px  #d9ebf1;
 }
 .From_1_to_6_checkbox  [type="radio"]:checked+label:after {
     background-color: #187697;
