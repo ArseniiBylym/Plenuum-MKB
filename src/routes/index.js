@@ -27,6 +27,8 @@ import MySurveys from '../components/Dashboard/MySurveys/MySurveys';
 import CreateNewSurvey from '../components/Dashboard/CreateNewSurvey/CreateNewSurvey'
 import SurveyDetails from '../components/Dashboard/SurveyDetails/SurveyDetails'
 import SurveyForm from '../components/Dashboard/SurveyForm/SurveyForm';
+import CreateNewSurveyTemplate from '../components/Dashboard/CreateNewSurveyTemplate/CreateNewSurveyTemplate';
+
 
 const MainRoute = (params) => (
     <BrowserRouter onUpdate={params.logPageView()}>
@@ -116,6 +118,10 @@ const DashboardRoutes = (params) => (
         }))}/>
         <Route exact path={Constants.Route.CREATE_NEW_SURVEY} render={(props) => (addPropsToComponent({
             MyComponent: CreateNewSurvey,
+            rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
+        }))}/>
+        <Route exact path={Constants.Route.CREATE_NEW_SURVEY_TEMPLATE} render={(props) => (addPropsToComponent({
+            MyComponent: CreateNewSurveyTemplate,
             rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
         }))}/>
         <Route exact path='/my_surveys/:id' render={(props) => (addPropsToComponent({
