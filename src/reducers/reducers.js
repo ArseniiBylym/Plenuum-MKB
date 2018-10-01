@@ -123,6 +123,11 @@ const incomingSurveys = (state = incoming_surv, action) => {
                 list: survey_list,
                 just_completed: true,
             }
+        case Constants.ReducersActionType.CLEAR_ANSWER_SENT_MESSAGE: 
+            return{
+                ...state, 
+                just_completed: false
+            }
         default: 
             return state;
     }

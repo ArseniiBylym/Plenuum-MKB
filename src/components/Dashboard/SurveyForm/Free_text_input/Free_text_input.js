@@ -34,9 +34,6 @@ function Free_text_input(props) {
                 </div>
                 <div className={classForCounter}>{symbolsLength} characters left</div>
                 {props.required && <div className={answerRequiredStyle}>Answer required.</div>}
-                {/* <div className={props.required && !props.question.value ?
-                    'Free_text_input-error-container' :
-                    'Free_text_input-error-container--hidden'}>Answer required.</div> */}
                 <hr />
             </div>
         </div >

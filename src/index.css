@@ -53,3 +53,7 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
   box-sizing: initial;
   margin: initial;
 }
+
+a:focus {
+  text-decoration: none;
+}

@@ -51,6 +51,10 @@ class RequestListContainer extends Component {
         this.setState({spinner:false})
     }
 
+    componentWillUnmount = () => {
+        this.props.removeAnswerSentMessage();
+    }
+
     creareSurveyComponents(surveys){
         return surveys.map((survey) => {
             return SurveyCardContainer({
@@ -209,7 +213,8 @@ class RequestListContainer extends Component {
                 showMessage:notificationState.showMessage,
                 notification:this.notification.bind(this),
                 mes:notificationState.message,
-                col:notificationState.color
+                col:notificationState.color,
+                showCompleteSurveyNotification: this.props.isJustCompleted
             });
 
         }else{
@@ -251,8 +256,15 @@ RequestListContainer.contextTypes = {
 
 const mapStateToProps = state => {
     return {
-        incoming_surveys: state.incomingSurveys.list
+        incoming_surveys: state.incomingSurveys.list,
+        isJustCompleted: state.incomingSurveys.just_completed
     }
 }
 
-export default connect(mapStateToProps, null)(RequestListContainer);
+const mapDispatchToProps = dispatch => {
+    return {
+        removeAnswerSentMessage: () => {dispatch({type: "CLEAR_ANSWER_SENT_MESSAGE"})}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RequestListContainer);
