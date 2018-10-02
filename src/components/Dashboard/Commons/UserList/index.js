@@ -4,7 +4,6 @@ import UserList from './UserList.js';
 import UserCellContainer from '../UserCell/index.js';
 
 const convertToCells=(array, features) => {
-  console.log(array)
   const { ContainerCell, accessory, clickUser }=features;
   if (ContainerCell) {
     return array.map((user) => {

@@ -7,6 +7,8 @@ import Api from '../../../lib/api';
 import UserListContainer from '../Commons/UserList/index.js';
 import { searchUsersComponent } from  '../MyFeedbacks/MyContent.js';
 import SearchContainer from '../Commons/Search/index.js';
+import { connect } from 'react-redux';
+import { Utils } from '../../../lib/utils';
 
 class ProfileSettingsContainer extends Component {
 
@@ -15,6 +17,7 @@ class ProfileSettingsContainer extends Component {
 
         this.store = context.store;
         this.setUserData();
+        this.utils = Utils();
 
         this.handleTextField = this.handleTextField.bind(this);
         this.handleEdition = this.handleEdition.bind(this);
@@ -24,8 +27,20 @@ class ProfileSettingsContainer extends Component {
         this.handlePictureChange = this.handlePictureChange.bind(this);
     }
 
-    setUserData() {
+    setUserData = () => {
         const user = this.store.getState().currentUser;
+        const usersManager = this.props.usersManager
+
+        let managerProfilePicture = ''
+        let managerProfileFullName = ''
+        let managerProfileId = ''
+
+        if(usersManager) {
+            managerProfilePicture = usersManager.pictureUrl;
+            managerProfileFullName = usersManager.fullName;
+            managerProfileId = usersManager._id;
+        }
+
         this.state = {
             firstName: user.firstName,
             lastName: user.lastName,
@@ -37,15 +52,14 @@ class ProfileSettingsContainer extends Component {
             setPic: false,
             uploadedImage: undefined,
             changePassword: undefined,
-
             allManagers: [],
             searchedManager: [],
             searchPage: false,
             managerSelected: false,
             selectedManager:{
-                managerProfilePicture:'/profile.1623f812.svg',
-                fullName:'',
-                _id:''
+                managerProfilePicture: `${managerProfilePicture}`,
+                fullName: `${managerProfileFullName}`,
+                _id: `${managerProfileId}`
             },
             selectLineManager:false
         }
@@ -103,23 +117,51 @@ class ProfileSettingsContainer extends Component {
     }
 
     componentDidMount = () => {
-        this.getManagers(),
         this.setUserData()
+        this.getManagers()
     }
+
     handleUserClick = (clickedManager) => {
         const { firstName, lastName, pictureUrl = '/profile.1623f812.svg', _id } = clickedManager;
         const fullName = firstName + ' ' + lastName;
-        this.setState({selectedManager: {
-            managerProfilePicture: pictureUrl,
-            fullName,
-            _id}})
-        this.setState( (prev) => ({searchPage: !prev.searchPage, selectLineManager:false }))
+        this.props.addManagerToUserProfile(pictureUrl, fullName, _id);
+        this.setState((prevState) => {
+            return{
+                selectedManager: {
+                    managerProfilePicture: pictureUrl,
+                    fullName,
+                    _id
+                },
+                searchPage: !prevState.searchPage, 
+                selectLineManager:false 
+            }
+                
+        })
+        // this.setState( (prev) => ({searchPage: !prev.searchPage, selectLineManager:false }))
+    }
+    searchFor = (event) => {
+        const { currentUser } = this.store.getState();
+        const string = event ? event.target.value : "";
+        const { allManagers } = this.state;
+        let resultManager = allManagers.filter((element) => {
+          let strings = string.replace(/\s/g, '');
+
+          let fullName = element.firstName.replace(/\s/g, '') + '' + element.lastName.replace(/\s/g, '');
+          let nameFull = element.lastName.replace(/\s/g, '') + '' + element.firstName.replace(/\s/g, '');
+
+          return fullName.toLowerCase().includes(strings.toLowerCase())
+          || nameFull.toLowerCase().includes(strings.toLowerCase());
+        });
+
+        resultManager = this.utils.sortUsers( resultManager );
+        this.setState( {searchedManager: resultManager} );
     }
     //----------For manager select
 
     componentWillMount(){
         this.handleEdition();
     }
+   
 
     handleChangePassword(shouldOpen) {
         let changePassword;
@@ -258,4 +300,16 @@ ProfileSettingsContainer.contextTypes = {
     store: PropTypes.object
 };
 
-export default ProfileSettingsContainer;
+const mapStateToProps = state => {
+    return{
+        usersManager: state.currentUser.manager
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return{
+        addManagerToUserProfile: (pictureUrl, fullName, _id) => {dispatch({type: "ADD_USERS_MANAGER", manager: {pictureUrl, fullName, _id}})}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileSettingsContainer)
