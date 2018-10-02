@@ -7,8 +7,10 @@ import PrivacyContainer from './Privacy/index.js';
 import MessageContainer from '../Commons/Message/index.js';
 import Quotation from '../../../resources/quotation.svg';
 import FeedbackTypeContainer from './FeedbackType/index.js';
+import ManagerVisibilityContainer from './ManagerVisibility/index.js';
 
 const CreateFeedback = (props) => {
+    // console.log(props)
   return (
     <div>
       <DefaultNavigationBarContainer
@@ -43,6 +45,7 @@ export const userList = (props) => {
 };
 
 export const bottomContainer = (props) => {
+    // console.log(props)
     return (
         <div className="createFeedback-bottom-div margin-top-1">
             <TagList
@@ -53,6 +56,11 @@ export const bottomContainer = (props) => {
             <PrivacyContainer
                 handleCheckBox={props.handleCheckBox}
                 user={props.recipient}
+            />
+            <ManagerVisibilityContainer 
+                 handleCheckBox={props.handleCheckBox}
+                 user={props.recipient}
+                 isChecked={props.isManagerVisibilityChecked}
             />
             <button disabled={props.disabled}
                 className={

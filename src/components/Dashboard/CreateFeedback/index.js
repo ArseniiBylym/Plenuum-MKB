@@ -39,7 +39,8 @@ class CreateFeedbackContainer extends Component {
             ready: false,
             tags: undefined,
             selectedTags: [],
-            buttonDisabled:false
+            buttonDisabled:false,
+            managerVisibility: true
         };
 
         this.handleUserClick = this.handleUserClick.bind(this);
@@ -76,9 +77,32 @@ class CreateFeedbackContainer extends Component {
         this.setState({user: user._id, page: this.state.page + 1,title: "New Feedback"});
     }
 
+    componentDidUpdate = () => {
+        console.log(this.state.anonimity)
+        console.log(this.state.managerVisibility)
+    }
+
     handleCheckBox(e){
+        // console.log(e.target.name)
+        // console.log(e.target.checked)
         if (e.target.name === "anonimity") {
-            this.setState({anonimity: e.target.value  === "user" ? false : true})
+            this.setState((prevState) => {
+                // return{
+                //     anonimity: e.target.value  === "user" ? false : true
+                // }
+                return{
+                    anonimity: !prevState.anonimity
+                }
+            })
+        }
+
+        if (e.target.name === "managerVisibility") {
+            // e.target.checked = !e.target.checked
+            this.setState((prevState) => {
+                return {
+                    managerVisibility: !prevState.managerVisibility
+                }
+            })
         }
     }
 
@@ -177,8 +201,9 @@ class CreateFeedbackContainer extends Component {
                 'recipientId': this.state.user,
                 'message': this.state.message,
                 'type': this.state.type,
-                'privacy': flags,
-                //temp fix
+                'privacy': flags,                                  //-------------------------
+                'managerVisible': this.state.managerVisibility,   // Need to know correnct field
+                //temp fix                                       //---------------------------
                 'requestId': route.location.state && route.location.state.fromRequest ? route.location.state.fromRequest._id : "",
                 'tags': this.state.selectedTags
             });
@@ -260,6 +285,7 @@ class CreateFeedbackContainer extends Component {
                     type:this.state.type,
                     nextButton:this.nextButton,
                     disabled:this.state.buttonDisabled,
+                    isManagerVisibilityChecked: this.state.managerVisibility,
                     recipient});
             }else{
                 bottomPart = undefined;
@@ -320,6 +346,7 @@ class CreateFeedbackContainer extends Component {
                 title:this.state.title,
                 backButton:createBackButton(this.cancelButton, undefined),
                 cancelButton:this.cancelButton});
+                // handleCheckBox:this.handleCheckBox
         } else {
             return spinner();
         }

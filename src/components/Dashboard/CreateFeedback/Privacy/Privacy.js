@@ -3,6 +3,7 @@ import React from 'react';
 import './Privacy.css'
 
 const Privacy = (props) => {
+    // console.log(props)
   return (
       <div className="privacy-container margin-top-1">
           <div className="privacy-checkbox">
