@@ -32,9 +32,37 @@ class ProfileSettingsContainer extends Component {
             edit: false,
             setPic: false,
             uploadedImage: undefined,
-            changePassword: undefined
+            changePassword: undefined,
+
+            searchPage: false,
+            managerSelected: false,
+            selectedManager:{
+                managerProfilePicture:'/profile.1623f812.svg',
+                fullName:'Válaszd ki a vezetőd',
+                _id:''
+            },
+            selectLineManager:false
         }
     }
+
+    //----------For manager select
+    openSearch() {
+        this.setState({
+            searchPage: !this.state.searchPage,
+        });
+    }
+    deleteSelectedManager(e){
+        e.stopPropagation
+        this.setState({
+            selectedManager: {},
+            selectLineManager:true 
+        })
+    }
+
+    selectLineManager(){
+        this.setState( (prev) => ({ selectLineManager: !prev.selectLineManager }) )
+    }
+    //----------For manager select
 
     componentWillMount(){
         this.handleEdition();
@@ -116,16 +144,41 @@ class ProfileSettingsContainer extends Component {
 
     render(){
         const user = this.store.getState().currentUser;
-        return ProfileSettings({
-            user,
-            dropzone:this.dropzone,
-            setPic:this.handlePictureChange,
-            actions:this.actions,
-            handleTextField:!this.state.edit ? this.handleTextField : undefined,
-            handleChangePassword:this.handleChangePassword,
-            readOnly:this.state.edit,
-            userDescription:"",
-            changePassword:this.state.changePassword ? this.state.changePassword : ""});
+        return (
+            <ProfileSettings 
+                user={user}
+                setPic={this.handlePictureChange}
+                actions={this.actions}
+                handleTextField={!this.state.edit ? this.handleTextField : undefined}
+                handleChangePassword={this.handleChangePassword}
+                readOnly={this.state.edit}
+                userDescription=""
+                changePassword={this.state.changePassword ? this.state.changePassword : ""}
+
+                selectManager={ this.openSearch }
+                managerProfilePicture={ this.state.selectedManager.managerProfilePicture }
+                managerFullName={ this.state.selectedManager.fullName }
+                deleteSelectedManager={ this.deleteSelectedManager.bind(this) }
+                selectLineManager = { this.selectLineManager.bind(this) }
+                managerSelected = { this.state.selectLineManager }
+            />
+        )
+
+        // return ProfileSettings({
+        //     user,
+        //     dropzone:this.dropzone,
+        //     setPic:this.handlePictureChange,
+        //     actions:this.actions,
+        //     handleTextField:!this.state.edit ? this.handleTextField : undefined,
+        //     handleChangePassword:this.handleChangePassword,
+        //     readOnly:this.state.edit,
+        //     userDescription:"",
+        //     changePassword:this.state.changePassword ? this.state.changePassword : "",
+            
+            
+        // },
+       
+        // );
     }
 }
 

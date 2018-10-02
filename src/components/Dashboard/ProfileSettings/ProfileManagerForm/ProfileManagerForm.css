@@ -1,0 +1,13 @@
+.ProfileManagerForm.survey-form-container{
+    position: relative;
+    /* width: 300px; */
+    margin-left: 30px;
+}
+.ProfileManagerForm > div {
+    height: 100%;
+}
+.ProfileManagerForm .select-manager {
+    height: 100%;
+    margin: 0;
+    padding: 10px;
+}
