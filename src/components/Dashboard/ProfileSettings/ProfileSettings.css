@@ -249,3 +249,9 @@ align-items: center;
 .settings-data.manager-select > label{
   margin: 0;
 }
+
+.mycontent-search-container.select-manager{
+  top: 0;
+  /* background-color: pink; */
+  
+}

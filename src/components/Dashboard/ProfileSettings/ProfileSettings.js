@@ -58,7 +58,12 @@ const ProfileSettings = (props) => {
             <label>
               Line manager
                 </label>
-                <ProfileManegerForm />
+                <ProfileManegerForm 
+                  selectManager={props.selectManager}
+                  managerFullName={props.managerFullName}
+                  managerProfilePicture={props.managerProfilePicture}
+                  deleteSelectedManager={props.deleteSelectedManager}
+                />
           </div>
          
         </div>
