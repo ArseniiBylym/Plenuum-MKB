@@ -28,6 +28,7 @@ import CreateNewSurvey from '../components/Dashboard/CreateNewSurvey/CreateNewSu
 import SurveyDetails from '../components/Dashboard/SurveyDetails/SurveyDetails'
 import SurveyForm from '../components/Dashboard/SurveyForm/SurveyForm';
 import CreateNewSurveyTemplate from '../components/Dashboard/CreateNewSurveyTemplate/CreateNewSurveyTemplate';
+import MyTeam from '../components/Dashboard/MyTeam/MyTeam';
 
 
 const MainRoute = (params) => (
@@ -126,6 +127,10 @@ const DashboardRoutes = (params) => (
         }))}/>
         <Route exact path='/my_surveys/:id' render={(props) => (addPropsToComponent({
             MyComponent: SurveyDetails,
+            rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
+        }))}/>
+         <Route exact path={Constants.Route.MY_TEAM} render={(props) => (addPropsToComponent({
+            MyComponent: MyTeam,
             rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
         }))}/>
 

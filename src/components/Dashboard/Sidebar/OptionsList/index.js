@@ -33,8 +33,8 @@ class OptionsListContainer extends Component {
             { title: "Interact", path: '/interact', class: 'interact-option' },
             { title: strings["sidebar-myfeedbacks"], path: '/feedback', class: 'myfeedbacks-option' },
             { title: "Skills", path: '/skills', class: 'skills-option' },
-            { title: "My surveys", path: '/my_surveys', class: 'survey-option' }
-
+            { title: "My surveys", path: '/my_surveys', class: 'survey-option' },
+            { title: "Közvetlen beosztottak", path: '/my_team', class: 'my_team-option' },
         ];
     }
 

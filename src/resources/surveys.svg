@@ -1,4 +1,3 @@
-
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewBox="0 0 25 25">
     <defs>
         <path id="a" d="M0 0h3v3H0z"/>
@@ -10,15 +9,15 @@
             <mask id="b" fill="#fff">
                 <use xlink:href="#a"/>
             </mask>
-            <circle cx="3" r="2.5" fill-rule="nonzero" stroke="#919191" mask="url(#b)"/>
+            <circle cx="3" r="2.5" fill-rule="nonzero" stroke="#187697" mask="url(#b)"/>
         </g>
-        <path fill="#919191" fill-rule="nonzero" d="M16 6h1v14h-1zM21 17h1v3h-1zM4 6h1v14H4z"/>
-        <path fill="#919191" fill-rule="nonzero" d="M4 6h13v1H4zM6 8h9v1H6zM6 10h7v1H6zM6 12h8v1H6zM6 14h6v1H6zM7 22h12v1H7zM16 17h6v1h-6z"/>
+        <path fill="#187697" fill-rule="nonzero" d="M16 6h1v14h-1zM21 17h1v3h-1zM4 6h1v14H4z"/>
+        <path fill="#187697" fill-rule="nonzero" d="M4 6h13v1H4zM6 8h9v1H6zM6 10h7v1H6zM6 12h8v1H6zM6 14h6v1H6zM7 22h12v1H7zM16 17h6v1h-6z"/>
         <g transform="translate(16 20)">
             <mask id="d" fill="#fff">
                 <use xlink:href="#c"/>
             </mask>
-            <circle cx="3" r="2.5" fill-rule="nonzero" stroke="#919191" mask="url(#d)"/>
+            <circle cx="3" r="2.5" fill-rule="nonzero" stroke="#187697" mask="url(#d)"/>
         </g>
     </g>
 </svg>
