@@ -3,7 +3,6 @@ import './FeedbackCard.css';
 import moment from 'moment';
 
 const FeedbackCard = (props) => {
-  console.log(props)
   return (
     <div className="feedback-container" onClick={props.onClick}>
       <div className="feedback-wing-overlap" style={{backgroundColor: props.type.color}}>

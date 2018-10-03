@@ -39,7 +39,9 @@ class FeedbackDetailContainer extends Component {
                 feedback: this.object.feedback,
                 request: undefined,
                 requestObj: undefined,
-                currentUser: undefined
+                currentUser: undefined,
+                isAbusiveModalShow: false,
+                abusiveFeedbackJustSended: false
             };
         }
 
@@ -115,7 +117,6 @@ class FeedbackDetailContainer extends Component {
         //     + monthNames[createdAt.getMonth()] + "."
         //     + createdAt.getFullYear();
         const dateString = moment(createdAt).format('YYYY.MM.DD • HH.MM')
-        console.log(dateString)    
         
         let anonymous = false;
         let privacy = false;
@@ -262,6 +263,24 @@ class FeedbackDetailContainer extends Component {
         }
     }
 
+    showAbusiveModalHandler = () => {
+        this.setState({
+            isAbusiveModalShow: true
+        })
+    }
+    hideAbusiveModalHandler = () => {
+        this.setState({
+            isAbusiveModalShow: false
+        })
+    }
+    sentToManagerHandler = () => {
+        console.log('Abusive feedback was sended to the manager');
+        this.hideAbusiveModalHandler();
+        this.setState({
+            abusiveFeedbackJustSended: true
+        })
+    }
+
     render() {
         const {requestObj, request, currentUser} = this.state;
         if (currentUser === undefined || (!this.object
@@ -271,9 +290,27 @@ class FeedbackDetailContainer extends Component {
             return spinner();
         } else {
             const feedback = this.createFeedbackDetail(this.object.feedback);
-            return FeedbackDetail({
-                feedback,
-                close:this.close});
+            console.log(this.props.detail.type)
+            if(this.props.detail.type == 0){
+                console.log('case 0')
+                return FeedbackDetail({
+                    feedback,
+                    close:this.close,
+                    showModalMenuIcon: true,
+                    isAbusiveModalShow: this.state.isAbusiveModalShow,
+                    showAbusiveModal: this.showAbusiveModalHandler,
+                    hideAbusiveModal: this.hideAbusiveModalHandler,
+                    sentToManager: this.sentToManagerHandler,
+                    abusiveFeedbackJustSended: this.state.abusiveFeedbackJustSended
+                });
+            } else {
+                console.log('case 1')
+                return FeedbackDetail({
+                    feedback,
+                    close:this.close,
+                    
+                });
+            }
         }
     }
 }

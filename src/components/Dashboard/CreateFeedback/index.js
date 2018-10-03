@@ -77,11 +77,6 @@ class CreateFeedbackContainer extends Component {
         this.setState({user: user._id, page: this.state.page + 1,title: "New Feedback"});
     }
 
-    componentDidUpdate = () => {
-        console.log(this.state.anonimity)
-        console.log(this.state.managerVisibility)
-    }
-
     handleCheckBox(e){
         // console.log(e.target.name)
         // console.log(e.target.checked)
