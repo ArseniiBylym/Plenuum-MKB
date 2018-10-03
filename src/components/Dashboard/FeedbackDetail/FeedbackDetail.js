@@ -4,7 +4,7 @@ import Quotation from '../../../resources/quotation.svg';
 import DefaultPic from '../../../resources/profile.svg';
 
 const FeedbackDetail = (props) => {
-
+console.log(props)
   return (
       <div className="feedback-detail-super-container container-fluid">
           <div className="feedback-detail-top row">
@@ -51,6 +51,9 @@ const FeedbackDetail = (props) => {
                       <div className="small-card">
                           {props.feedback.sentAs}
                       </div>
+                      <div className="small-card">
+                          {props.feedback.managerVisibility}
+                      </div>
                   </div>
               </div>
               <div className="col-sm-2 next-next-container">
@@ -64,6 +67,18 @@ const FeedbackDetail = (props) => {
 export const sentAsComponent = (props) => {
     return (
         <div className="feedback-detail-sentAs">
+          <img alt="" className='small-image'
+               src={props.imageSrc && props.imageSrc != ""? props.imageSrc : DefaultPic}/>
+          <div className="text-card">
+              {props.text}
+          </div>
+        </div>
+    );
+};
+
+export const managerVisibilityComponent = (props) => {
+    return (
+        <div className="feedback-detail-sentAs feedback-detail-managerVisibility">
           <img alt="" className='small-image'
                src={props.imageSrc && props.imageSrc != ""? props.imageSrc : DefaultPic}/>
           <div className="text-card">

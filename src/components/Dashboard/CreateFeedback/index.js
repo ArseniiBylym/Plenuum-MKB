@@ -195,6 +195,9 @@ class CreateFeedbackContainer extends Component {
             if (this.state.anonimity === true) {
                 flags.push(Constants.FeedbackPrivacy.ANONYMOUS);
             }
+            if(this.state.managerVisibility == false) {
+                flags.push(Constants.FeedbackPrivacy.PRIVATE)
+            }
 
             const feedback = JSON.stringify({
                 'senderId': this.userId,
@@ -202,7 +205,7 @@ class CreateFeedbackContainer extends Component {
                 'message': this.state.message,
                 'type': this.state.type,
                 'privacy': flags,                                  //-------------------------
-                'managerVisible': this.state.managerVisibility,   // Need to know correnct field
+                // 'managerVisible': this.state.managerVisibility,   // Need to know correnct field
                 //temp fix                                       //---------------------------
                 'requestId': route.location.state && route.location.state.fromRequest ? route.location.state.fromRequest._id : "",
                 'tags': this.state.selectedTags
