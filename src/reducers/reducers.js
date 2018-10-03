@@ -70,6 +70,15 @@ const currentUser = (state = {}, action) => {
                 ...state,
                 pictureUrl: action.pictureUrl
             };
+        case Constants.ReducersActionType.ADD_USERS_MANAGER:
+            return{
+                ...state,
+                manager: {
+                    pictureUrl: action.manager.pictureUrl,
+                    fullName: action.manager.fullName,
+                    _id: action.manager._id
+                }
+            }
         default:
             return state;
     }

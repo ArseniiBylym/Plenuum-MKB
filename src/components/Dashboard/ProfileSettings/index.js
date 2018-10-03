@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import ProfileSettings, {editActions, editSaveActions} from './ProfileSettings.js';
 import ChangePasswordContainer from '../../Session/ChangePassword/index.js';
 import SetPictureContainer from './SetPicture/index.js';
+import Api from '../../../lib/api';
+import UserListContainer from '../Commons/UserList/index.js';
+import { searchUsersComponent } from  '../MyFeedbacks/MyContent.js';
+import SearchContainer from '../Commons/Search/index.js';
+import { connect } from 'react-redux';
+import { Utils } from '../../../lib/utils';
 
 class ProfileSettingsContainer extends Component {
 
@@ -11,6 +17,7 @@ class ProfileSettingsContainer extends Component {
 
         this.store = context.store;
         this.setUserData();
+        this.utils = Utils();
 
         this.handleTextField = this.handleTextField.bind(this);
         this.handleEdition = this.handleEdition.bind(this);
@@ -20,8 +27,20 @@ class ProfileSettingsContainer extends Component {
         this.handlePictureChange = this.handlePictureChange.bind(this);
     }
 
-    setUserData() {
+    setUserData = () => {
         const user = this.store.getState().currentUser;
+        const usersManager = this.props.usersManager
+
+        let managerProfilePicture = ''
+        let managerProfileFullName = ''
+        let managerProfileId = ''
+
+        if(usersManager) {
+            managerProfilePicture = usersManager.pictureUrl;
+            managerProfileFullName = usersManager.fullName;
+            managerProfileId = usersManager._id;
+        }
+
         this.state = {
             firstName: user.firstName,
             lastName: user.lastName,
@@ -32,13 +51,117 @@ class ProfileSettingsContainer extends Component {
             edit: false,
             setPic: false,
             uploadedImage: undefined,
-            changePassword: undefined
+            changePassword: undefined,
+            allManagers: [],
+            searchedManager: [],
+            searchPage: false,
+            managerSelected: false,
+            selectedManager:{
+                managerProfilePicture: `${managerProfilePicture}`,
+                fullName: `${managerProfileFullName}`,
+                _id: `${managerProfileId}`
+            },
+            selectLineManager:false
         }
     }
+
+    //----------For manager select
+    openSearch = () => {
+        this.setState({
+            searchPage: !this.state.searchPage,
+        });
+    }
+    deleteSelectedManager(e){
+        e.stopPropagation
+        this.setState({
+            selectedManager: {},
+            selectLineManager:true 
+        })
+    }
+
+    selectLineManager(){
+        this.setState( (prev) => ({ selectLineManager: !prev.selectLineManager }) )
+    }
+    getManagers() {
+        const { currentUser } = this.store.getState();
+        if ( currentUser ) {
+            const orgId = currentUser.orgId;
+            Api.users( orgId )
+                .then(( allManagers ) => {
+                    const managersWithoutMe = allManagers.filter((element) => {
+                        return element._id !== currentUser._id;
+                    });
+                    managersWithoutMe.sort( (a, b) => {
+                        var nameA = a.firstName.toLowerCase();
+                        var nameB = b.firstName.toLowerCase();
+                        var secondNameA = a.lastName.toLowerCase();
+                        var secondNameB = b.lastName.toLowerCase();
+                        if (nameA < nameB) {
+                            return -1;
+                        }
+                        if (nameA > nameB) {
+                            return 1;
+                        }
+                        if (secondNameA < secondNameB) {
+                            return -1;
+                        }
+                        if (secondNameA > secondNameB) {
+                            return 1;
+                        }
+                        return 0;
+                    } );
+                    this.setState({ allManagers: managersWithoutMe, searchedManager: managersWithoutMe});
+                })
+                .catch((error) => { console.log(error.message) });
+        }
+    }
+
+    componentDidMount = () => {
+        this.setUserData()
+        this.getManagers()
+    }
+
+    handleUserClick = (clickedManager) => {
+        const { firstName, lastName, pictureUrl = '/profile.1623f812.svg', _id } = clickedManager;
+        const fullName = firstName + ' ' + lastName;
+        this.props.addManagerToUserProfile(pictureUrl, fullName, _id);
+        this.setState((prevState) => {
+            return{
+                selectedManager: {
+                    managerProfilePicture: pictureUrl,
+                    fullName,
+                    _id
+                },
+                searchPage: !prevState.searchPage, 
+                selectLineManager:false 
+            }
+                
+        })
+        // this.setState( (prev) => ({searchPage: !prev.searchPage, selectLineManager:false }))
+    }
+    searchFor = (event) => {
+        const { currentUser } = this.store.getState();
+        const string = event ? event.target.value : "";
+        const { allManagers } = this.state;
+        let resultManager = allManagers.filter((element) => {
+          let strings = string.replace(/\s/g, '');
+
+          let fullName = element.firstName.replace(/\s/g, '') + '' + element.lastName.replace(/\s/g, '');
+          let nameFull = element.lastName.replace(/\s/g, '') + '' + element.firstName.replace(/\s/g, '');
+
+          return fullName.toLowerCase().includes(strings.toLowerCase())
+          || nameFull.toLowerCase().includes(strings.toLowerCase());
+        });
+
+        resultManager = this.utils.sortUsers( resultManager );
+        this.setState( {searchedManager: resultManager} );
+    }
+    //----------For manager select
 
     componentWillMount(){
         this.handleEdition();
     }
+   
 
     handleChangePassword(shouldOpen) {
         let changePassword;
@@ -116,16 +239,60 @@ class ProfileSettingsContainer extends Component {
 
     render(){
         const user = this.store.getState().currentUser;
-        return ProfileSettings({
-            user,
-            dropzone:this.dropzone,
-            setPic:this.handlePictureChange,
-            actions:this.actions,
-            handleTextField:!this.state.edit ? this.handleTextField : undefined,
-            handleChangePassword:this.handleChangePassword,
-            readOnly:this.state.edit,
-            userDescription:"",
-            changePassword:this.state.changePassword ? this.state.changePassword : ""});
+        const { searchPage, searchedManager, allManagers } = this.state;
+        let groupTitle;
+
+        if (searchedManager.length - 1 === allManagers.length - 1) {
+            groupTitle = "All";
+        } else if (searchedManager.length > 0 && searchedManager.length < allManagers.length - 1) {
+            groupTitle = "Results";
+        } else {
+            groupTitle = "No Results";
+        }
+        const search = (<SearchContainer
+            searchFor={ this.searchFor }
+            customClass='filter-manager'
+        />);
+        let managersList = null;
+        if(this.state.searchPage) {
+            managersList = searchUsersComponent({
+                userList: <UserListContainer
+                        users={ searchedManager }
+                        handleUserClick={this.handleUserClick}
+                    />,
+                    openSearch:this.openSearch,
+                    searchTitle:'Válaszd ki a vezetőd',
+                    search,
+                    groupTitle,
+                    className:"select-manager"
+                })
+        }
+        
+        return (
+            <div>
+
+            <ProfileSettings 
+                user={user}
+                setPic={this.handlePictureChange}
+                actions={this.actions}
+                handleTextField={!this.state.edit ? this.handleTextField : undefined}
+                handleChangePassword={this.handleChangePassword}
+                readOnly={this.state.edit}
+                userDescription=""
+                changePassword={this.state.changePassword ? this.state.changePassword : ""}
+                
+                selectManager={ this.openSearch }
+                managerProfilePicture={ this.state.selectedManager.managerProfilePicture }
+                managerFullName={ this.state.selectedManager.fullName }
+                deleteSelectedManager={ this.deleteSelectedManager.bind(this) }
+                selectLineManager = { this.selectLineManager.bind(this) }
+                managerSelected = { this.state.selectLineManager }
+                />
+                { this.state.searchPage && <div className="overlay" onClick={this.openSearch}/> }
+                {managersList}
+               
+            </div>
+        )
     }
 }
 
@@ -133,4 +300,16 @@ ProfileSettingsContainer.contextTypes = {
     store: PropTypes.object
 };
 
-export default ProfileSettingsContainer;
+const mapStateToProps = state => {
+    return{
+        usersManager: state.currentUser.manager
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return{
+        addManagerToUserProfile: (pictureUrl, fullName, _id) => {dispatch({type: "ADD_USERS_MANAGER", manager: {pictureUrl, fullName, _id}})}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileSettingsContainer)

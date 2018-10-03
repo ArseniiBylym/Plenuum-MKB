@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import FeedbackDetail, {sentAsComponent, nextButton, previousButton, totalCounter, request} from './FeedbackDetail.js';
+import FeedbackDetail, {sentAsComponent, managerVisibilityComponent, nextButton, previousButton, totalCounter, request} from './FeedbackDetail.js';
 import ContinueIMG from '../../../resources/continue-38.svg';
 import ConsiderIMG from '../../../resources/consider-38.svg';
 import Lock from '../../../resources/hidden.png';
 import Unlock from '../../../resources/unlock_icon.png';
 import MaskAnon from '../../../resources/anonim.png';
+import LockClosedIcon from '../../../resources/lock@2x.png';
+import LockOpenIcon from '../../../resources/unlock@2x.png';
 import ProfileAnon from '../../../resources/anonymous_profile@1x.png';
 import Api from '../../../lib/api';
 import {EnvVariable} from '../../../config';
@@ -151,6 +153,12 @@ class FeedbackDetailContainer extends Component {
             sentAs = sentAsComponent(options);
         }
 
+        let managerVisibility = undefined;
+        const managerOptions = privacy ? {imageSrc: Lock, text: 'Hidden from your manager'} :
+            {imageSrc: Unlock, text: 'Visible to your manager'};
+            managerVisibility = managerVisibilityComponent(managerOptions)
+
+
         const currentIndex = this.object.feedbacks.findIndex((element) => {
             return element._id === feedback._id;
         });
@@ -196,6 +204,7 @@ class FeedbackDetailContainer extends Component {
                 : "feedback-detail-type-continue",
             request: type === 1 ? this.state.request : undefined,
             sentAs: sentAs,
+            managerVisibility: managerVisibility,
             tags: tags,
             page: currentIndex + 1,
             total: total,
