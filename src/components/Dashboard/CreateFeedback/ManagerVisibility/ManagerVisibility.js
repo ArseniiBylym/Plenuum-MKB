@@ -13,7 +13,7 @@ const ManagerVisibility = (props) => {
                   onChange={props.handleChange}
                   checked={props.isChecked ? true : false}
               />
-              <label htmlFor="managerVisibility">Visible to your manager</label>
+              <label htmlFor="managerVisibility">Látható a vezetőd számára</label>
           </div>
 
       </div>

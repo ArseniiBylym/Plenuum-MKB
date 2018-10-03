@@ -154,8 +154,8 @@ class FeedbackDetailContainer extends Component {
         }
 
         let managerVisibility = undefined;
-        const managerOptions = privacy ? {imageSrc: Lock, text: 'Hidden from your manager'} :
-            {imageSrc: Unlock, text: 'Visible to your manager'};
+        const managerOptions = privacy ? {imageSrc: Lock, text: 'Nem látható a vezetőd számára'} :
+            {imageSrc: Unlock, text: 'Látható a vezetőd számára'};
             managerVisibility = managerVisibilityComponent(managerOptions)
 
 

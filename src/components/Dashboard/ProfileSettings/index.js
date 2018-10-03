@@ -243,11 +243,11 @@ class ProfileSettingsContainer extends Component {
         let groupTitle;
 
         if (searchedManager.length - 1 === allManagers.length - 1) {
-            groupTitle = "All";
+            groupTitle = "Mindenki";
         } else if (searchedManager.length > 0 && searchedManager.length < allManagers.length - 1) {
-            groupTitle = "Results";
+            groupTitle = "Találatok";
         } else {
-            groupTitle = "No Results";
+            groupTitle = "Nincs találat";
         }
         const search = (<SearchContainer
             searchFor={ this.searchFor }

@@ -33,7 +33,7 @@ const ProfileSettings = (props) => {
         </div>
         <hr className='user-data-divider' />
         <div className="section-header">
-          <div className="section-header-title">PERSONAL</div>
+          <div className="section-header-title">SZEMÉLYES</div>
           {props.actions}
         </div>
         <div className="settings-form-information">
@@ -56,7 +56,7 @@ const ProfileSettings = (props) => {
           </div>
           <div className="settings-data manager-select">
             <label>
-              Line manager
+            Közvetlen vezető
                 </label>
                 <ProfileManegerForm 
                   selectManager={props.selectManager}
@@ -69,17 +69,17 @@ const ProfileSettings = (props) => {
         </div>
         <hr className='user-data-divider' />
         <div className="section-header">
-          <div className="section-header-title">SECURITY</div>
+          <div className="section-header-title">BIZTONSÁG</div>
         </div>
         <div className="settings-form-information">
           <div className="settings-data">
             <label>
-              Password
+            Jelszó
                 </label>
             <input
               className="edit-password"
               name="password"
-              value="Reset my password"
+              value="Jelszó visszaállítása"
               type="button"
               onClick={props.handleChangePassword.bind(this, true)}
             />
@@ -93,8 +93,8 @@ const ProfileSettings = (props) => {
 export const editSaveActions = (props) => {
   return (
     <div className="settings-user-actions" >
-      <p onClick={props.handleEdition}>Cancel</p>
-      <p onClick={props.handleSave}>Save</p>
+      <p onClick={props.handleEdition}>Mégse</p>
+      <p onClick={props.handleSave}>Mentés</p>
     </div>
   );
 };
@@ -102,7 +102,7 @@ export const editSaveActions = (props) => {
 export const editActions = (props) => {
   return (
     <div className="settings-user-actions">
-      <p onClick={props.handleEdition}>Edit</p>
+      <p onClick={props.handleEdition}>Szerk.</p>
     </div>
   );
 };
