@@ -34,7 +34,6 @@ import { NavLink } from 'react-router-dom';
 import PlenuumBot from '../../../../resources/plenuum-bot-face.svg';
 
 const SurveyCard = (props) => {
-  console.log(props)
   function onClickHandler (e) {
     if(props.survey.completed) {
       e.preventDefault()

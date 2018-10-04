@@ -2,8 +2,6 @@ import React from 'react';
 import './From_1_to_6_checkbox.css';
 
 function From_1_to_6_checkbox(props) {
-    console.log(props)
-    console.log(props.value)
 
     function radioButtonClick (e, type) {
       
