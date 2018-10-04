@@ -8,17 +8,27 @@ import CreateFeedbackRequestContainer from '../CreateFeedbackRequest/index.js';
 
 class MyTeam extends Component {
     state = {
-        currentUser: '',
+        selectedUser: '',
     }
-    
-    returnCurrentUserProfile = (user) => {
-        console.log(user)
+    componentDidMount = () => {
+        this.props.currentUser.status = 'HR' // // the identifier for user for HR rights
+    }
+
+    returnSelectedUserProfile = (user) => {
         this.setState({
-            currentUser: user
+            selectedUser: user
         })
     }
+
+    returnUsersToMyTeamFlow = (firstUser) => {
+        setTimeout(()=>{
+            this.setState({
+                selectedUser: firstUser,
+            })
+        },0)
+    }
+
     renderPage() {
-        console.log(this.state)
         return (
             <div className="request-pre-container request-pre-container--my-team">
                 <DefaultNavigationBarContainer
@@ -29,7 +39,12 @@ class MyTeam extends Component {
                     <div className='MyTeam__search-container'>
                         <div className="search-container__header">Közvetlen beosztottak</div>
                         <div className="search-container__main">
-                            <CreateFeedbackRequestContainer showOnlyOneUser={true} returnCurrentUserProfile={this.returnCurrentUserProfile}/>
+                            <CreateFeedbackRequestContainer 
+                                showOnlyOneUser={true} 
+                                returnSelectedUserProfile={this.returnSelectedUserProfile}
+                                isUserHRStatus={this.props.currentUser.status}
+                                returnUsersToMyTeamFlow={this.returnUsersToMyTeamFlow}
+                            />
                         </div>
                     </div>
                     <div className='MyTeam__current-user-container'>
@@ -37,9 +52,9 @@ class MyTeam extends Component {
                         <div className='current-user-container__main'>
                             <div className='current-user-container__main--user-profile'>
                                 <div className='user-profile--photo'>
-                                    <img src={this.state.currentUser.pictureUrl || AvatarImg} alt='Avatar'/>
+                                    <img src={this.state.selectedUser.pictureUrl || AvatarImg} alt='Avatar'/>
                                 </div>            
-                                <div className='user-profile--name'>{this.state.currentUser.firstName || `Name`} {this.state.currentUser.lastName || 'LastName'}</div>                                        
+                                <div className='user-profile--name'>{this.state.selectedUser.firstName || `Name`} {this.state.selectedUser.lastName || 'LastName'}</div>                                        
                             </div>                                        
                             <div className='current-user-container__main--download-wrapper'>
                                 <div className="download-wrapper__header">ELÉRHETŐ RIPORTOK</div>
@@ -83,7 +98,7 @@ class MyTeam extends Component {
 
 const mapStateToProps = state => {
     return {
-        mySurveys: state.createSurvey,
+        currentUser: state.currentUser
     }
 }
 
