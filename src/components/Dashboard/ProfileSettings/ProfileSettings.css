@@ -195,8 +195,18 @@
   margin-left: 30px;
 }
 
-.settings-data > label {
-  width: 200px;
+.settings-data > input,
+.settings-data > form{
+  width: auto !important;
+  flex-grow: 1 !important;
+}
+
+.settings-data > label
+ {
+  width: 30%;
+}
+.settings-data input.edit-password{
+  background-color: #187697 !important;
 }
 
 .user-email {
