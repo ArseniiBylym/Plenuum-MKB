@@ -3,6 +3,7 @@ import './MyTeam.css';
 import DefaultNavigationBarContainer from '../Commons/DefaultNavigationBar/index.js';
 import { connect } from 'react-redux';
 import AvatarImg from '../../../resources/profile.svg'
+import CreateFeedbackRequestContainer from '../CreateFeedbackRequest/index.js';
 
 
 class MyTeam extends Component {
@@ -21,7 +22,7 @@ class MyTeam extends Component {
                     <div className='MyTeam__search-container'>
                         <div className="search-container__header">Közvetlen beosztottak</div>
                         <div className="search-container__main">
-                            
+                            <CreateFeedbackRequestContainer />
                         </div>
                     </div>
                     <div className='MyTeam__current-user-container'>
