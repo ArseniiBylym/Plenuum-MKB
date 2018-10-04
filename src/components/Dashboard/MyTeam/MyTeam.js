@@ -21,11 +21,11 @@ class MyTeam extends Component {
     }
 
     returnUsersToMyTeamFlow = (firstUser) => {
-        setTimeout(()=>{
+        setTimeout(() => {
             this.setState({
                 selectedUser: firstUser,
             })
-        },0)
+        }, 0)
     }
 
     renderPage() {
@@ -39,8 +39,8 @@ class MyTeam extends Component {
                     <div className='MyTeam__search-container'>
                         <div className="search-container__header">Közvetlen beosztottak</div>
                         <div className="search-container__main">
-                            <CreateFeedbackRequestContainer 
-                                showOnlyOneUser={true} 
+                            <CreateFeedbackRequestContainer
+                                showOnlyOneUser={true}
                                 returnSelectedUserProfile={this.returnSelectedUserProfile}
                                 isUserHRStatus={this.props.currentUser.status}
                                 returnUsersToMyTeamFlow={this.returnUsersToMyTeamFlow}
@@ -48,14 +48,18 @@ class MyTeam extends Component {
                         </div>
                     </div>
                     <div className='MyTeam__current-user-container'>
-                        <div className='current-user-container__header'>Kiválasztott felhasználó</div>                        
+                        <div className='current-user-container__header'>Kiválasztott felhasználó</div>
                         <div className='current-user-container__main'>
                             <div className='current-user-container__main--user-profile'>
                                 <div className='user-profile--photo'>
-                                    <img src={this.state.selectedUser.pictureUrl || AvatarImg} alt='Avatar'/>
-                                </div>            
-                                <div className='user-profile--name'>{this.state.selectedUser.firstName || `Name`} {this.state.selectedUser.lastName || 'LastName'}</div>                                        
-                            </div>                                        
+                                    {this.state.selectedUser.pictureUrl &&
+                                        <img src={this.state.selectedUser.pictureUrl} alt='Avatar' />
+                                    }
+                                </div>
+                                {this.state.selectedUser.firstName &&
+                                    <div className='user-profile--name'>{this.state.selectedUser.firstName} {this.state.selectedUser.lastName}</div>
+                                }
+                            </div>
                             <div className='current-user-container__main--download-wrapper'>
                                 <div className="download-wrapper__header">ELÉRHETŐ RIPORTOK</div>
                                 <div className="download-wrapper__statistic-wrapper">
@@ -63,23 +67,27 @@ class MyTeam extends Component {
                                         <div className="statistic-info--header">Kapott visszajelzések</div>
                                         <div className="statistic-info--text">Vezető számára is látható visszajelzések</div>
                                     </div>
-                                    <div className="download-wrapper__statistic-button">
-                                        <div className="download-wrapper__statistic-button-icon"></div>
-                                        Excel letöltése
+                                    <a href='#' alt='link'> 
+                                        <div className="download-wrapper__statistic-button">
+                                            <div className="download-wrapper__statistic-button-icon"></div>
+                                            Excel letöltése
                                     </div>
+                                    </a>
                                 </div>
                                 <div className="download-wrapper__statistic-wrapper">
                                     <div className='download-wrapper__statistic-info'>
                                         <div className="statistic-info--header">Képesség pontszámok</div>
                                         <div className="statistic-info--text">Összes képesség pontszám</div>
                                     </div>
-                                    <div className="download-wrapper__statistic-button">
-                                        <div className="download-wrapper__statistic-button-icon"></div>
-                                        Excel letöltése
-                                    </div>
+                                    <a href='#' alt='link'>
+                                        <div className="download-wrapper__statistic-button">
+                                            <div className="download-wrapper__statistic-button-icon"></div>
+                                            Excel letöltése
+                                        </div>
+                                    </a>
                                 </div>
-                            </div>                                        
-                        </div>                                        
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,10 +110,5 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        clearSurveySendState: () => { dispatch({ type: "CLEAR_SURVEY_HAS_SENDED" }) }
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyTeam)
+export default connect(mapStateToProps, null)(MyTeam)

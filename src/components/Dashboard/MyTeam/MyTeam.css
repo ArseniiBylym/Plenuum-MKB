@@ -42,12 +42,15 @@
 }
 .MyTeam .user-profile--photo{
     width: 15%;
+    /* height: ; */
     border-radius: 50%;
     overflow: hidden;
+    /* padding: 10px; */
 }
 .MyTeam .user-profile--photo img{
     width: 100%;
-    height: 100%;;
+    height: 100%;
+    border-radius: 50%;
 }
 .MyTeam .user-profile--name{
     font-family: 'NunitoSans', sans-serif;
