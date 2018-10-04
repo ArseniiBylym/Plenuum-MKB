@@ -32,6 +32,7 @@
         MY_SURVEYS: '/my_surveys',
         CREATE_NEW_SURVEY: '/my_surveys/create_new_survey',
         CREATE_NEW_SURVEY_TEMPLATE: '/my_surveys/create_new_survey/template',
+        MY_TEAM: '/my_team'
     };
 
     const ReducersActionType = {

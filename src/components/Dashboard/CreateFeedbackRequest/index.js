@@ -56,6 +56,10 @@ class CreateFeedbackRequestContainer extends Component {
     }
 
     handleUserClick(user){
+        if(this.props.showOnlyOneUser) { // This case is for My Team flow only
+            this.props.returnSelectedUserProfile(user); //method from MyTeam component
+            return;
+        }
         var selectedUsers = this.state.selectedUsers;
         var newUsers = this.state.users;
         selectedUsers.push(user);
@@ -235,6 +239,11 @@ class CreateFeedbackRequestContainer extends Component {
 
     componentDidMount(){
 
+        if(this.props.isUserHRStatus && this.props.isUserHRStatus == 'not HR'){
+            return
+            //create some another Api request to get user's direct reports
+        }
+
         const orgId = this.currentUser.orgId;
         Api.users(orgId)
             .then((response) => {
@@ -242,12 +251,16 @@ class CreateFeedbackRequestContainer extends Component {
                     return element._id !== this.userId;
                 });
                 this.users = searchedUsers;
+
+                if(this.props.returnUsersToMyTeamFlow) {           // Only for MyTeam flow to select first user in array
+                    this.props.returnUsersToMyTeamFlow(searchedUsers[0])    // 
+                }                                                //
+
                 this.setState({users: searchedUsers});
             })
             .catch((error) => { console.log(error.message) });
     }
     componentDidUpdate = () => {
-        // console.log(this.state)
         if(this.props.addUsersToCurrentList) {
             let selectedUsersArr = this.state.selectedUsers.slice()
             this.props.addUsersToCurrentList(selectedUsersArr)

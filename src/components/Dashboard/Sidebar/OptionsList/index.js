@@ -31,10 +31,10 @@ class OptionsListContainer extends Component {
     getItems(strings) {
         return [
             { title: "Feladatok", path: '/interact', class: 'interact-option' },
-            { title: "Visszajelzéseim", path: '/feedback', class: 'myfeedbacks-option' },
-            { title: "Készségek", path: '/skills', class: 'skills-option' },
-            { title: "My surveys", path: '/my_surveys', class: 'survey-option' }
-
+            { title: "Visszajelzéseid", path: '/feedback', class: 'myfeedbacks-option' },
+            { title: "Készségeid", path: '/skills', class: 'skills-option' },
+            { title: "My surveys", path: '/my_surveys', class: 'survey-option' },
+            { title: "Közvetlen beosztottak", path: '/my_team', class: 'my_team-option' },
         ];
     }
 
