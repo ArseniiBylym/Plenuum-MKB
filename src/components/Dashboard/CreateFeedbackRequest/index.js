@@ -56,6 +56,12 @@ class CreateFeedbackRequestContainer extends Component {
     }
 
     handleUserClick(user){
+        console.log('click on user')
+        if(this.props.showOnlyOneUser) {
+            console.log('show only one')
+            this.props.returnCurrentUserProfile(user);
+            return;
+        }
         var selectedUsers = this.state.selectedUsers;
         var newUsers = this.state.users;
         selectedUsers.push(user);

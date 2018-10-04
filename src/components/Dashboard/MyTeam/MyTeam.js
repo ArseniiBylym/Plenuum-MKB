@@ -10,8 +10,15 @@ class MyTeam extends Component {
     state = {
         currentUser: '',
     }
-
+    
+    returnCurrentUserProfile = (user) => {
+        console.log(user)
+        this.setState({
+            currentUser: user
+        })
+    }
     renderPage() {
+        console.log(this.state)
         return (
             <div className="request-pre-container request-pre-container--my-team">
                 <DefaultNavigationBarContainer
@@ -22,7 +29,7 @@ class MyTeam extends Component {
                     <div className='MyTeam__search-container'>
                         <div className="search-container__header">Közvetlen beosztottak</div>
                         <div className="search-container__main">
-                            <CreateFeedbackRequestContainer />
+                            <CreateFeedbackRequestContainer showOnlyOneUser={true} returnCurrentUserProfile={this.returnCurrentUserProfile}/>
                         </div>
                     </div>
                     <div className='MyTeam__current-user-container'>
@@ -30,9 +37,9 @@ class MyTeam extends Component {
                         <div className='current-user-container__main'>
                             <div className='current-user-container__main--user-profile'>
                                 <div className='user-profile--photo'>
-                                    <img src={this.state.currentUser.photo || AvatarImg} alt='Avatar'/>
+                                    <img src={this.state.currentUser.pictureUrl || AvatarImg} alt='Avatar'/>
                                 </div>            
-                                <div className='user-profile--name'>{this.state.currentUser.name || `User Name`}</div>                                        
+                                <div className='user-profile--name'>{this.state.currentUser.firstName || `Name`} {this.state.currentUser.lastName || 'LastName'}</div>                                        
                             </div>                                        
                             <div className='current-user-container__main--download-wrapper'>
                                 <div className="download-wrapper__header">ELÉRHETŐ RIPORTOK</div>
