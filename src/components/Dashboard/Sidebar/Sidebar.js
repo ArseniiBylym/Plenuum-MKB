@@ -6,7 +6,14 @@ const Sidebar = (props) => {
   return (
     <div className="sidebar-main-container">
 
-      { (props.profile.props.orgId === "hipteam" || props.profile.props.orgId === "mkb-bank") && (
+      { (props.profile.props.orgId === "hipteam" || 
+         props.profile.props.orgId === "mkb-bank" ||
+         props.profile.props.orgId === "mkb-bank-test1" ||
+         props.profile.props.orgId === "mkb-bank-test2" ||
+         props.profile.props.orgId === "mkb-bank-test3" ||
+         props.profile.props.orgId === "mkb-bank-test4" ||
+         props.profile.props.orgId === "mkb-bank-test5"
+         ) && (
           <div className="orgLogoContainer">
             <NavLink className="orgLogoLink" to="/">
               <img src="/mkb-large.png" />
