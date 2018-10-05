@@ -283,6 +283,8 @@ class CreateNewSurvey extends Component {
             return
         }
 
+
+        //Send POST request to back
         this.props.createNewSurvey(this.state)
         console.log('New survey was successful created!')
         console.log(this.state)
