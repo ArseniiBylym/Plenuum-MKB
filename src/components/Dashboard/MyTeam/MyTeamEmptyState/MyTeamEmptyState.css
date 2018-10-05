@@ -1,0 +1,23 @@
+.MyTeam__empty-state{
+    position: fixed;
+    width: calc(100% - 256px);
+    height: calc(100% - 64px);
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'NunitoSans', sans-serif;
+    background-color: white;
+}
+.MyTeam__empty-state--image{
+    margin-top: 30vh;
+    width: 200px;
+    height: 250px;
+    background: url('../../../../resources/no-surveys-yet.svg') left top / auto no-repeat;
+}
+.MyTeam__empty-state--text{
+    font-size: 18px;
+    color: #4a4a4a;
+}

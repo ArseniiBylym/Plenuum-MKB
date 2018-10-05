@@ -64,7 +64,9 @@ class MySurveys extends Component {
         ]
     }
     componentDidMount = () => {
-        // console.log(this.props.mySurveys)
+        // 1. sent GET request to back
+        // 2. put response to the state
+        // 3. put response to redux store //maybe
     }
 
     componentWillUnmount = () => {

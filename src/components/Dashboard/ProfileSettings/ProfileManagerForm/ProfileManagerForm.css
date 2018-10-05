@@ -11,3 +11,15 @@
     margin: 0;
     padding: 10px;
 }
+.ProfileManagerForm .manager-without-border{
+    background-color: white
+}
+.ProfileManagerForm .manager-without-border > div:last-child{
+    display: none !important;
+}
+.ProfileManagerForm .manager-without-border:hover > div:last-child{
+    display: flex !important;
+}
+.ProfileManagerForm .manager-without-border:hover{
+   background-color:  rgba(0, 0, 0, 0.08);
+}

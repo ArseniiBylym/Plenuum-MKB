@@ -118,19 +118,25 @@ class CreateNewSurvey extends Component {
     }
 
     goToPrev = (index) => {
+      
         if (index == 0) return
-        let questionsList = document.getElementsByClassName('QuestionItem');
-        questionsList[index - 1].scrollIntoView({ behavior: "smooth", block: "start" })
-        console.log(questionsList)
-        console.log('go to prev')
+
+        let newQuestionsList = this.state.questions.slice();
+        moveTo.call(newQuestionsList, index, index - 1) // helper function in the bootom of the document
+        this.setState({
+            questions: newQuestionsList
+        })
+
     }
 
     goToNext = (index) => {
-        console.log(this.state.questions.length)
         if (index == this.state.questions.length - 1 || this.state.questions.length == 1) return
-        let questionsList = document.getElementsByClassName('QuestionItem');
-        questionsList[index + 1].scrollIntoView({ behavior: "smooth", block: "start" })
-        console.log('go to next')
+
+        let newQuestionsList = this.state.questions.slice();
+        moveTo.call(newQuestionsList, index, index + 1) // helper function in the bootom of the document
+        this.setState({
+            questions: newQuestionsList
+        })
     }
 
     switchSwitcher = () => {
@@ -283,6 +289,8 @@ class CreateNewSurvey extends Component {
             return
         }
 
+
+        //Send POST request to back
         this.props.createNewSurvey(this.state)
         console.log('New survey was successful created!')
         console.log(this.state)
@@ -367,4 +375,9 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(CreateNewSurvey)
+export default connect(null, mapDispatchToProps)(CreateNewSurvey);
+
+//Helper function for move questions in list up or down. Use in goToNext and goToPrev methods
+function moveTo (from, to) {
+    this.splice(to, 0, this.splice(from, 1)[0]);
+  };
