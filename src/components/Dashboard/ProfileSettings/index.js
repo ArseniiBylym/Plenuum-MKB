@@ -72,10 +72,10 @@ class ProfileSettingsContainer extends Component {
         });
     }
     deleteSelectedManager(e){
-        e.stopPropagation
+        e.stopPropagation();
         this.setState({
             selectedManager: {},
-            selectLineManager:true 
+            // selectLineManager:true 
         })
     }
 
