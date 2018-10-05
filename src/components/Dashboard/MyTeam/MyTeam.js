@@ -8,7 +8,7 @@ import MyTeamFullState from './MyTeamFullState/MyTeamFullState';
 class MyTeam extends Component {
     state = {
         selectedUser: '',
-        fullState: true   //Need to be changed when users directs will get
+        fullState: false   //Need to be changed when users directs will get
     }
     componentDidMount = () => {
         this.props.currentUser.status = 'HR' // // the identifier for user for HR rights
