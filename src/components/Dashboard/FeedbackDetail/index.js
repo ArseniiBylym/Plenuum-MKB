@@ -134,10 +134,30 @@ class FeedbackDetailContainer extends Component {
         let typeMessage;
         const currentUser = this.state.currentUser;
         if (currentUser._id === feedback.recipientId) {
-            typeMessage = "You should " + feedback.type.toLowerCase() + " this";
+            if(feedback.type == 'CONTINUE') {
+                typeMessage = "Így tovább";
+            }
+            if(feedback.type == 'CONSIDER') {
+                typeMessage = "Fontold meg";
+            }
         } else {
-            typeMessage = user ? user.firstName + " should " + feedback.type.toLowerCase()
-                + " this" : "Someone should " + feedback.type.toLowerCase() + " this";
+            if(user) {
+                if(feedback.type == 'CONTINUE') {
+                    typeMessage = `${user.firstName}, így tovább`
+                }
+                if(feedback.type == 'CONSIDER') {
+                    typeMessage = `${user.firstName}, fontold meg`
+                }
+            } else {
+                if(feedback.type == 'CONTINUE') {
+                    typeMessage = `Valaki folytatja ezt`
+                }
+                if(feedback.type == 'CONSIDER') {
+                    typeMessage = `Valaki ezt fontolja meg`
+                }
+            }
+            // typeMessage = user ? user.firstName + " should " + feedback.type.toLowerCase()
+            //     + " this" : "Someone should " + feedback.type.toLowerCase() + " this";
         }
 
         let sentAs = undefined;
