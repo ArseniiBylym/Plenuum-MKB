@@ -1,18 +1,18 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ProfileSettings, {editActions, editSaveActions} from './ProfileSettings.js';
+import ProfileSettings, { editActions, editSaveActions } from './ProfileSettings.js';
 import ChangePasswordContainer from '../../Session/ChangePassword/index.js';
 import SetPictureContainer from './SetPicture/index.js';
 import Api from '../../../lib/api';
 import UserListContainer from '../Commons/UserList/index.js';
-import { searchUsersComponent } from  '../MyFeedbacks/MyContent.js';
+import { searchUsersComponent } from '../MyFeedbacks/MyContent.js';
 import SearchContainer from '../Commons/Search/index.js';
 import { connect } from 'react-redux';
 import { Utils } from '../../../lib/utils';
 
 class ProfileSettingsContainer extends Component {
 
-    constructor(props, context){
+    constructor(props, context) {
         super(props);
 
         this.store = context.store;
@@ -36,7 +36,7 @@ class ProfileSettingsContainer extends Component {
         let managerProfileFullName = ''
         let managerProfileId = ''
 
-        if(usersManager) {
+        if (usersManager) {
             managerProfilePicture = usersManager.pictureUrl;
             managerProfileFullName = usersManager.fullName;
             managerProfileId = usersManager._id;
@@ -48,7 +48,7 @@ class ProfileSettingsContainer extends Component {
             email: user.email,
             password: '',
             newPassword: '',
-            passwordAgain : '',
+            passwordAgain: '',
             edit: false,
             setPic: false,
             uploadedImage: undefined,
@@ -57,12 +57,12 @@ class ProfileSettingsContainer extends Component {
             searchedManager: [],
             searchPage: false,
             managerSelected: false,
-            selectedManager:{
+            selectedManager: {
                 managerProfilePicture: `${managerProfilePicture}`,
                 fullName: `${managerProfileFullName}`,
                 _id: `${managerProfileId}`
             },
-            selectLineManager:false
+            selectLineManager: false
         }
     }
 
@@ -72,7 +72,7 @@ class ProfileSettingsContainer extends Component {
             searchPage: !this.state.searchPage,
         });
     }
-    deleteSelectedManager(e){
+    deleteSelectedManager(e) {
         e.stopPropagation();
         this.setState({
             selectedManager: {},
@@ -80,20 +80,20 @@ class ProfileSettingsContainer extends Component {
         })
     }
 
-    selectLineManager(){
-        this.setState( (prev) => ({ selectLineManager: !prev.selectLineManager }) )
+    selectLineManager() {
+        this.setState((prev) => ({ selectLineManager: !prev.selectLineManager }))
     }
 
     getManagers() {
         const { currentUser } = this.store.getState();
-        if ( currentUser ) {
+        if (currentUser) {
             const orgId = currentUser.orgId;
-            Api.users( orgId )
-                .then(( allManagers ) => {
+            Api.users(orgId)
+                .then((allManagers) => {
                     const managersWithoutMe = allManagers.filter((element) => {
                         return element._id !== currentUser._id;
                     });
-                    managersWithoutMe.sort( (a, b) => {
+                    managersWithoutMe.sort((a, b) => {
                         var nameA = a.firstName.toLowerCase();
                         var nameB = b.firstName.toLowerCase();
                         var secondNameA = a.lastName.toLowerCase();
@@ -111,10 +111,10 @@ class ProfileSettingsContainer extends Component {
                             return 1;
                         }
                         return 0;
-                    } );
+                    });
 
                     let currentManager = managersWithoutMe.filter((item, i) => {
-                        if(item._id == currentUser.managerId) {
+                        if (item._id == currentUser.managerId) {
                             return {
                                 managerProfilePicture: item.pictureUrl,
                                 fullName: item.firstName + ' ' + item.lastName,
@@ -122,7 +122,7 @@ class ProfileSettingsContainer extends Component {
                             }
                         } else return
                     })
-                    this.setState({ allManagers: managersWithoutMe, searchedManager: managersWithoutMe, selectedManager: currentManager});
+                    this.setState({ allManagers: managersWithoutMe, searchedManager: managersWithoutMe, selectedManager: currentManager });
                 })
                 .catch((error) => { console.log(error.message) });
         }
@@ -132,7 +132,7 @@ class ProfileSettingsContainer extends Component {
         this.setUserData()
         this.getManagers()
     }
-    
+
     componentDidUpdate = () => {
         console.log(this.state);
     }
@@ -140,20 +140,31 @@ class ProfileSettingsContainer extends Component {
     handleUserClick = (clickedManager) => {
         const { firstName, lastName, pictureUrl = '/profile.1623f812.svg', _id } = clickedManager;
         const fullName = firstName + ' ' + lastName;
-        this.props.addManagerToUserProfileSaga(pictureUrl, fullName, _id);
-        console.log(fullName)
-        this.setState((prevState) => {
-            return{
-                selectedManager: {
-                    managerProfilePicture: pictureUrl,
-                    fullName,
-                    _id
-                },
-                searchPage: !prevState.searchPage, 
-                selectLineManager:false 
-            }
-                
-        })
+        const token = window.localStorage.getItem('token')
+
+        // this.props.addManagerToUserProfileSaga(pictureUrl, fullName, _id);
+        
+        Api.selectManager(token,_id)
+            .then((response) => {
+                console.log(response)
+                console.log(fullName)
+                this.setState((prevState) => {
+                    return {
+                        selectedManager: {
+                            managerProfilePicture: pictureUrl,
+                            fullName,
+                            _id
+                        },
+                        searchPage: !prevState.searchPage,
+                        selectLineManager: false
+                    }
+                })
+                    .catch((e) => {
+                        console.log(e.message)
+                    })
+
+
+            })
         // this.setState( (prev) => ({searchPage: !prev.searchPage, selectLineManager:false }))
     }
     searchFor = (event) => {
@@ -161,100 +172,99 @@ class ProfileSettingsContainer extends Component {
         const string = event ? event.target.value : "";
         const { allManagers } = this.state;
         let resultManager = allManagers.filter((element) => {
-          let strings = string.replace(/\s/g, '');
+            let strings = string.replace(/\s/g, '');
 
-          let fullName = element.firstName.replace(/\s/g, '') + '' + element.lastName.replace(/\s/g, '');
-          let nameFull = element.lastName.replace(/\s/g, '') + '' + element.firstName.replace(/\s/g, '');
+            let fullName = element.firstName.replace(/\s/g, '') + '' + element.lastName.replace(/\s/g, '');
+            let nameFull = element.lastName.replace(/\s/g, '') + '' + element.firstName.replace(/\s/g, '');
 
-          return fullName.toLowerCase().includes(strings.toLowerCase())
-          || nameFull.toLowerCase().includes(strings.toLowerCase());
+            return fullName.toLowerCase().includes(strings.toLowerCase())
+                || nameFull.toLowerCase().includes(strings.toLowerCase());
         });
 
-        resultManager = this.utils.sortUsers( resultManager );
-        this.setState( {searchedManager: resultManager} );
+        resultManager = this.utils.sortUsers(resultManager);
+        this.setState({ searchedManager: resultManager });
     }
     //----------For manager select
 
-    componentWillMount(){
+    componentWillMount() {
         this.handleEdition();
     }
-   
+
 
     handleChangePassword(shouldOpen) {
         let changePassword;
         if (!shouldOpen) {
             changePassword = undefined;
         } else {
-            changePassword = (<ChangePasswordContainer handleCloseAlert={this.handleChangePassword}/>);
+            changePassword = (<ChangePasswordContainer handleCloseAlert={this.handleChangePassword} />);
         }
-        this.setState({changePassword:changePassword});
+        this.setState({ changePassword: changePassword });
     }
 
-    handleResponse(response, error){
+    handleResponse(response, error) {
         if (error) {
             console.log(error.message);
-        }else{
+        } else {
             console.log(response);
         }
     }
 
-    handleSave(){
+    handleSave() {
         this.changePassword();
         this.handleEdition();
     }
 
-    handlePictureChange()
-    {
+    handlePictureChange() {
         if (this.state.setPic) {
             this.dropzone = (
                 undefined
             );
-            this.setState({setPic: false});
+            this.setState({ setPic: false });
         } else {
             this.dropzone = <SetPictureContainer handlePictureChange={this.handlePictureChange}
-                                                 updatePicture={this.props.setProfilePicture}/>
-            this.setState({setPic: true, dropzone: this.dropzone});
+                updatePicture={this.props.setProfilePicture} />
+            this.setState({ setPic: true, dropzone: this.dropzone });
         }
     }
 
 
-    handleEdition(){
+    handleEdition() {
         if (this.state.edit) {
-            this.actions = editSaveActions({handleEdition:this.handleEdition, handleSave:this.handleSave});
-            this.setState({edit: false});
-        }else {
-            this.actions = editActions({handleEdition:this.handleEdition});
+            this.actions = editSaveActions({ handleEdition: this.handleEdition, handleSave: this.handleSave });
+            this.setState({ edit: false });
+        } else {
+            this.actions = editActions({ handleEdition: this.handleEdition });
             this.setUserData();
-            this.setState({edit: true, password: '', newPassword: '', passwordAgain: ''});
+            this.setState({ edit: true, password: '', newPassword: '', passwordAgain: '' });
         }
     }
 
-    handleTextField(e){
+    handleTextField(e) {
         switch (e.target.name) {
             case 'firstName':
-                this.setState({firstName: e.target.value});
+                this.setState({ firstName: e.target.value });
                 break;
             case 'lastName':
-                this.setState({lastName: e.target.value});
+                this.setState({ lastName: e.target.value });
                 break;
             case 'email':
-                this.setState({email: e.target.value});
+                this.setState({ email: e.target.value });
                 break;
             case 'password':
-                this.setState({password: e.target.value});
+                this.setState({ password: e.target.value });
                 break;
             case 'newPassword':
-                this.setState({newPassword: e.target.value});
+                this.setState({ newPassword: e.target.value });
                 break;
             case 'passwordAgain':
-                this.setState({passwordAgain: e.target.value});
+                this.setState({ passwordAgain: e.target.value });
                 break;
             default:
                 return;
         }
     }
 
-    render(){
+    render() {
         const user = this.store.getState().currentUser;
         const { searchPage, searchedManager, allManagers } = this.state;
         let groupTitle;
@@ -267,47 +277,47 @@ class ProfileSettingsContainer extends Component {
             groupTitle = "No Results";
         }
         const search = (<SearchContainer
-            searchFor={ this.searchFor }
+            searchFor={this.searchFor}
             customClass='filter-manager'
         />);
         let managersList = null;
-        if(this.state.searchPage) {
+        if (this.state.searchPage) {
             managersList = searchUsersComponent({
                 userList: <UserListContainer
-                        users={ searchedManager }
-                        handleUserClick={this.handleUserClick}
-                    />,
-                    openSearch:this.openSearch,
-                    searchTitle:'Válaszd ki a vezetőd',
-                    search,
-                    groupTitle,
-                    className:"select-manager"
-                })
+                    users={searchedManager}
+                    handleUserClick={this.handleUserClick}
+                />,
+                openSearch: this.openSearch,
+                searchTitle: 'Válaszd ki a vezetőd',
+                search,
+                groupTitle,
+                className: "select-manager"
+            })
         }
-        
+
         return (
             <div>
 
-            <ProfileSettings 
-                user={user}
-                setPic={this.handlePictureChange}
-                actions={this.actions}
-                handleTextField={!this.state.edit ? this.handleTextField : undefined}
-                handleChangePassword={this.handleChangePassword}
-                readOnly={this.state.edit}
-                userDescription=""
-                changePassword={this.state.changePassword ? this.state.changePassword : ""}
-                
-                selectManager={ this.openSearch }
-                managerProfilePicture={ this.state.selectedManager.managerProfilePicture }
-                managerFullName={ this.state.selectedManager.fullName }
-                deleteSelectedManager={ this.deleteSelectedManager.bind(this) }
-                selectLineManager = { this.selectLineManager.bind(this) }
-                managerSelected = { this.state.selectLineManager }
+                <ProfileSettings
+                    user={user}
+                    setPic={this.handlePictureChange}
+                    actions={this.actions}
+                    handleTextField={!this.state.edit ? this.handleTextField : undefined}
+                    handleChangePassword={this.handleChangePassword}
+                    readOnly={this.state.edit}
+                    userDescription=""
+                    changePassword={this.state.changePassword ? this.state.changePassword : ""}
+
+                    selectManager={this.openSearch}
+                    managerProfilePicture={this.state.selectedManager.managerProfilePicture}
+                    managerFullName={this.state.selectedManager.fullName}
+                    deleteSelectedManager={this.deleteSelectedManager.bind(this)}
+                    selectLineManager={this.selectLineManager.bind(this)}
+                    managerSelected={this.state.selectLineManager}
                 />
-                { this.state.searchPage && <div className="overlay" onClick={this.openSearch}/> }
+                {this.state.searchPage && <div className="overlay" onClick={this.openSearch} />}
                 {managersList}
-               
+
             </div>
         )
     }
@@ -318,15 +328,15 @@ ProfileSettingsContainer.contextTypes = {
 };
 
 const mapStateToProps = state => {
-    return{
+    return {
         usersManager: state.currentUser.manager
     }
 }
 
 const mapDispatchToProps = dispatch => {
-    return{
-        addManagerToUserProfile: (pictureUrl, fullName, _id) => {dispatch({type: "ADD_USERS_MANAGER", manager: {pictureUrl, fullName, _id}})},
-        addManagerToUserProfileSaga: (pictureUrl, fullName, _id) => {dispatch ({type: "ADD_USERS_MANAGER_SAGA", managerSaga: {pictureUrl, fullName, _id}})}
+    return {
+        addManagerToUserProfile: (pictureUrl, fullName, _id) => { dispatch({ type: "ADD_USERS_MANAGER", manager: { pictureUrl, fullName, _id } }) },
+        addManagerToUserProfileSaga: (pictureUrl, fullName, _id) => { dispatch({ type: "ADD_USERS_MANAGER_SAGA", managerSaga: { pictureUrl, fullName, _id } }) }
     }
 }
 

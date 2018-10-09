@@ -5,6 +5,7 @@ import ProfileIcon from '../../../../resources/profile.svg';
 import './ProfileManagerForm.css'
 
 const ProfileManegerForm = (props) => {
+    console.log(props)
     let managerProfilePicture = props.managerProfilePicture ? `url('${props.managerProfilePicture}')` : `url('${ProfileIcon}')`;
     let closeIcon = props.managerSelected ? `url('${CloseIcon}')` : `url('${PlusIcon}')`;
     const errorBorderManager = props.managerSelected ? "errorBorderManager" : '';

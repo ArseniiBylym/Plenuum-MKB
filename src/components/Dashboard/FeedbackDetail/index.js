@@ -277,6 +277,7 @@ class FeedbackDetailContainer extends Component {
     }
     sentToManagerHandler = () => {
         const token = window.localStorage.getItem('token')
+        console.log(token)
 
         Api.sentAbusiveFeedback(token, this.state.currentUser.orgId, this.props.detail.feedback._id)
             .then((response) => {

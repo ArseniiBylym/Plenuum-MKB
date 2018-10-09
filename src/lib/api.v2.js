@@ -152,6 +152,7 @@ export default class Api_v2 extends Networking {
             body: JSON.stringify({'email': email, 'password': password}),
             cache: "no-store"
         };
+        console.log(parameters)
         return this.fetchFromAPI(baseURL + URLPath.session, parameters);
     }
 
@@ -234,6 +235,31 @@ export default class Api_v2 extends Networking {
             },
         };
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/users/me/feedbacks/${feedbackId}/reportAbusive`, parameters);
+    }
+
+    async selectManager(token, managerId){
+        let details = {
+            'managerId': `${managerId}`
+        }
+        let formBody = [];
+        for (let key in details) {
+            let encodeKey = encodeURIComponent(key);
+            let encodeValue = encodeURIComponent(details[key]);
+            formBody.push(encodeKey + '=' + encodeValue);
+        }
+        formBody = formBody.join('&');
+
+        const parameters = {
+            method: HTTPMethod.PATCH,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body: formBody,
+            
+        }
+
+        return this.fetchFromAPI(baseURL + URLPath.user + 'updateUserManager', parameters)
     }
 
 };
