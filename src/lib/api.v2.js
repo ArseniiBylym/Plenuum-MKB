@@ -139,6 +139,8 @@ export default class Api_v2 extends Networking {
     }
 
     async login(email, password) {
+        console.log(email)
+
         const parameters = {
             method: HTTPMethod.POST,
             headers: {
@@ -219,6 +221,19 @@ export default class Api_v2 extends Networking {
             },
             body: body
         };
+    }
+
+
+    //Sent abusive feedback
+    async sentAbusiveFeedback(token, orgId, feedbackId) {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Content-Type': `application/x-www-form-urlencoded`,
+                'Authorization': `Bearer ${token}`
+            },
+        };
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/users/me/feedbacks/${feedbackId}/reportAbusive`, parameters);
     }
 
 };

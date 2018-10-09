@@ -22,8 +22,11 @@ export default class Networking {
 
     async fetchFromAPI(url, parameters = defaultParameters){
         parameters = this.addTokenToRequestHeader(parameters);
+        console.log(parameters)
         return fetch(url, parameters)
-            .then(this.handleErrors);
+            .then(
+                this.handleErrors
+            );
     }
 
     addTokenToRequestHeader(parameters){

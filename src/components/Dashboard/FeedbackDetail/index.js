@@ -276,35 +276,21 @@ class FeedbackDetailContainer extends Component {
         })
     }
     sentToManagerHandler = () => {
-        // console.log(this.props)
-        // console.log(this.state)
-       console.log(document.cookie)
-       console.log(getCookie('token'))
+        const token = window.localStorage.getItem('token')
 
-        // console.log(document.cookie)
-        let baseUrl = 'http://localhost:5000';
-
-        axios({
-            method: 'get',
-            url: `${baseUrl}/api/organizations/${this.state.currentUser.orgId}/users/me/feedbacks/${this.props.detail.feedback._id}/reportAbusive`,
-            headers: {'Content-Type': `application/x-www-form-urlencoded`,
-                      },
-        })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(e => console.log(e.message))
-
-
-       
-        // console.log(getCookie('_ga'))
-        // this.props.sentAbusiveRequestSaga(this.props.detail.feedback._id, this.state.currentUser._id);
-
-        console.log('Abusive feedback was sended to the manager');
-        this.hideAbusiveModalHandler();
-        this.setState({
-            abusiveFeedbackJustSended: true
-        })
+        Api.sentAbusiveFeedback(token, this.state.currentUser.orgId, this.props.detail.feedback._id)
+            .then((response) => {
+                console.log(response);
+                console.log('Abusive feedback was sended to the manager');
+                this.hideAbusiveModalHandler();
+                this.setState({
+                    abusiveFeedbackJustSended: true
+                })
+            })
+            .catch((e) => {
+                console.log(e.message);
+                console.log(`Can't send abusive feedback`)
+            })
     }
 
     render() {

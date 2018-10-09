@@ -29,6 +29,7 @@ class ProfileSettingsContainer extends Component {
 
     setUserData = () => {
         const user = this.store.getState().currentUser;
+        const manager = user.managerId;
         const usersManager = this.props.usersManager
 
         let managerProfilePicture = ''
@@ -111,7 +112,17 @@ class ProfileSettingsContainer extends Component {
                         }
                         return 0;
                     } );
-                    this.setState({ allManagers: managersWithoutMe, searchedManager: managersWithoutMe});
+
+                    let currentManager = managersWithoutMe.filter((item, i) => {
+                        if(item._id == currentUser.managerId) {
+                            return {
+                                managerProfilePicture: item.pictureUrl,
+                                fullName: item.firstName + ' ' + item.lastName,
+                                _id: item._id
+                            }
+                        } else return
+                    })
+                    this.setState({ allManagers: managersWithoutMe, searchedManager: managersWithoutMe, selectedManager: currentManager});
                 })
                 .catch((error) => { console.log(error.message) });
         }
@@ -120,6 +131,10 @@ class ProfileSettingsContainer extends Component {
     componentDidMount = () => {
         this.setUserData()
         this.getManagers()
+    }
+    
+    componentDidUpdate = () => {
+        console.log(this.state);
     }
 
     handleUserClick = (clickedManager) => {
