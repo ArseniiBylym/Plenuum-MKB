@@ -17,6 +17,8 @@ import SentAsDefaultPic from '../../../resources/profile.svg';
 import Constants from '../../../lib/constants'
 import {spinner} from "../../Commons/Spinner/spinner";
 import moment from 'moment';
+import {connect} from 'react-redux';
+import axios from 'axios';
 
 const ReactGA = require('react-ga');
 
@@ -274,6 +276,30 @@ class FeedbackDetailContainer extends Component {
         })
     }
     sentToManagerHandler = () => {
+        // console.log(this.props)
+        // console.log(this.state)
+       console.log(document.cookie)
+       console.log(getCookie('token'))
+
+        // console.log(document.cookie)
+        let baseUrl = 'http://localhost:5000';
+
+        axios({
+            method: 'get',
+            url: `${baseUrl}/api/organizations/${this.state.currentUser.orgId}/users/me/feedbacks/${this.props.detail.feedback._id}/reportAbusive`,
+            headers: {'Content-Type': `application/x-www-form-urlencoded`,
+                      },
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(e => console.log(e.message))
+
+
+       
+        // console.log(getCookie('_ga'))
+        // this.props.sentAbusiveRequestSaga(this.props.detail.feedback._id, this.state.currentUser._id);
+
         console.log('Abusive feedback was sended to the manager');
         this.hideAbusiveModalHandler();
         this.setState({
@@ -321,4 +347,22 @@ FeedbackDetailContainer.contextTypes = {
     store: PropTypes.object,
 };
 
-export default FeedbackDetailContainer;
+const mapDispatchToProps = dispatch => {
+    return{
+        sentAbusiveRequestSaga: (feedbackId, userId) => {dispatch({type: "SENT_ABUSIVE_REQUEST_SAGA", details: {feedbackId, userId}})}
+    }
+}
+
+export default connect(null, mapDispatchToProps) (FeedbackDetailContainer);
+
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+  }
+
+  function logCookies(cookies) {
+    for (let cookie of cookies) {
+      console.log(cookie.value);
+    }
+  }

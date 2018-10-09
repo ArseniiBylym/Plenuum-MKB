@@ -82,6 +82,7 @@ class ProfileSettingsContainer extends Component {
     selectLineManager(){
         this.setState( (prev) => ({ selectLineManager: !prev.selectLineManager }) )
     }
+
     getManagers() {
         const { currentUser } = this.store.getState();
         if ( currentUser ) {
@@ -124,7 +125,8 @@ class ProfileSettingsContainer extends Component {
     handleUserClick = (clickedManager) => {
         const { firstName, lastName, pictureUrl = '/profile.1623f812.svg', _id } = clickedManager;
         const fullName = firstName + ' ' + lastName;
-        this.props.addManagerToUserProfile(pictureUrl, fullName, _id);
+        this.props.addManagerToUserProfileSaga(pictureUrl, fullName, _id);
+        console.log(fullName)
         this.setState((prevState) => {
             return{
                 selectedManager: {
@@ -308,7 +310,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return{
-        addManagerToUserProfile: (pictureUrl, fullName, _id) => {dispatch({type: "ADD_USERS_MANAGER", manager: {pictureUrl, fullName, _id}})}
+        addManagerToUserProfile: (pictureUrl, fullName, _id) => {dispatch({type: "ADD_USERS_MANAGER", manager: {pictureUrl, fullName, _id}})},
+        addManagerToUserProfileSaga: (pictureUrl, fullName, _id) => {dispatch ({type: "ADD_USERS_MANAGER_SAGA", managerSaga: {pictureUrl, fullName, _id}})}
     }
 }
 

@@ -164,6 +164,8 @@ export default class Api_v1 extends Networking {
             console.log("This is a mocked response");
             return handlerResponse(mocked, null);
         }else{
+            debugger
+            // console.log(arguments)
             parameters = this.addTokenToRequestHeader(parameters);
             fetch(baseURL + url, parameters)
                 .then(this.handlErrors)

@@ -8,6 +8,7 @@
     "react-scripts": "0.8.5"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-jest": "21.2.0",
     "bootstrap": "3.3.7",
     "cookieconsent": "3.0.4",

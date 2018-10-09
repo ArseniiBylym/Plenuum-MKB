@@ -71,6 +71,7 @@ const currentUser = (state = {}, action) => {
                 pictureUrl: action.pictureUrl
             };
         case Constants.ReducersActionType.ADD_USERS_MANAGER:
+        console.log(action)
             return{
                 ...state,
                 manager: {
