@@ -262,4 +262,62 @@ export default class Api_v2 extends Networking {
         return this.fetchFromAPI(baseURL + URLPath.user + 'updateUserManager', parameters)
     }
 
+    async deleteManager(token) {
+        let details = {
+            'managerId': ``
+        }
+        let formBody = [];
+        for (let key in details) {
+            let encodeKey = encodeURIComponent(key);
+            let encodeValue = encodeURIComponent(details[key]);
+            formBody.push(encodeKey + '=' + encodeValue);
+        }
+        formBody = formBody.join('&');
+
+        const parameters = {
+            method: HTTPMethod.PATCH,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body: formBody,
+        }
+
+        return this.fetchFromAPI(baseURL + URLPath.user + 'updateUserManager', parameters)
+    }
+
+    async createNewSurvey (token, orgId, body) {
+        
+        let formBody = [];
+        for (let key in body) {
+           
+            let encodeKey = encodeURIComponent(key);
+            let encodeValue = encodeURIComponent(body[key]);
+            formBody.push(encodeKey + '=' + encodeValue);
+        }
+        formBody = formBody.join('&');
+
+        const parameters = {
+            method: HTTPMethod.POST,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body: formBody
+        }
+
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveys/2`, parameters)
+
+    }
+
+    async getMySurveys(token, orgId = 'hipteam') {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveys/2`, parameters)
+    }
+
 };

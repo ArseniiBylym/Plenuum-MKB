@@ -85,8 +85,21 @@ const currentUser = (state = {}, action) => {
     }
 };
 
-const createSurvey = (state = mySurveysDefaultStore, action) => {
+let mySurveysContainer = [
+    {title: 'title'}
+]
+
+// const createSurvey = (state = mySurveysDefaultStore, action) => {
+const createSurvey = (state = mySurveysContainer, action) => {
     switch (action.type) {
+        case Constants.ReducersActionType.PUT_SURVEYS_TO_REDUX:
+            console.log(action.surveys)
+            return {
+                surveys: [
+                    ...action.surveys,
+                ],
+                survey_has_sended: false
+            }
         case Constants.ReducersActionType.CREATE_NEW_SURVEY:
 
             const survey = {

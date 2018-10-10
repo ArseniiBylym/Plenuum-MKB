@@ -12,6 +12,7 @@ import SendToEveryone from './SendToEveryone/SendToEveryone';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './CreateNewSurvey.css';
+import moment from 'moment';
 
 class CreateNewSurvey extends Component {
 
@@ -290,10 +291,43 @@ class CreateNewSurvey extends Component {
         }
 
 
+        const questionsForPost = this.state.questions.map((item,i) => {
+            let type = item.type == 'free_text' ? 'text' : item.type == 'yes_no' ? 'yes-no' : item.type == '1_to_6' ? '1-6' : null
+            let required = item.isRequired == 'required' ? true : false
+            return {
+                type: type,
+                text: item.text,
+                required: required
+            }
+        })
+      
+        let respondentsForPost = this.state.selectedUsers.map((item, i) => {
+            return item._id
+        })
+      
+        const objForPost = {
+            title: this.state.title,
+            description: this.state.description,
+            respondents: JSON.stringify(respondentsForPost),
+            expiritDate: moment(this.state.open_until).format('YYYY-MM-DD hh:mm:ss.SSS'),
+            questions: JSON.stringify(questionsForPost)
+        }
+        const token = window.localStorage.getItem('token');
+        console.log(objForPost)
+       
+        Api.createNewSurvey(token, this.currentUser.orgId, objForPost)
+            .then((response) => {
+                console.log(response)
+                this.props.createNewSurvey(this.state)
+                console.log('New survey was successful created!')
+                console.log(this.state)
+            })
+            .catch((error) => {
+                // e.preventDefault();
+                // return
+                console.log(error.massage)
+            })
         //Send POST request to back
-        this.props.createNewSurvey(this.state)
-        console.log('New survey was successful created!')
-        console.log(this.state)
     }
 
     render() {

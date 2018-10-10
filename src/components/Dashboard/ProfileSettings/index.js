@@ -30,17 +30,18 @@ class ProfileSettingsContainer extends Component {
     setUserData = () => {
         const user = this.store.getState().currentUser;
         const manager = user.managerId;
-        const usersManager = this.props.usersManager
 
-        let managerProfilePicture = ''
-        let managerProfileFullName = ''
-        let managerProfileId = ''
+        // const usersManager = this.props.usersManager
 
-        if (usersManager) {
-            managerProfilePicture = usersManager.pictureUrl;
-            managerProfileFullName = usersManager.fullName;
-            managerProfileId = usersManager._id;
-        }
+        // let managerProfilePicture = ''
+        // let managerProfileFullName = ''
+        // let managerProfileId = ''
+
+        // if (usersManager) {
+        //     managerProfilePicture = usersManager.pictureUrl;
+        //     managerProfileFullName = usersManager.fullName;
+        //     managerProfileId = usersManager._id;
+        // }
 
         this.state = {
             firstName: user.firstName,
@@ -57,11 +58,7 @@ class ProfileSettingsContainer extends Component {
             searchedManager: [],
             searchPage: false,
             managerSelected: false,
-            selectedManager: {
-                managerProfilePicture: `${managerProfilePicture}`,
-                fullName: `${managerProfileFullName}`,
-                _id: `${managerProfileId}`
-            },
+            selectedManager: {},
             selectLineManager: false
         }
     }
@@ -76,8 +73,18 @@ class ProfileSettingsContainer extends Component {
         e.stopPropagation();
         this.setState({
             selectedManager: {},
-            // selectLineManager:true 
         })
+
+
+        // const token = window.localStorage.getItem('token')
+
+        // Api.deleteManager(token)
+        //     .then((response) => {
+        //         console.log(response)
+        //     })
+        //     .catch((e) => {
+        //         console.log(e.message)
+        //     })
     }
 
     selectLineManager() {
@@ -116,12 +123,12 @@ class ProfileSettingsContainer extends Component {
                     let currentManager = managersWithoutMe.filter((item, i) => {
                         if (item._id == currentUser.managerId) {
                             return {
-                                managerProfilePicture: item.pictureUrl,
-                                fullName: item.firstName + ' ' + item.lastName,
-                                _id: item._id
+                               ...item
                             }
                         } else return
                     })
+                    currentManager = currentManager[0]
+                    console.log(currentManager)
                     this.setState({ allManagers: managersWithoutMe, searchedManager: managersWithoutMe, selectedManager: currentManager });
                 })
                 .catch((error) => { console.log(error.message) });
@@ -138,8 +145,10 @@ class ProfileSettingsContainer extends Component {
     }
 
     handleUserClick = (clickedManager) => {
-        const { firstName, lastName, pictureUrl = '/profile.1623f812.svg', _id } = clickedManager;
-        const fullName = firstName + ' ' + lastName;
+        console.log(clickedManager)
+        // const { firstName, lastName, pictureUrl = '/profile.1623f812.svg', _id } = clickedManager;
+        const { pictureUrl = '/profile.1623f812.svg', _id } = clickedManager;
+        // const fullName = firstName + ' ' + lastName;
         const token = window.localStorage.getItem('token')
 
         // this.props.addManagerToUserProfileSaga(pictureUrl, fullName, _id);
@@ -147,13 +156,12 @@ class ProfileSettingsContainer extends Component {
         Api.selectManager(token,_id)
             .then((response) => {
                 console.log(response)
-                console.log(fullName)
+                // console.log(fullName)
                 this.setState((prevState) => {
                     return {
                         selectedManager: {
-                            managerProfilePicture: pictureUrl,
-                            fullName,
-                            _id
+                           ...clickedManager,
+                           pictureUrl: pictureUrl
                         },
                         searchPage: !prevState.searchPage,
                         selectLineManager: false
@@ -165,7 +173,8 @@ class ProfileSettingsContainer extends Component {
 
 
             })
-        // this.setState( (prev) => ({searchPage: !prev.searchPage, selectLineManager:false }))
+
+
     }
     searchFor = (event) => {
         const { currentUser } = this.store.getState();
@@ -309,8 +318,14 @@ class ProfileSettingsContainer extends Component {
                     changePassword={this.state.changePassword ? this.state.changePassword : ""}
 
                     selectManager={this.openSearch}
-                    managerProfilePicture={this.state.selectedManager.managerProfilePicture}
-                    managerFullName={this.state.selectedManager.fullName}
+                    managerProfilePicture={this.state.selectedManager.pictureUrl ? 
+                        this.state.selectedManager.pictureUrl :
+                        null
+                    }
+                    managerFullName={this.state.selectedManager.firstName ? 
+                        `${this.state.selectedManager.firstName} ${this.state.selectedManager.lastName}` :
+                        null    
+                    }
                     deleteSelectedManager={this.deleteSelectedManager.bind(this)}
                     selectLineManager={this.selectLineManager.bind(this)}
                     managerSelected={this.state.selectLineManager}

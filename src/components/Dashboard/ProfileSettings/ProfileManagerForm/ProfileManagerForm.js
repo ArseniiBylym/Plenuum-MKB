@@ -16,7 +16,7 @@ const ProfileManegerForm = (props) => {
                 <div className={`select-manager ${errorBorderManager} ${classForSelectLine}`} onClick={props.selectManager}>
                     <div style={{ display: "flex", alignItems: "center" }}  >
                         <div style={{ backgroundImage: managerProfilePicture, backgroundSize: "contain" }} className="profile-picture-manager"></div>
-                        <span className="firstname">{props.managerFullName ? props.managerFullName : 'Select manager'}</span>
+                        <span className="firstname">{props.managerFullName && props.managerFullName != undefined  ? props.managerFullName : 'Select manager'}</span>
                     </div>
                     <div style={{ display: "flex", alignItems: "center" }}>
                         {!props.managerFullName ?

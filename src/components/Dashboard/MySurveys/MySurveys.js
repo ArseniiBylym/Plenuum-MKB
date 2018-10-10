@@ -12,6 +12,7 @@ import EmptySurveysList from './EmptySurveysList/EmptySurveysList'
 import FullSurveysList from './FullSurveysList/FullSurveysList'
 import CreateNewButton from './CreateNewButton/CreateNewButton'
 import { connect } from 'react-redux';
+import Api from '../../../lib/api';
 
 
 import './MySurveys.css';
@@ -64,6 +65,12 @@ class MySurveys extends Component {
         ]
     }
     componentDidMount = () => {
+        const token = window.localStorage.getItem('token')
+        Api.getMySurveys(token)
+            .then((response) => {
+                console.log(response)
+                this.props.putSurveysToRedux(response);
+            })
         // 1. sent GET request to back
         // 2. put response to the state
         // 3. put response to redux store //maybe
@@ -75,16 +82,19 @@ class MySurveys extends Component {
 
 
     renderPage() {
+        
 
         if (!this.props.mySurveys) return null
 
-        let cardList = null
-        if (this.props.mySurveys.my_surveys.length == 0) {
-            cardList = <EmptySurveysList />
-        } else {
-            cardList = <FullSurveysList list={this.props.mySurveys.my_surveys}
-                isShowSendNotification={this.props.mySurveys.survey_has_sended} />
-        }
+        let cardList = <EmptySurveysList />
+        
+        // let cardList = null
+        // if (this.props.mySurveys.my_surveys || this.props.mySurveys.my_surveys.length == 0) {
+        //     cardList = <EmptySurveysList />
+        // } else {
+        //     cardList = <FullSurveysList list={this.props.mySurveys.my_surveys}
+        //         isShowSendNotification={this.props.mySurveys.survey_has_sended} />
+        // }
         let createButton = <CreateNewButton text='New survey' />
         return (
             <div className="request-pre-container request-pre-container--my-surveys">
@@ -118,6 +128,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        putSurveysToRedux: (surveys) => {dispatch({type: "PUT_SURVEYS_TO_REDUX", surveys: surveys})},
         clearSurveySendState: () => { dispatch({ type: "CLEAR_SURVEY_HAS_SENDED" }) }
     }
 }
