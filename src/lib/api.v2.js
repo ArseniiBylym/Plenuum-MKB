@@ -288,22 +288,23 @@ export default class Api_v2 extends Networking {
 
     async createNewSurvey (token, orgId, body) {
         
-        let formBody = [];
-        for (let key in body) {
+        // let formBody = [];
+        // for (let key in body) {
            
-            let encodeKey = encodeURIComponent(key);
-            let encodeValue = encodeURIComponent(body[key]);
-            formBody.push(encodeKey + '=' + encodeValue);
-        }
-        formBody = formBody.join('&');
+        //     let encodeKey = encodeURIComponent(key);
+        //     let encodeValue = encodeURIComponent(body[key]);
+        //     formBody.push(encodeKey + '=' + encodeValue);
+        // }
+        // formBody = formBody.join('&');
 
         const parameters = {
             method: HTTPMethod.POST,
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: formBody
+            body: JSON.stringify(body)
         }
 
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveys/2`, parameters)
@@ -318,6 +319,37 @@ export default class Api_v2 extends Networking {
             }
         }
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveys/2`, parameters)
+    }
+
+    async getSurveyDetails(token, surveyId, orgId) {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/survey/2/${surveyId}/detail`, parameters)
+    }
+
+    async downloadAnswers(token, surveyId, orgId) {
+        console.log(arguments)
+         const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/survey/2/${surveyId}/excel`, parameters)
+    }
+
+    async getSurveyTemplates(token, orgId) {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveys/surveyTemplate/2`, parameters)
     }
 
 };

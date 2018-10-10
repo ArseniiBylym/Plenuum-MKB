@@ -85,12 +85,29 @@ const currentUser = (state = {}, action) => {
     }
 };
 
-let mySurveysContainer = [
-    {title: 'title'}
-]
+let myTempSurveysContainer = {
+    surveys: [
+        {
+            _id: "5ba38c9700818d34af369411",
+            createdAt: "2018-09-20T12:03:35.152Z",
+            title: "Survey title1",
+            expiritDate: "2018-10-22T15:51:41.696Z",
+            complitedSurveyTodos: 2,
+            allSurveyTodos: 3
+        },
+        {
+            _id: "5ba38c9700818d34af369411",
+            createdAt: "2018-09-20T12:03:35.152Z",
+            title: "Survey title2",
+            expiritDate: "2018-08-22T15:51:41.696Z",
+            complitedSurveyTodos: 2,
+            allSurveyTodos: 3
+        }
+    ]
+}
 
 // const createSurvey = (state = mySurveysDefaultStore, action) => {
-const createSurvey = (state = mySurveysContainer, action) => {
+const createSurvey = (state = myTempSurveysContainer, action) => {
     switch (action.type) {
         case Constants.ReducersActionType.PUT_SURVEYS_TO_REDUX:
             console.log(action.surveys)
@@ -215,6 +232,26 @@ const composeCompass = (state = {}, action) => {
     }
 };
 
+const templatesArray = {
+    templates: [
+
+    ]
+}
+
+const syrveyTemplates = (state = templatesArray, action) => {
+    switch (action.type) {
+        case Constants.ReducersActionType.PUT_TEMPLATES_TO_REDUX:
+            return {
+                templates: [
+                    ...action.templates,
+                ]
+            }
+       
+        default: 
+            return state;
+    }
+}
+
 //I don't need the name since ES6 allows it if the object and the value of object have the same name
 const reducers = combineReducers({
     filterByUser,
@@ -224,7 +261,8 @@ const reducers = combineReducers({
     surveysState,
     notificationState,
     createSurvey,
-    incomingSurveys
+    incomingSurveys,
+    syrveyTemplates
 });
 
 export default reducers;

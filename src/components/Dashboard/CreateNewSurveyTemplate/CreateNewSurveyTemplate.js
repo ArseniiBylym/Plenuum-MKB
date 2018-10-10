@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Constants from '../../../lib/constants'
 
 import './CreateNewSurveyTemplate.css';
+import Api from '../../../lib/api.js';
 
 class CreateNewSurveyTemplate extends Component {
 
@@ -13,10 +14,32 @@ class CreateNewSurveyTemplate extends Component {
     }
 
     componentDidMount = () => {
+        const token = window.localStorage.getItem('token');
+        Api.getSurveyTemplates(token, this.props.orgId)
+            .then((response) => {
+                console.log(response)
+                this.props.putTemplatesToRedux(response)
+            })
+            .catch((error) => {
+                console.log(error.message)
+            })
         //send request to the back and put response to the state and redux store
     }
 
-    render() {
+    renderPage() {
+
+        let templates = null;
+        if (this.props.templates.length > 0) {
+            templates = this.props.templates.map((item, i) => {
+                return (
+                    <Link key={item._id} to={`${Constants.Route.CREATE_NEW_SURVEY}/${i + 1}`} className='template-item '>
+                        <div className='template-item-img blank-template'></div>
+                        {item.title}
+                        <div className='template-item-arrow'></div>
+                    </Link>
+                )
+            })
+        }
         //add check is state templates empty. If not, create templates object with Link items with map method and render the page
         let closeButton = <a href="javascript:history.back()" className="close-button-title--create-new-header"></a>
         return (
@@ -34,27 +57,34 @@ class CreateNewSurveyTemplate extends Component {
                             Start blank
                         <div className='template-item-arrow'></div>
                         </Link>
-                        {/* <Link to={Constants.Route.CREATE_NEW_SURVEY} className='template-item'>
-                            <div className='template-item-img fill-template'></div>
-                            Long tempate name for a survey that you
-                            fill out in case you need it and truncated at th…
-                        <div className='template-item-arrow'></div>
-                        </Link>
-                        <Link to={Constants.Route.CREATE_NEW_SURVEY} className='template-item'>
-                            <div className='template-item-img fill-template'></div>
-                            Short name
-                        <div className='template-item-arrow'></div>
-                        </Link>
-                        <Link to={Constants.Route.CREATE_NEW_SURVEY} className='template-item'>
-                            <div className='template-item-img fill-template'></div>
-                            Somewhat longer template name
-                        <div className='template-item-arrow'></div>
-                        </Link> */}
+                        {templates}
+
                     </div>
                 </div>
             </div>
         )
     }
+
+    render() {
+        return (
+            <div>
+                {this.renderPage()}
+            </div>
+        )
+    }
 }
 
-export default CreateNewSurveyTemplate
+const mapStateToProps = state => {
+    return {
+        templates: state.syrveyTemplates.templates,
+        orgId: state.currentUser.orgId
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        putTemplatesToRedux: (templates) => { dispatch({ type: "PUT_TEMPLATES_TO_REDUX", templates: templates }) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateNewSurveyTemplate)

@@ -5,7 +5,7 @@ import './DownloadAnswersButton.css';
 function DownloadAnswersButton (props) {
     let url = props.url || '#'
     return (
-        <NavLink to={url} className='DownloadAnswersButton'>
+        <NavLink to={url} className='DownloadAnswersButton' onClick={props.click}>
             <div className='DownloadAnswersButton__icon'></div>
             <div className='DownloadAnswersButton__text'>{props.text}</div>
         </NavLink>

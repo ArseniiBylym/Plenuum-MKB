@@ -10,25 +10,29 @@ class DetailsContainer extends Component {
     }
 
     render() {
-        const {title, description, start_date, finish_date, total_answers, done_answers, selected_users, questions} = this.props.config;
+        const {title, description, createdAt, expiritDate, allSurveyTodos, complitedSurveyTodos, respondents, questions} = this.props.config;
 
         const questionsArr = questions.map((item, i) => {
             return <DetailsQuestions key={item.id} config={item} />
         })
 
         let dateContainer = null;
-        if(new Date().getTime() > finish_date) {
+        if(new Date().getTime() > new Date(expiritDate).getTime()) {
             dateContainer = <div className="DetailsContainer__date-container closed">
-                                <span>Closed</span> on {moment(finish_date).format("YYYY.MM.DD")} &#9679; Sent {moment(start_date).format("YYYY.MM.DD")}
+                                <span>Closed</span> on {moment(expiritDate).format("YYYY.MM.DD")} &#9679; Sent {moment(createdAt).format("YYYY.MM.DD")}
                             </div>
         } else {
             dateContainer = <div className="DetailsContainer__date-container open">
-                                <span>Open</span> till {moment(finish_date).format("YYYY.MM.DD")} &#9679; Sent {moment(start_date).format("YYYY.MM.DD")}
+                                <span>Open</span> till {moment(expiritDate).format("YYYY.MM.DD")} &#9679; Sent {moment(createdAt).format("YYYY.MM.DD")}
                             </div>
         }
 
-        const users = selected_users.map((user, i) => {
-            return <SelectedUserContainer  key={user.id} user={user} />
+        const users = respondents.map((user, i) => {
+            let tempUser = {
+                firstName: user.name,
+                pictureUrl: user.imgUrl,
+            }
+            return <SelectedUserContainer  key={user.id} user={tempUser} />
         })
 
         return(
@@ -38,7 +42,7 @@ class DetailsContainer extends Component {
                 <div className="DetailsContainer__description">{description}</div>
                 <div className="DetailsContainer__statistic">
                     <div className='Card__statistic--icon'></div>
-                    {done_answers} / {total_answers} answers
+                    {complitedSurveyTodos} / {allSurveyTodos} answers
                 </div>
                 {dateContainer}
                 <div className="DetailsContainer__users-container">{users}</div>

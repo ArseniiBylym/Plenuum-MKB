@@ -308,9 +308,9 @@ class CreateNewSurvey extends Component {
         const objForPost = {
             title: this.state.title,
             description: this.state.description,
-            respondents: JSON.stringify(respondentsForPost),
+            respondents: respondentsForPost,
             expiritDate: moment(this.state.open_until).format('YYYY-MM-DD hh:mm:ss.SSS'),
-            questions: JSON.stringify(questionsForPost)
+            questions: questionsForPost
         }
         const token = window.localStorage.getItem('token');
         console.log(objForPost)
@@ -327,7 +327,6 @@ class CreateNewSurvey extends Component {
                 // return
                 console.log(error.massage)
             })
-        //Send POST request to back
     }
 
     render() {

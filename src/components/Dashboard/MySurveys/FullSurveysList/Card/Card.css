@@ -101,6 +101,7 @@
     display: flex;
     flex-flow: row nowrap;
     color: #187697;
+    cursor: pointer;
 }
 .downloadButton--arrow{
     width: 18px;
