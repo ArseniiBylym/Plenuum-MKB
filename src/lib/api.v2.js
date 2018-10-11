@@ -352,4 +352,15 @@ export default class Api_v2 extends Networking {
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveys/surveyTemplate/2`, parameters)
     }
 
+    async getSpecificUser(token, orgId, ownerId) {
+        console.log(arguments)
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/users/${ownerId}`, parameters)
+    }
+
 };
