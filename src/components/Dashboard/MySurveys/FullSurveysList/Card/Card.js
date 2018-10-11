@@ -39,7 +39,7 @@ export default function Card(props) {
                     <div className='downloadButton--arrow'></div>
                     Answers
                 </div>
-                <NavLink to={`/my_surveys/${index}`} className="detailsButton">Details</NavLink>
+                <NavLink to={`/my_surveys/${props.config._id}`} className="detailsButton">Details</NavLink>
             </div>
         </div>
     )

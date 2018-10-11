@@ -59,8 +59,8 @@ class SurveyDetails extends Component {
     componentDidMount = () => {
         console.log(this.props)
         const token = window.localStorage.getItem('token');
-        const surveyId = this.props.mySyrveys[this.props.match.params.id]._id
-        Api.getSurveyDetails(token, surveyId, this.props.orgId)
+        // const surveyId = this.props.mySyrveys[this.props.match.params.id]._id
+        Api.getSurveyDetails(token, this.props.match.params.id, this.props.orgId)
             .then((response) => {
                 console.log(response)
                 this.setState({
@@ -84,7 +84,7 @@ class SurveyDetails extends Component {
 
     renderPage() {
 
-        if(!this.props.mySyrveys) return null
+        // if(!this.props.mySyrveys) return null
         if(!this.state.title) return null
 
         // let currentSyrvey = this.props.mySyrveys[this.props.match.params.id]
@@ -120,7 +120,7 @@ class SurveyDetails extends Component {
 
 const mapStateToProps = state => {
     return {
-        mySyrveys: state.createSurvey.surveys,
+        // mySyrveys: state.createSurvey.surveys,
         orgId: state.currentUser.orgId
     }
 }
