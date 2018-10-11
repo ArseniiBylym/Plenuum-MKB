@@ -238,8 +238,10 @@ class CreateFeedbackRequestContainer extends Component {
     }
 
     componentDidMount(){
-
-        if(this.props.isUserHRStatus && this.props.isUserHRStatus == 'not HR'){
+        if(this.props.usersList){
+            this.setState({
+                users: this.props.usersList
+            })
             return
             //create some another Api request to get user's direct reports
         }

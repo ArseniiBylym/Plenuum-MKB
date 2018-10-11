@@ -153,7 +153,8 @@ const incomingSurveys = (state = incoming_surv, action) => {
                 if(action.index == i) {
                     return {
                         ...item, 
-                        completed: true
+                        completed: true,
+                       
                     }
                 } else return item
             })
@@ -162,6 +163,8 @@ const incomingSurveys = (state = incoming_surv, action) => {
                 ...state,
                 list: survey_list,
                 just_completed: true,
+                completedSurveyId: action.id
+                
             }
         case Constants.ReducersActionType.CLEAR_ANSWER_SENT_MESSAGE: 
             return{

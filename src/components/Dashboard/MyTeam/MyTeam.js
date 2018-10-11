@@ -4,13 +4,43 @@ import DefaultNavigationBarContainer from '../Commons/DefaultNavigationBar/index
 import { connect } from 'react-redux';
 import MyTeamEmptyState from './MyTeamEmptyState/MyTeamEmptyState';
 import MyTeamFullState from './MyTeamFullState/MyTeamFullState';
+import Api from '../../../lib/api';
 
 class MyTeam extends Component {
     state = {
         selectedUser: '',
-        fullState: true   //Need to be changed when users directs will get
+        isRequestSended: true, //this value for set is visible flow
+        usersList: null
     }
     componentDidMount = () => {
+        // const token = window.localStorage.getItem('token');
+        // Api.getMyTeam(token, this.props.currentUser.orgId)
+        //     .then(response => {
+        //         console.log(response)
+        //         if(response.length > 0 && this.props.currentUser.roles && this.props.currenUser.roles.includes('HR')){
+        //             this.setState({
+        //                 usersList: response,
+        //                 isRequestSended: true
+        //             })
+        //         } else if(response.length > 0){
+        //             let users = response.filter((item, i) => {
+        //                 if(item.manager == this.props.currentUser._id) return true
+        //                 else return false
+        //             })
+        //             this.setState({
+        //                 usersList: users,
+        //                 isRequestSended: true
+        //             })
+        //         }
+        //     })
+        //     .catch(error => {
+        //         console.log(error.message)
+        //     })
+
+
+        this.setState({
+            currentUser: this.props.currentUser
+        })
         this.props.currentUser.status = 'HR' // // the identifier for user for HR rights
     }
 
@@ -35,7 +65,7 @@ class MyTeam extends Component {
                     title='Közvetlen beosztottak'
                     className="interact"
                 />
-                {this.state.fullState ? 
+                {this.state.isRequestSended ? 
                     <MyTeamFullState 
                         returnSelectedUserProfile={this.returnSelectedUserProfile}
                         isUserHRStatus={this.props.currentUser.status}
@@ -67,3 +97,6 @@ const mapStateToProps = state => {
 
 
 export default connect(mapStateToProps, null)(MyTeam)
+
+
+// usersList={this.state.usersList}

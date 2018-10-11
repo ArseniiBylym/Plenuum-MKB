@@ -243,7 +243,8 @@ class RequestListContainer extends Component {
                 showMessage:notificationState.showMessage,
                 notification:this.notification.bind(this),
                 mes:notificationState.message,
-                col:notificationState.color
+                col:notificationState.color,
+                showCompleteSurveyNotification: this.props.isJustCompleted
             });
 
         }else{

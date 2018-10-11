@@ -3,6 +3,7 @@ import CreateFeedbackRequestContainer from '../../CreateFeedbackRequest/index.js
 import './MyTeamFullState.css';
 
 function MyTeamFullState(props) {
+    console.log(props)
     return (
         <div className='MyTeam'>
             <div className='MyTeam__search-container'>
@@ -63,3 +64,5 @@ function MyTeamFullState(props) {
 }
 
 export default MyTeamFullState
+
+// usersList={props.usersList}

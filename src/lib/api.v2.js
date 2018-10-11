@@ -287,16 +287,7 @@ export default class Api_v2 extends Networking {
     }
 
     async createNewSurvey (token, orgId, body) {
-        
-        // let formBody = [];
-        // for (let key in body) {
-           
-        //     let encodeKey = encodeURIComponent(key);
-        //     let encodeValue = encodeURIComponent(body[key]);
-        //     formBody.push(encodeKey + '=' + encodeValue);
-        // }
-        // formBody = formBody.join('&');
-
+      
         const parameters = {
             method: HTTPMethod.POST,
             headers: {
@@ -361,6 +352,42 @@ export default class Api_v2 extends Networking {
             }
         }
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/users/${ownerId}`, parameters)
+    }
+
+    async getSurveyById(token, orgId, surveyId) {
+        console.log(arguments)
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveys/${surveyId}`, parameters)
+    }
+
+    async sendCompletedSurvey(token, orgId, surveyId, body) {
+        const parameters = {
+            method: HTTPMethod.PATCH,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        }
+
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveysTodo/${surveyId}`, parameters)
+
+    }
+
+    async getMyTeam(token, orgId) {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/myTeam/users`, parameters)
     }
 
 };

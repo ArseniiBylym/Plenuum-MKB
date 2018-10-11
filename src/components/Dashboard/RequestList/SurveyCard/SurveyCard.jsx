@@ -8,21 +8,38 @@ import {connect} from 'react-redux';
 class SurveyCard extends Component {
 
 	state = {
-		currentSurveyOwner: null
+		currentSurveyOwner: null,
+		isCompletedCurrentSurvey: null
 	}
 
 	componentDidMount = () =>{
 		console.log(this.props)
 		const token = window.localStorage.getItem('token')
-		console.log(this.props.survey.survey.owner)
+		const iscompleteTemp = this.props.survey.isCompleted || this.props.surveyState.completedSurveyId == this.props.survey.survey._id
+
 		Api.getSpecificUser(token, this.props.orgId, this.props.survey.survey.owner)
 			.then(response => {
 				console.log(response)
 				this.setState({
-					currentSurveyOwner: response
+					currentSurveyOwner: response,
+					isCompletedCurrentSurvey: iscompleteTemp
 				})
 			})
 	}
+
+	onClickHandler = (e) => {
+		console.log(this.props.survey.isCompleted)
+		console.log(this.props.surveyState.completedSurveyId)
+		console.log(this.props.survey.survey._id)
+
+		// console.log(this.props.surveyState.completedSurveyId)
+
+		if(this.props.survey.isCompleted || 
+			(this.props.surveyState.completedSurveyId && this.props.surveyState.completedSurveyId == this.props.survey.survey._id)) {
+			e.preventDefault()
+		}
+	}
+
 	renderPage() {
 		if(!this.state.currentSurveyOwner) return null
 		return (
@@ -34,6 +51,8 @@ class SurveyCard extends Component {
 				</div>
 				<div className="survey-message">
 					<p>{this.props.title}</p>
+					{this.props.survey.isCompleted || 
+			(this.props.surveyState.completedSurveyId && this.props.surveyState.completedSurveyId == this.props.survey.survey._id) && <div className='dot'>1</div>}
 				</div>
 				<NavLink
 					className="survey-link"
@@ -41,6 +60,7 @@ class SurveyCard extends Component {
 						pathname: `/survey/${this.props.survey.survey._id}`,
 						
 					}}
+					onClick={this.onClickHandler}
 				>
 					Start Survey
      			</NavLink>
@@ -59,11 +79,14 @@ class SurveyCard extends Component {
 
 const mapStateToProps = state => {
 	return{
-		orgId: state.currentUser.orgId
+		orgId: state.currentUser.orgId,
+		surveyState: state.incomingSurveys
 	}
 }
 
 export default connect(mapStateToProps, null)(SurveyCard);
+
+
 
 // import React from 'react';
 // import './SurveyCard.css';
