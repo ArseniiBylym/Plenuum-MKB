@@ -10,6 +10,7 @@ function MyTeamFullState(props) {
                 <div className="search-container__header">Közvetlen beosztottak</div>
                 <div className="search-container__main">
                     <CreateFeedbackRequestContainer
+                        usersList={props.usersList}
                         showOnlyOneUser={true}
                         returnSelectedUserProfile={props.returnSelectedUserProfile}
                         isUserHRStatus={props.isUserHRStatus}
@@ -37,7 +38,7 @@ function MyTeamFullState(props) {
                                 <div className="statistic-info--header">Kapott visszajelzések</div>
                                 <div className="statistic-info--text">Vezető számára is látható visszajelzések</div>
                             </div>
-                            <a href='#' alt='link'>
+                            <a href='#' alt='link' onClick={props.getSkillFile}>
                                 <div className="download-wrapper__statistic-button">
                                     <div className="download-wrapper__statistic-button-icon"></div>
                                     Excel letöltése

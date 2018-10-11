@@ -13,7 +13,7 @@ class MyTeam extends Component {
         usersList: null
     }
     componentDidMount = () => {
-        // const token = window.localStorage.getItem('token');
+        const token = window.localStorage.getItem('token');
         // Api.getMyTeam(token, this.props.currentUser.orgId)
         //     .then(response => {
         //         console.log(response)
@@ -41,13 +41,17 @@ class MyTeam extends Component {
         this.setState({
             currentUser: this.props.currentUser
         })
-        this.props.currentUser.status = 'HR' // // the identifier for user for HR rights
+        
     }
 
     returnSelectedUserProfile = (user) => {
+       
+        console.log(user)
+
         this.setState({
-            selectedUser: user
+            selectedUser: user,
         })
+        
     }
 
     returnUsersToMyTeamFlow = (firstUser) => {
@@ -56,6 +60,16 @@ class MyTeam extends Component {
                 selectedUser: firstUser,
             })
         }, 0)
+    }
+
+    getSkillFile = () => {
+        const token = window.localStorage.getItem('token');
+        Api.getUserSkillExcell(token, this.props.currentUser.orgId, this.state.selectedUser._id)
+            .then(response => {
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
     }
 
     renderPage() {
@@ -67,9 +81,12 @@ class MyTeam extends Component {
                 />
                 {this.state.isRequestSended ? 
                     <MyTeamFullState 
+                        usersList={this.state.usersList}
+                        getSkillFile={this.getSkillFile}
                         returnSelectedUserProfile={this.returnSelectedUserProfile}
                         isUserHRStatus={this.props.currentUser.status}
                         returnUsersToMyTeamFlow={this.returnUsersToMyTeamFlow}
+                        myTeamUserId={this.state.selectedUser._id}
                         pictureUrl={this.state.selectedUser.pictureUrl}
                         firstName={this.state.selectedUser.firstName}
                         lastName={this.state.selectedUser.lastName}
@@ -99,4 +116,3 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, null)(MyTeam)
 
 
-// usersList={this.state.usersList}

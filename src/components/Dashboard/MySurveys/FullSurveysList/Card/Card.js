@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import Api from '../../../../../lib/api';
 
 export default function Card(props) {
+    console.log(props)
 
     const downloadExcelFile = () => {
         const token = window.localStorage.getItem('token');

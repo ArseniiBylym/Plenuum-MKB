@@ -390,4 +390,14 @@ export default class Api_v2 extends Networking {
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/myTeam/users`, parameters)
     }
 
+    async getUserSkillExcell(token, orgId, userId) {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/${userId}/skillScores/excel`, parameters)
+    }
+
 };
