@@ -22,7 +22,7 @@ class CreateNewSurvey extends Component {
         const { currentUser } = this.store.getState();
         this.currentUser = currentUser;
         this.userId = currentUser._id;
-        this.currentUser.status = true // the identifier for user for HR rights
+        this.currentUser.status = this.currentUser.roles && this.currentUser.roles.includes('HR') ? true : false// the identifier for user for HR rights
 
         this.state = {
             screenSide: 'left',

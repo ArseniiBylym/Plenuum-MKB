@@ -252,7 +252,7 @@ export default class Api_v2 extends Networking {
         const parameters = {
             method: HTTPMethod.PATCH,
             headers: {
-                'Authorization': `Bearer ${token}`,
+                // 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
             },
             body: formBody,
@@ -262,29 +262,29 @@ export default class Api_v2 extends Networking {
         return this.fetchFromAPI(baseURL + URLPath.user + 'updateUserManager', parameters)
     }
 
-    async deleteManager(token) {
-        let details = {
-            'managerId': ``
-        }
-        let formBody = [];
-        for (let key in details) {
-            let encodeKey = encodeURIComponent(key);
-            let encodeValue = encodeURIComponent(details[key]);
-            formBody.push(encodeKey + '=' + encodeValue);
-        }
-        formBody = formBody.join('&');
+    // async deleteManager(token) {
+    //     let details = {
+    //         'managerId': ``
+    //     }
+    //     let formBody = [];
+    //     for (let key in details) {
+    //         let encodeKey = encodeURIComponent(key);
+    //         let encodeValue = encodeURIComponent(details[key]);
+    //         formBody.push(encodeKey + '=' + encodeValue);
+    //     }
+    //     formBody = formBody.join('&');
 
-        const parameters = {
-            method: HTTPMethod.PATCH,
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-            },
-            body: formBody,
-        }
+    //     const parameters = {
+    //         method: HTTPMethod.PATCH,
+    //         headers: {
+    //             'Authorization': `Bearer ${token}`,
+    //             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+    //         },
+    //         body: formBody,
+    //     }
 
-        return this.fetchFromAPI(baseURL + URLPath.user + 'updateUserManager', parameters)
-    }
+    //     return this.fetchFromAPI(baseURL + URLPath.user + 'updateUserManager', parameters)
+    // }
 
     async createNewSurvey (token, orgId, body) {
       
@@ -397,7 +397,19 @@ export default class Api_v2 extends Networking {
                 'Authorization': `Bearer ${token}`
             }
         }
-        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/${userId}/skillScores/excel`, parameters)
+        return this.fetchFromAPI_excel(baseURL + URLPath.organisations + `${orgId}/${userId}/skillScores/excel`, parameters)
     }
 
+    async getUserFeedbackExcell(token, orgId, userId) {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type':   `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`,
+                'Content-Disposition': `attachment; filename="feedbacks_wood_aaron_2018-10-12.xlsx"`,
+                // 'Cache-Control': `max-age=0`
+            }
+        }
+        return this.fetchFromAPI_excel(baseURL + URLPath.organisations + `${orgId}/${userId}/feedbacks/excel`, parameters)
+    }
 };

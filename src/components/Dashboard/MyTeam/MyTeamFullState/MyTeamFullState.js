@@ -50,7 +50,7 @@ function MyTeamFullState(props) {
                                 <div className="statistic-info--header">Képesség pontszámok</div>
                                 <div className="statistic-info--text">Összes képesség pontszám</div>
                             </div>
-                            <a href='#' alt='link'>
+                            <a href='#' alt='link' onClick={props.getFeedbackFile}>
                                 <div className="download-wrapper__statistic-button">
                                     <div className="download-wrapper__statistic-button-icon"></div>
                                     Excel letöltése

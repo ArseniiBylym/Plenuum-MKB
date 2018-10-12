@@ -41,17 +41,17 @@ class MyTeam extends Component {
         this.setState({
             currentUser: this.props.currentUser
         })
-        
+
     }
 
     returnSelectedUserProfile = (user) => {
-       
+
         console.log(user)
 
         this.setState({
             selectedUser: user,
         })
-        
+
     }
 
     returnUsersToMyTeamFlow = (firstUser) => {
@@ -63,9 +63,22 @@ class MyTeam extends Component {
     }
 
     getSkillFile = () => {
+        console.log('get skill')
         const token = window.localStorage.getItem('token');
         Api.getUserSkillExcell(token, this.props.currentUser.orgId, this.state.selectedUser._id)
             .then(response => {
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
+    getFeedbackFile = () => {
+        console.log('get feedback')
+        const token = window.localStorage.getItem('token');
+        Api.getUserFeedbackExcell(token, this.props.currentUser.orgId, this.state.selectedUser._id)
+            .then(response => {
+                console.log(response)
             })
             .catch(error => {
                 console.log(error.message)
@@ -79,10 +92,11 @@ class MyTeam extends Component {
                     title='Közvetlen beosztottak'
                     className="interact"
                 />
-                {this.state.isRequestSended ? 
-                    <MyTeamFullState 
+                {this.state.isRequestSended ?
+                    <MyTeamFullState
                         usersList={this.state.usersList}
                         getSkillFile={this.getSkillFile}
+                        getFeedbackFile={this.getFeedbackFile}
                         returnSelectedUserProfile={this.returnSelectedUserProfile}
                         isUserHRStatus={this.props.currentUser.status}
                         returnUsersToMyTeamFlow={this.returnUsersToMyTeamFlow}
@@ -90,7 +104,7 @@ class MyTeam extends Component {
                         pictureUrl={this.state.selectedUser.pictureUrl}
                         firstName={this.state.selectedUser.firstName}
                         lastName={this.state.selectedUser.lastName}
-                    /> : 
+                    /> :
                     <MyTeamEmptyState />
                 }
             </div>
