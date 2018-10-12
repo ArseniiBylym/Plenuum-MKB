@@ -1,11 +1,3 @@
-// import Api from '../../../lib/api';
-// import { Utils } from '../../../lib/utils';
-// import { createBackButton } from '../Commons/DefaultNavigationBar/index.js';
-// import SurveyFormContainer from './SurveyContainer.jsx';
-// import { searchUsersComponent } from '../MyFeedbacks/MyContent.js';
-// import { spinner } from "../../Commons/Spinner/spinner";
-// import SearchContainer from '../Commons/Search/index.js';
-
 import React, { Component, Fragment } from 'react';
 import DefaultNavigationBarContainer from '../Commons/DefaultNavigationBar/index.js';
 import EmptySurveysList from './EmptySurveysList/EmptySurveysList'
@@ -21,14 +13,18 @@ class MySurveys extends Component {
     state = {
         list: [
            
-        ]
+        ],
+        surveys: null
     }
     componentDidMount = () => {
         const token = window.localStorage.getItem('token')
         Api.getMySurveys(token, this.props.orgId)
             .then((response) => {
-                console.log(response)
-                this.props.putSurveysToRedux(response);
+                // console.log(response)
+                this.setState({
+                    surveys: response
+                })
+                // this.props.putSurveysToRedux(response);
             })
 
       
@@ -45,14 +41,15 @@ class MySurveys extends Component {
     renderPage() {
         
 
-        if (!this.props.mySurveys) return null
-        if(!this.props.mySurveys.surveys) return null
+        // if (!this.props.mySurveys) return null
+        // if(!this.props.mySurveys.surveys) return null
+        if(!this.state.surveys) return null
         
         let cardList = null
         if (this.props.mySurveys.surveys.length == 0) {
             cardList = <EmptySurveysList />
         } else {
-            cardList = <FullSurveysList list={this.props.mySurveys.surveys}
+            cardList = <FullSurveysList list={this.state.surveys}
                 isShowSendNotification={this.props.mySurveys.survey_has_sended} orgId={this.props.orgId}/>
         }
         let createButton = <CreateNewButton text='New survey' />
@@ -89,7 +86,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        putSurveysToRedux: (surveys) => {dispatch({type: "PUT_SURVEYS_TO_REDUX", surveys: surveys})},
+        // putSurveysToRedux: (surveys) => {dispatch({type: "PUT_SURVEYS_TO_REDUX", surveys: surveys})},
         clearSurveySendState: () => { dispatch({ type: "CLEAR_SURVEY_HAS_SENDED" }) }
     }
 }

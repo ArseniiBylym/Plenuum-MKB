@@ -119,19 +119,19 @@ const createSurvey = (state = myTempSurveysContainer, action) => {
             }
         case Constants.ReducersActionType.CREATE_NEW_SURVEY:
 
-            const survey = {
-                title: action.newSurvey.title,
-                description: action.newSurvey.description,
-                start_date: Date.now(),
-                finish_date: new Date(action.newSurvey.open_until).getTime(),
-                questions: action.newSurvey.questions,
-                selected_users: action.newSurvey.selectedUsers,
-                total_answers: action.newSurvey.selectedUsers.length,
-                done_answers: 0,
-            }
+            // const survey = {
+            //     title: action.newSurvey.title,
+            //     description: action.newSurvey.description,
+            //     start_date: Date.now(),
+            //     finish_date: new Date(action.newSurvey.open_until).getTime(),
+            //     questions: action.newSurvey.questions,
+            //     selected_users: action.newSurvey.selectedUsers,
+            //     total_answers: action.newSurvey.selectedUsers.length,
+            //     done_answers: 0,
+            // }
             return {
                 ...state,
-                my_surveys: state.my_surveys.concat(survey),
+                // my_surveys: state.my_surveys.concat(survey),
                 survey_has_sended: true
             }
 

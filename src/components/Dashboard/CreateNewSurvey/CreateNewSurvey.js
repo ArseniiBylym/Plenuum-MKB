@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './CreateNewSurvey.css';
 import moment from 'moment';
+import {withRouter} from 'react-router-dom'
 
 class CreateNewSurvey extends Component {
 
@@ -48,6 +49,7 @@ class CreateNewSurvey extends Component {
     }
 
     componentDidMount = () => {
+        console.log(this.props)
         const orgId = this.currentUser.orgId;
         Api.users(orgId)
             .then((response) => {
@@ -269,24 +271,20 @@ class CreateNewSurvey extends Component {
         console.log('into handler')
         if(this.state.title.trim().length == 0) {
             console.log('Please, fill the title of the survey to continue');
-            e.preventDefault();
             return
         }
         if(this.state.open_until.trim().length == 0) {
             console.log(`Please, chose the date of the survey's end to continue`)
-            e.preventDefault();
             return
         }
         for (let item of this.state.questions) {
             if(item.text.trim().length == 0) {
                 console.log('Please, fill the all questions fields to continue')
-                e.preventDefault();
                 return
             }
         }
         if(this.state.selectedUsers.length == 0) {
             console.log('Plese, chose at least one user to continue')
-            e.preventDefault();
             return
         }
 
@@ -318,6 +316,9 @@ class CreateNewSurvey extends Component {
         Api.createNewSurvey(token, this.currentUser.orgId, objForPost)
             .then((response) => {
                 console.log(response)
+
+                this.props.history.push('/my_surveys')
+
                 this.props.createNewSurvey(this.state)
                 console.log('New survey was successful created!')
                 console.log(this.state)
@@ -379,9 +380,9 @@ class CreateNewSurvey extends Component {
                             <SelectUsersForSurvey addUsersToCurrentList={this.addUsersToCurrentList}
                                 className={classNameForUsersContainer} />
                         }
-                        <NavLink to='/my_surveys' className='CreateNew__footer-wrapper' onClick={this.createSurveyHandler}>
+                        <div id='link' className='CreateNew__footer-wrapper' onClick={this.createSurveyHandler}>
                             <ButtonNext text='SEND SURVEY' />
-                        </NavLink>
+                        </div>
                     </div>
                 </div>
             </div >
@@ -408,7 +409,7 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(CreateNewSurvey);
+export default connect(null, mapDispatchToProps)(withRouter(CreateNewSurvey));
 
 //Helper function for move questions in list up or down. Use in goToNext and goToPrev methods
 function moveTo (from, to) {

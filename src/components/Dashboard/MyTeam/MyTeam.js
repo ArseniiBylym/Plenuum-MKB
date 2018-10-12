@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import MyTeamEmptyState from './MyTeamEmptyState/MyTeamEmptyState';
 import MyTeamFullState from './MyTeamFullState/MyTeamFullState';
 import Api from '../../../lib/api';
+var XMLParser = require('react-xml-parser');
 
 class MyTeam extends Component {
     state = {
@@ -79,6 +80,8 @@ class MyTeam extends Component {
         Api.getUserFeedbackExcell(token, this.props.currentUser.orgId, this.state.selectedUser._id)
             .then(response => {
                 console.log(response)
+                // var xml = new XMLParser().parseFromString(response);   
+                // console.log(xml);
             })
             .catch(error => {
                 console.log(error.message)
