@@ -183,6 +183,7 @@ class CreateFeedbackContainer extends Component {
     }
 
     createPost(){
+        console.log('post ___')
         this.setState({buttonDisabled:true});
         const { route } = this.context.router;
         if (this.state.message  && this.state.user) {

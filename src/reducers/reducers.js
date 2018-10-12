@@ -71,6 +71,7 @@ const currentUser = (state = {}, action) => {
                 pictureUrl: action.pictureUrl
             };
         case Constants.ReducersActionType.ADD_USERS_MANAGER:
+        console.log(action)
             return{
                 ...state,
                 manager: {
@@ -84,23 +85,53 @@ const currentUser = (state = {}, action) => {
     }
 };
 
-const createSurvey = (state = mySurveysDefaultStore, action) => {
+let myTempSurveysContainer = {
+    surveys: [
+        {
+            _id: "5ba38c9700818d34af369411",
+            createdAt: "2018-09-20T12:03:35.152Z",
+            title: "Survey title1",
+            expiritDate: "2018-10-22T15:51:41.696Z",
+            complitedSurveyTodos: 2,
+            allSurveyTodos: 3
+        },
+        {
+            _id: "5ba38c9700818d34af369411",
+            createdAt: "2018-09-20T12:03:35.152Z",
+            title: "Survey title2",
+            expiritDate: "2018-08-22T15:51:41.696Z",
+            complitedSurveyTodos: 2,
+            allSurveyTodos: 3
+        }
+    ]
+}
+
+// const createSurvey = (state = mySurveysDefaultStore, action) => {
+const createSurvey = (state = myTempSurveysContainer, action) => {
     switch (action.type) {
+        case Constants.ReducersActionType.PUT_SURVEYS_TO_REDUX:
+            console.log(action.surveys)
+            return {
+                surveys: [
+                    ...action.surveys,
+                ],
+                survey_has_sended: false
+            }
         case Constants.ReducersActionType.CREATE_NEW_SURVEY:
 
-            const survey = {
-                title: action.newSurvey.title,
-                description: action.newSurvey.description,
-                start_date: Date.now(),
-                finish_date: new Date(action.newSurvey.open_until).getTime(),
-                questions: action.newSurvey.questions,
-                selected_users: action.newSurvey.selectedUsers,
-                total_answers: action.newSurvey.selectedUsers.length,
-                done_answers: 0,
-            }
+            // const survey = {
+            //     title: action.newSurvey.title,
+            //     description: action.newSurvey.description,
+            //     start_date: Date.now(),
+            //     finish_date: new Date(action.newSurvey.open_until).getTime(),
+            //     questions: action.newSurvey.questions,
+            //     selected_users: action.newSurvey.selectedUsers,
+            //     total_answers: action.newSurvey.selectedUsers.length,
+            //     done_answers: 0,
+            // }
             return {
                 ...state,
-                my_surveys: state.my_surveys.concat(survey),
+                // my_surveys: state.my_surveys.concat(survey),
                 survey_has_sended: true
             }
 
@@ -122,7 +153,8 @@ const incomingSurveys = (state = incoming_surv, action) => {
                 if(action.index == i) {
                     return {
                         ...item, 
-                        completed: true
+                        completed: true,
+                       
                     }
                 } else return item
             })
@@ -131,6 +163,8 @@ const incomingSurveys = (state = incoming_surv, action) => {
                 ...state,
                 list: survey_list,
                 just_completed: true,
+                completedSurveyId: action.id
+                
             }
         case Constants.ReducersActionType.CLEAR_ANSWER_SENT_MESSAGE: 
             return{
@@ -201,6 +235,26 @@ const composeCompass = (state = {}, action) => {
     }
 };
 
+const templatesArray = {
+    templates: [
+
+    ]
+}
+
+const syrveyTemplates = (state = templatesArray, action) => {
+    switch (action.type) {
+        case Constants.ReducersActionType.PUT_TEMPLATES_TO_REDUX:
+            return {
+                templates: [
+                    ...action.templates,
+                ]
+            }
+       
+        default: 
+            return state;
+    }
+}
+
 //I don't need the name since ES6 allows it if the object and the value of object have the same name
 const reducers = combineReducers({
     filterByUser,
@@ -210,7 +264,8 @@ const reducers = combineReducers({
     surveysState,
     notificationState,
     createSurvey,
-    incomingSurveys
+    incomingSurveys,
+    syrveyTemplates
 });
 
 export default reducers;

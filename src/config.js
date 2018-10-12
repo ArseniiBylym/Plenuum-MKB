@@ -35,6 +35,8 @@
 
 const getApiBaseUrl = (app) => {
 
+    // return 'https://api.staging.plenuum.com';
+
     if (window.location.href.indexOf('app.plenuum.com') !== -1) {
         return "https://api.plenuum.com";
     }

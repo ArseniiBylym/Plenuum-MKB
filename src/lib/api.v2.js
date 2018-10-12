@@ -139,17 +139,21 @@ export default class Api_v2 extends Networking {
     }
 
     async login(email, password) {
+        console.log(email)
+
         const parameters = {
             method: HTTPMethod.POST,
             headers: {
                 'Pragma': 'no-cache',
                 'Cache-Control': 'no-cache',
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
+            // mode: 'no-cors',
             body: JSON.stringify({'email': email, 'password': password}),
             cache: "no-store"
         };
+        console.log(parameters)
         return this.fetchFromAPI(baseURL + URLPath.session, parameters);
     }
 
@@ -221,4 +225,193 @@ export default class Api_v2 extends Networking {
         };
     }
 
+
+    //Sent abusive feedback
+    async sentAbusiveFeedback(token, orgId, feedbackId) {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Content-Type': `application/x-www-form-urlencoded`,
+                'Authorization': `Bearer ${token}`
+            },
+        };
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/users/me/feedbacks/${feedbackId}/reportAbusive`, parameters);
+    }
+
+    async selectManager(token, managerId){
+        let details = {
+            'managerId': `${managerId}`
+        }
+        let formBody = [];
+        for (let key in details) {
+            let encodeKey = encodeURIComponent(key);
+            let encodeValue = encodeURIComponent(details[key]);
+            formBody.push(encodeKey + '=' + encodeValue);
+        }
+        formBody = formBody.join('&');
+
+        const parameters = {
+            method: HTTPMethod.PATCH,
+            headers: {
+                // 'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body: formBody,
+            
+        }
+
+        return this.fetchFromAPI(baseURL + URLPath.user + 'updateUserManager', parameters)
+    }
+
+    // async deleteManager(token) {
+    //     let details = {
+    //         'managerId': ``
+    //     }
+    //     let formBody = [];
+    //     for (let key in details) {
+    //         let encodeKey = encodeURIComponent(key);
+    //         let encodeValue = encodeURIComponent(details[key]);
+    //         formBody.push(encodeKey + '=' + encodeValue);
+    //     }
+    //     formBody = formBody.join('&');
+
+    //     const parameters = {
+    //         method: HTTPMethod.PATCH,
+    //         headers: {
+    //             'Authorization': `Bearer ${token}`,
+    //             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+    //         },
+    //         body: formBody,
+    //     }
+
+    //     return this.fetchFromAPI(baseURL + URLPath.user + 'updateUserManager', parameters)
+    // }
+
+    async createNewSurvey (token, orgId, body) {
+      
+        const parameters = {
+            method: HTTPMethod.POST,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        }
+
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveys/2`, parameters)
+
+    }
+
+    async getMySurveys(token, orgId = 'hipteam') {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveys/2`, parameters)
+    }
+
+    async getSurveyDetails(token, surveyId, orgId) {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/survey/2/${surveyId}/detail`, parameters)
+    }
+
+    async downloadAnswers(token, surveyId, orgId) {
+        console.log(arguments)
+         const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/survey/2/${surveyId}/excel`, parameters)
+    }
+
+    async getSurveyTemplates(token, orgId) {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveys/surveyTemplate/2`, parameters)
+    }
+
+    async getSpecificUser(token, orgId, ownerId) {
+        console.log(arguments)
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/users/${ownerId}`, parameters)
+    }
+
+    async getSurveyById(token, orgId, surveyId) {
+        console.log(arguments)
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveysTodo/${surveyId}`, parameters)
+    }
+
+    async sendCompletedSurvey(token, orgId, surveyId, body) {
+        const parameters = {
+            method: HTTPMethod.PATCH,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        }
+
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveysTodo/${surveyId}`, parameters)
+
+    }
+
+    async getMyTeam(token, orgId) {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/myTeam/users`, parameters)
+    }
+
+    async getUserSkillExcell(token, orgId, userId) {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI_excel(baseURL + URLPath.organisations + `${orgId}/${userId}/skillScores/excel`, parameters)
+    }
+
+    async getUserFeedbackExcell(token, orgId, userId) {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type':   `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`,
+                'Content-Disposition': `attachment; filename="feedbacks_wood_aaron_2018-10-12.xlsx"`,
+                // 'Cache-Control': `max-age=0`
+            }
+        }
+        // return this.fetchFromAPI_excel(baseURL + URLPath.organisations + `${orgId}/${userId}/feedbacks/excel`, parameters)
+        return this.fetchFromAPI_excel(baseURL + URLPath.organisations + `${orgId}/${userId}/feedbacks/excel`, parameters)
+    }
 };

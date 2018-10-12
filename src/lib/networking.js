@@ -22,8 +22,20 @@ export default class Networking {
 
     async fetchFromAPI(url, parameters = defaultParameters){
         parameters = this.addTokenToRequestHeader(parameters);
+        console.log(parameters)
         return fetch(url, parameters)
-            .then(this.handleErrors);
+            .then(
+                this.handleErrors
+            );
+    }
+
+    async fetchFromAPI_excel(url, parameters = defaultParameters){
+        parameters = this.addTokenToRequestHeader(parameters);
+        console.log(parameters)
+        return fetch(url, parameters)
+            .then(
+                this.handleErrors_excel
+            );
     }
 
     addTokenToRequestHeader(parameters){
@@ -44,6 +56,16 @@ export default class Networking {
             throw Error(response.status);
         }
         return response.json();
+    }
+
+    handleErrors_excel(response){
+        if (!response.ok) {
+            if (response.status === 401 && window.location.pathname !== loginPath) {
+                window.location = loginPath;
+            }
+            throw Error(response.status);
+        }
+        return response;
     }
 
 }

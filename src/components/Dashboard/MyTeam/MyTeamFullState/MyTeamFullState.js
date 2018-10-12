@@ -3,12 +3,14 @@ import CreateFeedbackRequestContainer from '../../CreateFeedbackRequest/index.js
 import './MyTeamFullState.css';
 
 function MyTeamFullState(props) {
+    console.log(props)
     return (
         <div className='MyTeam'>
             <div className='MyTeam__search-container'>
                 <div className="search-container__header">Közvetlen beosztottak</div>
                 <div className="search-container__main">
                     <CreateFeedbackRequestContainer
+                        usersList={props.usersList}
                         showOnlyOneUser={true}
                         returnSelectedUserProfile={props.returnSelectedUserProfile}
                         isUserHRStatus={props.isUserHRStatus}
@@ -36,7 +38,7 @@ function MyTeamFullState(props) {
                                 <div className="statistic-info--header">Kapott visszajelzések</div>
                                 <div className="statistic-info--text">Vezető számára is látható visszajelzések</div>
                             </div>
-                            <a href='#' alt='link'>
+                            <a href='#' alt='link' onClick={props.getSkillFile}>
                                 <div className="download-wrapper__statistic-button">
                                     <div className="download-wrapper__statistic-button-icon"></div>
                                     Excel letöltése
@@ -48,7 +50,7 @@ function MyTeamFullState(props) {
                                 <div className="statistic-info--header">Képesség pontszámok</div>
                                 <div className="statistic-info--text">Összes képesség pontszám</div>
                             </div>
-                            <a href='#' alt='link'>
+                            <a href='#' alt='link' onClick={props.getFeedbackFile}>
                                 <div className="download-wrapper__statistic-button">
                                     <div className="download-wrapper__statistic-button-icon"></div>
                                     Excel letöltése
@@ -63,3 +65,5 @@ function MyTeamFullState(props) {
 }
 
 export default MyTeamFullState
+
+// usersList={props.usersList}

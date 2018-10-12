@@ -67,7 +67,9 @@ class LoginContainer extends Component {
             }else {
                 ReactGA.event({ category: 'Server', action: 'Post', label: 'Do login' });
                 Api.login(email, password)
-                    .then(() => {
+                    .then((response) => {
+                        console.log(response)
+                        window.localStorage.setItem('token', response.token + '')
                         ReactGA.event({category: 'Status', action: 'Success', label: 'Do login'});
                         this.context.router.history.push({ pathname: '/' })
                     })

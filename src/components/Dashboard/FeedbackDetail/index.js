@@ -17,6 +17,8 @@ import SentAsDefaultPic from '../../../resources/profile.svg';
 import Constants from '../../../lib/constants'
 import {spinner} from "../../Commons/Spinner/spinner";
 import moment from 'moment';
+import {connect} from 'react-redux';
+import axios from 'axios';
 
 const ReactGA = require('react-ga');
 
@@ -294,11 +296,22 @@ class FeedbackDetailContainer extends Component {
         })
     }
     sentToManagerHandler = () => {
-        console.log('Abusive feedback was sended to the manager');
-        this.hideAbusiveModalHandler();
-        this.setState({
-            abusiveFeedbackJustSended: true
-        })
+        const token = window.localStorage.getItem('token')
+        console.log(token)
+
+        Api.sentAbusiveFeedback(token, this.state.currentUser.orgId, this.props.detail.feedback._id)
+            .then((response) => {
+                console.log(response);
+                console.log('Abusive feedback was sended to the manager');
+                this.hideAbusiveModalHandler();
+                this.setState({
+                    abusiveFeedbackJustSended: true
+                })
+            })
+            .catch((e) => {
+                console.log(e.message);
+                console.log(`Can't send abusive feedback`)
+            })
     }
 
     render() {
@@ -341,4 +354,22 @@ FeedbackDetailContainer.contextTypes = {
     store: PropTypes.object,
 };
 
-export default FeedbackDetailContainer;
+const mapDispatchToProps = dispatch => {
+    return{
+        sentAbusiveRequestSaga: (feedbackId, userId) => {dispatch({type: "SENT_ABUSIVE_REQUEST_SAGA", details: {feedbackId, userId}})}
+    }
+}
+
+export default connect(null, mapDispatchToProps) (FeedbackDetailContainer);
+
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+  }
+
+  function logCookies(cookies) {
+    for (let cookie of cookies) {
+      console.log(cookie.value);
+    }
+  }

@@ -3,17 +3,17 @@ import './DetailsQuestions.css';
 
 function DetailsQuestions(props) {
 
-    const {text, type, isRequired} = props.config
+    const {text, type, required} = props.config
 
     let answerType = 'Free text answer';
-    if( type == 'yes_no'){
+    if( type == 'yes-no'){
         answerType = 'Yes-no choice'
-    } else if(type == '1_to_6') {
+    } else if(type == '1-6') {
         answerType = '1 to 6 choice'
     }
 
     let starClassName = 'DetailQuestion__question-start'
-    if(isRequired == 'required') {
+    if(required == 'true') {
         starClassName += ' asterics--show'
     }
     
