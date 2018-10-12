@@ -15,51 +15,45 @@ class SurveyForm extends Component {
         // questions: null,
         isShowErrorMessages: false,
 
-        _id: "5b5587187825ac2a047657b2",
-        updatedAt: "2018-07-23T07:43:20.853Z",
-        createdAt: "2018-07-23T07:43:20.853Z",
-        title: "Some survey",
-        owner: "5a84007831fdc409bc598202",
+        surveyTodo: {
+            _id: "5ba10cceeaf04068261ff4a5",
+            updatedAt: "2018-09-18T14:33:50.591Z",
+            createdAt: "2018-09-18T14:33:50.591Z",
+            survey: {
+                _id: "5b531d15617b0c1fb0c73658",
+                title: "Survey 1"
+            },
+            respondent: "5984342227cd340363dc84a9",
+            isCompleted: false
+        },
         questions: [
             {
-                _id: "5b5587187825ac2a047657b3",
-                updatedAt: "2018-07-23T07:43:20.972Z",
-                createdAt: "2018-07-23T07:43:20.972Z",
-                text: "some question 1",
-                required: false,
-                min: 0,
-                max: 125,
-                survey: "5b5587187825ac2a047657b2",
-                type: "text"
+                _id: "5b5081c3aa357227f44fa504",
+                text: "Survey 1 Question 2",
+                max: 75,
+                min: null,
+                required: true
             },
             {
-                _id: "5b5587187825ac2a047657b4",
-                updatedAt: "2018-07-23T07:43:20.973Z",
-                createdAt: "2018-07-23T07:43:20.973Z",
-                text: "some question 2",
-                required: true,
-                min: 0,
-                max: 150,
-                survey: "5b5587187825ac2a047657b2",
-                type: "1-6"
+                _id: "5b5081c3aa357227f44fa503",
+                text: "Survey 1 Question 1",
+                max: 250,
+                min: 10,
+                required: true
             },
             {
-                _id: "5b5587187825ac2a047657b5",
-                updatedAt: "2018-07-23T07:43:20.973Z",
-                createdAt: "2018-07-23T07:43:20.973Z",
-                text: "some question 3",
-                required: true,
-                min: 0,
-                max: 150,
-                survey: "5b5587187825ac2a047657b2",
-                type: "yes-no"
-            },
+                _id: "5b5081c3aa357227f44fa505",
+                text: "Survey 1 Question 3",
+                max: null,
+                min: 5,
+                required: false
+            }
         ]
     }
 
     componentDidMount = () => {
        
-        // const token = window.localStorage.getItem('token')
+        const token = window.localStorage.getItem('token')
         // Api.getSurveyById(token, this.props.orgId, this.props.match.params.id)
         //     .then(response => {
         //         console.log(response);
@@ -168,7 +162,7 @@ class SurveyForm extends Component {
         if (!this.state.questions) return null
 
         const questionsList = this.state.questions.map((item, index) => {
-            if (item.type == 'text') {
+            if (item.type == 'text' || !item.type) {
 
                 let label = item.required == true ? 'Answer' : item.required == false ? 'Answer(optional)' : null;
                 let isRequiredQuestion = item.required == true ? 'required' : item.required == false ? 'optional' : null;

@@ -238,10 +238,17 @@ class CreateFeedbackRequestContainer extends Component {
     }
 
     componentDidMount(){
+        console.log(this.props.usersList)
         if(this.props.usersList){
+            console.log('sdf')
+
             this.setState({
                 users: this.props.usersList
             })
+
+            if(this.props.returnUsersToMyTeamFlow) {           // Only for MyTeam flow to select first user in array
+                this.props.returnUsersToMyTeamFlow(this.props.usersList[0])    // 
+            }  
             return
             //create some another Api request to get user's direct reports
         }
@@ -291,8 +298,9 @@ class CreateFeedbackRequestContainer extends Component {
                 title: "Send Request"
             }
         }
-
-        if (this.users && this.users.length > 0) {
+        console.log(this.state)
+        if (this.state.users && this.state.users.length > 0) {
+            console.log('sdfsdfdsfdsf')
             this.createComponents();
             return CreateFeedbackRequest({
                 cancelButton:createBackButton(this.cancelButton, undefined),
@@ -300,6 +308,7 @@ class CreateFeedbackRequestContainer extends Component {
                 button,
                 components:this.components});
         }else{
+            console.log('spinner')
             return spinner();
         }
     }

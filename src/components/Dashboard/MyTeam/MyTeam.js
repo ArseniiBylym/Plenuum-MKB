@@ -11,37 +11,36 @@ class MyTeam extends Component {
     state = {
         selectedUser: '',
         isRequestSended: true, //this value for set is visible flow
-        usersList: null
+        usersList: [
+            {
+                email: "christina.jacobs@example.com",
+                firstName: "christina",
+                lastActive: "2018-10-12T12:21:34.027Z",
+                lastName: "jacobs",
+                managerId: "5984342227cd340363dc84bb",
+                pictureUrl: "https://randomuser.me/api/portraits/women/74.jpg",
+                _id: "5984342227cd340363dc84a9",
+            }
+        ]
     }
     componentDidMount = () => {
         const token = window.localStorage.getItem('token');
         // Api.getMyTeam(token, this.props.currentUser.orgId)
         //     .then(response => {
         //         console.log(response)
-        //         if(response.length > 0 && this.props.currentUser.roles && this.props.currenUser.roles.includes('HR')){
-        //             this.setState({
-        //                 usersList: response,
-        //                 isRequestSended: true
-        //             })
-        //         } else if(response.length > 0){
-        //             let users = response.filter((item, i) => {
-        //                 if(item.manager == this.props.currentUser._id) return true
-        //                 else return false
-        //             })
-        //             this.setState({
-        //                 usersList: users,
-        //                 isRequestSended: true
-        //             })
-        //         }
+        //         this.setState({
+        //             usersList: response,
+        //             isRequestSended: true
+        //         })
         //     })
         //     .catch(error => {
         //         console.log(error.message)
         //     })
 
 
-        this.setState({
-            currentUser: this.props.currentUser
-        })
+        // this.setState({
+        //     currentUser: this.props.currentUser
+        // })
 
     }
 
@@ -53,6 +52,9 @@ class MyTeam extends Component {
             selectedUser: user,
         })
 
+    }
+    componentDidUpdate = () => {
+        console.log(this.state)
     }
 
     returnUsersToMyTeamFlow = (firstUser) => {
@@ -89,13 +91,15 @@ class MyTeam extends Component {
     }
 
     renderPage() {
+        console.log(this.state.isRequestSended);
+        console.log(this.state.usersList.length)
         return (
             <div className="request-pre-container request-pre-container--my-team">
                 <DefaultNavigationBarContainer
                     title='Közvetlen beosztottak'
                     className="interact"
                 />
-                {this.state.isRequestSended ?
+                {this.state.isRequestSended && this.state.usersList.length > 0 ?
                     <MyTeamFullState
                         usersList={this.state.usersList}
                         getSkillFile={this.getSkillFile}

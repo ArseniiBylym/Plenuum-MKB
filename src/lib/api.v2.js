@@ -147,8 +147,9 @@ export default class Api_v2 extends Networking {
                 'Pragma': 'no-cache',
                 'Cache-Control': 'no-cache',
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
+            // mode: 'no-cors',
             body: JSON.stringify({'email': email, 'password': password}),
             cache: "no-store"
         };
@@ -362,7 +363,7 @@ export default class Api_v2 extends Networking {
                 'Authorization': `Bearer ${token}`
             }
         }
-        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveys/${surveyId}`, parameters)
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveysTodo/${surveyId}`, parameters)
     }
 
     async sendCompletedSurvey(token, orgId, surveyId, body) {
