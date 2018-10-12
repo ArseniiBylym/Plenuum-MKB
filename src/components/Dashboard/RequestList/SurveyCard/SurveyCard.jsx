@@ -35,7 +35,7 @@ class SurveyCard extends Component {
 		// console.log(this.props.surveyState.completedSurveyId)
 
 		if(this.props.survey.isCompleted || 
-			(this.props.surveyState.completedSurveyId && this.props.surveyState.completedSurveyId == this.props.survey.survey._id)) {
+			(this.props.surveyState.completedSurveyId && this.props.surveyState.completedSurveyId == this.props.survey._id)) {
 			e.preventDefault()
 		}
 	}
@@ -52,12 +52,12 @@ class SurveyCard extends Component {
 				<div className="survey-message">
 					<p>{this.props.title}</p>
 					{this.props.survey.isCompleted || 
-			(this.props.surveyState.completedSurveyId && this.props.surveyState.completedSurveyId == this.props.survey.survey._id) && <div className='dot'>1</div>}
+			(this.props.surveyState.completedSurveyId && this.props.surveyState.completedSurveyId == this.props.survey._id) && <div className='dot'>1</div>}
 				</div>
 				<NavLink
 					className="survey-link"
 					to={{
-						pathname: `/survey/${this.props.survey.survey._id}`,
+						pathname: `/survey/${this.props.survey._id}`,
 						
 					}}
 					onClick={this.onClickHandler}

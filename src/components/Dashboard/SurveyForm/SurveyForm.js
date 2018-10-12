@@ -15,54 +15,54 @@ class SurveyForm extends Component {
         // questions: null,
         isShowErrorMessages: false,
 
-        surveyTodo: {
-            _id: "5ba10cceeaf04068261ff4a5",
-            updatedAt: "2018-09-18T14:33:50.591Z",
-            createdAt: "2018-09-18T14:33:50.591Z",
-            survey: {
-                _id: "5b531d15617b0c1fb0c73658",
-                title: "Survey 1"
-            },
-            respondent: "5984342227cd340363dc84a9",
-            isCompleted: false
-        },
-        questions: [
-            {
-                _id: "5b5081c3aa357227f44fa504",
-                text: "Survey 1 Question 2",
-                max: 75,
-                min: null,
-                required: true
-            },
-            {
-                _id: "5b5081c3aa357227f44fa503",
-                text: "Survey 1 Question 1",
-                max: 250,
-                min: 10,
-                required: true
-            },
-            {
-                _id: "5b5081c3aa357227f44fa505",
-                text: "Survey 1 Question 3",
-                max: null,
-                min: 5,
-                required: false
-            }
-        ]
+        // surveyTodo: {
+        //     _id: "5ba10cceeaf04068261ff4a5",
+        //     updatedAt: "2018-09-18T14:33:50.591Z",
+        //     createdAt: "2018-09-18T14:33:50.591Z",
+        //     survey: {
+        //         _id: "5b531d15617b0c1fb0c73658",
+        //         title: "Survey 1"
+        //     },
+        //     respondent: "5984342227cd340363dc84a9",
+        //     isCompleted: false
+        // },
+        // questions: [
+        //     {
+        //         _id: "5b5081c3aa357227f44fa504",
+        //         text: "Survey 1 Question 2",
+        //         max: 75,
+        //         min: null,
+        //         required: true
+        //     },
+        //     {
+        //         _id: "5b5081c3aa357227f44fa503",
+        //         text: "Survey 1 Question 1",
+        //         max: 250,
+        //         min: 10,
+        //         required: true
+        //     },
+        //     {
+        //         _id: "5b5081c3aa357227f44fa505",
+        //         text: "Survey 1 Question 3",
+        //         max: null,
+        //         min: 5,
+        //         required: false
+        //     }
+        // ]
     }
 
     componentDidMount = () => {
-       
+       console.log(this.props)
         const token = window.localStorage.getItem('token')
-        // Api.getSurveyById(token, this.props.orgId, this.props.match.params.id)
-        //     .then(response => {
-        //         console.log(response);
-        //         this.setState({
-        //             ...this.state,
-        //             ...response
-        //         })
-        //     }
-        // )
+        Api.getSurveyById(token, this.props.orgId, this.props.match.params.id)
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    ...this.state,
+                    ...response
+                })
+            }
+        )
     }
 
     onChangeInputHandler = (e, index) => {
@@ -137,22 +137,25 @@ class SurveyForm extends Component {
             }
 
             console.log(completeSurveyForSend)
-            // Api.sendCompletedSurvey(token, this.props.orgId, this.state._id, completeSurveyForSend)
+            // Api.sendCompletedSurvey(token, this.props.orgId, this.state.surveyTodo._id, completeSurveyForSend)
             //     .then(response => {
             //         console.log(response)
             //         this.props.completeSurvey(this.props.match.params.id)
             //         this.setState({
             //             isShowErrorMessages: false
             //         })
+            //         this.props.history.push('/interact')
             //     })
             //     .catch(e => {
             //         console.log(e.message)
             //     })
+            
+                this.props.completeSurvey(this.props.match.params.id)
+                this.setState({
+                    isShowErrorMessages: false
+                })
+                this.props.history.push('/interact')
 
-            this.props.completeSurvey(this.props.match.params.id)
-            this.setState({
-                isShowErrorMessages: false
-            })
         }
 
     }
@@ -213,14 +216,14 @@ class SurveyForm extends Component {
                 />
                 <div className={this.state.isShowErrorMessages ? "SurveyForm-container show-error-message" : "SurveyForm-container"} >
                     <div className="SurveyForm">
-                        <div className="SurveyForm__header">{this.state.title}</div>
-                        <div className="SurveyForm__description">{this.state.description && this.state.description}</div>
+                        <div className="SurveyForm__header">{this.state.surveyTodo.survey.title}</div>
+                        <div className="SurveyForm__description">{this.state.surveyTodo.survey.description && this.state.surveyTodo.survey.description}</div>
                         <div className="SurveyForm__required-notification">*Required</div>
                         <hr />
                         {questionsList}
-                        <NavLink to='/interact' className='' onClick={this.sendSurveyHandler}>
+                        <div id='completeSurveyButton' className='' onClick={this.sendSurveyHandler}>
                             <CompleteSurveyButton click={this.sendSurveyHandler} />
-                        </NavLink>
+                        </div>
                     </div>
                 </div>
             </div>

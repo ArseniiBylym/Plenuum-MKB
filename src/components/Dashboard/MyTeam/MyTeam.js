@@ -12,35 +12,35 @@ class MyTeam extends Component {
         selectedUser: '',
         isRequestSended: true, //this value for set is visible flow
         usersList: [
-            {
-                email: "christina.jacobs@example.com",
-                firstName: "christina",
-                lastActive: "2018-10-12T12:21:34.027Z",
-                lastName: "jacobs",
-                managerId: "5984342227cd340363dc84bb",
-                pictureUrl: "https://randomuser.me/api/portraits/women/74.jpg",
-                _id: "5984342227cd340363dc84a9",
-            }
+            // {
+            //     email: "christina.jacobs@example.com",
+            //     firstName: "christina",
+            //     lastActive: "2018-10-12T12:21:34.027Z",
+            //     lastName: "jacobs",
+            //     managerId: "5984342227cd340363dc84bb",
+            //     pictureUrl: "https://randomuser.me/api/portraits/women/74.jpg",
+            //     _id: "5984342227cd340363dc84a9",
+            // }
         ]
     }
     componentDidMount = () => {
         const token = window.localStorage.getItem('token');
-        // Api.getMyTeam(token, this.props.currentUser.orgId)
-        //     .then(response => {
-        //         console.log(response)
-        //         this.setState({
-        //             usersList: response,
-        //             isRequestSended: true
-        //         })
-        //     })
-        //     .catch(error => {
-        //         console.log(error.message)
-        //     })
+        Api.getMyTeam(token, this.props.currentUser.orgId)
+            .then(response => {
+                console.log(response)
+                this.setState({
+                    usersList: response,
+                    isRequestSended: true
+                })
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
 
 
-        // this.setState({
-        //     currentUser: this.props.currentUser
-        // })
+        this.setState({
+            currentUser: this.props.currentUser
+        })
 
     }
 
