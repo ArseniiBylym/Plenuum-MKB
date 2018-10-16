@@ -20,7 +20,7 @@
                 </g>
             </g>
             <text fill="#000" fill-opacity=".87" font-family="NunitoSans-Regular, Nunito Sans" font-size="16" letter-spacing=".153" transform="translate(9 10)">
-                <tspan x="36" y="16">1 (Disagree strongly)</tspan>
+                <tspan x="36" y="16">1 (Erősen nem értek egyet strongly)</tspan>
             </text>
             <g transform="translate(9 50)">
                 <mask id="d" fill="#fff">
@@ -75,7 +75,7 @@
                 </g>
             </g>
             <text fill="#000" fill-opacity=".87" font-family="NunitoSans-Regular, Nunito Sans" font-size="16" letter-spacing=".153" transform="translate(9 10)">
-                <tspan x="36" y="216">6 (Agree strongly)</tspan>
+                <tspan x="36" y="216">6 (Erősen egyetértek)</tspan>
             </text>
         </g>
     </g>

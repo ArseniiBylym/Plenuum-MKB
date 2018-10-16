@@ -56,7 +56,7 @@ class MySurveys extends Component {
         return (
             <div className="request-pre-container request-pre-container--my-surveys">
                 <DefaultNavigationBarContainer
-                    title='My surveys'
+                    title='Kérdőíveim'
                     className="interact"
                     right={createButton}
                 />

@@ -206,7 +206,7 @@
   width: 30%;
 }
 .settings-data input.edit-password{
-  background-color: #187697 !important;
+  /* background-color: #187697 !important; */
 }
 
 .user-email {

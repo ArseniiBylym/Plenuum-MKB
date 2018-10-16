@@ -117,14 +117,19 @@ const DashboardRoutes = (params) => (
             MyComponent: MySurveys,
             rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
         }))}/>
-        <Route exact path={Constants.Route.CREATE_NEW_SURVEY} render={(props) => (addPropsToComponent({
-            MyComponent: CreateNewSurvey,
-            rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
-        }))}/>
         <Route exact path={Constants.Route.CREATE_NEW_SURVEY_TEMPLATE} render={(props) => (addPropsToComponent({
             MyComponent: CreateNewSurveyTemplate,
             rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
         }))}/>
+                    <Route exact path={Constants.Route.CREATE_NEW_SURVEY_TEMPLATE_BLANK} render={(props) => (addPropsToComponent({
+                        MyComponent: CreateNewSurvey,
+                        rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
+                    }))}/>
+                    <Route exact path={`${Constants.Route.CREATE_NEW_SURVEY_TEMPLATE}/:id`} render={(props) => (addPropsToComponent({
+                        MyComponent: CreateNewSurvey,
+                        rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
+                    }))}/>
+        
         <Route exact path='/my_surveys/:id' render={(props) => (addPropsToComponent({
             MyComponent: SurveyDetails,
             rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}

@@ -4,7 +4,7 @@ import ValidatingTextInputContainer from '../Commons/ValidatingTextInput/index.j
 
 const textInputs = (functions) => {
     return [<ValidatingTextInputContainer name="currentPassword"
-                                          label="CURRENT PASSWORD"
+                                          label="JELENLEGI JELSZÓ"
                                           showErrors={functions.showErrors}
                                           onFocusChange={functions.onFocusChange("currentPassword")}
                                           onChange={functions.onTextChange("currentPassword")}
@@ -13,7 +13,7 @@ const textInputs = (functions) => {
                                           key="currentPassword"/>,
         <ValidatingTextInputContainer name="newPassword"
                                       key="newPassword"
-                                      label="NEW PASSWORD"
+                                      label="ÚJ JELSZÓ"
                                       showErrors={functions.showErrors}
                                       onFocusChange={functions.onFocusChange("newPassword")}
                                       onChange={functions.onTextChange("newPassword")}
@@ -21,7 +21,7 @@ const textInputs = (functions) => {
                                       type="password"/>,
         <ValidatingTextInputContainer name="confirmPassword"
                                       key="confirmPassword"
-                                      label="CONFIRM PASSWORD"
+                                      label="ÚJ JELSZÓ MÉG EGYSZER"
                                       showErrors={functions.showErrors}
                                       onFocusChange={functions.onFocusChange("confirmPassword")}
                                       onChange={functions.onTextChange("confirmPassword")}
@@ -39,7 +39,7 @@ const ChangePassword = (props) => {
         <div className="change-password-header">Új jelszó mentése</div>
         {inputs}
         <div className="change-password-button">
-          <button type="submit" onClick={ props.functions.changePassword}>Set my password</button>
+          <button type="submit" onClick={ props.functions.changePassword}>Új jelszó mentése</button>
         </div>
       </div>
     </div>

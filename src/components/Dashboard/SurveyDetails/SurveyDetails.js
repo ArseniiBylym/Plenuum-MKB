@@ -90,13 +90,14 @@ class SurveyDetails extends Component {
         // let currentSyrvey = this.props.mySyrveys[this.props.match.params.id]
         // console.log(currentSyrvey)
 
-        let downloadButton = <DownloadAnswersButton text='Download answers' click={this.downloadAnswers}/>
+        let downloadButton = <DownloadAnswersButton text='Asnárok letöltése
+        ' click={this.downloadAnswers}/>
         let backButton = <a href="javascript:history.back()" className="back-button-title--survey-header"></a>
         
         return(
             <div className="request-pre-container request-pre-container--my-surveys">
                 <DefaultNavigationBarContainer
-                    title='Survey details'
+                    title='Kérdőív részletek'
                     className="interact"
                     backButton={backButton}
                     right={downloadButton}

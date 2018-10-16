@@ -17,7 +17,7 @@ export default function Card(props) {
     const {title, expiritDate, allSurveyTodos, complitedSurveyTodos, _id} = props.config;
     const index = props.index;
 
-    let isOpen = <div className='Card__statistic--open'><span>Open </span><span>till</span></div>
+    let isOpen = <div className='Card__statistic--open'><span>Lejárat </span><span>dátuma</span></div>
     if(new Date(expiritDate).getTime() < new Date().getTime()){
         isOpen = <div className='Card__statistic--closed'><span>Closed </span><span>on</span></div>
     }

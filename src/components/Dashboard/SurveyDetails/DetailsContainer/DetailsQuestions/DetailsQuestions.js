@@ -5,11 +5,11 @@ function DetailsQuestions(props) {
 
     const {text, type, required} = props.config
 
-    let answerType = 'Free text answer';
+    let answerType = 'Szabadszavas válasz';
     if( type == 'yes-no'){
-        answerType = 'Yes-no choice'
+        answerType = 'Igen/nem válasz'
     } else if(type == '1-6') {
-        answerType = '1 to 6 choice'
+        answerType = '1-től 6-ig válasz'
     }
 
     let starClassName = 'DetailQuestion__question-start'

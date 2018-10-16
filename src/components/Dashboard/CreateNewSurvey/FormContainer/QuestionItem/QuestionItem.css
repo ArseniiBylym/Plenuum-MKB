@@ -51,24 +51,27 @@
     width: 100%;
 }
 .QuestionItem__preview-img.freeText-img{
-    /* background: url('./img/prev-text.svg') no-repeat; */
-    background: url('./img/prev-text@3x.png') no-repeat;
+    background: url('./img/prev-text.svg') no-repeat;
+    /* background: url('./img/prev-text@3x.png') no-repeat; */
     background-size: contain;
     background-position: left top;
+    /* background-position: center center; */
     height: 150px;
 }
 .QuestionItem__preview-img.yesNo-img{
-    /* background: url('./img/prev-yes-no.svg') no-repeat; */
-    background: url('./img/prev-yes-no@3x.png') no-repeat;
+    background: url('./img/prev-yes-no.svg') no-repeat;
+    /* background: url('./img/prev-yes-no@3x.png') no-repeat; */
     background-size: contain;
     background-position: left top;
+    /* background-position: center center; */
     height: 100px;
 }
 .QuestionItem__preview-img.oneToSix-img{
-    /* background: url('./img/prev-1-6.svg') no-repeat; */
-    background: url('./img/prev-1-6@3x.png') no-repeat;
+    background: url('./img/prev-1-6.svg') no-repeat;
+    /* background: url('./img/prev-1-6@3x.png') no-repeat; */
     background-size: contain;
     background-position: left top;
+    /* background-position: center center; */
     height: 280px;
 }
 .QuestionItem:hover .BasketContainer {

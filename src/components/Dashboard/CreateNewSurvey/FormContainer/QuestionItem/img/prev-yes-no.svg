@@ -16,7 +16,7 @@
                 </g>
             </g>
             <text fill="#000" fill-opacity=".87" font-family="NunitoSans-Regular, Nunito Sans" font-size="16" letter-spacing=".153" transform="translate(9 10)">
-                <tspan x="36" y="16">Yes</tspan>
+                <tspan x="36" y="16">Igen</tspan>
             </text>
             <g transform="translate(9 50)">
                 <mask id="d" fill="#fff">
@@ -27,7 +27,7 @@
                 </g>
             </g>
             <text fill="#000" fill-opacity=".87" font-family="NunitoSans-Regular, Nunito Sans" font-size="16" letter-spacing=".153" transform="translate(9 10)">
-                <tspan x="36" y="56">No</tspan>
+                <tspan x="36" y="56">Nem</tspan>
             </text>
         </g>
     </g>

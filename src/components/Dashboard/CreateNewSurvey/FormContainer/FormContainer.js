@@ -16,7 +16,7 @@ class FormContainer extends Component {
 
         let tarnsformedDate = transformDate(date)
         
-        target.value = 'Open until ' + tarnsformedDate;
+        target.value = 'Lejár ' + tarnsformedDate;
     }
 
     render() {
@@ -32,21 +32,21 @@ class FormContainer extends Component {
         })
         return (
             <div className='FormContainer'>
-                <h1>Survey information</h1>
-                <Input name='title' placeholder="Survey title" s={12} 
+                <h1>Kérdőív információ</h1>
+                <Input name='title' placeholder="Kérdőív címe" s={12} 
                     maxLength="80" 
                     onBlur={this.props.onChangeValue}
                 />
                 <Input name='description' type='textarea' 
-                    placeholder="Description (opcionális)" s={12} 
+                    placeholder="Leírás (opcionális)" s={12} 
                     maxLength="200"
                     onBlur={this.props.onChangeValue}
                 />
                 <div className='input__date-select-wrapper'>
-                    <Input name='date' type='date' placeholder='Open till' onChange={this.changeDate} />
+                    <Input name='date' type='date' placeholder='Lejárat dátuma' onChange={this.changeDate} />
                     <div className='triangle-for-select'>&#9662;</div>
                 </div>
-                <h1>Questions</h1>
+                <h1>Kérdések</h1>
                 {questionsArr}
             </div>
 

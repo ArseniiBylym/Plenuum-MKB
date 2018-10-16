@@ -8,7 +8,7 @@ const SentRequestCardContainer = (props) => {
   for (let index in props.users) {
     users.push(props.users[index].firstName + " " + props.users[index].lastName);
   }
-  const userNamesString = "Sent to: " + users.join(", ");
+  const userNamesString = "Címzett: " + users.join(", ");
 
   return SentRequestCard({
       request:props.request,

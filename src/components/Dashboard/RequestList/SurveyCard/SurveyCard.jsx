@@ -75,7 +75,7 @@ class SurveyCard extends Component {
 					}}
 					onClick={this.onClickHandler}
 				>
-					Start Survey
+					Kérdőív kitöltése
      			</NavLink>
 			</div>
 		);

@@ -33,7 +33,7 @@ class OptionsListContainer extends Component {
             { title: "Feladatok", path: '/interact', class: 'interact-option' },
             { title: "Visszajelzéseid", path: '/feedback', class: 'myfeedbacks-option' },
             { title: "Készségeid", path: '/skills', class: 'skills-option' },
-            { title: "My surveys", path: '/my_surveys', class: 'survey-option' },
+            { title: "Kérdőíveim", path: '/my_surveys', class: 'survey-option' },
             { title: "Közvetlen beosztottak", path: '/my_team', class: 'my_team-option' },
         ];
     }

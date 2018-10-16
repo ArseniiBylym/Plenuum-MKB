@@ -32,7 +32,7 @@ class CreateNewSurveyTemplate extends Component {
         if (this.props.templates.length > 0) {
             templates = this.props.templates.map((item, i) => {
                 return (
-                    <Link key={item._id} to={`${Constants.Route.CREATE_NEW_SURVEY}/${i + 1}`} className='template-item '>
+                    <Link key={item._id} to={`${Constants.Route.CREATE_NEW_SURVEY}/${i}`} className='template-item '>
                         <div className='template-item-img blank-template'></div>
                         {item.title}
                         <div className='template-item-arrow'></div>
@@ -51,10 +51,10 @@ class CreateNewSurveyTemplate extends Component {
                 />
                 <div className='CreateNewSurveyTemplate'>
                     <div className='template-content-wrapper'>
-                        <div className="template-header">Select survey template</div>
-                        <Link to={Constants.Route.CREATE_NEW_SURVEY} className='template-item '>
+                        <div className="template-header">Válassz kérdőív sablont</div>
+                        <Link to={Constants.Route.CREATE_NEW_SURVEY_TEMPLATE_BLANK} className='template-item '>
                             <div className='template-item-img blank-template'></div>
-                            Start blank
+                            Üres kérdőív
                         <div className='template-item-arrow'></div>
                         </Link>
                         {templates}

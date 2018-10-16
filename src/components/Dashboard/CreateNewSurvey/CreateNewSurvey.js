@@ -51,7 +51,13 @@ class CreateNewSurvey extends Component {
     }
 
     componentDidMount = () => {
-        console.log(this.props)
+        // console.log(this.props)
+        if(this.props.templates[this.props.match.params.id]) {
+            //create template
+            console.log('find template')
+        } else console.log('templates are absent')
+
+
         const orgId = this.currentUser.orgId;
         Api.users(orgId)
             .then((response) => {
@@ -65,7 +71,7 @@ class CreateNewSurvey extends Component {
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-        console.log(this.state)
+        // console.log(this.state)
         if (prevState.questions.length < this.state.questions.length) {
 
             let wrapper = document.querySelector('.CreateNew__left-screen-wrapper')
@@ -78,7 +84,7 @@ class CreateNewSurvey extends Component {
     }
 
     switchBack = () => {
-        console.log('click back')
+        // console.log('click back')
         this.setState({
             screenSide: 'left'
         })
@@ -107,8 +113,8 @@ class CreateNewSurvey extends Component {
     }
 
     deleteCurrentQuestion = (index) => {
-        console.log('delete last')
-        console.log(index)
+        // console.log('delete last')
+        // console.log(index)
         if (this.state.questions.length <= 1) return
         this.setState((prevState) => {
             let arr = prevState.questions.slice();
@@ -373,7 +379,7 @@ class CreateNewSurvey extends Component {
                             onChangeQuestionItemValue={this.onChangeQuestionItemValue} />
 
                         <div className='CreateNew__footer-wrapper'>
-                            <AddAnoterButton text='ADD ANOTHER QUESTION' onClickAction={this.addAnoterQuestion} />
+                            <AddAnoterButton text='Új kérdés hozzáadása' onClickAction={this.addAnoterQuestion} />
                             <ButtonNext text='Következő' onClickAction={this.showNextScreen} />
                         </div>
                     </div>
@@ -396,7 +402,7 @@ class CreateNewSurvey extends Component {
                         }
                         <div id='link' className='CreateNew__footer-wrapper' onClick={this.createSurveyHandler}>
                             {this.state.showErrorNotification && <ErrorNotification />}
-                            <ButtonNext text='SEND SURVEY' />
+                            <ButtonNext text='Elküldés' />
                         </div>
                     </div>
                 </div>
@@ -418,13 +424,20 @@ CreateNewSurvey.contextTypes = {
     router: PropTypes.object.isRequired
 };
 
+
+const mapStateToProps = state => {
+    return {
+        templates: state.syrveyTemplates.templates,
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         createNewSurvey: (survey) => dispatch({type: "CREATE_NEW_SURVEY", newSurvey: survey})
     }
 };
 
-export default connect(null, mapDispatchToProps)(withRouter(CreateNewSurvey));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CreateNewSurvey));
 
 //Helper function for move questions in list up or down. Use in goToNext and goToPrev methods
 function moveTo (from, to) {

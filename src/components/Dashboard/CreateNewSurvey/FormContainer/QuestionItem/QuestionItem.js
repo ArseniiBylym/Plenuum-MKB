@@ -60,13 +60,13 @@ class QuestionItem extends Component {
 
                 {this.props.index == 0 && answerIsRequired()}
 
-                <Input name='question' placeholder="Enter question"  maxLength="200" s={12} onBlur={(event)=>this.props.onChangeValue(event, this.props.index)}/>
+                <Input name='question' placeholder="Írd be a kérdésed"  maxLength="200" s={12} onBlur={(event)=>this.props.onChangeValue(event, this.props.index)}/>
                 <div className='QuestionItem__select-wrapper'>
                     <div className='input__question-type-select-wrapper'>
                         <Input name='question_type' s={12} type='select' label="" defaultValue='free_text' onChange={this.changeTypeSelectValue}>
-                            <option value='free_text'>Free text answer</option>
-                            <option value='yes_no'>Yes-no choice</option>
-                            <option value='1_to_6'>1 to 6 choice</option>
+                            <option value='free_text'>Szabadszavas válasz</option>
+                            <option value='yes_no'>Igen/nem válasz</option>
+                            <option value='1_to_6'>1-től 6-ig válasz</option>
                         </Input>
                         <div className='triangle-for-question-type-select'>&#9662;</div>
                     </div>
@@ -79,7 +79,7 @@ class QuestionItem extends Component {
                     </div>
                 </div>
                 <div className={classForPreviewContainer}>
-                    <div className='QuestionItem__preview-header'>Answer preview</div>
+                    <div className='QuestionItem__preview-header'>Válasz előnézete</div>
                     <div className={classNameForImg}></div>
                 </div>
             </div>

@@ -23,7 +23,7 @@ class DetailsContainer extends Component {
                             </div>
         } else {
             dateContainer = <div className="DetailsContainer__date-container open">
-                                <span>Open</span> till {moment(expiritDate).format("YYYY.MM.DD")} &#9679; Elküldött {moment(createdAt).format("YYYY.MM.DD")}
+                                <span>Lejárat</span> dátuma {moment(expiritDate).format("YYYY.MM.DD")} &#9679; Elküldött {moment(createdAt).format("YYYY.MM.DD")}
                             </div>
         }
 

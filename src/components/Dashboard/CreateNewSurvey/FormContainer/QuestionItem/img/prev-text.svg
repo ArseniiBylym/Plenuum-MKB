@@ -3,7 +3,7 @@
     <g fill="none" fill-rule="evenodd">
         <rect width="511" height="127" x=".5" y=".5" fill="#FFF" fill-rule="nonzero" stroke="#888" rx="4"/>
         <text fill="#909090" font-family="NunitoSans-SemiBold, Nunito Sans" font-size="16" font-weight="500">
-            <tspan x="16" y="33">Answer</tspan>
+            <tspan x="16" y="33">Válasz</tspan>
         </text>
     </g>
 </svg>
