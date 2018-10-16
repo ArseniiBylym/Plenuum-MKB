@@ -14,6 +14,7 @@ import { NavLink } from 'react-router-dom';
 import './CreateNewSurvey.css';
 import moment from 'moment';
 import {withRouter} from 'react-router-dom'
+import ErrorNotification from './ErrorNotification/ErrorNotification';
 
 class CreateNewSurvey extends Component {
 
@@ -45,6 +46,7 @@ class CreateNewSurvey extends Component {
             selectedUsersBuffer: [],
             selectedUsersMaxLength: 20,
             isSelectedUsersArrFull: false,
+            showErrorNotification: false
         }
     }
 
@@ -271,20 +273,32 @@ class CreateNewSurvey extends Component {
         console.log('into handler')
         if(this.state.title.trim().length == 0) {
             console.log('Please, fill the title of the survey to continue');
+            this.setState({
+                showErrorNotification: true
+            })
             return
         }
         if(this.state.open_until.trim().length == 0) {
             console.log(`Please, chose the date of the survey's end to continue`)
+            this.setState({
+                showErrorNotification: true
+            })
             return
         }
         for (let item of this.state.questions) {
             if(item.text.trim().length == 0) {
                 console.log('Please, fill the all questions fields to continue')
+                this.setState({
+                    showErrorNotification: true
+                })
                 return
             }
         }
         if(this.state.selectedUsers.length == 0) {
             console.log('Plese, chose at least one user to continue')
+            this.setState({
+                showErrorNotification: true
+            })
             return
         }
 
@@ -381,6 +395,7 @@ class CreateNewSurvey extends Component {
                                 className={classNameForUsersContainer} />
                         }
                         <div id='link' className='CreateNew__footer-wrapper' onClick={this.createSurveyHandler}>
+                            {this.state.showErrorNotification && <ErrorNotification />}
                             <ButtonNext text='SEND SURVEY' />
                         </div>
                     </div>

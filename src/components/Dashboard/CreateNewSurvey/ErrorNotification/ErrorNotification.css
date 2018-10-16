@@ -1,0 +1,12 @@
+.ErrorNotification{
+    /* position: absolute; */
+    /* left: 100px; */
+    /* bottom: 100px; */
+    margin-left: 50px;
+    margin-right:  auto;
+    background-color: #f3d15b;
+    border-radius: 2px;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+}

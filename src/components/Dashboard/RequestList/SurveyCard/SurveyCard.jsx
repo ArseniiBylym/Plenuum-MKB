@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import PlenuumBot from '../../../../resources/plenuum-bot-face.svg';
 import Api from '../../../../lib/api';
 import {connect} from 'react-redux';
+import Profile from '../../../../resources/profile.svg'
 
 class SurveyCard extends Component {
 
@@ -13,24 +14,30 @@ class SurveyCard extends Component {
 	}
 
 	componentDidMount = () =>{
-		console.log(this.props)
+		// console.log(this.props)
 		const token = window.localStorage.getItem('token')
 		const iscompleteTemp = this.props.survey.isCompleted || this.props.surveyState.completedSurveyId == this.props.survey.survey._id
-
-		Api.getSpecificUser(token, this.props.orgId, this.props.survey.survey.owner)
+		if(this.props.survey.survey.owner == 'admin') {
+			this.setState({
+				currentSurveyOwner: 'admin',
+				isCompletedCurrentSurvey: iscompleteTemp
+			})
+		}else {
+			Api.getSpecificUser(token, this.props.orgId, this.props.survey.survey.owner)
 			.then(response => {
-				console.log(response)
+				// console.log(response)
 				this.setState({
 					currentSurveyOwner: response,
 					isCompletedCurrentSurvey: iscompleteTemp
 				})
 			})
+		}
 	}
 
 	onClickHandler = (e) => {
-		console.log(this.props.survey.isCompleted)
-		console.log(this.props.surveyState.completedSurveyId)
-		console.log(this.props.survey.survey._id)
+		// console.log(this.props.survey.isCompleted)
+		// console.log(this.props.surveyState.completedSurveyId)
+		// console.log(this.props.survey.survey._id)
 
 		// console.log(this.props.surveyState.completedSurveyId)
 
@@ -46,8 +53,14 @@ class SurveyCard extends Component {
 
 			<div className="survey-container" key={this.props.key}>
 				<div className="survey-user">
-					<img alt="picture" src={`${this.state.currentSurveyOwner.pictureUrl}`} />
-					<p>{this.state.currentSurveyOwner.firstName} {this.state.currentSurveyOwner.lastName}</p>
+					<img alt="picture" src={this.state.currentSurveyOwner == 'admin' ? 
+						`${Profile}`:
+						`${this.state.currentSurveyOwner.pictureUrl}`} 
+					/>
+					<p>{this.state.currentSurveyOwner == 'admin' ? 
+						`admin` : 	
+						`${this.state.currentSurveyOwner.firstName} ${this.state.currentSurveyOwner.lastName}`}
+					</p>
 				</div>
 				<div className="survey-message">
 					<p>{this.props.title}</p>

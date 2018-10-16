@@ -292,7 +292,7 @@ export default class Api_v2 extends Networking {
         const parameters = {
             method: HTTPMethod.POST,
             headers: {
-                'Authorization': `Bearer ${token}`,
+                // 'Authorization': `Bearer ${token}`,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
@@ -307,7 +307,7 @@ export default class Api_v2 extends Networking {
         const parameters = {
             method: HTTPMethod.GET,
             headers: {
-                'Authorization': `Bearer ${token}`
+                // 'Authorization': `Bearer ${token}`
             }
         }
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveys/2`, parameters)
@@ -317,7 +317,7 @@ export default class Api_v2 extends Networking {
         const parameters = {
             method: HTTPMethod.GET,
             headers: {
-                'Authorization': `Bearer ${token}`
+                // 'Authorization': `Bearer ${token}`
             }
         }
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/survey/2/${surveyId}/detail`, parameters)
@@ -328,7 +328,7 @@ export default class Api_v2 extends Networking {
          const parameters = {
             method: HTTPMethod.GET,
             headers: {
-                'Authorization': `Bearer ${token}`
+                // 'Authorization': `Bearer ${token}`
             }
         }
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/survey/2/${surveyId}/excel`, parameters)
@@ -338,7 +338,7 @@ export default class Api_v2 extends Networking {
         const parameters = {
             method: HTTPMethod.GET,
             headers: {
-                'Authorization': `Bearer ${token}`
+                // 'Authorization': `Bearer ${token}`
             }
         }
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveys/surveyTemplate/2`, parameters)
@@ -349,7 +349,7 @@ export default class Api_v2 extends Networking {
         const parameters = {
             method: HTTPMethod.GET,
             headers: {
-                'Authorization': `Bearer ${token}`
+                // 'Authorization': `Bearer ${token}`
             }
         }
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/users/${ownerId}`, parameters)
@@ -360,7 +360,7 @@ export default class Api_v2 extends Networking {
         const parameters = {
             method: HTTPMethod.GET,
             headers: {
-                'Authorization': `Bearer ${token}`
+                // 'Authorization': `Bearer ${token}`
             }
         }
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/surveysTodo/${surveyId}`, parameters)
@@ -370,7 +370,7 @@ export default class Api_v2 extends Networking {
         const parameters = {
             method: HTTPMethod.PATCH,
             headers: {
-                'Authorization': `Bearer ${token}`,
+                // 'Authorization': `Bearer ${token}`,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
@@ -385,7 +385,7 @@ export default class Api_v2 extends Networking {
         const parameters = {
             method: HTTPMethod.GET,
             headers: {
-                'Authorization': `Bearer ${token}`
+                // 'Authorization': `Bearer ${token}`
             }
         }
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/myTeam/users`, parameters)
@@ -395,7 +395,7 @@ export default class Api_v2 extends Networking {
         const parameters = {
             method: HTTPMethod.GET,
             headers: {
-                'Authorization': `Bearer ${token}`
+                // 'Authorization': `Bearer ${token}`
             }
         }
         return this.fetchFromAPI_excel(baseURL + URLPath.organisations + `${orgId}/${userId}/skillScores/excel`, parameters)
@@ -405,7 +405,7 @@ export default class Api_v2 extends Networking {
         const parameters = {
             method: HTTPMethod.GET,
             headers: {
-                'Authorization': `Bearer ${token}`,
+                // 'Authorization': `Bearer ${token}`,
                 'Content-Type':   `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`,
                 'Content-Disposition': `attachment; filename="feedbacks_wood_aaron_2018-10-12.xlsx"`,
                 // 'Cache-Control': `max-age=0`

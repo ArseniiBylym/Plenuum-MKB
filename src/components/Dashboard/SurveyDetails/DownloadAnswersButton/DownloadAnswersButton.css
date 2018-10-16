@@ -2,7 +2,7 @@
     height: 60%;
     margin-right: 10%;
     padding: 20px 40px;
-    border: 1px solid #ffffff;
+    border: 1px solid #35a9db;
     border-radius: 2px;
     display: flex;
     flex-flow: row nowrap;
@@ -11,12 +11,49 @@
     cursor: pointer;
 }
 .DownloadAnswersButton:hover{
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(53, 169, 219, 0.15);
 }
 .DownloadAnswersButton:active{
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(53, 169, 219, 0.3);
 }
 .DownloadAnswersButton__icon{
+    width: 18px;
+    height: 16px;
+    background: url('../../../../resources/add-blue-hover.svg') no-repeat;
+    background-size: auto;
+    background-position: center center;
+    margin-right: 10px;
+}
+.DownloadAnswersButton__text{
+    font-family: 'NunitoSans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #35a9db;
+}
+
+
+/*hipteam styles*/
+
+.hipteam .DownloadAnswersButton{
+    height: 60%;
+    margin-right: 10%;
+    padding: 20px 40px;
+    border: 1px solid #ffffff;
+    border-radius: 2px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.hipteam .DownloadAnswersButton:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+.hipteam .DownloadAnswersButton:active{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.hipteam .DownloadAnswersButton__icon{
     width: 18px;
     height: 16px;
     background: url('../../../../resources/download-arrow-white.svg') no-repeat;
@@ -24,7 +61,7 @@
     background-position: center center;
     margin-right: 10px;
 }
-.DownloadAnswersButton__text{
+.hipteam .DownloadAnswersButton__text{
     font-family: 'NunitoSans', sans-serif;
   font-size: 16px;
   font-weight: 600;

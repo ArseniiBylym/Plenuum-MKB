@@ -59,6 +59,9 @@ class DashboardContainer extends Component {
             })
         });
     }
+    componentDidUpdate = () => {
+        console.log(this.state.user)
+    }
 
     removeNotification (count){
         const { notifications } = this.state;
@@ -95,6 +98,7 @@ class DashboardContainer extends Component {
                 this.store.dispatch({type: Constants.ReducersActionType.ADD_CURRENT_USER, currentUser: response});
                 this.user = response;
                 this.setState({user: response});
+                
             })
             .catch((error) => {
                 this.error.handleError(error, this.handleLogout)

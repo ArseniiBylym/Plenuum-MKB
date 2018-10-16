@@ -101,6 +101,7 @@
 }
 
 .mycontent-search-container.select-manager{
+  height: 100%;
     position: fixed !important;
     right: 0;
     background-color: white;

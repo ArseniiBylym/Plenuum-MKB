@@ -21,7 +21,7 @@ const SentRequestCard = (props) => {
             <p className="sentRequest-content-recipient">{props.userNames}</p>
           </div>
           <div className="feedback-content-date">
-            {moment(props.request.createdAt).format('YYYY.MM.DD • HH.MM')}
+            {moment(props.request.createdAt).utc().format('YYYY.MM.DD • HH.mm')}
           </div>
         </div>
       </div>

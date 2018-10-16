@@ -67,7 +67,7 @@
     color: white;
     fill: white;
     margin-right: 20px;
-    background-image: url('../../../resources/ic-add-white.svg');
+    background-image: url('../../../resources/add-blue-hover.svg');
     transform: rotate(45deg);
     background-repeat: no-repeat;
     background-size: auto;
@@ -75,19 +75,26 @@
     padding-left: 20px;
     background-position-y: 0.3em;
 }
+.hipteam .close-button-title--create-new-header{
+    background-image: url('../../../resources/ic-add-white.svg');
+}
+
 .back-button-title--survey-header{
     width: 24px;
     height: 24px; 
     color: #a4a4a4;
     margin-left: 20px;
-    background-image: url('../../../resources/down-arrow.svg');
-    transform: rotate(90deg);
+    background-image: url('../../../resources/arrow-left-hover.svg');
+    /* transform: rotate(90deg); */
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center center;
     padding-left: 20px;
-    background-position-y: 0.3em;
+    /* background-position-y: 0.3em; */
     cursor: pointer;
+}
+.hipteam .back-button-title--survey-header {
+    background-image: url('../../../resources/arrow-left-white.svg');
 }
 .CreateNew__footer-wrapper{
     width: 100%;

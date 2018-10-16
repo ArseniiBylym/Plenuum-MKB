@@ -118,7 +118,7 @@ class FeedbackDetailContainer extends Component {
         // const dateString = createdAt.getDate() + "."
         //     + monthNames[createdAt.getMonth()] + "."
         //     + createdAt.getFullYear();
-        const dateString = moment(createdAt).format('YYYY.MM.DD • HH.MM')
+        const dateString = moment(createdAt).utc().format('YYYY.MM.DD • HH.mm')
         
         let anonymous = false;
         let privacy = false;

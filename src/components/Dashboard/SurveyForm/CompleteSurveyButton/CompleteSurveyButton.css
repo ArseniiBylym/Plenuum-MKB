@@ -1,26 +1,37 @@
-.CompleteSurveyButton {
-    width: 100%;
-    padding: 15px 0;
-    margin: 15px 0;
-    background-color: #b31b34;
-    border-radius: 2px;
-    color: white;
-    font-family: 'NunitoSans', sans-serif;
-  font-size: 16px;
-  /* font-weight: 600; */
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.98);
-  cursor: pointer;
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 4px 5px 0 rgba(0, 0, 0, 0.14);
+.CompleteSurveyButton{
+  width: 100%;
+  padding: 15px 0;
+  margin: 15px 0;
+  background-color: #187697;
+  border-radius: 2px;
+  color: white;
+  font-family: 'NunitoSans', sans-serif;
+font-size: 16px;
+/* font-weight: 600; */
+font-style: normal;
+font-stretch: normal;
+line-height: normal;
+letter-spacing: normal;
+text-align: center;
+color: rgba(255, 255, 255, 0.98);
+cursor: pointer;
+box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 4px 5px 0 rgba(0, 0, 0, 0.14);
+}
+.hipteam .CompleteSurveyButton {
+   background-color: #b31b34 !important;
   
 }
 .CompleteSurveyButton:hover{
-  background-color: #c14455
+  /* background-color: #35a9db */
 }
 .CompleteSurveyButton:active{
-  background-color: #cc6472
+  /* background-color: #35a9db */
+}
+.hipteam .CompleteSurveyButton:hover {
+  background-color: #c14455 !important;
+  
+}
+.hipteam .CompleteSurveyButton:active {
+  background-color: #cc6472 !important;
+  
 }
