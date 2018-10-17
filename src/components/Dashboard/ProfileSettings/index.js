@@ -70,21 +70,20 @@ class ProfileSettingsContainer extends Component {
         });
     }
     deleteSelectedManager(e) {
-        e.stopPropagation();
-        this.setState({
-            selectedManager: {},
-        })
 
+        const token = window.localStorage.getItem('token')
 
-        // const token = window.localStorage.getItem('token')
-
-        // Api.deleteManager(token)
-        //     .then((response) => {
-        //         console.log(response)
-        //     })
-        //     .catch((e) => {
-        //         console.log(e.message)
-        //     })
+        Api.deleteManager(token)
+            .then((response) => {
+                console.log(response)
+                e.stopPropagation();
+                this.setState({
+                    selectedManager: {},
+                })
+            })
+            .catch((e) => {
+                console.log(e.message)
+            })
     }
 
     selectLineManager() {
@@ -322,7 +321,7 @@ class ProfileSettingsContainer extends Component {
                         this.state.selectedManager.pictureUrl :
                         null
                     }
-                    managerFullName={this.state.selectedManager ? 
+                    managerFullName={this.state.selectedManager && this.state.selectedManager.firstName ? 
                         `${this.state.selectedManager.firstName} ${this.state.selectedManager.lastName}` :
                         null    
                     }
