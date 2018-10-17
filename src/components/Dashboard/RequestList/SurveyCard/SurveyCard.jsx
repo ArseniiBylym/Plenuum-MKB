@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 import PlenuumBot from '../../../../resources/plenuum-bot-face.svg';
 import Api from '../../../../lib/api';
 import {connect} from 'react-redux';
-import Profile from '../../../../resources/profile.svg'
+import Profile from '../../../../resources/profile.svg';
+import moment from 'moment';
 
 class SurveyCard extends Component {
 
@@ -14,7 +15,7 @@ class SurveyCard extends Component {
 	}
 
 	componentDidMount = () =>{
-		// console.log(this.props)
+		console.log(this.props)
 		const token = window.localStorage.getItem('token')
 		const iscompleteTemp = this.props.survey.isCompleted || this.props.surveyState.completedSurveyId == this.props.survey.survey._id
 		if(this.props.survey.survey.owner == 'admin') {
@@ -68,6 +69,9 @@ class SurveyCard extends Component {
 					<p>{this.props.title}</p>
 					{this.props.survey.isCompleted || 
 			(this.props.surveyState.completedSurveyId && this.props.surveyState.completedSurveyId == this.props.survey._id) && <div className='dot'>1</div>}
+				</div>
+				<div className='feedback-content-date interact-card'>
+						{moment(this.props.survey.createdAt).utc().format('YYYY.MM.DD • HH.mm')}
 				</div>
 				<NavLink
 					className="survey-link"

@@ -2,6 +2,7 @@ import React from 'react';
 import './RequestCard.css';
 import { NavLink } from 'react-router-dom';
 import DefaultPic from '../../../../resources/profile.svg';
+import moment from 'moment';
 
 const RequestCard = (props) => {
   return (
@@ -13,6 +14,9 @@ const RequestCard = (props) => {
       <div className="request-message">
         <p>{props.request.requestMessage}</p>
       </div>
+      <div className='feedback-content-date interact-card'>
+						{moment(this.props.survey.createdAt).utc().format('YYYY.MM.DD • HH.mm')}
+				</div>
       <NavLink
         className="request-link-feedback"
         to={{
