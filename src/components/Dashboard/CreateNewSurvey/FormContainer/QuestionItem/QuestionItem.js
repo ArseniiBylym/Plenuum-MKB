@@ -4,12 +4,17 @@ import './QuestionItem.css';
 
 class QuestionItem extends Component {
     state = {
-        typeSelectValue: 'free_text',
-        isRequiredSelectValue: 'optional',
-
+        // typeSelectValue: 'free_text',
+        typeSelectValue: '',
+        // isRequiredSelectValue: 'optional',
+        isRequiredSelectValue: '',
     }
     componentDidMount = () => {
         console.log(this.props)
+        this.setState({
+            typeSelectValue: this.props.config.type === 'yes_no' ? 'yes_no' : this.props.config.type === '1_to_6' ? '1_to_6' : 'free_text',
+            isRequiredSelectValue: this.props.config.isRequired ? 'required' : 'optional'
+        })
     }
 
     changeTypeSelectValue = (e) => {
@@ -25,6 +30,7 @@ class QuestionItem extends Component {
         this.props.onChangeValue(e, this.props.index)
     }
     render() {
+        console.log(this.props)
         let classNameForImg = 'QuestionItem__preview-img'
         if (this.state.typeSelectValue == 'free_text') {
             classNameForImg += ' freeText-img';
@@ -60,10 +66,18 @@ class QuestionItem extends Component {
 
                 {this.props.index == 0 && answerIsRequired()}
 
-                <Input name='question' placeholder="Írd be a kérdésed"  maxLength="200" s={12} onBlur={(event)=>this.props.onChangeValue(event, this.props.index)}/>
+                <Input name='question' placeholder="Írd be a kérdésed"  
+                    maxLength="200" s={12}  
+                    onBlur={(event)=>this.props.onChangeValue(event, this.props.index)}
+                    onChange={(event)=>this.props.onChangeValue(event, this.props.index)}
+                    value={this.props.config.text}
+                />
                 <div className='QuestionItem__select-wrapper'>
                     <div className='input__question-type-select-wrapper'>
-                        <Input name='question_type' s={12} type='select' label="" defaultValue='free_text' onChange={this.changeTypeSelectValue}>
+                        <Input name='question_type' s={12} type='select' label="" 
+                            defaultValue={this.props.config.type === 'yes_no' ? 'yes_no' : this.props.config.type === '1_to_6' ? '1_to_6' :'free_text'} 
+                            onChange={this.changeTypeSelectValue}
+                        >
                             <option value='free_text'>Szabadszavas válasz</option>
                             <option value='yes_no'>Igen/nem válasz</option>
                             <option value='1_to_6'>1-től 6-ig válasz</option>
@@ -71,7 +85,10 @@ class QuestionItem extends Component {
                         <div className='triangle-for-question-type-select'>&#9662;</div>
                     </div>
                     <div className='input__question-type-select-wrapper'>
-                        <Input name='question_required' s={12} type='select' label="" defaultValue='optional' onChange={this.changeIsRequiredSelectValue}>
+                        <Input name='question_required' s={12} type='select' label="" 
+                            defaultValue={this.props.config.isRequired === 'required' ? 'required' : 'optional'} 
+                            onChange={this.changeIsRequiredSelectValue}
+                        >
                             <option value='optional'>Opcionális mező</option>
                             <option value='required'>Kötelező mező</option>
                         </Input>

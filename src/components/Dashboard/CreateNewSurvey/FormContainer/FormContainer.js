@@ -36,14 +36,23 @@ class FormContainer extends Component {
                 <Input name='title' placeholder="Kérdőív címe" s={12} 
                     maxLength="80" 
                     onBlur={this.props.onChangeValue}
+                    onChange={this.props.onChangeValue}
+                    value={title}
                 />
                 <Input name='description' type='textarea' 
                     placeholder="Leírás (opcionális)" s={12} 
                     maxLength="200"
                     onBlur={this.props.onChangeValue}
+                    onChange={this.props.onChangeValue}
+                    value={description}
                 />
                 <div className='input__date-select-wrapper'>
-                    <Input name='date' type='date' placeholder='Lejárat dátuma' onChange={this.changeDate} />
+                    <Input name='date' type='date' 
+                        placeholder='Lejárat dátuma' 
+                        onChange={this.changeDate} 
+                        onChange={this.props.onChangeValue}
+                        value={open_until}
+                    />
                     <div className='triangle-for-select'>&#9662;</div>
                 </div>
                 <h1>Kérdések</h1>

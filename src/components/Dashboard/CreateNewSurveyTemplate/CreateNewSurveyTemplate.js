@@ -14,15 +14,16 @@ class CreateNewSurveyTemplate extends Component {
     }
 
     componentDidMount = () => {
-        const token = window.localStorage.getItem('token');
-        Api.getSurveyTemplates(token, this.props.orgId)
-            .then((response) => {
-                console.log(response)
-                this.props.putTemplatesToRedux(response)
-            })
-            .catch((error) => {
-                console.log(error.message)
-            })
+        // const token = window.localStorage.getItem('token');
+        // Api.getSurveyTemplates(token, this.props.orgId)
+        //     .then((response) => {
+        //         console.log(response)
+        //         this.props.putTemplatesToRedux(response)
+        //     })
+        //     .catch((error) => {
+        //         console.log(error.message)
+        //     })
+
         //send request to the back and put response to the state and redux store
     }
 
@@ -32,9 +33,9 @@ class CreateNewSurveyTemplate extends Component {
         if (this.props.templates.length > 0) {
             templates = this.props.templates.map((item, i) => {
                 return (
-                    <Link key={item._id} to={`${Constants.Route.CREATE_NEW_SURVEY}/${i}`} className='template-item '>
+                    <Link key={item._id} to={`${Constants.Route.CREATE_NEW_SURVEY_TEMPLATE}/${i}`} className='template-item '>
                         <div className='template-item-img blank-template'></div>
-                        {item.title}
+                        {item.templateTitle}
                         <div className='template-item-arrow'></div>
                     </Link>
                 )
@@ -45,7 +46,7 @@ class CreateNewSurveyTemplate extends Component {
         return (
             <div className='request-pre-container request-pre-container--create-new-template-wrapper'>
                 <DefaultNavigationBarContainer
-                    title='Survey templates'
+                    title='Kérdőív sablonok'
                     className="interact"
                     right={closeButton}
                 />

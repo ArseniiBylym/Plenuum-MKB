@@ -5,7 +5,7 @@ function ErrorNotification(props) {
 
         return(
             <div className='ErrorNotification'>
-                Please correct the errors
+                Kérjük javítsd ki a hibákat
             </div>
         )
 }

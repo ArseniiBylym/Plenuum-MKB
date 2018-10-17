@@ -237,7 +237,43 @@ const composeCompass = (state = {}, action) => {
 
 const templatesArray = {
     templates: [
-
+        {
+            "_id": "5ba8cc23a54c2a2a18f36bdb",
+            "updatedAt": "2018-09-24T11:36:03.222Z",
+            "createdAt": "2018-09-24T11:36:03.222Z",
+            "templateTitle": "This is the template title",
+            "title": "Survey tilte",
+            "description": "This is description of survey",
+            "expiritDate": "2019-10-22T15:51:41.696Z",
+            "owner": "5984342227cd340363dc84c7",
+            "questions": [
+                {
+                    "max": 0,
+                    "min": 10,
+                    "required": true,
+                   "text": "2+2",
+                    "type": "text"
+                },
+                {
+                    "max": 0,
+                    "min": 10,
+                    "required": true,
+                   "text": "4+4",
+                    "type": "yes-no"
+                },
+                {
+                    "max": 0,
+                    "min": 10,
+                    "required": true,
+                   "text": "6+6=12",
+                    "type": "1-6"
+                },
+            ],
+            "respondents": [],
+            "visible": [
+                "all"
+            ]
+        },
     ]
 }
 

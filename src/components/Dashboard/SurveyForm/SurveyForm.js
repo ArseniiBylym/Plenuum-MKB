@@ -137,18 +137,18 @@ class SurveyForm extends Component {
             }
 
             console.log(completeSurveyForSend)
-            // Api.sendCompletedSurvey(token, this.props.orgId, this.state.surveyTodo._id, completeSurveyForSend)
-            //     .then(response => {
-            //         console.log(response)
-            //         this.props.completeSurvey(this.props.match.params.id)
-            //         this.setState({
-            //             isShowErrorMessages: false
-            //         })
-            //         this.props.history.push('/interact')
-            //     })
-            //     .catch(e => {
-            //         console.log(e.message)
-            //     })
+            Api.sendCompletedSurvey(token, this.props.orgId, this.state.surveyTodo._id, completeSurveyForSend)
+                .then(response => {
+                    console.log(response)
+                    this.props.completeSurvey(this.props.match.params.id)
+                    this.setState({
+                        isShowErrorMessages: false
+                    })
+                    this.props.history.push('/interact')
+                })
+                .catch(e => {
+                    console.log(e.message)
+                })
             
                 this.props.completeSurvey(this.props.match.params.id)
                 this.setState({

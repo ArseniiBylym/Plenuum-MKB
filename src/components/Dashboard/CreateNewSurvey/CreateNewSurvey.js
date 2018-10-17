@@ -25,6 +25,10 @@ class CreateNewSurvey extends Component {
         this.currentUser = currentUser;
         this.userId = currentUser._id;
         this.currentUser.status = this.currentUser.roles && this.currentUser.roles.includes('HR') ? true : false// the identifier for user for HR rights
+        this.myRef = null;
+        this.setRef = element => {
+            this.myRef = element;
+        }
 
         this.state = {
             screenSide: 'left',
@@ -52,7 +56,33 @@ class CreateNewSurvey extends Component {
 
     componentDidMount = () => {
         // console.log(this.props)
-        if(this.props.templates[this.props.match.params.id]) {
+        let template = this.props.templates[this.props.match.params.id]
+        console.log(template)
+
+        if(template) {
+            const questionsArray = template.questions.map((item, i) => {
+                return {
+                    id: Date.now() + Math.random(),
+                    text: item.text,
+                    type: item.type == '1-6' ? '1_to_6' : item.type == 'yes-no' ? 'yes_no' : 'text',
+                    isRequired: item.required ? 'required' : 'optional'
+                }
+            })
+           this.setState({
+            screenSide: 'left',
+            isFormCorrect: true,
+            isSwitchOn: false,
+            title: template.title,
+            description: template.description || '',
+            open_until: moment(template.expiritDate).utc().format('DD MMMM, YYYY'),
+            questions: questionsArray,
+            users: template.respondents,
+            selectedUsers: [],
+            selectedUsersBuffer: [],
+            selectedUsersMaxLength: 20,
+            isSelectedUsersArrFull: false,
+            showErrorNotification: false
+           })  
             //create template
             console.log('find template')
         } else console.log('templates are absent')
@@ -72,15 +102,18 @@ class CreateNewSurvey extends Component {
 
     componentDidUpdate = (prevProps, prevState) => {
         // console.log(this.state)
-        if (prevState.questions.length < this.state.questions.length) {
+        
+        // if (prevState.questions.length < this.state.questions.length) {
 
-            let wrapper = document.querySelector('.CreateNew__left-screen-wrapper')
-            const pixelsToScroll = wrapper.scrollHeight - wrapper.clientHeight;
-            wrapper.scrollTo({
-                top: pixelsToScroll,
-                behavior: "smooth"
-            })
-        }
+        //     let wrapper = document.querySelector('.CreateNew__left-screen-wrapper')
+        //     console.log(wrapper.scrollHeight)
+        //     console.log(wrapper.clientHeight)
+        //     const pixelsToScroll = wrapper.scrollHeight - wrapper.clientHeight;
+        //     wrapper.scrollTo({
+        //         top: pixelsToScroll,
+        //         behavior: "smooth"
+        //     })
+        // }
     }
 
     switchBack = () => {
@@ -97,6 +130,15 @@ class CreateNewSurvey extends Component {
     }
 
     addAnoterQuestion = () => {
+        console.log(this.myRef)
+        const pixelsToScroll = this.myRef.scrollHeight - this.myRef.clientHeight;
+        console.log(pixelsToScroll)
+        console.log( this.myRef.scrollHeigh)
+        console.log( this.myRef.clientHeight)
+            this.myRef.scrollTo({
+                top: pixelsToScroll,
+                behavior: "smooth"
+            })
 
         this.setState((prevState) => {
             return {
@@ -369,7 +411,7 @@ class CreateNewSurvey extends Component {
                         className="interact"
                         right={closeButton}
                     />
-                    <div className='CreateNew__left-screen-wrapper'>
+                    <div ref={this.setRef} className='CreateNew__left-screen-wrapper'>
                         <FormContainer config={this.state}
                             deleteCurrentQuestion={this.deleteCurrentQuestion}
                             goToNext={this.goToNext}
