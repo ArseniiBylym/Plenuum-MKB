@@ -22,9 +22,9 @@ const strings = new LocalizedStrings(myLocalization);
 const ReactGA = require('react-ga');
 
 const CompassAnswer = {
-    AGREE:"Egyetértek",
-    DISAGREE:"Nem értek egyet",
-    SKIP:"Átugrás"
+    AGREE:"AGREE",
+    DISAGREE:"DISAGREE",
+    SKIP:"SKIP"
 };
 
 ReactGA.initialize(EnvVariable.googleAnalyticsId);
