@@ -14,15 +14,15 @@ class CreateNewSurveyTemplate extends Component {
     }
 
     componentDidMount = () => {
-        // const token = window.localStorage.getItem('token');
-        // Api.getSurveyTemplates(token, this.props.orgId)
-        //     .then((response) => {
-        //         console.log(response)
-        //         this.props.putTemplatesToRedux(response)
-        //     })
-        //     .catch((error) => {
-        //         console.log(error.message)
-        //     })
+        const token = window.localStorage.getItem('token');
+        Api.getSurveyTemplates(token, this.props.orgId)
+            .then((response) => {
+                console.log(response)
+                this.props.putTemplatesToRedux(response)
+            })
+            .catch((error) => {
+                console.log(error.message)
+            })
 
         //send request to the back and put response to the state and redux store
     }

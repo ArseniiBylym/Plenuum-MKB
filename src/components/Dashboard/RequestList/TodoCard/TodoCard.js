@@ -17,7 +17,7 @@ const TodoCard = (props) => {
             </span> számára fontos a véleményed. Mondd el, hogy mit gondolsz a munkájáról!</p>
       </div>
       <div className='feedback-content-date interact-card'>
-						{moment(this.props.survey.createdAt).utc().format('YYYY.MM.DD • HH.mm')}
+						{moment(props.survey.createdAt).utc().format('YYYY.MM.DD • HH.mm')}
       </div>
       <NavLink
         className="todo-link-feedback"

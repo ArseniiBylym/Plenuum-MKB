@@ -318,11 +318,11 @@ class ProfileSettingsContainer extends Component {
                     changePassword={this.state.changePassword ? this.state.changePassword : ""}
 
                     selectManager={this.openSearch}
-                    managerProfilePicture={this.state.selectedManager.pictureUrl ? 
+                    managerProfilePicture={this.state.selectedManager ? 
                         this.state.selectedManager.pictureUrl :
                         null
                     }
-                    managerFullName={this.state.selectedManager.firstName ? 
+                    managerFullName={this.state.selectedManager ? 
                         `${this.state.selectedManager.firstName} ${this.state.selectedManager.lastName}` :
                         null    
                     }

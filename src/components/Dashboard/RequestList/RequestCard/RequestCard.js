@@ -15,7 +15,7 @@ const RequestCard = (props) => {
         <p>{props.request.requestMessage}</p>
       </div>
       <div className='feedback-content-date interact-card'>
-						{moment(this.props.survey.createdAt).utc().format('YYYY.MM.DD • HH.mm')}
+						{moment(props.survey.createdAt).utc().format('YYYY.MM.DD • HH.mm')}
 				</div>
       <NavLink
         className="request-link-feedback"
