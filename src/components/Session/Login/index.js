@@ -40,7 +40,7 @@ class LoginContainer extends Component {
     }
 
     handleForgotPass() {
-        ReactGA.event({ category: 'UI', action: 'Click', label: 'Forgot your password' });
+        ReactGA.event({ category: 'UI', action: 'Click', label: 'Elfelejtetted a jelszavad?' });
     }
 
     handleChangeEmail(event){

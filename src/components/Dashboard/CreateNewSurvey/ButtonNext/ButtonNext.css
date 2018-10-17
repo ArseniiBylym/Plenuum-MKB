@@ -23,15 +23,3 @@
 
 
 /*hipteam styles*/
-
-.hipteam .Button__create-new-action {
-   
-    background-color: #b31b34;
-   
-}
-.hipteam .Button__create-new-action:hover{
-    background-color:#be4054;
-}
-.hipteam .Button__create-new-action:active{
-    background-color: #c96376;
-}

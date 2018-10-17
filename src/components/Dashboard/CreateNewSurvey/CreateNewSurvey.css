@@ -75,9 +75,7 @@
     padding-left: 20px;
     background-position-y: 0.3em;
 }
-.hipteam .close-button-title--create-new-header{
-    background-image: url('../../../resources/ic-add-white.svg');
-}
+
 
 .back-button-title--survey-header{
     width: 24px;
@@ -93,9 +91,7 @@
     /* background-position-y: 0.3em; */
     cursor: pointer;
 }
-.hipteam .back-button-title--survey-header {
-    background-image: url('../../../resources/arrow-left-white.svg');
-}
+
 .CreateNew__footer-wrapper{
     width: 100%;
     height: 150px;

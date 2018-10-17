@@ -62,7 +62,7 @@
 
 /*  -----------------MKB------------*/
 .hipteam {
-  /* background: #b31b34; */
+  
 }
 .hipteam .navbar-default {
   background-color: #b31b34 !important;
@@ -143,7 +143,6 @@ a:focus {
   align-self: center;
 }
 .hipteam .orgLogoContainer .orgLogoLink img {
-  /*height: 37px;*/
   width: auto;
 }
 .hipteam .sidebar-main-container {
@@ -176,12 +175,6 @@ a:focus {
 .hipteam .close-detail:hover {
   font-size: 38px;
 }
-/*.hipteam .fa-chevron-right:hover:before{
-  color: #b31b34 !important;
-}
-.hipteam .fa-chevron-left:hover:before {
-   color: #b31b34 !important;
-}*/
 .hipteam .skills-top-header {
   color: #b31b34 !important;
 }
@@ -225,9 +218,84 @@ a:focus {
 
 
 
+/*----------hipteam styles for another elements ---------*/
+
+.hipteam .Button__create-new-action {
+  background-color: #b31b34;
+}
+.hipteam .Button__create-new-action:hover{
+  background-color:#be4054;
+}
+.hipteam .Button__create-new-action:active{
+  background-color: #c96376;
+}
+
+
+.hipteam .close-button-title--create-new-header{
+  background-image: url('../../resources/ic-add-white.svg');
+  background-image: url('../../resources//ic-add-white.svg');
+}
+.hipteam .back-button-title--survey-header {
+  background-image: url('../../resources/arrow-left-white.svg');
+}
+
+
+
+.hipteam .CreateNewButton {
+  border: 1px solid #ffffff;
+}
+.hipteam .CreateNewButton:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.hipteam .CreateNewButton:active {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.hipteam .CreateNewButton__icon{
+  background: url('../../resources/ic-add-white.svg') no-repeat;
+  background-size: auto;
+  background-position: center center;
+}
+.hipteam .CreateNewButton__text {
+  color: #ffffff;
+}
+
+
+
+.hipteam .DownloadAnswersButton{
+  border: 1px solid #ffffff;
+}
+.hipteam .DownloadAnswersButton:hover{
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.hipteam .DownloadAnswersButton:active{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.hipteam .DownloadAnswersButton__icon{
+  background: url('../../resources/download-arrow-white.svg') no-repeat;
+  background-size: auto;
+  background-position: center center;
+}
+.hipteam .DownloadAnswersButton__text{
+color: #ffffff;
+}
+
+
+.hipteam .CompleteSurveyButton {
+  background-color: #b31b34 !important;
+}
+.hipteam .CompleteSurveyButton:hover {
+  background-color: #c14455 !important;
+}
+.hipteam .CompleteSurveyButton:active {
+  background-color: #cc6472 !important;
+}
+
+
+
+
 /*  -----------------mkb-bank------------*/
-.mkb-bank {
-  backgroud: #b31b34;
+/* .mkb-bank {
+
 }
 .mkb-bank .navbar-default {
   background-color: #b31b34 !important;
@@ -311,7 +379,6 @@ a:focus {
   align-self: center;
 }
 .mkb-bank .orgLogoContainer .orgLogoLink img {
-  /*height: 37px;*/
   width: auto;
 }
 .mkb-bank .sidebar-main-container {
@@ -344,12 +411,6 @@ a:focus {
 .mkb-bank .close-detail:hover {
   font-size: 38px;
 }
-/*.mkb-bank .fa-chevron-right:hover:before{
-  color: #b31b34 !important;
-}
-.mkb-bank .fa-chevron-left:hover:before {
-   color: #b31b34 !important;
-}*/
 .mkb-bank .skills-top-header {
   color: #b31b34 !important;
 }
@@ -389,4 +450,4 @@ a:focus {
   margin-left: 5px;
   margin-right: 5px;
   background-size: auto;
-}
+} */
