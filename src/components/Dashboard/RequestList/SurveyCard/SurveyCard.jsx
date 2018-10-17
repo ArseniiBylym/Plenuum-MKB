@@ -55,7 +55,9 @@ class SurveyCard extends Component {
 				<div className="survey-user">
 					<img alt="picture" src={this.state.currentSurveyOwner == 'admin' ? 
 						`${Profile}`:
-						`${this.state.currentSurveyOwner.pictureUrl}`} 
+						this.state.currentSurveyOwner.pictureUrl ?
+						`${this.state.currentSurveyOwner.pictureUrl}` :
+						`${Profile}`} 
 					/>
 					<p>{this.state.currentSurveyOwner == 'admin' ? 
 						`admin` : 	
