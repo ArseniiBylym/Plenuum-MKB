@@ -10,7 +10,7 @@ var XMLParser = require('react-xml-parser');
 class MyTeam extends Component {
     state = {
         selectedUser: '',
-        isRequestSended: true, //this value for set is visible flow
+        isRequestSended: false, //this value for set is visible flow
         usersList: [
             // {
             //     email: "christina.jacobs@example.com",

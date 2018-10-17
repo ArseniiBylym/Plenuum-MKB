@@ -244,7 +244,9 @@ const templatesArray = {
             "templateTitle": "This is the template title",
             "title": "Survey tilte",
             "description": "This is description of survey",
+            // "description": "",
             "expiritDate": "2019-10-22T15:51:41.696Z",
+            // "expiritDate": "",
             "owner": "5984342227cd340363dc84c7",
             "questions": [
                 {

@@ -74,9 +74,9 @@ class CreateNewSurvey extends Component {
             isSwitchOn: false,
             title: template.title,
             description: template.description || '',
-            open_until: moment(template.expiritDate).utc().format('DD MMMM, YYYY'),
+            open_until: template.expiritDate ? moment(template.expiritDate).utc().format('DD MMMM, YYYY') : '',
             questions: questionsArray,
-            users: template.respondents,
+            users: '',
             selectedUsers: [],
             selectedUsersBuffer: [],
             selectedUsersMaxLength: 20,
@@ -130,15 +130,15 @@ class CreateNewSurvey extends Component {
     }
 
     addAnoterQuestion = () => {
-        console.log(this.myRef)
-        const pixelsToScroll = this.myRef.scrollHeight - this.myRef.clientHeight;
-        console.log(pixelsToScroll)
-        console.log( this.myRef.scrollHeigh)
-        console.log( this.myRef.clientHeight)
-            this.myRef.scrollTo({
-                top: pixelsToScroll,
-                behavior: "smooth"
-            })
+        // console.log(this.myRef)
+        // const pixelsToScroll = this.myRef.scrollHeight - this.myRef.clientHeight;
+        // console.log(pixelsToScroll)
+        // console.log( this.myRef.scrollHeigh)
+        // console.log( this.myRef.clientHeight)
+        //     this.myRef.scrollTo({
+        //         top: pixelsToScroll,
+        //         behavior: "smooth"
+        //     })
 
         this.setState((prevState) => {
             return {

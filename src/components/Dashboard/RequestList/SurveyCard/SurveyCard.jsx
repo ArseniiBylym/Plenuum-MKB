@@ -76,7 +76,7 @@ class SurveyCard extends Component {
 				<NavLink
 					className="survey-link"
 					to={{
-						pathname: `/survey/${this.props.survey._id}`,
+						pathname: `/interact/survey/${this.props.survey._id}`,
 						
 					}}
 					onClick={this.onClickHandler}

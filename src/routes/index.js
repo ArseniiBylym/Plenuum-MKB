@@ -98,16 +98,16 @@ const DashboardRoutes = (params) => (
             MyComponent: RequestListContainer,
             rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
         }))}/>
+            <Route exact path='/interact/survey/:id' render={(props) => (addPropsToComponent({
+                MyComponent: SurveyForm,
+                rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
+            }))}/>
 
         <Route exact path={Constants.Route.SURVEY} render={(props) => (addPropsToComponent({
             MyComponent: SurveyConteiner,
             rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
         }))}/>
 
-        <Route exact path='/survey/:id' render={(props) => (addPropsToComponent({
-            MyComponent: SurveyForm,
-            rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
-        }))}/>
 
         <Route exact path={Constants.Route.PRIVACY} render={(props) => (addPropsToComponent({
             MyComponent: PrivacyPolicy
