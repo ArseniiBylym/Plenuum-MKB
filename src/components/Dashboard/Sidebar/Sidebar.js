@@ -6,7 +6,7 @@ const Sidebar = (props) => {
   return (
     <div className="sidebar-main-container">
 
-      {/*{ (props.profile.props.orgId === "hipteam" || 
+      { (props.profile.props.orgId === "hipteam" || 
          props.profile.props.orgId === "mkb-bank" ||
          props.profile.props.orgId === "mkb-bank-test1" ||
          props.profile.props.orgId === "mkb-bank-test2" ||
@@ -19,18 +19,7 @@ const Sidebar = (props) => {
               <img src="/mkb-large.png" />
             </NavLink>
           </div>
-         )}*/}
-      { (
-         props.profile.props.orgId === "mkb-bank" ||
-         props.profile.props.orgId === "hipteam" 
-
-         ) && (
-          <div className="orgLogoContainer">
-            <NavLink className="orgLogoLink" to="/">
-              <img src="/mkb-large.png" />
-            </NavLink>
-          </div>
-        )}
+         )}
 
       <div className="wrapping-for-padding">
         <div className='row'>
