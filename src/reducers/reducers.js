@@ -74,11 +74,7 @@ const currentUser = (state = {}, action) => {
         console.log(action)
             return{
                 ...state,
-                manager: {
-                    pictureUrl: action.manager.pictureUrl,
-                    fullName: action.manager.fullName,
-                    _id: action.manager._id
-                }
+                managerId: action.manager
             }
         default:
             return state;

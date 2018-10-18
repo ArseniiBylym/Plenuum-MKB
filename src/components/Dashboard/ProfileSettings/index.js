@@ -70,7 +70,7 @@ class ProfileSettingsContainer extends Component {
         });
     }
     deleteSelectedManager(e) {
-
+        e.stopPropagation()
         const token = window.localStorage.getItem('token')
 
         Api.deleteManager(token)
@@ -80,6 +80,7 @@ class ProfileSettingsContainer extends Component {
                 this.setState({
                     selectedManager: {},
                 })
+                this.props.addManagerToUserProfile('');
             })
             .catch((e) => {
                 console.log(e.message)
@@ -166,11 +167,10 @@ class ProfileSettingsContainer extends Component {
                         selectLineManager: false
                     }
                 })
-                    .catch((e) => {
-                        console.log(e.message)
-                    })
-
-
+                this.props.addManagerToUserProfile(_id)
+            })
+            .catch((e) => {
+                console.log(e.message)
             })
 
 
@@ -349,7 +349,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addManagerToUserProfile: (pictureUrl, fullName, _id) => { dispatch({ type: "ADD_USERS_MANAGER", manager: { pictureUrl, fullName, _id } }) },
+        addManagerToUserProfile: (_id) => { dispatch({ type: "ADD_USERS_MANAGER", manager: _id }) },
         addManagerToUserProfileSaga: (pictureUrl, fullName, _id) => { dispatch({ type: "ADD_USERS_MANAGER_SAGA", managerSaga: { pictureUrl, fullName, _id } }) }
     }
 }
