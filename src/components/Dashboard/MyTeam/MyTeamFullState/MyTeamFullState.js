@@ -1,6 +1,7 @@
 import React from 'react';
 import CreateFeedbackRequestContainer from '../../CreateFeedbackRequest/index.js';
 import './MyTeamFullState.css';
+import Profile from '../../../../resources/profile.svg';
 
 function MyTeamFullState(props) {
     console.log(props)
@@ -23,8 +24,9 @@ function MyTeamFullState(props) {
                 <div className='current-user-container__main'>
                     <div className='current-user-container__main--user-profile'>
                         <div className='user-profile--photo'>
-                            {props.pictureUrl &&
-                                <img src={props.pictureUrl} alt='Avatar' />
+                            {props.pictureUrl ?
+                                <img src={props.pictureUrl} alt='Avatar' /> :
+                                <img src={Profile} alt='Avatar' />
                             }
                         </div>
                         {props.firstName &&
