@@ -90,8 +90,11 @@ class SurveyDetails extends Component {
         // let currentSyrvey = this.props.mySyrveys[this.props.match.params.id]
         // console.log(currentSyrvey)
 
-        let downloadButton = <DownloadAnswersButton text='Asnárok letöltése
-        ' click={this.downloadAnswers}/>
+        let downloadButton = <DownloadAnswersButton text='Asnárok letöltése' 
+                                click={this.downloadAnswers}
+                                surveyId={this.state._id}
+                                orgId={this.props.orgId}
+                            />
         let backButton = <a href="javascript:history.back()" className="back-button-title--survey-header"></a>
         
         return(

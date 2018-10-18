@@ -2,17 +2,19 @@ import React from 'react';
 import moment from 'moment';
 import './Card.css';
 import { NavLink } from 'react-router-dom';
-import Api from '../../../../../lib/api';
+// import Api from '../../../../../lib/api';
+import {EnvVariable} from '../../../../../config.js';
 
 export default function Card(props) {
+    const baseURL = EnvVariable.host + "/api/";
 
-    const downloadExcelFile = () => {
-        const token = window.localStorage.getItem('token');
-        Api.downloadAnswers(token, props.config._id, props.orgId)
-        .then((response) => {
-            console.log(response);
-        })
-    }
+    // const downloadExcelFile = () => {
+    //     const token = window.localStorage.getItem('token');
+    //     Api.downloadAnswers(token, props.config._id, props.orgId)
+    //     .then((response) => {
+    //         console.log(response);
+    //     })
+    // }
 
     const {title, expiritDate, allSurveyTodos, complitedSurveyTodos, _id} = props.config;
     const index = props.index;
@@ -34,10 +36,14 @@ export default function Card(props) {
                 <div className='Card__date--date'>{dateToShow}</div> 
             </div>
             <div className='Card__download-buttons'>
-                <div className="downloadButton" onClick={downloadExcelFile}>
+                {/* <div className="downloadButton" onClick={downloadExcelFile}>
                     <div className='downloadButton--arrow'></div>
                     Válasz
-                </div>
+                </div> */}
+                <a  href={`${baseURL}organizations/${props.orgId}/survey/2/${props.config._id}/excel`} className="downloadButton" download>
+                    <div className='downloadButton--arrow'></div>
+                    Válasz
+                </a>
                 <NavLink to={`/my_surveys/${props.config._id}`} className="detailsButton">Részletek</NavLink>
             </div>
         </div>

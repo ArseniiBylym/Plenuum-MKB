@@ -2,9 +2,12 @@ import React from 'react';
 import CreateFeedbackRequestContainer from '../../CreateFeedbackRequest/index.js';
 import './MyTeamFullState.css';
 import Profile from '../../../../resources/profile.svg';
+import {EnvVariable} from '../../../../config.js';
 
 function MyTeamFullState(props) {
     console.log(props)
+    const baseURL = EnvVariable.host + "/api/";
+
     return (
         <div className='MyTeam'>
             <div className='MyTeam__search-container'>
@@ -40,7 +43,9 @@ function MyTeamFullState(props) {
                                 <div className="statistic-info--header">Kapott visszajelzések</div>
                                 <div className="statistic-info--text">Vezető számára is látható visszajelzések</div>
                             </div>
-                            <a href='#' alt='link' onClick={props.getSkillFile}>
+                            {/* URLPath.organisations + `${orgId}/${userId}/skillScores/excel */}
+                            {/* <a href='#' alt='link' onClick={props.getFeedbackFile}> */}
+                            <a href={`${baseURL}organizations/${props.orgId}/${props.userId}/skillScores/excel`} alt='link' download>
                                 <div className="download-wrapper__statistic-button">
                                     <div className="download-wrapper__statistic-button-icon"></div>
                                     Excel letöltése
@@ -52,7 +57,8 @@ function MyTeamFullState(props) {
                                 <div className="statistic-info--header">Képesség pontszámok</div>
                                 <div className="statistic-info--text">Összes képesség pontszám</div>
                             </div>
-                            <a href='#' alt='link' onClick={props.getFeedbackFile}>
+                            {/* <a href='#' alt='link' onClick={props.getSkillFile} > */}
+                            <a href={`${baseURL}organizations/${props.orgId}/${props.userId}/feedbacks/excel`} alt='link' download>
                                 <div className="download-wrapper__statistic-button">
                                     <div className="download-wrapper__statistic-button-icon"></div>
                                     Excel letöltése

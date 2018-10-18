@@ -101,6 +101,8 @@ class MyTeam extends Component {
                 />
                 {this.state.isRequestSended && this.state.usersList.length > 0 ?
                     <MyTeamFullState
+                        orgId={this.props.currentUser.orgId}
+                        userId={this.state.selectedUser._id}
                         usersList={this.state.usersList}
                         getSkillFile={this.getSkillFile}
                         getFeedbackFile={this.getFeedbackFile}
