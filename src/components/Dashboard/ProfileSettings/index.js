@@ -59,7 +59,9 @@ class ProfileSettingsContainer extends Component {
             searchPage: false,
             managerSelected: false,
             selectedManager: {},
-            selectLineManager: false
+            selectLineManager: false,
+            managerUpdatedSuccessful: false,
+            managerUpdatedFailed: false
         }
     }
 
@@ -164,13 +166,28 @@ class ProfileSettingsContainer extends Component {
                            pictureUrl: pictureUrl
                         },
                         searchPage: !prevState.searchPage,
-                        selectLineManager: false
+                        selectLineManager: false,
+                        managerUpdatedSuccessful: true
                     }
                 })
+                setTimeout(()=> {
+                    this.setState({
+                        managerUpdatedSuccessful: false
+                    })
+                }, 3000)
+
                 this.props.addManagerToUserProfile(_id)
             })
             .catch((e) => {
                 console.log(e.message)
+                this.setState({
+                    managerUpdatedFailed: true
+                })
+                setTimeout(()=> {
+                    this.setState({
+                        managerUpdatedFailed: false
+                    })
+                }, 3000)
             })
 
 
@@ -328,6 +345,8 @@ class ProfileSettingsContainer extends Component {
                     deleteSelectedManager={this.deleteSelectedManager.bind(this)}
                     selectLineManager={this.selectLineManager.bind(this)}
                     managerSelected={this.state.selectLineManager}
+                    managerUpdatedSuccessful={this.state.managerUpdatedSuccessful}
+                    managerUpdatedFailed={this.state.managerUpdatedFailed}
                 />
                 {this.state.searchPage && <div className="overlay" onClick={this.openSearch} />}
                 {managersList}

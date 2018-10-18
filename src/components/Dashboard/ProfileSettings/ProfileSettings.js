@@ -37,11 +37,6 @@ const ProfileSettings = (props) => {
           {props.actions}
         </div>
         <div className="settings-form-information">
-
-
-         
-
-
           <div className="settings-data">
             <label>
               Email
@@ -65,7 +60,6 @@ const ProfileSettings = (props) => {
                   deleteSelectedManager={props.deleteSelectedManager}
                 />
           </div>
-         
         </div>
         <hr className='user-data-divider' />
         <div className="section-header">
@@ -86,6 +80,10 @@ const ProfileSettings = (props) => {
           </div>
         </div>
       </div>
+      {/* {props.managerUpdatedSuccessful && <div className='managerUpdatedSuccessfulMessage'>Közvetlen vezető elmentve</div>}
+      {props.managerUpdatedFailed && <div className='managerUpdatedFailureMessage'>Nem sikerült elmenteni a közvetlen vezetőt</div>} */}
+      <div className={props.managerUpdatedSuccessful ? 'managerUpdatedSuccessfulMessage show' : 'managerUpdatedSuccessfulMessage'}>Közvetlen vezető elmentve</div>
+      <div className={props.managerUpdatedFailed ? 'managerUpdatedFailureMessage show' : 'managerUpdatedFailureMessage'}>Nem sikerült elmenteni a közvetlen vezetőt</div>
     </div>
   )
 };
