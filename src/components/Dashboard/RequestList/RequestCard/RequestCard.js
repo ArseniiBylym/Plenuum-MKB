@@ -2,9 +2,10 @@ import React from 'react';
 import './RequestCard.css';
 import { NavLink } from 'react-router-dom';
 import DefaultPic from '../../../../resources/profile.svg';
-// import moment from 'moment';
+import moment from 'moment';
 
 const RequestCard = (props) => {
+  console.log(props)
   return (
     <div className="request-container" key={props.key}>
       <div className="request-user">
@@ -14,9 +15,9 @@ const RequestCard = (props) => {
       <div className="request-message">
         <p>{props.request.requestMessage}</p>
       </div>
-      {/* <div className='feedback-content-date interact-card'>
-						{moment(props.survey.createdAt).utc().format('YYYY.MM.DD • HH.mm')}
-				</div> */}
+      <div className='feedback-content-date interact-card'>
+						{moment(props.request.createdAt).utc().format('YYYY.MM.DD • HH.mm')}
+				</div>
       <NavLink
         className="request-link-feedback"
         to={{

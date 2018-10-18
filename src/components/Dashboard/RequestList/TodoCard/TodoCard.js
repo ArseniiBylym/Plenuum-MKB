@@ -2,9 +2,10 @@ import React from 'react';
 import './TodoCard.css';
 import { NavLink } from 'react-router-dom';
 import PlenuumBot from '../../../../resources/plenuum-bot-face.svg';
-// import moment from 'moment';
+import moment from 'moment';
 
 const TodoCard = (props) => {
+  console.log(props)
   return (
     <div className="todo-container" key={props.key}>
       <div className="todo-user">
@@ -16,9 +17,9 @@ const TodoCard = (props) => {
             {props.aboutUser.firstName + " " + props.aboutUser.lastName}
             </span> számára fontos a véleményed. Mondd el, hogy mit gondolsz a munkájáról!</p>
       </div>
-      {/* <div className='feedback-content-date interact-card'>
-						{moment(props.survey.createdAt).utc().format('YYYY.MM.DD • HH.mm')}
-      </div> */}
+      <div className='feedback-content-date interact-card'>
+						{moment(props.todo.createdAt).utc().format('YYYY.MM.DD • HH.mm')}
+      </div>
       <NavLink
         className="todo-link-feedback"
         to={{

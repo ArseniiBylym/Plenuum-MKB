@@ -73,11 +73,11 @@ font-weight: bold;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: #187697;
+  color: #35a9db;
 }
 
 .survey-link:hover {
-  color: rgba(53, 169, 219, 0.7) !important;
+  color:rgba(53, 169, 219, 0.7) !important;
 }
 
 .survey-message .dot {
