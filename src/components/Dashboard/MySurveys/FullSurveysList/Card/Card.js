@@ -13,9 +13,10 @@ export default function Card(props) {
     const index = props.index;
 
     let isOpen = <div className='Card__statistic--open'><span>Lejárat </span><span>dátuma</span></div>
-    if(new Date(expiritDate).getTime() < new Date().getTime()){
+    if(moment(expiritDate).unix() < moment().unix()) {
         isOpen = <div className='Card__statistic--closed'><span>Lezárva </span></div>
     }
+    
     let dateToShow = moment(expiritDate).format("YYYY.MM.DD")
     return (
         <div className='Card'>

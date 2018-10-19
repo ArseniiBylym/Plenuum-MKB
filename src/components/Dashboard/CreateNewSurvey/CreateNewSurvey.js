@@ -103,7 +103,7 @@ class CreateNewSurvey extends Component {
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-        // console.log(this.state)
+        console.log(this.state)
         
         // if (prevState.questions.length < this.state.questions.length) {
 
@@ -393,7 +393,7 @@ class CreateNewSurvey extends Component {
             title: this.state.title,
             description: this.state.description,
             respondents: respondentsForPost,
-            expiritDate: moment(this.state.open_until).format('YYYY-MM-DD hh:mm:ss.SSS'),
+            expiritDate: moment(this.state.open_until).hours(23).minutes(59).seconds(59).format('YYYY-MM-DD HH:mm:ss.SSS'),
             questions: questionsForPost
         }
         const token = window.localStorage.getItem('token');
@@ -410,8 +410,6 @@ class CreateNewSurvey extends Component {
                 console.log(this.state)
             })
             .catch((error) => {
-                // e.preventDefault();
-                // return
                 console.log(error.massage)
             })
     }
