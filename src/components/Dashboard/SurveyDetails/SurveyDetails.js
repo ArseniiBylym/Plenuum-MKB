@@ -81,11 +81,21 @@ class SurveyDetails extends Component {
                 console.log(response);
             })
     }
+    // downloadExcelHandler = (e) => {
+    //     console.log('case 1')
+    //     if(this.state.complitedSurveyTodos.length == 0) {
+    //         console.log('case 2')
+    //         e.preventDefault()
+    //         return
+    //     }
+    // }
 
     renderPage() {
 
         // if(!this.props.mySyrveys) return null
         if(!this.state.title) return null
+        // console.log(this.state.complitedSurveyTodos)
+        // console.log(this.state)
 
         // let currentSyrvey = this.props.mySyrveys[this.props.match.params.id]
         // console.log(currentSyrvey)
@@ -94,6 +104,7 @@ class SurveyDetails extends Component {
                                 click={this.downloadAnswers}
                                 surveyId={this.state._id}
                                 orgId={this.props.orgId}
+                                isAnyCompleted={this.state.complitedSurveyTodos > 0}
                             />
         let backButton = <a href="javascript:history.back()" className="back-button-title--survey-header"></a>
         
