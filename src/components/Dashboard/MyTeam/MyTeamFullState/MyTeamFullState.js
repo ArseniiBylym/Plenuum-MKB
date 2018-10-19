@@ -45,7 +45,7 @@ function MyTeamFullState(props) {
                             </div>
                             {/* URLPath.organisations + `${orgId}/${userId}/skillScores/excel */}
                             {/* <a href='#' alt='link' onClick={props.getFeedbackFile}> */}
-                            <a href={`${baseURL}organizations/${props.orgId}/${props.userId}/skillScores/excel`} alt='link' download>
+                            <a href={`${baseURL}organizations/${props.orgId}/${props.userId}/feedbacks/excel`} alt='link' download>
                                 <div className="download-wrapper__statistic-button">
                                     <div className="download-wrapper__statistic-button-icon"></div>
                                     Excel letöltése
@@ -58,7 +58,7 @@ function MyTeamFullState(props) {
                                 <div className="statistic-info--text">Összes képesség pontszám</div>
                             </div>
                             {/* <a href='#' alt='link' onClick={props.getSkillFile} > */}
-                            <a href={`${baseURL}organizations/${props.orgId}/${props.userId}/feedbacks/excel`} alt='link' download>
+                            <a href={`${baseURL}organizations/${props.orgId}/${props.userId}/skillScores/excel`} alt='link' download>
                                 <div className="download-wrapper__statistic-button">
                                     <div className="download-wrapper__statistic-button-icon"></div>
                                     Excel letöltése
