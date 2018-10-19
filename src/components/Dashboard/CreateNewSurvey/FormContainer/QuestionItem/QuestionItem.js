@@ -56,22 +56,19 @@ class QuestionItem extends Component {
 
         return (
             <div className='QuestionItem'>
-               
                 <BasketContainer length={this.props.length} index={this.props.index}
                     delFunc={this.props.deleteCurrentQuestion}
                     goToPrev={this.props.goToPrev}
                     goToNext={this.props.goToNext}
-                    id={this.props.id} />
-
-
-                {this.props.index == 0 && answerIsRequired()}
-
+                    id={this.props.id} 
+                />
                 <Input name='question' placeholder="Írd be a kérdésed"  
                     maxLength="200" s={12}  
                     onBlur={(event)=>this.props.onChangeValue(event, this.props.index)}
                     onChange={(event)=>this.props.onChangeValue(event, this.props.index)}
                     value={this.props.config.text}
                 />
+                <div className='Error_notification_wrapper'>{answerIsRequired(this.props.config.text)}</div>
                 <div className='QuestionItem__select-wrapper'>
                     <div className='input__question-type-select-wrapper'>
                         <Input name='question_type' s={12} type='select' label="" 
@@ -136,8 +133,7 @@ function BasketContainer(props) {
     )
 }
 
-function answerIsRequired() {
+function answerIsRequired(arg) {
     return (
-        <div className='QuestionItem__answer-required'>Kötelező mező</div>
-    )
+        <div className={arg ? 'FormContainer_field-required non-visible' : 'FormContainer_field-required'}>Kötelező mező</div>    )
 }

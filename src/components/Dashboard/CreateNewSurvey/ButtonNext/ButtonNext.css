@@ -20,6 +20,11 @@
 .Button__create-new-action:active{
     background-color: #187697;
 }
-
+.Button__create-new-action.disabled,
+.Button__create-new-action.disabled:hover,
+.Button__create-new-action.disabled:active{
+    background-color: #cccccc;
+    cursor: default
+}
 
 /*hipteam styles*/

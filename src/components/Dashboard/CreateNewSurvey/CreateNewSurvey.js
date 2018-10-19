@@ -50,7 +50,8 @@ class CreateNewSurvey extends Component {
             selectedUsersBuffer: [],
             selectedUsersMaxLength: 20,
             isSelectedUsersArrFull: false,
-            showErrorNotification: false
+            showErrorNotification: false,
+            validationFailed: false
         }
     }
 
@@ -81,7 +82,8 @@ class CreateNewSurvey extends Component {
             selectedUsersBuffer: [],
             selectedUsersMaxLength: 20,
             isSelectedUsersArrFull: false,
-            showErrorNotification: false
+            showErrorNotification: false,
+            validationFailed: false
            })  
             //create template
             console.log('find template')
@@ -124,9 +126,30 @@ class CreateNewSurvey extends Component {
     }
 
     showNextScreen = (event) => {
-        this.setState({
-            screenSide: 'right'
+
+        let isValid = true
+        if(!this.state.title || !this.state.open_until) {
+            isValid = false
+        }
+        this.state.questions.forEach((item, i) => {
+            if(!item.text) {
+                isValid = false
+            }
         })
+        if(!isValid) {
+            console.log('Please fill all fields')
+            this.setState({
+                validationFailed: true,
+                showErrorNotification: true
+
+            })
+        } else {
+            this.setState({
+                screenSide: 'right',
+                validationFailed: false,
+                showErrorNotification: false
+            })
+        }
     }
 
     addAnoterQuestion = () => {
@@ -318,37 +341,38 @@ class CreateNewSurvey extends Component {
     }
 
     createSurveyHandler = (e) => {
-        console.log('into handler')
-        if(this.state.title.trim().length == 0) {
-            console.log('Please, fill the title of the survey to continue');
-            this.setState({
-                showErrorNotification: true
-            })
-            return
-        }
-        if(this.state.open_until.trim().length == 0) {
-            console.log(`Please, chose the date of the survey's end to continue`)
-            this.setState({
-                showErrorNotification: true
-            })
-            return
-        }
-        for (let item of this.state.questions) {
-            if(item.text.trim().length == 0) {
-                console.log('Please, fill the all questions fields to continue')
-                this.setState({
-                    showErrorNotification: true
-                })
-                return
-            }
-        }
-        if(this.state.selectedUsers.length == 0) {
-            console.log('Plese, chose at least one user to continue')
-            this.setState({
-                showErrorNotification: true
-            })
-            return
-        }
+        // console.log('into handler')
+        // if(this.state.selectedUsers.length == 0) return
+        // if(this.state.title.trim().length == 0) {
+        //     console.log('Please, fill the title of the survey to continue');
+        //     this.setState({
+        //         showErrorNotification: true
+        //     })
+        //     return
+        // }
+        // if(this.state.open_until.trim().length == 0) {
+        //     console.log(`Please, chose the date of the survey's end to continue`)
+        //     this.setState({
+        //         showErrorNotification: true
+        //     })
+        //     return
+        // }
+        // for (let item of this.state.questions) {
+        //     if(item.text.trim().length == 0) {
+        //         console.log('Please, fill the all questions fields to continue')
+        //         this.setState({
+        //             showErrorNotification: true
+        //         })
+        //         return
+        //     }
+        // }
+        // if(this.state.selectedUsers.length == 0) {
+        //     console.log('Plese, chose at least one user to continue')
+        //     this.setState({
+        //         showErrorNotification: true
+        //     })
+        //     return
+        // }
 
 
         const questionsForPost = this.state.questions.map((item,i) => {
@@ -411,7 +435,7 @@ class CreateNewSurvey extends Component {
                         className="interact"
                         right={closeButton}
                     />
-                    <div ref={this.setRef} className='CreateNew__left-screen-wrapper'>
+                    <div ref={this.setRef} className={this.state.validationFailed ? 'CreateNew__left-screen-wrapper validation-failed' : 'CreateNew__left-screen-wrapper'}>
                         <FormContainer config={this.state}
                             deleteCurrentQuestion={this.deleteCurrentQuestion}
                             goToNext={this.goToNext}
@@ -421,8 +445,9 @@ class CreateNewSurvey extends Component {
                             onChangeQuestionItemValue={this.onChangeQuestionItemValue} />
 
                         <div className='CreateNew__footer-wrapper'>
+                            {this.state.showErrorNotification && <ErrorNotification />}
                             <AddAnoterButton text='Új kérdés hozzáadása' onClickAction={this.addAnoterQuestion} />
-                            <ButtonNext text='Következő' onClickAction={this.showNextScreen} />
+                            <ButtonNext text='Következő' onClickAction={this.showNextScreen} isActive={true}/>
                         </div>
                     </div>
                 </div>
@@ -442,9 +467,9 @@ class CreateNewSurvey extends Component {
                             <SelectUsersForSurvey addUsersToCurrentList={this.addUsersToCurrentList}
                                 className={classNameForUsersContainer} />
                         }
-                        <div id='link' className='CreateNew__footer-wrapper' onClick={this.createSurveyHandler}>
-                            {this.state.showErrorNotification && <ErrorNotification />}
-                            <ButtonNext text='Elküldés' />
+                        <div id='link' className='CreateNew__footer-wrapper'>
+                            {/* {this.state.showErrorNotification && <ErrorNotification />} */}
+                            <ButtonNext text='Elküldés' onClickAction={this.createSurveyHandler} isActive={this.state.selectedUsers.length > 0}/>
                         </div>
                     </div>
                 </div>

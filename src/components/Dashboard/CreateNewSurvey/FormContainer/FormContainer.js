@@ -39,6 +39,7 @@ class FormContainer extends Component {
                     onChange={this.props.onChangeValue}
                     value={title}
                 />
+                <div className='Error_notification_wrapper'>{fieldIsRequired(title)}</div>
                 <Input name='description' type='textarea' 
                     placeholder="Leírás (opcionális)" s={12} 
                     maxLength="200"
@@ -55,6 +56,7 @@ class FormContainer extends Component {
                     />
                     <div className='triangle-for-select'>&#9662;</div>
                 </div>
+                <div className='Error_notification_wrapper'>{fieldIsRequired(open_until)}</div>
                 <h1>Kérdések</h1>
                 {questionsArr}
             </div>
@@ -76,4 +78,11 @@ function transformDate(date) {
         day = '0' + day;
     }
     return(year + '.' + month + '.' + day)
+}
+
+
+function fieldIsRequired(arg) {
+    return (
+        <div className={arg ? 'FormContainer_field-required non-visible' : 'FormContainer_field-required'}>Kötelező mező</div>
+    )
 }
