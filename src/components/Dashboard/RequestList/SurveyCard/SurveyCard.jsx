@@ -71,7 +71,7 @@ class SurveyCard extends Component {
 			(this.props.surveyState.completedSurveyId && this.props.surveyState.completedSurveyId == this.props.survey._id) && <div className='dot'>1</div>}
 				</div>
 				<div className='feedback-content-date interact-card'>
-						{moment(this.props.survey.createdAt).utc().format('YYYY.MM.DD • HH.mm')}
+						{moment(this.props.survey.createdAt).format('YYYY.MM.DD • HH.mm')}
 				</div>
 				<NavLink
 					className="survey-link"

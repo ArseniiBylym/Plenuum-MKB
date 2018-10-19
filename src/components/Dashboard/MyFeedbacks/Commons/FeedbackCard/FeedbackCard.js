@@ -15,7 +15,7 @@ const FeedbackCard = (props) => {
           {props.tags}
         </div>
         <div className="feedback-content-date">
-          {moment(props.feedback.createdAt).utc().format('YYYY.MM.DD • HH.mm')}
+          {moment(props.feedback.createdAt).format('YYYY.MM.DD • HH.mm')}
         </div>
         {props.cardIcons}
       </div>
