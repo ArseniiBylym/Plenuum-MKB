@@ -341,39 +341,6 @@ class CreateNewSurvey extends Component {
     }
 
     createSurveyHandler = (e) => {
-        // console.log('into handler')
-        // if(this.state.selectedUsers.length == 0) return
-        // if(this.state.title.trim().length == 0) {
-        //     console.log('Please, fill the title of the survey to continue');
-        //     this.setState({
-        //         showErrorNotification: true
-        //     })
-        //     return
-        // }
-        // if(this.state.open_until.trim().length == 0) {
-        //     console.log(`Please, chose the date of the survey's end to continue`)
-        //     this.setState({
-        //         showErrorNotification: true
-        //     })
-        //     return
-        // }
-        // for (let item of this.state.questions) {
-        //     if(item.text.trim().length == 0) {
-        //         console.log('Please, fill the all questions fields to continue')
-        //         this.setState({
-        //             showErrorNotification: true
-        //         })
-        //         return
-        //     }
-        // }
-        // if(this.state.selectedUsers.length == 0) {
-        //     console.log('Plese, chose at least one user to continue')
-        //     this.setState({
-        //         showErrorNotification: true
-        //     })
-        //     return
-        // }
-
 
         const questionsForPost = this.state.questions.map((item,i) => {
             let type = item.type == 'free_text' ? 'text' : item.type == 'yes_no' ? 'yes-no' : item.type == '1_to_6' ? '1-6' : null
