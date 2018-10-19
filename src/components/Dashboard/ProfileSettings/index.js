@@ -143,7 +143,7 @@ class ProfileSettingsContainer extends Component {
     }
 
     componentDidUpdate = () => {
-        console.log(this.state);
+        // console.log(this.state);
     }
 
     handleUserClick = (clickedManager) => {
@@ -170,11 +170,11 @@ class ProfileSettingsContainer extends Component {
                         managerUpdatedSuccessful: true
                     }
                 })
-                setTimeout(()=> {
-                    this.setState({
-                        managerUpdatedSuccessful: false
-                    })
-                }, 3000)
+                // setTimeout(()=> {
+                //     this.setState({
+                //         managerUpdatedSuccessful: false
+                //     })
+                // }, 3000)
 
                 this.props.addManagerToUserProfile(_id)
             })
@@ -183,11 +183,11 @@ class ProfileSettingsContainer extends Component {
                 this.setState({
                     managerUpdatedFailed: true
                 })
-                setTimeout(()=> {
-                    this.setState({
-                        managerUpdatedFailed: false
-                    })
-                }, 3000)
+                // setTimeout(()=> {
+                //     this.setState({
+                //         managerUpdatedFailed: false
+                //     })
+                // }, 3000)
             })
 
 
@@ -289,6 +289,13 @@ class ProfileSettingsContainer extends Component {
         }
     }
 
+    endAnimationHandler = () => {
+        this.setState({
+            managerUpdatedSuccessful: false,
+            managerUpdatedFailed: false
+        })
+    }
+
     render() {
         const user = this.store.getState().currentUser;
         const { searchPage, searchedManager, allManagers } = this.state;
@@ -347,6 +354,7 @@ class ProfileSettingsContainer extends Component {
                     managerSelected={this.state.selectLineManager}
                     managerUpdatedSuccessful={this.state.managerUpdatedSuccessful}
                     managerUpdatedFailed={this.state.managerUpdatedFailed}
+                    endAnimationHandler={this.endAnimationHandler}
                 />
                 {this.state.searchPage && <div className="overlay" onClick={this.openSearch} />}
                 {managersList}

@@ -82,8 +82,14 @@ const ProfileSettings = (props) => {
       </div>
       {/* {props.managerUpdatedSuccessful && <div className='managerUpdatedSuccessfulMessage'>Közvetlen vezető elmentve</div>}
       {props.managerUpdatedFailed && <div className='managerUpdatedFailureMessage'>Nem sikerült elmenteni a közvetlen vezetőt</div>} */}
-      <div className={props.managerUpdatedSuccessful ? 'managerUpdatedSuccessfulMessage show' : 'managerUpdatedSuccessfulMessage'}>Közvetlen vezető elmentve</div>
-      <div className={props.managerUpdatedFailed ? 'managerUpdatedFailureMessage show' : 'managerUpdatedFailureMessage'}>Nem sikerült elmenteni a közvetlen vezetőt</div>
+      <div className={props.managerUpdatedSuccessful ? 'managerUpdatedSuccessfulMessage show' : 'managerUpdatedSuccessfulMessage'}
+          onAnimationEnd={props.endAnimationHandler}>
+        Közvetlen vezető elmentve
+      </div>
+      <div className={props.managerUpdatedFailed ? 'managerUpdatedFailureMessage show' : 'managerUpdatedFailureMessage'}
+          onAnimationEnd={props.endAnimationHandler}>
+        Nem sikerült elmenteni a közvetlen vezetőt
+      </div>
     </div>
   )
 };
