@@ -13,6 +13,9 @@
                 0 1px 10px 0 rgba(0, 0, 0, 0.12),
                 0 4px 5px 0 rgba(0, 0, 0, 0.14);
 }
+.CreateNew__footer-wrapper--right .Button__create-new-action{
+    width: 100%;
+}
 .Button__create-new-action:hover{
     /* background-color:  #b31b34; */
     background-color:#187697;

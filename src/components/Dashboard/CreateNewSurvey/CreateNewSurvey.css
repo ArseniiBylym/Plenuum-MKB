@@ -102,6 +102,11 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    /* background-color: pink; */
+}
+.CreateNew__footer-wrapper--right{
+    width: calc(25% + 50px);
+    align-self: flex-end;
 }
 .SelectUsersForSurvey.usersListFull .create-request-components-container > div:last-child{
     position: relative;

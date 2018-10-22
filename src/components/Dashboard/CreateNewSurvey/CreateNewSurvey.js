@@ -409,7 +409,7 @@ class CreateNewSurvey extends Component {
                             onChangeValue={this.onChangeValue}
                             onChangeQuestionItemValue={this.onChangeQuestionItemValue} />
 
-                        <div className='CreateNew__footer-wrapper'>
+                        <div className='CreateNew__footer-wrapper CreateNew__footer-wrapper--left'>
                             {this.state.showErrorNotification && <ErrorNotification />}
                             <AddAnoterButton text='Új kérdés hozzáadása' onClickAction={this.addAnoterQuestion} />
                             <ButtonNext text='Következő' onClickAction={this.showNextScreen} isActive={true}/>
@@ -432,7 +432,7 @@ class CreateNewSurvey extends Component {
                             <SelectUsersForSurvey addUsersToCurrentList={this.addUsersToCurrentList}
                                 className={classNameForUsersContainer} />
                         }
-                        <div id='link' className='CreateNew__footer-wrapper'>
+                        <div id='link' className='CreateNew__footer-wrapper CreateNew__footer-wrapper--right'>
                             {/* {this.state.showErrorNotification && <ErrorNotification />} */}
                             <ButtonNext text='Elküldés' onClickAction={this.createSurveyHandler} isActive={this.state.selectedUsers.length > 0}/>
                         </div>
