@@ -5,6 +5,7 @@ import FullSurveysList from './FullSurveysList/FullSurveysList'
 import CreateNewButton from './CreateNewButton/CreateNewButton'
 import { connect } from 'react-redux';
 import Api from '../../../lib/api';
+import {spinner} from '../../Commons/Spinner/spinner'
 
 
 import './MySurveys.css';
@@ -14,23 +15,22 @@ class MySurveys extends Component {
         list: [
            
         ],
-        surveys: null
+        surveys: null,
+        isRequestSended: false
     }
     componentDidMount = () => {
         const token = window.localStorage.getItem('token')
         Api.getMySurveys(token, this.props.orgId)
             .then((response) => {
-                // console.log(response)
                 this.setState({
-                    surveys: response
+                    surveys: response,
+                    isRequestSended: true
                 })
-                // this.props.putSurveysToRedux(response);
             })
+            .catch(error => {
+                console.log(error.message)
 
-      
-        // 1. sent GET request to back
-        // 2. put response to the state
-        // 3. put response to redux store //maybe
+            })
     }
 
     componentWillUnmount = () => {
@@ -39,20 +39,21 @@ class MySurveys extends Component {
 
 
     renderPage() {
-        
-
-        // if (!this.props.mySurveys) return null
-        // if(!this.props.mySurveys.surveys) return null
-        if(!this.state.surveys) return null
+        // if(!this.state.surveys) return null
         
         let cardList = null
-        if (this.props.mySurveys.surveys.length == 0) {
+
+        if(this.props.surveys == null && this.state.isRequestSended == false) {
+            cardList = spinner()
+        } else if (this.props.mySurveys.surveys.length == 0) {
             cardList = <EmptySurveysList />
-        } else {
+        } else if (this.props.mySurveys.surveys.length > 0){
             cardList = <FullSurveysList list={this.state.surveys}
                 isShowSendNotification={this.props.mySurveys.survey_has_sended} orgId={this.props.orgId}/>
         }
+
         let createButton = <CreateNewButton text='Új kérdőív' />
+
         return (
             <div className="request-pre-container request-pre-container--my-surveys">
                 <DefaultNavigationBarContainer
