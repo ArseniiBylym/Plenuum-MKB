@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import MyTeamEmptyState from './MyTeamEmptyState/MyTeamEmptyState';
 import MyTeamFullState from './MyTeamFullState/MyTeamFullState';
 import Api from '../../../lib/api';
-var XMLParser = require('react-xml-parser');
+import {spinner} from '../../Commons/Spinner/spinner.js'
 
 class MyTeam extends Component {
     state = {
@@ -35,6 +35,9 @@ class MyTeam extends Component {
             })
             .catch(error => {
                 console.log(error.message)
+                this.setState({
+                    isRequestSended: true
+                })
             })
 
 
@@ -82,8 +85,6 @@ class MyTeam extends Component {
         Api.getUserFeedbackExcell(token, this.props.currentUser.orgId, this.state.selectedUser._id)
             .then(response => {
                 console.log(response)
-                // var xml = new XMLParser().parseFromString(response);   
-                // console.log(xml);
             })
             .catch(error => {
                 console.log(error.message)
@@ -114,7 +115,9 @@ class MyTeam extends Component {
                         firstName={this.state.selectedUser.firstName}
                         lastName={this.state.selectedUser.lastName}
                     /> :
-                    <MyTeamEmptyState />
+                    this.state.isRequestSended && this.state.usersList.length == 0 ? 
+                    <MyTeamEmptyState /> : 
+                    spinner()
                 }
             </div>
         )
