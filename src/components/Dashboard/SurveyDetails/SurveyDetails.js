@@ -49,7 +49,7 @@ class SurveyDetails extends Component {
                                 click={this.downloadAnswers}
                                 surveyId={this.state._id}
                                 orgId={this.props.orgId}
-                                isAnyCompleted={this.state.complitedSurveyTodos > 0}
+                                isAnyCompleted={true}
                             />
         let backButton = <NavLink to="/my_surveys" className="back-button-title--survey-header" ></NavLink>
         

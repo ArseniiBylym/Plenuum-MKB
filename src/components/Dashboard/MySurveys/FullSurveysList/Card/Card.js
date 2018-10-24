@@ -30,10 +30,7 @@ export default function Card(props) {
                 <div className='Card__date--date'>{dateToShow}</div> 
             </div>
             <div className='Card__download-buttons'>
-                <a  href={complitedSurveyTodos > 0 ? `${baseURL}organizations/${props.orgId}/survey/2/${props.config._id}/excel` : `#`} 
-                    className={complitedSurveyTodos > 0 ? "downloadButton" : "downloadButton downloadButton--disabled"} 
-                    download={complitedSurveyTodos > 0 ? true : false}
-                >
+                <a href={`${baseURL}organizations/${props.orgId}/survey/2/${props.config._id}/excel`} className="downloadButton" download>
                     <div className='downloadButton--arrow'></div>
                     Válasz
                 </a>
