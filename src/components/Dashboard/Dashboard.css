@@ -113,7 +113,8 @@ a:focus {
   background-color: #b31b34 !important;
 }
 .hipteam .nav-inner-content-title {
-  font-size: 32px;
+  /* font-size: 32px; */
+  font-size: 24px;
   color: rgba(0, 0, 0, 0.7);
 }
 .hipteam .button-next-enable {
