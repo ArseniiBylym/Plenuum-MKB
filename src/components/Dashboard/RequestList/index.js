@@ -35,14 +35,16 @@ class RequestListContainer extends Component {
                 .catch((error) => { console.log(error) });
             Api.todosAndRequests(orgId)
                 .then((response) => {
-                    console.log(response)
-                    let all = response.requests.concat( response.compassTodo );
+                    // console.log(response)
+                    let all = response.requests.concat( response.compassTodo, response.surveysTodo );
+                    // console.log(all)
                     if ( all.length > 0 || response.surveysTodo.length > 0 ) {
                         const sorted = all.sort(function(a, b) {
-                            return new Date(b.updatedAt) - new Date(a.updatedAt)
+                            return new Date(b.createdAt) - new Date(a.createdAt)
                         });
-                        const interactCards = response.surveysTodo.concat( sorted );
-                        this.setState({ requestsAndTodos: interactCards });
+                        // const interactCards = response.surveysTodo.concat( sorted );
+                        // this.setState({ requestsAndTodos: interactCards });
+                        this.setState({ requestsAndTodos: sorted });
                     }else{
                         this.setState({requestsAndTodos: []});
                     }
