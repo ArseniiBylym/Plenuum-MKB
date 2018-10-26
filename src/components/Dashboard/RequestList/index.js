@@ -115,13 +115,14 @@ class RequestListContainer extends Component {
                     console.log(object.survey)
 
                     const user = users.find((element) => {
-                        return element._id === object.respondent
+                        return element._id === object.survey.owner
                     });
+                    console.log(user)
                     return SurveyCardContainer({
                         key:object.survey._id,
                         title:object.survey.title,
                         survey:object,
-                        respondent: user
+                        surveyOwner: user
 
                     })
                 }
