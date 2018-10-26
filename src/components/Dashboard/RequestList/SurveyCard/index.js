@@ -3,6 +3,7 @@ import SurveyCard from './SurveyCard.jsx';
 
 const SurveyCardContainer = (props) => {
   return <SurveyCard 
+          {...props}
           survey={props.survey} 
           key={props.key}
           title={props.title}

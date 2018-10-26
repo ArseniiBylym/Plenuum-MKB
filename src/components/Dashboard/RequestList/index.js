@@ -109,17 +109,25 @@ class RequestListContainer extends Component {
     createRequestAndTodosComponents( requestsAndTodos, users ){
         return requestsAndTodos.map((object) => {
             if ( object ) {
-                if( object.survey ){
+                    console.log(object)
+                if( object.survey !== undefined && users ){
                     console.log(object)
                     console.log(object.survey)
+
+                    const user = users.find((element) => {
+                        return element._id === object.respondent
+                    });
                     return SurveyCardContainer({
                         key:object.survey._id,
                         title:object.survey.title,
-                        survey:object
+                        survey:object,
+                        respondent: user
+
                     })
                 }
 
                 else if ( object.about !== undefined && users ) {
+                    console.log(object.about)
                     const aboutUser = users.find((element) => {
                         return element._id === object.about;
                     });
