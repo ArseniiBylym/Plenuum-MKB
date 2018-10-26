@@ -43,7 +43,8 @@ const ProfileSettings = (props) => {
                 </label>
             {/*  TODO: must be not a div but textarea for editing*/}
             <input
-              readOnly={props.readOnly}
+              // readOnly={props.readOnly}
+              readOnly
               name="email"
               type="text"
               defaultValue={props.user.email}

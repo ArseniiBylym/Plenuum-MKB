@@ -31,18 +31,6 @@ class ProfileSettingsContainer extends Component {
         const user = this.store.getState().currentUser;
         const manager = user.managerId;
 
-        // const usersManager = this.props.usersManager
-
-        // let managerProfilePicture = ''
-        // let managerProfileFullName = ''
-        // let managerProfileId = ''
-
-        // if (usersManager) {
-        //     managerProfilePicture = usersManager.pictureUrl;
-        //     managerProfileFullName = usersManager.fullName;
-        //     managerProfileId = usersManager._id;
-        // }
-
         this.state = {
             firstName: user.firstName,
             lastName: user.lastName,
@@ -54,6 +42,8 @@ class ProfileSettingsContainer extends Component {
             setPic: false,
             uploadedImage: undefined,
             changePassword: undefined,
+
+
             allManagers: [],
             searchedManager: [],
             searchPage: false,
@@ -332,6 +322,7 @@ class ProfileSettingsContainer extends Component {
 
                 <ProfileSettings
                     user={user}
+                    dropzone={this.dropzone}
                     setPic={this.handlePictureChange}
                     actions={this.actions}
                     handleTextField={!this.state.edit ? this.handleTextField : undefined}
