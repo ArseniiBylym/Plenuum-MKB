@@ -291,6 +291,11 @@ color: #ffffff;
 }
 
 
+.hipteam .segmented-item .segmented-cell.active:hover{
+  border-bottom: solid 2px #cc6472
+}
+
+
 
 
 /*  -----------------mkb-bank------------*/
