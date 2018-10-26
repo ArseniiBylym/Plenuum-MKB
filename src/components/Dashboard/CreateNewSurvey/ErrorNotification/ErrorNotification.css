@@ -9,4 +9,20 @@
     color: white;
     font-size: 16px;
     padding: 10px 20px;
+    transform: translateX(-200%);
+}
+.ErrorNotification.visible-error-notification{
+    animation: showError 3s ease alternate;
+}
+
+@keyframes showError {
+    20%{
+        transform: translateX(0)
+      }
+      80%{
+        transform: translateX(0)
+      }
+      100%{
+        transform: translate(-200%)
+      }
 }

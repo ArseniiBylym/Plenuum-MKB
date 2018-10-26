@@ -37,13 +37,17 @@
     background-color: #b31b34;
     color: white;
 }
-.picker__today,
+.picker__today {
+    display: none !important
+}
 .picker__close,
 .picker__clear,
 .picker__day.picker__day--today{
     color: #b31b34;
 }
-button.picker__today:focus,
+button.picker__today:focus {
+    display: none !important
+}
 button.picker__clear:focus,
 button.picker__close:focus,
 .picker__nav--prev:hover,

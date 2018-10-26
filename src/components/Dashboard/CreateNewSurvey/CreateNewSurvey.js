@@ -103,19 +103,19 @@ class CreateNewSurvey extends Component {
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-        console.log(this.state)
-        
-        // if (prevState.questions.length < this.state.questions.length) {
+        // console.log(this.state)
 
-        //     let wrapper = document.querySelector('.CreateNew__left-screen-wrapper')
-        //     console.log(wrapper.scrollHeight)
-        //     console.log(wrapper.clientHeight)
-        //     const pixelsToScroll = wrapper.scrollHeight - wrapper.clientHeight;
-        //     wrapper.scrollTo({
-        //         top: pixelsToScroll,
-        //         behavior: "smooth"
-        //     })
-        // }
+        // const isQuestionsChanged = this.state.questions.some((item, i) => {
+        //     prevState.questions[i].text != item.text
+        // })
+
+        // console.log(isQuestionsChanged)
+
+        // if(prevState.title != this.state.tile || prevState.open_until != this.state.open_until || isQuestionsChanged) {
+        //     console.log('case 1')
+        // } else console.log('case 2')
+
+
     }
 
     switchBack = () => {
@@ -381,6 +381,12 @@ class CreateNewSurvey extends Component {
             })
     }
 
+    endAnimationHandler = () => {
+        this.setState({
+            showErrorNotification: false
+        })
+    }
+
     render() {
         let classNameForUsersContainer = 'SelectUsersForSurvey'
         if (this.state.isSelectedUsersArrFull) {
@@ -410,7 +416,7 @@ class CreateNewSurvey extends Component {
                             onChangeQuestionItemValue={this.onChangeQuestionItemValue} />
 
                         <div className='CreateNew__footer-wrapper CreateNew__footer-wrapper--left'>
-                            {this.state.showErrorNotification && <ErrorNotification />}
+                            <ErrorNotification isShow={this.state.showErrorNotification} endAnimationHandler={this.endAnimationHandler}/>
                             <AddAnoterButton text='Új kérdés hozzáadása' onClickAction={this.addAnoterQuestion} />
                             <ButtonNext text='Következő' onClickAction={this.showNextScreen} isActive={true}/>
                         </div>
