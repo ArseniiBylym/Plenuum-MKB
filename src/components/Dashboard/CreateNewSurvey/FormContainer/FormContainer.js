@@ -40,7 +40,7 @@ class FormContainer extends Component {
                     value={title}
                 />
                 <div className='Error_notification_wrapper'>{fieldIsRequired(title)}</div>
-                <Input name='description' type='textarea' 
+                <Input name='description' 
                     placeholder="Leírás (opcionális)" s={12} 
                     maxLength="200"
                     onBlur={this.props.onChangeValue}

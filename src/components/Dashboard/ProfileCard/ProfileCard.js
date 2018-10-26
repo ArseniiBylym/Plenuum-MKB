@@ -1,6 +1,8 @@
 import React from 'react';
 import './ProfileCard.css';
 import ProfileDefaultPic from '../../../resources/profile.svg';
+import TestingPicture from '../../../resources/testImg.jpg'
+
 
 const ProfileCard=(props) => {
   return(
@@ -10,7 +12,8 @@ const ProfileCard=(props) => {
             className="profile-picture"
             alt=""
             src={
-              props.pictureUrl !== "" && props.pictureUrl ? props.pictureUrl + '?' + (new Date()).getTime() : ProfileDefaultPic} 
+              props.pictureUrl !== "" && props.pictureUrl ? props.pictureUrl + '?' + (new Date()).getTime() : ProfileDefaultPic}
+            // src={TestingPicture} 
           />
           <div className="profile-name" onClick={props.menuClicked}>
             <div className="name">{props.firstName + " " + props.lastName}</div>

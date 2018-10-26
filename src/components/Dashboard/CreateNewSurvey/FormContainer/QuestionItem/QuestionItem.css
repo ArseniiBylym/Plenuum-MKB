@@ -55,8 +55,7 @@
     /* background: url('./img/prev-text@3x.png') no-repeat; */
     background-size: contain;
     background-position: left top;
-    /* background-position: center center; */
-    height: 150px;
+    height: 130px;
 }
 .QuestionItem__preview-img.yesNo-img{
     background: url('./img/prev-yes-no.svg') no-repeat;
@@ -64,7 +63,8 @@
     background-size: contain;
     background-position: left top;
     /* background-position: center center; */
-    height: 100px;
+    /* max-width: 600px; */
+    height: 85px;
 }
 .QuestionItem__preview-img.oneToSix-img{
     background: url('./img/prev-1-6.svg') no-repeat;
@@ -72,7 +72,8 @@
     background-size: contain;
     background-position: left top;
     /* background-position: center center; */
-    height: 280px;
+    /* max-width: 600px; */
+    height: 247px;
 }
 .QuestionItem:hover .BasketContainer {
     display: flex;

@@ -25,7 +25,7 @@ const RequestCard = (props) => {
           state: props.linkProperties.state
         }}
         >
-        Give feedback
+        Visszajelzés küldése
       </NavLink>
     </div>
   );

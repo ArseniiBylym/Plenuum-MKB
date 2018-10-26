@@ -149,7 +149,7 @@ export default class Api_v2 extends Networking {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            // mode: 'no-cors',
+            mode: 'cors',
             body: JSON.stringify({'email': email, 'password': password}),
             cache: "no-store"
         };
