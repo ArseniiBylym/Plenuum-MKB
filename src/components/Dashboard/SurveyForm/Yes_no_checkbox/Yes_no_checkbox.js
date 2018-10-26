@@ -29,12 +29,12 @@ function Yes_no_checkbox(props) {
                     <div className='Yes_no_checkbox__radio-item' onClick={(e) => radioButtonClick(e, 'yes')}>
                         <input type="radio" id={`yes_no_radio__${props.index}-yes`} 
                             name={`yes_no_radio__${props.index}`} value="yes"  />
-                        <label for={`yes_no_radio__${props.index}-yes`}>Yes</label>
+                        <label for={`yes_no_radio__${props.index}-yes`}>Igen</label>
                     </div>
                     <div className='Yes_no_checkbox__radio-item' onClick={(e) => radioButtonClick(e, 'no')}>
                         <input type="radio" id={`yes_no_radio__${props.index}-no`}
                             name={`yes_no_radio__${props.index}-no`} value="no" />
-                        <label for={`yes_no_radio__${props.index}-no`}>No</label>
+                        <label for={`yes_no_radio__${props.index}-no`}>Nem</label>
                     </div>
                 </div>
 

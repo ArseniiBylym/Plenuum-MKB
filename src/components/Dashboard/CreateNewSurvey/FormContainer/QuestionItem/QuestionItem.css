@@ -172,3 +172,47 @@ position: relative;
      cursor: pointer;
     /* height: 20px;  */
 }
+
+
+/* examples */
+.Text_example,
+.Yes_no_example,
+.One_six_example{
+    width: 100%;
+    /* height: 130px; */
+    padding: 20px;
+    border: 1px solid rgba(0,0,0,.5);
+    border-radius: 5px;
+    color: rgba(0,0,0,.5);
+    font-size: 16px;
+    position: relative
+}
+
+.Text_example{
+    padding-bottom: 100px;
+}
+
+.One_six_example{
+}
+
+.Yes_no_example{
+}
+
+.Yes_no_example [type="radio"]:not(:checked)+label, 
+.One_six_example [type="radio"]:not(:checked)+label{
+    font-size: 16px;
+    font-family: 'NunitoSans', sans-serif;
+    font-weight: 400
+
+}
+.Yes_no_example--frontdrop,
+.One_six_example--frontdrop,
+.Text_example--frontdrop{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+    background-color: transparent;
+}

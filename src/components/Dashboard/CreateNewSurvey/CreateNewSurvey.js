@@ -103,18 +103,6 @@ class CreateNewSurvey extends Component {
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-        // console.log(this.state)
-
-        // const isQuestionsChanged = this.state.questions.some((item, i) => {
-        //     prevState.questions[i].text != item.text
-        // })
-
-        // console.log(isQuestionsChanged)
-
-        // if(prevState.title != this.state.tile || prevState.open_until != this.state.open_until || isQuestionsChanged) {
-        //     console.log('case 1')
-        // } else console.log('case 2')
-
 
     }
 
@@ -153,15 +141,6 @@ class CreateNewSurvey extends Component {
     }
 
     addAnoterQuestion = () => {
-        // console.log(this.myRef)
-        // const pixelsToScroll = this.myRef.scrollHeight - this.myRef.clientHeight;
-        // console.log(pixelsToScroll)
-        // console.log( this.myRef.scrollHeigh)
-        // console.log( this.myRef.clientHeight)
-        //     this.myRef.scrollTo({
-        //         top: pixelsToScroll,
-        //         behavior: "smooth"
-        //     })
 
         this.setState((prevState) => {
             return {
@@ -178,8 +157,6 @@ class CreateNewSurvey extends Component {
     }
 
     deleteCurrentQuestion = (index) => {
-        // console.log('delete last')
-        // console.log(index)
         if (this.state.questions.length <= 1) return
         this.setState((prevState) => {
             let arr = prevState.questions.slice();

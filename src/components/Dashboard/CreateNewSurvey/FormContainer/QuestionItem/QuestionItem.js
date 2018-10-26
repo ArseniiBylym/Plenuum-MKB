@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Input } from 'react-materialize';
 import './QuestionItem.css';
+import Text from './InputExamples/Text'
+import Yes_no from './InputExamples/Yes_no'
+import One_six from './InputExamples/One_six'
 
 class QuestionItem extends Component {
     state = {
@@ -8,18 +11,23 @@ class QuestionItem extends Component {
         typeSelectValue: '',
         // isRequiredSelectValue: 'optional',
         isRequiredSelectValue: '',
+        exampleElem: null
+
     }
     componentDidMount = () => {
         console.log(this.props)
         this.setState({
             typeSelectValue: this.props.config.type === 'yes_no' ? 'yes_no' : this.props.config.type === '1_to_6' ? '1_to_6' : 'free_text',
-            isRequiredSelectValue: this.props.config.isRequired ? 'required' : 'optional'
+            isRequiredSelectValue: this.props.config.isRequired ? 'required' : 'optional',
+            exampleElem: this.props.config.type === 'yes_no' ? <Yes_no/> : this.props.config.type === '1_to_6' ? <One_six/> : <Text />
         })
     }
 
     changeTypeSelectValue = (e) => {
+        const value = e.target.value
         this.setState({
-            typeSelectValue: e.target.value
+            typeSelectValue: value,
+            exampleElem: value === 'yes_no' ? <Yes_no /> : value === '1_to_6' ? <One_six /> : <Text />
         })
         this.props.onChangeValue(e, this.props.index)
     }
@@ -94,7 +102,8 @@ class QuestionItem extends Component {
                 </div>
                 <div className={classForPreviewContainer}>
                     <div className='QuestionItem__preview-header'>Válasz előnézete</div>
-                    <div className={classNameForImg}></div>
+                    {/* <div className={classNameForImg}></div> */}
+                    {this.state.exampleElem}
                 </div>
             </div>
         )
