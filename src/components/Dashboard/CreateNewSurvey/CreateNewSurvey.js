@@ -65,7 +65,7 @@ class CreateNewSurvey extends Component {
                 return {
                     id: Date.now() + Math.random(),
                     text: item.text,
-                    type: item.type == '1-6' ? '1_to_6' : item.type == 'yes-no' ? 'yes_no' : 'text',
+                    type: item.type == '1-6' ? '1_to_6' : item.type == 'yes-no' ? 'yes_no' : 'free_text',
                     isRequired: item.required ? 'required' : 'optional'
                 }
             })
