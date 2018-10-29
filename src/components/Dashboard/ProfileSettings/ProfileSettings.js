@@ -18,11 +18,13 @@ const ProfileSettings = (props) => {
         <div className="settings-user-header">
           <div className="settings-user-data">
             <div className="settings-avatar" onClick={props.setPic}>
-              <img alt=""
-                src={
-                  props.user.pictureUrl ? props.user.pictureUrl + '?' + (new Date()).getTime() : DefaultPic
-                }
-              />
+              {/* <div className='settings-avatar-wrapper'> */}
+                <img alt=""
+                  src={
+                    props.user.pictureUrl ? props.user.pictureUrl + '?' + (new Date()).getTime() : DefaultPic
+                  }
+                />
+              {/* </div> */}
               <img className="default-camera" alt="default camera" src={CameraIcon} />
             </div>
             <div className="settings-user-content">

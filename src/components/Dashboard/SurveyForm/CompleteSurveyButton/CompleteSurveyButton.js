@@ -3,7 +3,7 @@ import './CompleteSurveyButton.css';
 
 function CompleteSurveyButton(props) {
     return(
-        <div className="CompleteSurveyButton" onClick={props.click}>ELKÜLDÉS</div>
+        <div className="CompleteSurveyButton">ELKÜLDÉS</div>
     )
 }
 

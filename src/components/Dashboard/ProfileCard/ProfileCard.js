@@ -8,13 +8,15 @@ const ProfileCard=(props) => {
   return(
     <div className="profile-content">
       <div className="avatar">
-          <img
-            className="profile-picture"
-            alt=""
-            src={
-              props.pictureUrl !== "" && props.pictureUrl ? props.pictureUrl + '?' + (new Date()).getTime() : ProfileDefaultPic}
-            // src={TestingPicture} 
-          />
+          <div className='avatar-IE-wrapper'>
+            <img
+              className="profile-picture"
+              alt=""
+              src={
+                props.pictureUrl !== "" && props.pictureUrl ? props.pictureUrl + '?' + (new Date()).getTime() : ProfileDefaultPic}
+                // src={TestingPicture} 
+            />
+          </div>
           <div className="profile-name" onClick={props.menuClicked}>
             <div className="name">{props.firstName + " " + props.lastName}</div>
             <div className={props.chevron}></div>

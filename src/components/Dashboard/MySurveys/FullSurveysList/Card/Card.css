@@ -1,6 +1,6 @@
 .Card {
-    /* width: 416px;
-    height: 187px; */
+     width: 450px;
+    /* height: 187px; */
     min-height: 200px;
     border-radius: 2px;
     background-color: #ffffff;
@@ -8,8 +8,19 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+    /* padding: 26px 26px; */
+    margin: 0 auto 50px auto;
+}
+.Card__wrapper-helper{
+    min-height: 200px;
+    /* border-radius: 2px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.14); */
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
     padding: 26px 26px;
-    margin-bottom: 50px;
+    /* position: relative; */
 }
 
 .Card__title {
@@ -21,16 +32,23 @@
     line-height: normal;
     letter-spacing: normal;
     color: rgba(0, 0, 0, 0.7);
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+
     padding: 5px 0;
+    padding-bottom: 15px;
     max-width: 300px;
+    /* word-wrap: break-word; */
+    overflow-wrap: break-word;
 }
 .Card__statistic{
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: flex-start;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    padding-bottom: 15px;
+    height: auto;
+    /* background-color: pink; */
 }
 
 .Card__statistic--icon{
@@ -85,7 +103,8 @@
     flex-flow: row nowrap;
     align-items: center;
     justify-content: flex-end;
-    margin-top: 30px;
+    /* margin-top: 30px; */
+    padding-top: 30px;
     font-family: 'NunitoSans', sans-serif;
   font-size: 18px;
   font-weight: 600;

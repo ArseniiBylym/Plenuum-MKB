@@ -150,11 +150,11 @@ class SurveyForm extends Component {
                     console.log(e.message)
                 })
             
-                this.props.completeSurvey(this.props.match.params.id)
-                this.setState({
-                    isShowErrorMessages: false
-                })
-                this.props.history.push('/interact')
+                // this.props.completeSurvey(this.props.match.params.id)
+                // this.setState({
+                //     isShowErrorMessages: false
+                // })
+                // this.props.history.push('/interact')
 
         }
 
@@ -222,7 +222,7 @@ class SurveyForm extends Component {
                         <hr />
                         {questionsList}
                         <div id='completeSurveyButton' className='' onClick={this.sendSurveyHandler}>
-                            <CompleteSurveyButton click={this.sendSurveyHandler} />
+                            <CompleteSurveyButton />
                         </div>
                     </div>
                 </div>

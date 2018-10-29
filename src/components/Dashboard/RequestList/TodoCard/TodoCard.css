@@ -24,7 +24,8 @@ font-weight: bold;
 .todo-user img {
   width: 48px;
   height: 48px;
-  border-radius: 7px;
+  /* border-radius: 7px; */
+  border-radius: 24px;
 }
 
 .todo-user p {
