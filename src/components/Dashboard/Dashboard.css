@@ -407,6 +407,16 @@ color: #ffffff;
     word-wrap: break-word;
   }
 
+
+  .request-pre-container.request-pre-container--create-new-main-wrapper{
+    display: block;
+    background-color: pink;
+  }
+  .request-pre-container.request-pre-container--create-new-part1.create-new--center{
+    display: block;
+    background-color: gray;
+  }
+
 }
 
 

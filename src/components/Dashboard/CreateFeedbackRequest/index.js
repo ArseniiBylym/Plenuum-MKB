@@ -33,7 +33,7 @@ class CreateFeedbackRequestContainer extends Component {
         this.state = {
             page: 0,
             search: "",
-            users: undefined,
+            // users: undefined,
             selectedUsers: [],
             message: "",
             title: "New Request",
@@ -299,7 +299,8 @@ class CreateFeedbackRequestContainer extends Component {
             }
         }
         console.log(this.state)
-        if (this.state.users && this.state.users.length > 0) {
+        // if (this.state.users && this.state.users.length > 0) {
+        if (this.state.users) {
             console.log('sdfsdfdsfdsf')
             this.createComponents();
             return CreateFeedbackRequest({
