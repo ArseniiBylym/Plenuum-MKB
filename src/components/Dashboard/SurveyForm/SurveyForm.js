@@ -124,12 +124,18 @@ class SurveyForm extends Component {
             const token = window.localStorage.getItem('token');
 
             let answersForSend = this.state.questions.map((item, i) => {
-                console.log(item)
+                // console.log(item)
+                let value = item.value
+                if(item.type == 'yes-no'){
+                    value = item.value == 'yes' ? 1 : 0
+                }
+
                 return{
                     question: item._id,
                     questionText: item.text,
                     questionType: item.type,
-                    answerText: item.value,
+                    // answerText: item.value,
+                    answerText: value,
                     required: item.required,
                 }
             })
