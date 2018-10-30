@@ -409,12 +409,59 @@ color: #ffffff;
 
 
   .request-pre-container.request-pre-container--create-new-main-wrapper{
+    /* display: block; */
+    /* background-color: pink; */
+  }
+  .request-pre-container.request-pre-container--create-new-part1{
+    overflow: auto;
     display: block;
-    background-color: pink;
+  }
+  .request-pre-container.request-pre-container--create-new-part1.create-new--right{
+    display: none;
   }
   .request-pre-container.request-pre-container--create-new-part1.create-new--center{
+    /* display: block; */
+    /* background-color: gray; */
+  }
+  .CreateNew__footer-wrapper.CreateNew__footer-wrapper--left{
     display: block;
-    background-color: gray;
+    position: relative;
+  }
+  .ErrorNotification{
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .AddAnotherButton{
+    margin: 0 auto;
+  }
+  .Button__create-new-action{
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+
+  .CreateNew__right-screen-wrapper{
+    display: block;
+    height: calc(100vh - 114px);
+    /* background-color: yellow */
+  }
+  .SelectUsersForSurvey > div{
+    /* height: 700px; */
+  }
+  .create-request-container.container-fluid{
+    /* height: 700px; */
+    /* background-color: #35a9db; */
+  }
+  .new-feedback-component-container{
+    display: block;
+    /* background-color: pink; */
+    /* height: 700px; */
+  }
+  .CreateNew__right-screen-wrapper .row {
+    /* height: 700px; */
+    /* background-color: gray; */
   }
 
 }

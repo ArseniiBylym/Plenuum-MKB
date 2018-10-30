@@ -44,7 +44,7 @@ class SkillsTopContainer extends Component {
             <SegmentedContainer
                 options={
                     [{path: Constants.Route.SKILLS, title: 'Készségek'},
-                        {path: Constants.Route.SKILLS_TOP, title: 'Fő'}]
+                        {path: Constants.Route.SKILLS_TOP, title: 'Top'}]
                 }
             />);
         return <NavigationBarContainer barContent={segmentedControl}/>
