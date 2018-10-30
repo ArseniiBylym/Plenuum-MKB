@@ -8,7 +8,8 @@
     padding-bottom: 10px;
     font-size: 18px;
     color: #4a4a4a;
-
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .DetailQuestion__answer{
     font-size: 16px;

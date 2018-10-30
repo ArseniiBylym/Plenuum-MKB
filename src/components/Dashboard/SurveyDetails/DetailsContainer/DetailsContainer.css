@@ -27,6 +27,8 @@
     line-height: 1.33;
     letter-spacing: normal;
     color: #4a4a4a;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .DetailsContainer__description{
     font-family: 'NunitoSans', sans-serif;
@@ -37,6 +39,8 @@
   line-height: 1.38;
   letter-spacing: normal;
   color: #707070;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .DetailsContainer__statistic{
     display: flex;

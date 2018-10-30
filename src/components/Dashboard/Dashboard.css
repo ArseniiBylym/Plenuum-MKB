@@ -388,6 +388,16 @@ color: #ffffff;
   .Card__download-buttons{
     padding-top: 20px !important;
   }
+  .SurveyForm__header{
+    word-wrap: break-word;
+  }    
+  .SurveyForm__description{
+    word-wrap: break-word;
+  }
+  .question{
+    word-wrap: break-word;
+  }
+  
 
 
   .feedback-detail-message{
