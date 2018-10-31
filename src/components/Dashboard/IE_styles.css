@@ -170,6 +170,10 @@
       /* height: 700px; */
       /* background-color: gray; */
     }
+
+    .main-container.typing input::-ms-clear{ 
+      display: none;
+    }
   
   }
   
