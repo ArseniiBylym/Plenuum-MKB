@@ -2,6 +2,17 @@ import React from 'react';
 import './Yes_no_checkbox.css';
 
 function Yes_no_checkbox(props) {
+    // console.log(props.answerValues)
+
+    // let newProps = props.answerValues.slice()
+    // console.log(newProps)
+
+    // newProps.sort((a, b) => {
+    //     console.log(a.value)
+    //     console.log(b.value)
+    //     parseInt(a.value) - parseInt(b.value)
+    // })
+    // console.log(newProps)
 
     function radioButtonClick (e, type) {
       
@@ -29,12 +40,12 @@ function Yes_no_checkbox(props) {
                     <div className='Yes_no_checkbox__radio-item' onClick={(e) => radioButtonClick(e, 'yes')}>
                         <input type="radio" id={`yes_no_radio__${props.index}-yes`} 
                             name={`yes_no_radio__${props.index}`} value="yes"  />
-                        <label for={`yes_no_radio__${props.index}-yes`}>Igen</label>
+                        <label for={`yes_no_radio__${props.index}-yes`}>{props.answerValues[0].text}</label>
                     </div>
                     <div className='Yes_no_checkbox__radio-item' onClick={(e) => radioButtonClick(e, 'no')}>
                         <input type="radio" id={`yes_no_radio__${props.index}-no`}
                             name={`yes_no_radio__${props.index}-no`} value="no" />
-                        <label for={`yes_no_radio__${props.index}-no`}>Nem</label>
+                        <label for={`yes_no_radio__${props.index}-no`}>{props.answerValues[1].text}</label>
                     </div>
                 </div>
 

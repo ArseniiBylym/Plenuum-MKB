@@ -194,6 +194,7 @@ class SurveyForm extends Component {
             }
             if (item.type == 'yes-no') {
                 return <Yes_no_checkbox
+                    answerValues={item.answerValues}
                     key={item.id}
                     question={item.text}
                     required={item.required == true ? true : false}
@@ -205,6 +206,7 @@ class SurveyForm extends Component {
             }
             if (item.type == '1-6') {
                 return <From_1_to_6_checkbox
+                    answerValues={item.answerValues}
                     key={item.id}
                     question={item.text}
                     required={item.required == true ? true : false}

@@ -4,8 +4,23 @@ import {Input} from 'react-materialize'
 import './FormContainer.css';
 
 class FormContainer extends Component {
-    state = {
 
+    constructor(props) {
+        super(props);
+        this.state = {}
+      }
+
+
+    componentDidUpdate = () => {
+    }
+
+    componentDidMount = () => {
+        // const dayNames = ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo']
+        // const dates =[ ...document.querySelectorAll('#input_2_table thead th')]
+        // dates.forEach((item, i) => {
+        //     item.innerHTML = dayNames[i]
+        // })
+       
     }
 
     changeDate = (event) => {
@@ -17,6 +32,10 @@ class FormContainer extends Component {
         let tarnsformedDate = transformDate(date)
         
         target.value = 'Lejár ' + tarnsformedDate;
+    }
+
+    changeDaysHandler = () => {
+       
     }
 
     render() {
@@ -48,12 +67,16 @@ class FormContainer extends Component {
                     onChange={this.props.onChangeValue}
                     value={description}
                 />
-                <div className='input__date-select-wrapper'>
+                <div className='input__date-select-wrapper' onClick={this.changeDaysHandler}>
                     <Input name='date' type='date' 
                         placeholder='Lejárat dátuma' 
                         onChange={this.changeDate} 
                         onChange={this.props.onChangeValue}
                         value={open_until_view}
+                        options={{
+                            firstDay: 1,
+                        }}
+                       
                     />
                     <div className='triangle-for-select'>&#9662;</div>
                 </div>

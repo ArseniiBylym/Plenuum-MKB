@@ -31,37 +31,37 @@ function From_1_to_6_checkbox(props) {
                     <div className='From_1_to_6_checkbox__radio-item' onClick={(e) => radioButtonClick(e, '1')}>
                         <input type="radio" id={`1_to_6_radio__${props.index}-1`}
                             name={`1_to_6_radio__${props.index}`} value="1" />
-                        <label for={`1_to_6_radio__${props.index}-1`}>1 (Egyáltalán nem értek egyet)</label>
+                        <label for={`1_to_6_radio__${props.index}-1`}>{props.answerValues[0].text}</label>
                     </div>
 
                     <div className='From_1_to_6_checkbox__radio-item' onClick={(e) => radioButtonClick(e, '2')}>
                         <input type="radio" id={`1_to_6_radio__${props.index}-2`}
                             name={`1_to_6_radio__${props.index}-2`} value="2" />
-                        <label for={`1_to_6_radio__${props.index}-2`}>2</label>
+                        <label for={`1_to_6_radio__${props.index}-2`}>{props.answerValues[1].text}</label>
                     </div>
 
                     <div className='From_1_to_6_checkbox__radio-item' onClick={(e) => radioButtonClick(e, '3')}>
                         <input type="radio" id={`1_to_6_radio__${props.index}-3`}
                             name={`1_to_6_radio__${props.index}`} value="3" />
-                        <label for={`1_to_6_radio__${props.index}-3`}>3</label>
+                        <label for={`1_to_6_radio__${props.index}-3`}>{props.answerValues[2].text}</label>
                     </div>
 
                     <div className='From_1_to_6_checkbox__radio-item' onClick={(e) => radioButtonClick(e, '4')}>
                         <input type="radio" id={`1_to_6_radio__${props.index}-4`}
                             name={`1_to_6_radio__${props.index}`} value="4" />
-                        <label for={`1_to_6_radio__${props.index}-4`}>4</label>
+                        <label for={`1_to_6_radio__${props.index}-4`}>{props.answerValues[3].text}</label>
                     </div>
 
                     <div className='From_1_to_6_checkbox__radio-item' onClick={(e) => radioButtonClick(e, '5')}>
                         <input type="radio" id={`1_to_6_radio__${props.index}-5`}
                             name={`1_to_6_radio__${props.index}`} value="5" />
-                        <label for={`1_to_6_radio__${props.index}-5`}>5</label>
+                        <label for={`1_to_6_radio__${props.index}-5`}>{props.answerValues[4].text}</label>
                     </div>
 
                     <div className='From_1_to_6_checkbox__radio-item' onClick={(e) => radioButtonClick(e, '6')}>
                         <input type="radio" id={`1_to_6_radio__${props.index}-6`}
                             name={`1_to_6_radio__${props.index}`} value="6" />
-                        <label for={`1_to_6_radio__${props.index}-6`}>6 (Teljesen egyet értek)</label>
+                        <label for={`1_to_6_radio__${props.index}-6`}>{props.answerValues[5].text}</label>
                     </div>
                 </div>
 
