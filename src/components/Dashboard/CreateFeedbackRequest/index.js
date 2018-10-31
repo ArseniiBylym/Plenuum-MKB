@@ -56,10 +56,12 @@ class CreateFeedbackRequestContainer extends Component {
     }
 
     handleUserClick(user){
+        
         if(this.props.showOnlyOneUser) { // This case is for My Team flow only
             this.props.returnSelectedUserProfile(user); //method from MyTeam component
             return;
         }
+
         var selectedUsers = this.state.selectedUsers;
         var newUsers = this.state.users;
         selectedUsers.push(user);
@@ -83,30 +85,33 @@ class CreateFeedbackRequestContainer extends Component {
     }
 
     searchFor(e){
-        var string = e.target.value;
-        var searchedUsers = this.users.filter((element) => {
-            return element._id !== this.userId
-                && !this.state.selectedUsers.find((e) =>{
-                    return e._id === element._id
-                });
-        }).filter((element) => {
-          let strings = string.replace(/\s/g, '');
-
-          let firstName = element.firstName.split(' ').join('')
-          let lastName = element.lastName.split(' ').join('')
-
-          let fullName = firstName + '' + lastName;
-          let nameFull = lastName + '' + firstName;
-
-          return fullName.toLowerCase().includes(strings.toLowerCase())
-          || nameFull.toLowerCase().includes(strings.toLowerCase());
-        });
-
-        searchedUsers = this.utils.sortUsers(searchedUsers);
-
-        this.userList = (<UserListContainer users={searchedUsers} handleUserClick={this.handleUserClick} />);
-        this.setState({users: searchedUsers,
-            searchQuery:string});
+       
+            var string = e.target.value;
+            var searchedUsers = this.users.filter((element) => {
+                return element._id !== this.userId
+                    && !this.state.selectedUsers.find((e) =>{
+                        return e._id === element._id
+                    });
+            }).filter((element) => {
+              let strings = string.replace(/\s/g, '');
+    
+              let firstName = element.firstName.split(' ').join('')
+              let lastName = element.lastName.split(' ').join('')
+    
+              let fullName = firstName + '' + lastName;
+              let nameFull = lastName + '' + firstName;
+    
+              return fullName.toLowerCase().includes(strings.toLowerCase())
+              || nameFull.toLowerCase().includes(strings.toLowerCase());
+            });
+    
+            searchedUsers = this.utils.sortUsers(searchedUsers);
+    
+            this.userList = (<UserListContainer users={searchedUsers} handleUserClick={this.handleUserClick} />);
+            this.setState({users: searchedUsers,
+                searchQuery:string});
+        
+       
 
     }
 
@@ -242,32 +247,42 @@ class CreateFeedbackRequestContainer extends Component {
         if(this.props.usersList){
             console.log('sdf')
 
-            this.setState({
-                users: this.props.usersList
-            })
-
+            const searchedUsers = Utils().sortUsers(this.props.usersList).filter((element) => {
+                return element._id !== this.userId;
+            });
+            this.users = searchedUsers;
+            
             if(this.props.returnUsersToMyTeamFlow) {           // Only for MyTeam flow to select first user in array
                 this.props.returnUsersToMyTeamFlow(this.props.usersList[0])    // 
             }  
+
+            this.setState({
+                users: searchedUsers
+            })
+            // this.setState({
+            //     users: this.props.usersList
+            // })
+
             return
             //create some another Api request to get user's direct reports
-        }
-
-        const orgId = this.currentUser.orgId;
-        Api.users(orgId)
+        } else {
+            
+            const orgId = this.currentUser.orgId;
+            Api.users(orgId)
             .then((response) => {
                 const searchedUsers = Utils().sortUsers(response).filter((element) => {
                     return element._id !== this.userId;
                 });
                 this.users = searchedUsers;
-
+                
                 if(this.props.returnUsersToMyTeamFlow) {           // Only for MyTeam flow to select first user in array
                     this.props.returnUsersToMyTeamFlow(searchedUsers[0])    // 
                 }                                                //
-
+                
                 this.setState({users: searchedUsers});
             })
             .catch((error) => { console.log(error.message) });
+        }
     }
     componentDidUpdate = () => {
         if(this.props.addUsersToCurrentList) {
