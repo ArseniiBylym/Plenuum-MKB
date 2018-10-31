@@ -11,17 +11,7 @@ class MyTeam extends Component {
     state = {
         selectedUser: '',
         isRequestSended: false, //this value for set is visible flow
-        usersList: [
-            // {
-            //     email: "christina.jacobs@example.com",
-            //     firstName: "christina",
-            //     lastActive: "2018-10-12T12:21:34.027Z",
-            //     lastName: "jacobs",
-            //     managerId: "5984342227cd340363dc84bb",
-            //     pictureUrl: "https://randomuser.me/api/portraits/women/74.jpg",
-            //     _id: "5984342227cd340363dc84a9",
-            // }
-        ]
+        usersList: []
     }
     componentDidMount = () => {
         const token = window.localStorage.getItem('token');
@@ -65,29 +55,6 @@ class MyTeam extends Component {
         }, 0)
     }
 
-    getSkillFile = () => {
-        console.log('get skill')
-        const token = window.localStorage.getItem('token');
-        Api.getUserSkillExcell(token, this.props.currentUser.orgId, this.state.selectedUser._id)
-            .then(response => {
-            })
-            .catch(error => {
-                console.log(error.message)
-            })
-    }
-
-    getFeedbackFile = () => {
-        console.log('get feedback')
-        const token = window.localStorage.getItem('token');
-        Api.getUserFeedbackExcell(token, this.props.currentUser.orgId, this.state.selectedUser._id)
-            .then(response => {
-                console.log(response)
-            })
-            .catch(error => {
-                console.log(error.message)
-            })
-    }
-
     renderPage() {
         console.log(this.state.isRequestSended);
         console.log(this.state.usersList.length)
@@ -102,8 +69,6 @@ class MyTeam extends Component {
                         orgId={this.props.currentUser.orgId}
                         userId={this.state.selectedUser._id}
                         usersList={this.state.usersList}
-                        getSkillFile={this.getSkillFile}
-                        getFeedbackFile={this.getFeedbackFile}
                         returnSelectedUserProfile={this.returnSelectedUserProfile}
                         isUserHRStatus={this.props.currentUser.status}
                         returnUsersToMyTeamFlow={this.returnUsersToMyTeamFlow}

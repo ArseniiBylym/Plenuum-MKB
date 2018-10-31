@@ -43,8 +43,6 @@ function MyTeamFullState(props) {
                                 <div className="statistic-info--header">Kapott visszajelzések</div>
                                 <div className="statistic-info--text">Vezető számára is látható visszajelzések</div>
                             </div>
-                            {/* URLPath.organisations + `${orgId}/${userId}/skillScores/excel */}
-                            {/* <a href='#' alt='link' onClick={props.getFeedbackFile}> */}
                             <a href={`${baseURL}organizations/${props.orgId}/${props.userId}/feedbacks/excel`} alt='link' download>
                                 <div className="download-wrapper__statistic-button">
                                     <div className="download-wrapper__statistic-button-icon"></div>
@@ -57,7 +55,6 @@ function MyTeamFullState(props) {
                                 <div className="statistic-info--header">Képesség pontszámok</div>
                                 <div className="statistic-info--text">Összes képesség pontszám</div>
                             </div>
-                            {/* <a href='#' alt='link' onClick={props.getSkillFile} > */}
                             <a href={`${baseURL}organizations/${props.orgId}/${props.userId}/skillScores/excel`} alt='link' download>
                                 <div className="download-wrapper__statistic-button">
                                     <div className="download-wrapper__statistic-button-icon"></div>
@@ -74,4 +71,3 @@ function MyTeamFullState(props) {
 
 export default MyTeamFullState
 
-// usersList={props.usersList}

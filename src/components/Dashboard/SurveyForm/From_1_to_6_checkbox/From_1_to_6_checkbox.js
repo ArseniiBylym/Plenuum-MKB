@@ -31,7 +31,7 @@ function From_1_to_6_checkbox(props) {
                     <div className='From_1_to_6_checkbox__radio-item' onClick={(e) => radioButtonClick(e, '1')}>
                         <input type="radio" id={`1_to_6_radio__${props.index}-1`}
                             name={`1_to_6_radio__${props.index}`} value="1" />
-                        <label for={`1_to_6_radio__${props.index}-1`}>1 (Erősen nem értek egyet)</label>
+                        <label for={`1_to_6_radio__${props.index}-1`}>1 (Egyáltalán nem értek egyet)</label>
                     </div>
 
                     <div className='From_1_to_6_checkbox__radio-item' onClick={(e) => radioButtonClick(e, '2')}>
@@ -61,7 +61,7 @@ function From_1_to_6_checkbox(props) {
                     <div className='From_1_to_6_checkbox__radio-item' onClick={(e) => radioButtonClick(e, '6')}>
                         <input type="radio" id={`1_to_6_radio__${props.index}-6`}
                             name={`1_to_6_radio__${props.index}`} value="6" />
-                        <label for={`1_to_6_radio__${props.index}-6`}>6 (Erősen egyetértek)</label>
+                        <label for={`1_to_6_radio__${props.index}-6`}>6 (Teljesen egyet értek)</label>
                     </div>
                 </div>
 
