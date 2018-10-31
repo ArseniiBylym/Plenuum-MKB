@@ -21,6 +21,7 @@ class FormContainer extends Component {
 
     render() {
         const { title, description, open_until, questions } = this.props.config;
+        const open_until_view = open_until ? `Lejárati dátum: ${open_until}` : ''
 
         let questionsArr = questions.map((item, i) => {
             return <QuestionItem key={item.id} config={item} index={i} id={item.id}
@@ -52,7 +53,7 @@ class FormContainer extends Component {
                         placeholder='Lejárat dátuma' 
                         onChange={this.changeDate} 
                         onChange={this.props.onChangeValue}
-                        value={open_until}
+                        value={open_until_view}
                     />
                     <div className='triangle-for-select'>&#9662;</div>
                 </div>

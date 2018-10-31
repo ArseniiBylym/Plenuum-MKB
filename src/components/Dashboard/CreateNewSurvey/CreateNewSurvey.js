@@ -226,6 +226,8 @@ class CreateNewSurvey extends Component {
                 break
             case "date":
             console.log(target.value)
+            // let onlyDate = target.value.split(': ')[1]
+            // console.log(onlyDate)
             if(moment(target.value).unix() < moment().hours(0).minutes(0).seconds(0).unix()) return
                 this.setState({
                     open_until: target.value
