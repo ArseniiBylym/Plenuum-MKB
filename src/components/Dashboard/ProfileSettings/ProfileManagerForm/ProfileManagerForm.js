@@ -19,9 +19,13 @@ const ProfileManegerForm = (props) => {
                         <span className="firstname">{props.managerFullName && props.managerFullName != undefined  ? props.managerFullName : 'Válaszd ki a vezetőd'}</span>
                     </div>
                     <div style={{ display: "flex", alignItems: "center" }}>
-                        {!props.managerFullName ?
+                        {/* {!props.managerFullName ?
                             <img alt="" src={PlusIcon} />
                             : <img alt="" src={CloseIcon} onClick={props.deleteSelectedManager} />
+                        } */}
+                        {!props.managerFullName ?
+                            <img alt="" src={PlusIcon} />
+                            : null
                         }
                     </div>
                 </div>
