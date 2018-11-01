@@ -25,6 +25,7 @@
     min-height: .5rem;
     padding: 0;
     font-size: 16px;
+    color: rgba(0,0,0,.87);
    
 }
 
@@ -128,3 +129,61 @@ button.picker__close:focus,
     content: 'Kötelező mező';
     visibility: visible;
 }  */
+
+.react_calendar_handler{
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    padding: 10px 15px;
+    letter-spacing: 0.2px;
+    color: rgba(0, 0, 0, 1);
+    border: none;
+    font-size: 16px;
+    line-height: 30px;
+    font-family: 'NunitoSans', sans-serif;
+    color: rgba(0,0,0,.87);
+    display: flex;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+.react_calendar_handler--passive{
+    color: rgba(74,74,74,.45);
+}
+.react_calendar_handler::after{
+    content: '▾';
+    margin-left: auto;
+    color: black;
+}
+
+
+
+.Calendar__wrapper{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    /* background-color: gray; */
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Calendar__wraper--hidden{
+    display: none;
+}
+.Calendar__backdrop{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.5);
+}
+.Calendar{
+    z-index: 1100;
+    /* top: 100; */
+}
+.Calendar--hidden{
+    display: none
+}

@@ -206,8 +206,11 @@ class CreateNewSurvey extends Component {
             }))
         }
     }
-    onChangeQuestionItemValue = (index) => {
-        // console.log(index)
+    
+    onChangeDateHandler = (value) => {
+        this.setState({
+            open_until: moment(value).format('DD MMMM, YYYY')
+        })
     }
 
     onChangeValue = (event, index) => {
@@ -229,6 +232,7 @@ class CreateNewSurvey extends Component {
             // let onlyDate = target.value.split(': ')[1]
             // console.log(onlyDate)
             if(moment(target.value).unix() < moment().hours(0).minutes(0).seconds(0).unix()) return
+            console.log(target.value)
                 this.setState({
                     open_until: target.value
                 })
@@ -394,8 +398,9 @@ class CreateNewSurvey extends Component {
                             goToPrev={this.goToPrev}
                             length={this.state.questions.length}
                             onChangeValue={this.onChangeValue}
-                            onChangeQuestionItemValue={this.onChangeQuestionItemValue} />
-
+                            onChangeQuestionItemValue={this.onChangeQuestionItemValue} 
+                            onChangeDateHandler={this.onChangeDateHandler}
+                        />
                         <div className='CreateNew__footer-wrapper CreateNew__footer-wrapper--left'>
                             <ErrorNotification isShow={this.state.showErrorNotification} endAnimationHandler={this.endAnimationHandler}/>
                             <AddAnoterButton text='Új kérdés hozzáadása' onClickAction={this.addAnoterQuestion} />

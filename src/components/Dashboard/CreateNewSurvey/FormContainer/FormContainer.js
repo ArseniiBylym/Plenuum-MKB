@@ -2,19 +2,26 @@ import React, { Component, Fragment } from 'react'
 import QuestionItem from './QuestionItem/QuestionItem'
 import {Input} from 'react-materialize'
 import './FormContainer.css';
+import Calendar from 'react-calendar'
+import moment from 'moment'
 
 class FormContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            calendarDate: '',
+            isCalendarVisible: false
+        }
       }
 
 
     componentDidUpdate = () => {
+        console.log(this.state.calendarDate)
     }
 
     componentDidMount = () => {
+        console.log(this.props)
        const textareas = [...document.querySelectorAll('textarea')]
        textareas.forEach((item,i) => {
            item.addEventListener('keypress', (e)=> {
@@ -41,6 +48,21 @@ class FormContainer extends Component {
 
     changeDaysHandler = () => {
        
+    }
+
+    calendarHandler = (value) => {
+        this.setState({
+            isCalendarVisible: false
+        })
+        this.props.onChangeDateHandler(value)
+    }
+
+    changeCalendarVisibility = () => {
+        this.setState((prevState) => {
+            return{
+                isCalendarVisible: !prevState.isCalendarVisible
+            }
+        })
     }
 
     render() {
@@ -74,19 +96,37 @@ class FormContainer extends Component {
                     value={description}
                     type='textarea'
                 />
-                <div className='input__date-select-wrapper' onClick={this.changeDaysHandler}>
+
+                <div className={this.state.isCalendarVisible ? 'Calendar__wrapper Calendar__wrapper--visible' : 
+                    'Calendar__wrapper Calendar__wraper--hidden'}>
+                    <div className='Calendar__backdrop' onClick={this.changeCalendarVisibility} />
+                    <Calendar 
+                        className='Calendar' 
+                        // activeStartDate={new Date(2018, 11, 11)}
+                        minDate={new Date()}
+                        onChange={this.calendarHandler}
+                        value={new Date(moment().add(1, 'month').add(1, 'day'))}
+                        locale="hu-HU"
+                    />
+                </div>
+                <div className={open_until ? 'react_calendar_handler' : 'react_calendar_handler react_calendar_handler--passive'} onClick={this.changeCalendarVisibility}>{open_until ? open_until_view : 'Lejárat dátuma'}</div>
+                {/* <div className='triangle-for-select'>&#9662;</div> */}
+
+
+
+                {/* <div className='input__date-select-wrapper' onClick={this.changeDaysHandler}>
                     <Input name='date' type='date' 
                         placeholder='Lejárat dátuma' 
                         onChange={this.changeDate} 
                         onChange={this.props.onChangeValue}
                         value={open_until_view}
                         options={{
-                            firstDay: 1,
+                            firstDay: 5,
                         }}
                        
                     />
                     <div className='triangle-for-select'>&#9662;</div>
-                </div>
+                </div> */}
                 <div className='Error_notification_wrapper'>{fieldIsRequired(open_until)}</div>
                 <h1>Kérdések</h1>
                 {questionsArr}
