@@ -11,9 +11,10 @@
 
     const Route = {
         LOGIN: "/login",
-        SKILLS: "/skills",
+        SKILLS_BASE: "/skills",
+        SKILLS: "/skills/skills",
+        SKILLS_TOP: "/skills/top",
         SKILLS_SENTENCES: "/skills/sentences",
-        SKILLS_TOP: "/top",
         FEEDBACK: "/feedback",
         FEEDBACK_INCOMING: "/feedback/incoming",
         FEEDBACK_SENT: "/feedback/sent",

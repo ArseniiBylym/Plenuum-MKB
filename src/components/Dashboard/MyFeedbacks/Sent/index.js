@@ -146,7 +146,7 @@ class MyFeedbacksContainer extends Component {
             }else{
                 const notification =  {
                     isActive: true,
-                    message: "There is no response for this request yet!",
+                    message: "Nincs válasz erre a kérésre!",
                     userId: request._id
                 }
                 this.addNotification(notification);

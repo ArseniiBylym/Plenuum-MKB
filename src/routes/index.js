@@ -57,6 +57,10 @@ const DashboardRoutes = (params) => (
             MyComponent: CompassContainer,
             rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
         }))}/>
+         <Route exact path={Constants.Route.SKILLS_BASE} render={(props) => (addPropsToComponent({
+            MyComponent: SkillsContainer,
+            rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}
+        }))}/>
         <Route exact path={Constants.Route.SKILLS} render={(props) => (addPropsToComponent({
             MyComponent: SkillsContainer,
             rest: {handleLogout: params.handleLogout, addNotification: params.addNotification}

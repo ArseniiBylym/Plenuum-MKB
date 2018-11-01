@@ -95,6 +95,7 @@ a:focus {
 }
 .hipteam .segmented-item a.active {
   border-bottom: solid 2px white;
+  background-color:#b31b34;
 }
 .hipteam .action-button {
   border: solid 1px #b31b34 !important;
