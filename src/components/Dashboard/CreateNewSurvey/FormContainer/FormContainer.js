@@ -15,11 +15,16 @@ class FormContainer extends Component {
     }
 
     componentDidMount = () => {
-        // const dayNames = ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo']
-        // const dates =[ ...document.querySelectorAll('#input_2_table thead th')]
-        // dates.forEach((item, i) => {
-        //     item.innerHTML = dayNames[i]
-        // })
+       const textareas = [...document.querySelectorAll('textarea')]
+       textareas.forEach((item,i) => {
+           item.addEventListener('keypress', (e)=> {
+            let key = e.which || e.keyCode
+            if(key == 13) {
+                e.preventDefault()
+            }
+           })
+       })
+
        
     }
 
