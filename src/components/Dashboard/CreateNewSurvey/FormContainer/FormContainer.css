@@ -63,6 +63,12 @@ button.picker__close:focus,
     background-color: pink;
 }
 
+/* for React textarea*/
+.FormContainer textarea{
+    margin-bottom: -5px !important;
+    line-height: 30px;
+}
+
 
 
 

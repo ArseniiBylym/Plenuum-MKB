@@ -58,7 +58,8 @@ class FormContainer extends Component {
                     onBlur={this.props.onChangeValue}
                     onChange={this.props.onChangeValue}
                     value={title}
-                />
+                    type='textarea'
+                    />
                 <div className='Error_notification_wrapper'>{fieldIsRequired(title)}</div>
                 <Input name='description' 
                     placeholder="Leírás (opcionális)" s={12} 
@@ -66,6 +67,7 @@ class FormContainer extends Component {
                     onBlur={this.props.onChangeValue}
                     onChange={this.props.onChangeValue}
                     value={description}
+                    type='textarea'
                 />
                 <div className='input__date-select-wrapper' onClick={this.changeDaysHandler}>
                     <Input name='date' type='date' 

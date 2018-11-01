@@ -75,6 +75,7 @@ class QuestionItem extends Component {
                     onBlur={(event)=>this.props.onChangeValue(event, this.props.index)}
                     onChange={(event)=>this.props.onChangeValue(event, this.props.index)}
                     value={this.props.config.text}
+                    type='textarea'
                 />
                 <div className='Error_notification_wrapper'>{answerIsRequired(this.props.config.text)}</div>
                 <div className='QuestionItem__select-wrapper'>
