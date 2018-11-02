@@ -60,7 +60,7 @@ class DashboardContainer extends Component {
         });
     }
     componentDidUpdate = () => {
-        console.log(this.state.user)
+        // console.log(this.state.user)
     }
 
     removeNotification (count){
@@ -83,7 +83,7 @@ class DashboardContainer extends Component {
 
 
     handleTesting(response){
-        console.log(response);
+        // console.log(response);
     }
 
     menuClicked(){

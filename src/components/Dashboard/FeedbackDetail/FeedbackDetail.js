@@ -4,7 +4,7 @@ import Quotation from '../../../resources/quotation.svg';
 import DefaultPic from '../../../resources/profile.svg';
 
 const FeedbackDetail = (props) => {
-    console.log(props)
+    // console.log(props)
     return (
         <div className="feedback-detail-super-container container-fluid">
             {props.abusiveFeedbackJustSended && <div className='notification-message--green'>Sértő tartalom megjelölve</div>}

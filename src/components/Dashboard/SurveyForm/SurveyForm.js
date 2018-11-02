@@ -52,11 +52,11 @@ class SurveyForm extends Component {
     }
 
     componentDidMount = () => {
-       console.log(this.props)
+    //    console.log(this.props)
         const token = window.localStorage.getItem('token')
         Api.getSurveyById(token, this.props.orgId, this.props.match.params.id)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 this.setState({
                     ...this.state,
                     ...response
@@ -108,9 +108,9 @@ class SurveyForm extends Component {
     }
 
     sendSurveyHandler = (e) => {
-        console.log(this.state)
+        // console.log(this.state)
         let isAllRequiredFieldsFill = this.state.questions.some((item, i) => {
-            console.log(item)
+            // console.log(item)
             if (item.required == true && !item.value) return true
             else return false
         })
@@ -144,10 +144,10 @@ class SurveyForm extends Component {
                 answers: answersForSend
             }
 
-            console.log(completeSurveyForSend)
+            // console.log(completeSurveyForSend)
             Api.sendCompletedSurvey(token, this.props.orgId, this.state.surveyTodo._id, completeSurveyForSend)
                 .then(response => {
-                    console.log(response)
+                    // console.log(response)
                     this.props.completeSurvey(this.props.match.params.id)
                     this.setState({
                         isShowErrorMessages: false

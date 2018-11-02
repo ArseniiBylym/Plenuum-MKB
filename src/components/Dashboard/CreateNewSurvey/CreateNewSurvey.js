@@ -58,7 +58,7 @@ class CreateNewSurvey extends Component {
     componentDidMount = () => {
         // console.log(this.props)
         let template = this.props.templates[this.props.match.params.id]
-        console.log(template)
+        // console.log(template)
 
         if(template) {
             const questionsArray = template.questions.map((item, i) => {
@@ -86,7 +86,7 @@ class CreateNewSurvey extends Component {
             validationFailed: false
            })  
             //create template
-            console.log('find template')
+            // console.log('find template')
         } else console.log('templates are absent')
 
 
@@ -228,11 +228,11 @@ class CreateNewSurvey extends Component {
                 })
                 break
             case "date":
-            console.log(target.value)
+            // console.log(target.value)
             // let onlyDate = target.value.split(': ')[1]
             // console.log(onlyDate)
             if(moment(target.value).unix() < moment().hours(0).minutes(0).seconds(0).unix()) return
-            console.log(target.value)
+            // console.log(target.value)
                 this.setState({
                     open_until: target.value
                 })
@@ -349,17 +349,17 @@ class CreateNewSurvey extends Component {
             questions: questionsForPost
         }
         const token = window.localStorage.getItem('token');
-        console.log(objForPost)
+        // console.log(objForPost)
        
         Api.createNewSurvey(token, this.currentUser.orgId, objForPost)
             .then((response) => {
-                console.log(response)
+                // console.log(response)
 
                 this.props.history.push('/my_surveys')
 
                 this.props.createNewSurvey(this.state)
-                console.log('New survey was successful created!')
-                console.log(this.state)
+                // console.log('New survey was successful created!')
+                // console.log(this.state)
             })
             .catch((error) => {
                 console.log(error.massage)

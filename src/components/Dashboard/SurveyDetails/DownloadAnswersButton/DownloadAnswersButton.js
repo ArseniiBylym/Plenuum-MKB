@@ -4,7 +4,7 @@ import './DownloadAnswersButton.css';
 import {EnvVariable} from '../../../../config.js';
 
 function DownloadAnswersButton (props) {
-    console.log(props)
+    // console.log(props)
 
 const baseURL = EnvVariable.host + "/api/";
     return (

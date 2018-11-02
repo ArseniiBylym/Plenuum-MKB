@@ -17,7 +17,7 @@ class CreateNewSurveyTemplate extends Component {
         const token = window.localStorage.getItem('token');
         Api.getSurveyTemplates(token, this.props.orgId)
             .then((response) => {
-                console.log(response)
+                // console.log(response)
                 this.props.putTemplatesToRedux(response)
             })
             .catch((error) => {

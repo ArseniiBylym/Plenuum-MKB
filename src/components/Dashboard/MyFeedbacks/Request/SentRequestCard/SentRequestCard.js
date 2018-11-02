@@ -3,7 +3,7 @@ import './SentRequestCard.css';
 import moment from 'moment';
 
 const SentRequestCard = (props) => {
-  console.log(props)
+  // console.log(props)
 
   return (
     <div className="sentRequest-container" onClick={props.onClick}>

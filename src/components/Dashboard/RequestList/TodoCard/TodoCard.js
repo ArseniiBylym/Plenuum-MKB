@@ -6,7 +6,7 @@ import DefaultPic from '../../../../resources/profile.svg';
 import moment from 'moment';
 
 const TodoCard = (props) => {
-  console.log(props)
+  // console.log(props)
   return (
     <div className="todo-container" key={props.key}>
       <div className="todo-user">

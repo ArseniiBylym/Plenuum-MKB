@@ -9,7 +9,7 @@ function SwitchContainer(props) {
     } else {
         isChecked = false
     }
-    console.log(isChecked)
+    // console.log(isChecked)
     return(
         <div className='SwitchContainer'>
             <Input name='on' type='switch' checked={isChecked} onLabel=" " offLabel=" " value='0' onChange={props.click}/>

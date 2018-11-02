@@ -243,9 +243,9 @@ class CreateFeedbackRequestContainer extends Component {
     }
 
     componentDidMount(){
-        console.log(this.props.usersList)
+        // console.log(this.props.usersList)
         if(this.props.usersList){
-            console.log('sdf')
+            // console.log('sdf')
 
             const searchedUsers = Utils().sortUsers(this.props.usersList).filter((element) => {
                 return element._id !== this.userId;
@@ -313,10 +313,10 @@ class CreateFeedbackRequestContainer extends Component {
                 title: "Elküldés"
             }
         }
-        console.log(this.state)
+        // console.log(this.state)
         // if (this.state.users && this.state.users.length > 0) {
         if (this.state.users) {
-            console.log('sdfsdfdsfdsf')
+            // console.log('sdfsdfdsfdsf')
             this.createComponents();
             return CreateFeedbackRequest({
                 cancelButton:createBackButton(this.cancelButton, undefined),
@@ -324,7 +324,7 @@ class CreateFeedbackRequestContainer extends Component {
                 button,
                 components:this.components});
         }else{
-            console.log('spinner')
+            // console.log('spinner')
             return spinner();
         }
     }

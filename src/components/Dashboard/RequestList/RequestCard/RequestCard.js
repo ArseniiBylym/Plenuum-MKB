@@ -5,7 +5,7 @@ import DefaultPic from '../../../../resources/profile.svg';
 import moment from 'moment';
 
 const RequestCard = (props) => {
-  console.log(props)
+  // console.log(props)
   return (
     <div className="request-container" key={props.key}>
       <div className="request-user">

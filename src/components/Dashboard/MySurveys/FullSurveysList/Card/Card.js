@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { EnvVariable } from '../../../../../config.js';
 
 export default function Card(props) {
-    console.log(props)
+    // console.log(props)
     const baseURL = EnvVariable.host + "/api/";
 
     const { title, expiritDate, allSurveyTodos, complitedSurveyTodos, _id } = props.config;

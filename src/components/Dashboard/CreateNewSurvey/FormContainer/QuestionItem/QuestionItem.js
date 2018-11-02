@@ -7,15 +7,13 @@ import One_six from './InputExamples/One_six'
 
 class QuestionItem extends Component {
     state = {
-        // typeSelectValue: 'free_text',
         typeSelectValue: '',
-        // isRequiredSelectValue: 'optional',
         isRequiredSelectValue: '',
         exampleElem: null
-
     }
+
     componentDidMount = () => {
-        console.log(this.props)
+        // console.log(this.props)
         this.setState({
             typeSelectValue: this.props.config.type === 'yes_no' ? 'yes_no' : this.props.config.type === '1_to_6' ? '1_to_6' : 'free_text',
             isRequiredSelectValue: this.props.config.isRequired ? 'required' : 'optional',
@@ -38,7 +36,7 @@ class QuestionItem extends Component {
         this.props.onChangeValue(e, this.props.index)
     }
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         let classNameForImg = 'QuestionItem__preview-img'
         if (this.state.typeSelectValue == 'free_text') {
             classNameForImg += ' freeText-img';
@@ -76,6 +74,7 @@ class QuestionItem extends Component {
                     onChange={(event)=>this.props.onChangeValue(event, this.props.index)}
                     value={this.props.config.text}
                     type='textarea'
+                    onKeyPress={this.props.keyPressHandler}
                 />
                 <div className='Error_notification_wrapper'>{answerIsRequired(this.props.config.text)}</div>
                 <div className='QuestionItem__select-wrapper'>

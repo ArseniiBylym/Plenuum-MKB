@@ -3,7 +3,7 @@ import './Free_text_input.css';
 import { Row, Input } from 'react-materialize'
 
 function Free_text_input(props) {
-    console.log(props)
+    // console.log(props)
 
     let classForCounter = (props.question.isContainValue == true) ? 'Free_text_input-counter visibleCounter' : 'Free_text_input-counter hiddenCounter'
     let symbolsLength = ''

@@ -20,7 +20,6 @@ export function* managerSelectChangeWatcher() {
 
 //Send abusive request about incoming feedback
 export function* sendAbusiveRequest(action) {
-    console.log(action)
     // yield put({type: "SEND_ABUSIVE_REQUEST", details: action.details})
 }
 export function* sendAbusiveRequestWatcher() {

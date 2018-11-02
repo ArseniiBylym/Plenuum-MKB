@@ -5,7 +5,7 @@ import Profile from '../../../../resources/profile.svg';
 import {EnvVariable} from '../../../../config.js';
 
 function MyTeamFullState(props) {
-    console.log(props)
+    // console.log(props)
     const baseURL = EnvVariable.host + "/api/";
 
     return (

@@ -17,7 +17,7 @@ class MyTeam extends Component {
         const token = window.localStorage.getItem('token');
         Api.getMyTeam(token, this.props.currentUser.orgId)
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 this.setState({
                     usersList: response,
                     isRequestSended: true
@@ -36,7 +36,7 @@ class MyTeam extends Component {
 
     returnSelectedUserProfile = (user) => {
 
-        console.log(user)
+        // console.log(user)
 
         this.setState({
             selectedUser: user,
@@ -44,7 +44,7 @@ class MyTeam extends Component {
 
     }
     componentDidUpdate = () => {
-        console.log(this.state)
+        // console.log(this.state)
     }
 
     returnUsersToMyTeamFlow = (firstUser) => {
@@ -56,8 +56,8 @@ class MyTeam extends Component {
     }
 
     renderPage() {
-        console.log(this.state.isRequestSended);
-        console.log(this.state.usersList.length)
+        // console.log(this.state.isRequestSended);
+        // console.log(this.state.usersList.length)
         return (
             <div className="request-pre-container request-pre-container--my-team">
                 <DefaultNavigationBarContainer

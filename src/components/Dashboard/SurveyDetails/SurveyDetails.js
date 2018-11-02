@@ -17,12 +17,12 @@ class SurveyDetails extends Component {
     }
 
     componentDidMount = () => {
-        console.log(this.props)
+        // console.log(this.props)
         const token = window.localStorage.getItem('token');
         // const surveyId = this.props.mySyrveys[this.props.match.params.id]._id
         Api.getSurveyDetails(token, this.props.match.params.id, this.props.orgId)
             .then((response) => {
-                console.log(response)
+                // console.log(response)
                 this.setState({
                         ...response
                     })
@@ -30,17 +30,15 @@ class SurveyDetails extends Component {
         }
 
     componentDidUpdate = () => {
-        console.log(this.state)
+        // console.log(this.state)
     }
             
-    downloadAnswers = () => {
-        const token = window.localStorage.getItem('token');
-        console.log(this.props.orgId)
-        Api.downloadAnswers(token, this.state._id, this.props.orgId)
-            .then((response) => {
-                console.log(response);
-            })
-    }
+    // downloadAnswers = () => {
+    //     const token = window.localStorage.getItem('token');
+    //     Api.downloadAnswers(token, this.state._id, this.props.orgId)
+    //         .then((response) => {
+    //         })
+    // }
 
     renderPage() {
         if(!this.state.title) return null
