@@ -66,10 +66,13 @@
 }
 
 .profile-picture-manager{
-  height: 32px; width: 32px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 32px; 
+  width: 32px;
   border-radius: 50%;
   background-color: grey;
-  background-image: url();
   margin-right: 8px;
 }
 .firstname {

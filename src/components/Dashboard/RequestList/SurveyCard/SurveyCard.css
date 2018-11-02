@@ -21,6 +21,22 @@ font-size: 18px;
 font-weight: bold;
 }
 
+.picture-wrapper{
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.picture-wrapper--img{
+  display: none;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
 .survey-user img {
   object-fit: cover;
   width: 48px;

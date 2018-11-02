@@ -48,7 +48,8 @@ class SetPictureContainer extends Component {
     createComponent(image){
         if (image) {
             return {
-                image: <img alt='' src={image.preview}/>,
+                // image: <img alt='' src={image.preview}/>,
+                image: <div style={{backgroundImage: `url(${image.preview})`}} className='dropzone--img'/>,
                 submitPicture: this.submitPicture,
                 buttonClass: 'dropzone-button-enable'
             }

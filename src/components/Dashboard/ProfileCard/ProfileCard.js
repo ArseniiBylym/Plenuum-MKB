@@ -8,6 +8,7 @@ const ProfileCard=(props) => {
   return(
     <div className="profile-content">
       <div className="avatar">
+          <div className='avatar--img' style={{backgroundImage: `url(${props.pictureUrl !== "" && props.pictureUrl ? props.pictureUrl + '?' + (new Date()).getTime() : ProfileDefaultPic})`}}></div>
           <div className='avatar-IE-wrapper'>
             <img
               className="profile-picture"

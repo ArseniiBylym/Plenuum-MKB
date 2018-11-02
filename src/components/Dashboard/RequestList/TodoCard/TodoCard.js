@@ -6,13 +6,16 @@ import DefaultPic from '../../../../resources/profile.svg';
 import moment from 'moment';
 
 const TodoCard = (props) => {
-  // console.log(props)
+  console.log(props)
   return (
     <div className="todo-container" key={props.key}>
       <div className="todo-user">
         {/* <img alt="" src={PlenuumBot} />
         <p>Plenuumbot</p> */}
-        <img alt="" src={props.aboutUser.pictureUrl && props.aboutUser.pictureUrl !== "" ? props.aboutUser.pictureUrl : DefaultPic} />
+        <dis className='picture-wrapper'>
+          <div className='picture-wrapper--img' style={{backgroundImage: `url(${props.aboutUser.pictureUrl && props.aboutUser.pictureUrl !== "" ? props.aboutUser.pictureUrl : DefaultPic})`}}></div>
+          <img alt="" src={props.aboutUser.pictureUrl && props.aboutUser.pictureUrl !== "" ? props.aboutUser.pictureUrl : DefaultPic} />
+        </dis>
         <p>{props.aboutUser.firstName + " " + props.aboutUser.lastName}</p>
       </div>
       <div className="todo-message">

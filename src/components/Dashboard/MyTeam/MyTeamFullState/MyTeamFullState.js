@@ -27,10 +27,8 @@ function MyTeamFullState(props) {
                 <div className='current-user-container__main'>
                     <div className='current-user-container__main--user-profile'>
                         <div className='user-profile--photo'>
-                            {props.pictureUrl ?
-                                <img src={props.pictureUrl} alt='Avatar' /> :
-                                <img src={Profile} alt='Avatar' />
-                            }
+                            <div className='user-profile--photo--img' style={{backgroundImage: `url(${props.pictureUrl ? props.pictureUrl : Profile})`}}></div>
+                            <img src={props.pictureUrl ? props.pictureUrl : Profile} alt='Avatar' />
                         </div>
                         {props.firstName &&
                             <div className='user-profile--name'>{props.firstName} {props.lastName}</div>

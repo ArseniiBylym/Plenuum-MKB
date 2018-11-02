@@ -105,7 +105,15 @@
   display: flex;
   align-self: center;
 }
-
+.feedback-detail-identification-user--img{
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  margin: auto 10px;
+}
 .feedback-detail-identification-user img {
   object-fit: cover;
   width: 80px;
@@ -213,7 +221,7 @@
 .small-image{
   width: 32px;
   height: 32px;
-  border-radius: 50px;
+  border-radius: 50%;
 }
 
 .text-card{
@@ -229,6 +237,18 @@
   margin-left: 0;
   display: flex;
   align-items: center;
+}
+.feedback-detail-sentAs--image-container img{
+  object-fit: cover;
+}
+.feedback-detail-sentAs--img {
+  display: none;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
 .next-feedback {

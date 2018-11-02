@@ -22,6 +22,15 @@
   background-color: #ffffff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
 }
+.dropzone--img{
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 33px;
+}
 
 .setpicture-title {
   margin: 44px 80px 29px 80px;

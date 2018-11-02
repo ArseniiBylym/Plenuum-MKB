@@ -7,7 +7,8 @@ function FullSurveysList(props) {
     // console.log(props)
   
     let items = props.list.map((item, i) => {
-        return <Card  key={item.id} config={item} index={i} orgId={props.orgId}/>
+        console.log(item)
+        return <Card  key={item._id} config={item} index={i} orgId={props.orgId}/>
     })
     return(
         <div className='FullSurveysList'> 

@@ -31,6 +31,16 @@
   height: 80px;
 }
 
+.settings-avatar--img{
+  display: none;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+}
+
 .settings-avatar img {
   object-fit: cover;
   width: 80px;

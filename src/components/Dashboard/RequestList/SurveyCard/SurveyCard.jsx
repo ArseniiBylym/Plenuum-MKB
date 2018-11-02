@@ -9,31 +9,10 @@ import moment from 'moment';
 
 class SurveyCard extends Component {
 
-	// state = {
-	// 	currentSurveyOwner: null,
-	// 	isCompletedCurrentSurvey: null
-	// }
 
 	componentDidMount = () =>{
 		console.log(this.props)
-		
-		// const token = window.localStorage.getItem('token')
-		// const iscompleteTemp = this.props.survey.isCompleted || this.props.surveyState.completedSurveyId == this.props.survey.survey._id
-		// if(this.props.survey.survey.owner == 'admin') {
-		// 	this.setState({
-		// 		currentSurveyOwner: 'admin',
-		// 		isCompletedCurrentSurvey: iscompleteTemp
-		// 	})
-		// }else {
-		// 	Api.getSpecificUser(token, this.props.orgId, this.props.survey.survey.owner)
-		// 	.then(response => {
-		// 		// console.log(response)
-		// 		this.setState({
-		// 			currentSurveyOwner: response,
-		// 			isCompletedCurrentSurvey: iscompleteTemp
-		// 		})
-		// 	})
-		// }
+	
 	}
 
 	onClickHandler = (e) => {
@@ -49,12 +28,20 @@ class SurveyCard extends Component {
 
 			<div className="survey-container" key={this.props.key}>
 				<div className="survey-user">
-					<img alt="picture" src={this.props.survey.survey.owner == 'admin' ? 
-						`${Profile}`:
-						this.props.surveyOwner.pictureUrl ?
-						`${this.props.surveyOwner.pictureUrl}` :
-						`${Profile}`} 
-					/>
+					<div className='picture-wrapper'>
+						<div className='picture-wrapper--img' style={{backgroundImage: `url(${this.props.survey.survey.owner == 'admin' ? 
+							Profile :
+							this.props.surveyOwner.pictureUrl ?
+							this.props.surveyOwner.pictureUrl :
+							Profile})`}}
+						></div>
+						<img alt="picture" src={this.props.survey.survey.owner == 'admin' ? 
+							`${Profile}`:
+							this.props.surveyOwner.pictureUrl ?
+							`${this.props.surveyOwner.pictureUrl}` :
+							`${Profile}`} 
+						/>
+					</div>
 					<p>{this.props.surveyOwner == 'admin' ? 
 						`admin` : 	
 						`${this.props.surveyOwner.firstName} ${this.props.surveyOwner.lastName}`}

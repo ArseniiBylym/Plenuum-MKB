@@ -1,16 +1,34 @@
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  
+
+  /*For images compability in Chrome and IE*/
     .avatar-IE-wrapper {
-      margin: 0 auto;
-      width: 40px;
-      height: 40px;
-      border-radius: 20px;
-      overflow: hidden;
+      display: none !important;
     }
-    .avatar img.profile-picture{
-      width: 100%;
-      height: auto;
+    .avatar--img{
+      display: block !important;
     }
+
+    .settings-avatar img {
+      display: none !important;
+    }
+    .settings-avatar--img{
+      display: block !important;
+    }
+
+    .feedback-detail-sentAs--image-container img{
+      display: none !important;
+    }
+    .feedback-detail-sentAs--img{
+      display: block !important
+    }
+
+    .user-profile--photo img{
+      display: none !important
+    }
+    .MyTeam .user-profile--photo--img{
+      display: block !important
+    }
+
   
     .settings-avatar{
       overflow: hidden;
@@ -186,6 +204,31 @@
       position: absolute;
       top: 10px;
       right: 10px;
+    }
+
+    .survey-container .picture-wrapper,
+    .request-container .picture-wrapper,
+    .todo-container .picture-wrapper{
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .survey-container .picture-wrapper--img,
+    .request-container .picture-wrapper--img,
+    .todo-container .picture-wrapper--img{
+      display: block !important;
+    }
+
+    .survey-container .picture-wrapper img,
+    .request-container .picture-wrapper img,
+    .todo-container .picture-wrapper img{
+      display: none !important;
+    }
+
+
+    .feedback-detail-super-container .abusive-content-icon .abusive-content-icon-dot{
+      margin-top: 5px;
     }
   
   }

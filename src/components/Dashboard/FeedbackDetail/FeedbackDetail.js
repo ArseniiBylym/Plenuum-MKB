@@ -44,7 +44,8 @@ const FeedbackDetail = (props) => {
                     <div className="feedback-detail-content">
                         <div className="feedback-detail-identification">
                             <div className="feedback-detail-identification-user">
-                                <img alt="" src={props.feedback.userPic && props.feedback.userPic != "" ? props.feedback.userPic : DefaultPic} />
+                                <div className='feedback-detail-identification-user--img' style={{backgroundImage: `url(${props.feedback.userPic && props.feedback.userPic != "" ? props.feedback.userPic : DefaultPic})`}}></div>
+                                {/* <img alt="" src={props.feedback.userPic && props.feedback.userPic != "" ? props.feedback.userPic : DefaultPic} /> */}
                                 <p>{props.feedback.username}</p>
                             </div>
                             <div className="feedback-detail-createdAt">
@@ -87,7 +88,8 @@ const FeedbackDetail = (props) => {
 
 export const sentAsComponent = (props) => {
     return (
-        <div className="feedback-detail-sentAs">
+        <div className="feedback-detail-sentAs feedback-detail-sentAs--image-container">
+            <div className='feedback-detail-sentAs--img' style={{backgroundImage: `url(${props.imageSrc && props.imageSrc != "" ? props.imageSrc : DefaultPic})`}}></div>
             <img alt="" className='small-image'
                 src={props.imageSrc && props.imageSrc != "" ? props.imageSrc : DefaultPic} />
             <div className="text-card">
