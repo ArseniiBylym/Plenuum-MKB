@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, {Component, PureComponent } from 'react';
 import { Input } from 'react-materialize';
 import './QuestionItem.css';
 import Text from './InputExamples/Text'
 import Yes_no from './InputExamples/Yes_no'
 import One_six from './InputExamples/One_six'
 
-class QuestionItem extends Component {
+class QuestionItem extends PureComponent {
     state = {
         typeSelectValue: '',
         isRequiredSelectValue: '',
