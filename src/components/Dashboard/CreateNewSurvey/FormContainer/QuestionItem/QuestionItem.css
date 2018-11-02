@@ -75,6 +75,8 @@
     /* max-width: 600px; */
     height: 247px;
 }
+
+
 .QuestionItem:hover .BasketContainer {
     display: flex;
 }
@@ -151,6 +153,7 @@
     background-position: center center;    
     cursor: pointer;
 }
+
 
 .QuestionItem__answer-required {
     position: absolute;

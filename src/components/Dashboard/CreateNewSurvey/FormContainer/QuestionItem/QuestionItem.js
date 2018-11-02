@@ -4,6 +4,9 @@ import './QuestionItem.css';
 import Text from './InputExamples/Text'
 import Yes_no from './InputExamples/Yes_no'
 import One_six from './InputExamples/One_six'
+import BasketContainer from './questionElements/BasketContainer/BasketContainer'
+import RequiredQuestionSelect from './questionElements/RequiredQuestionSelect/RequiredQuestionSelect';
+import TypeQuestionSelect from './questionElements/TypeQuestionSelect/TypeQuestionSelect';
 
 class QuestionItem extends PureComponent {
     state = {
@@ -46,11 +49,6 @@ class QuestionItem extends PureComponent {
             classNameForImg += ' oneToSix-img'
         }
 
-        let classNameForBasket = 'BasketContainer__item basket'
-        if (this.props.length > 1) {
-            classNameForBasket += ' active'
-        }
-
         let classForPreviewContainer = 'QuestionItem__preview-container'
         if (this.state.typeSelectValue == 'free_text') {
             classForPreviewContainer += ' freeText-answer'
@@ -78,31 +76,17 @@ class QuestionItem extends PureComponent {
                 />
                 <div className='Error_notification_wrapper'>{answerIsRequired(this.props.config.text)}</div>
                 <div className='QuestionItem__select-wrapper'>
-                    <div className='input__question-type-select-wrapper'>
-                        <Input name='question_type' s={12} type='select' label="" 
-                            defaultValue={this.props.config.type === 'yes_no' ? 'yes_no' : this.props.config.type === '1_to_6' ? '1_to_6' :'free_text'} 
-                            onChange={this.changeTypeSelectValue}
-                        >
-                            <option value='free_text'>Szabadszavas válasz</option>
-                            <option value='yes_no'>Igen/nem válasz</option>
-                            <option value='1_to_6'>1-től 6-ig válasz</option>
-                        </Input>
-                        <div className='triangle-for-question-type-select'>&#9662;</div>
-                    </div>
-                    <div className='input__question-type-select-wrapper'>
-                        <Input name='question_required' s={12} type='select' label="" 
-                            defaultValue={this.props.config.isRequired === 'required' ? 'required' : 'optional'} 
-                            onChange={this.changeIsRequiredSelectValue}
-                        >
-                            <option value='optional'>Opcionális mező</option>
-                            <option value='required'>Kötelező mező</option>
-                        </Input>
-                        <div className='triangle-for-question-type-select'>&#9662;</div>
-                    </div>
+                    <TypeQuestionSelect 
+                        type={this.props.config.type}
+                        onChange={this.changeTypeSelectValue}
+                    />
+                    <RequiredQuestionSelect
+                        isRequired={this.props.config.isRequired}
+                        onChange={this.changeIsRequiredSelectValue}
+                    />
                 </div>
                 <div className={classForPreviewContainer}>
                     <div className='QuestionItem__preview-header'>Válasz előnézete</div>
-                    {/* <div className={classNameForImg}></div> */}
                     {this.state.exampleElem}
                 </div>
             </div>
@@ -112,35 +96,6 @@ class QuestionItem extends PureComponent {
 
 export default QuestionItem
 
-
-//relative elements
-function BasketContainer(props) {
-
-    let classForBasket = 'BasketContainer__item basket';
-
-    if (props.length > 1) {
-        classForBasket += ' active'
-    }
-
-    let classForDownArrow = 'BasketContainer__item arrow-down'
-    if (props.length > 1 && props.index != props.length - 1) {
-        classForDownArrow += ' active'
-    }
-
-    let classForUpArrow = 'BasketContainer__item arrow-up'
-    if (props.length > 1 && props.index != 0) {
-        classForUpArrow += ' active'
-    }
-
-    const index = props.index
-    return (
-        <div className='BasketContainer'>
-            <div className={classForBasket} onClick={() => props.delFunc(index)}></div>
-            <div className={classForUpArrow} onClick={()=> props.goToPrev(index)}></div>
-            <div className={classForDownArrow} onClick={()=> props.goToNext(index)}></div>
-        </div>
-    )
-}
 
 function answerIsRequired(arg) {
     return (
