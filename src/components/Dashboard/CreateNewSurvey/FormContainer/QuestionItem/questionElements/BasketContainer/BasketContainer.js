@@ -4,6 +4,13 @@ class BasketContainer extends PureComponent {
 
     render() {
 
+        let mainDivStyle = 'BasketContainer';
+        if(this.props.position == 'side') {
+            mainDivStyle += ' BasketContainer--side'
+        } else if(this.props.position == 'bottom'){
+            mainDivStyle += ' BasketContainer--bottom'
+        }
+
         let classForBasket = 'BasketContainer__item basket';
         if (this.props.length > 1) {
             classForBasket += ' active'
@@ -22,7 +29,7 @@ class BasketContainer extends PureComponent {
         const index = this.props.index
 
         return (
-            <div className='BasketContainer'>
+            <div className={mainDivStyle} >
                 <div className={classForBasket} onClick={() => this.props.delFunc(index)}></div>
                 <div className={classForUpArrow} onClick={() => this.props.goToPrev(index)}></div>
                 <div className={classForDownArrow} onClick={() => this.props.goToNext(index)}></div>

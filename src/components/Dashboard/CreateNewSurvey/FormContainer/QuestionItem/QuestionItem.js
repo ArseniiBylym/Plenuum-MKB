@@ -60,7 +60,7 @@ class QuestionItem extends PureComponent {
 
         return (
             <div className='QuestionItem'>
-                <BasketContainer length={this.props.length} index={this.props.index}
+                <BasketContainer position='side' length={this.props.length} index={this.props.index}
                     delFunc={this.props.deleteCurrentQuestion}
                     goToPrev={this.props.goToPrev}
                     goToNext={this.props.goToNext}
@@ -89,6 +89,12 @@ class QuestionItem extends PureComponent {
                     <div className='QuestionItem__preview-header'>Válasz előnézete</div>
                     {this.state.exampleElem}
                 </div>
+                <BasketContainer position='bottom' length={this.props.length} index={this.props.index}
+                    delFunc={this.props.deleteCurrentQuestion}
+                    goToPrev={this.props.goToPrev}
+                    goToNext={this.props.goToNext}
+                    id={this.props.id} 
+                />
             </div>
         )
     }

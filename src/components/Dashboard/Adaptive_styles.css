@@ -140,11 +140,18 @@
     .main-Container .QuestionItem__select-wrapper > div {
         width: 100%;
     }
-    .main-Container .BasketContainer--aside {
-
+    .main-Container .QuestionItem:hover .BasketContainer--side{
+        display: none;
     }
-    .main-Container .BasketContainer--bottom {
-
+    .main-Container .QuestionItem:hover .BasketContainer.BasketContainer--bottom {
+        position: static;
+        display: flex;
+        visibility: visible;
+    }
+    .main-Container .QuestionItem .BasketContainer.BasketContainer--bottom {
+        position: static;
+        display: flex;
+        visibility: hidden;
     }
     .main-Container .dropzone-container{
         width: 350px;
