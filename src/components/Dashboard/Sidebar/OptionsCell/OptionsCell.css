@@ -80,7 +80,7 @@
   line-height: normal;
   letter-spacing: normal;
   color: #929292;
-  margin-left: 12px;
+  /* margin-left: 12px; */
 }
 .options-name:hover{
    color: #187697;
@@ -106,7 +106,7 @@ a.active {
   line-height: normal;
   letter-spacing: normal;
   color: #187697;
-  margin-left: 12px;
+  /* margin-left: 12px; */
   text-decoration: none;
 }
 
@@ -175,6 +175,7 @@ a.active .my_team-option{
   display: flex;
   cursor: pointer;
   margin-top: 20px;
+  padding-left: 10px;
 }
 .options-container:nth-child(even)  {
  margin-top: 20px;
@@ -182,4 +183,5 @@ a.active .my_team-option{
 
 .options-container:last-child  {
  margin-top: 20px;
+ margin-bottom: 20px;
 }

@@ -1,6 +1,8 @@
 .avatar {
   display: flex;
-  flex-direction: column;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin-left: 10px;
 }
 
 .avatar img {
@@ -29,9 +31,12 @@
 
 .profile-name {
   display: flex;
-  margin-top: 1em;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+  /* margin-top: 1em; */
   color: #39393a ;
-  margin-left: 45px;
+  margin-left: 5px;
   cursor: pointer;
 }
 .profile-name:hover {
@@ -45,7 +50,7 @@
  font-family: 'Nunito Sans', sans-serif !important;
  font-size: 14px !important;
  text-align: center !important;
- margin: auto !important;
+ /* margin: auto !important; */
 
    font-weight: 500 !important;
 }
@@ -54,8 +59,9 @@
 .profile-options {
   display: flex;
   flex-direction: column;
-  margin-left: 38px;
-  margin-top: 26px;
+  /* margin-left: 38px; */
+  /* margin-top: 26px; */
+  /* padding-top: 20px; */
 }
 
 .profile-options p {
@@ -71,6 +77,9 @@
   font-size: 14px;
   color: #929292;
   text-decoration: none;
+}
+.profile-options a:first-child{
+  margin-top: 30px;
 }
 
 .profile-options a:hover {
@@ -104,7 +113,7 @@
   height: 24px;
   background: url('../../../resources/chevron-normal.svg') no-repeat;
   background-position: center;
-  margin-right: 20px;
+  /* margin-right: 20px; */
 }
 
 .profile-name:hover > .chevron {
@@ -113,7 +122,7 @@
   height: 24px;
   background: url('../../../resources/chevron-hover.svg') no-repeat;
   background-position: center;
-  margin-right: 20px;
+  /* margin-right: 20px; */
 }
 
 .chevron-clicked {
@@ -122,7 +131,7 @@
   height: 24px;
   background: url('../../../resources/chevron-selected.svg') no-repeat;
   background-position: center;
-  margin-right: 20px;
+  /* margin-right: 20px; */
 }
 
 .primary{

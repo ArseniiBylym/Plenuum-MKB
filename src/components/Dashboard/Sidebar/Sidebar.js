@@ -30,7 +30,7 @@ const Sidebar = (props) => {
           </div>
         </div>
         <hr className='divider '/>
-        <div className='row  margin-top-1 grow'>
+        <div className='row  margin-top-1 grow shrink'>
           <div className="col-sm-12">
             <div className="sidebar-mycontent">
               {props.options}

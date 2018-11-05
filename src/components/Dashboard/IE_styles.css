@@ -239,7 +239,7 @@
   /*styles for another browsers needed to use with IE*/
   .avatar-IE-wrapper{ 
     object-fit: cover;
-      margin: 0 auto;
+      /* margin: 0 auto; */
       width: 40px;
       height: 40px;
       border-radius: 20px;
