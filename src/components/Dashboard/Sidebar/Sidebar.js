@@ -1,6 +1,7 @@
 import React from 'react';
 import './Sidebar.css';
 import { NavLink } from 'react-router-dom';
+import {Icon} from 'react-materialize'
 
 const Sidebar = (props) => {
   return (
@@ -15,6 +16,9 @@ const Sidebar = (props) => {
          props.profile.props.orgId === "mkb-bank-test5"
          ) && (
           <div className="orgLogoContainer">
+            <div className='hamburger_close-icon' onClick={props.hamburgerClick}>
+              <Icon medium className='hamburger_icon'>navigate_before</Icon>
+            </div>
             <NavLink className="orgLogoLink" to="/">
               <img src="/mkb-large.png" />
             </NavLink>

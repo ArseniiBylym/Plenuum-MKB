@@ -134,6 +134,7 @@ a:focus {
   border: solid 1px #b31b34 !important;
 }
 .hipteam .orgLogoContainer {
+  position: relative;
   width: 100%;
   min-height: 64px;
   height: 64px;
@@ -295,6 +296,29 @@ color: #ffffff;
 
 .hipteam .segmented-item .segmented-cell.active:hover{
   border-bottom: solid 2px #cc6472
+}
+.hamburger{
+  display: none;
+  position: fixed;
+  z-index: 1100;;
+}
+.hamburger_open-icon{
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  margin-top: 12px;
+  margin-left: 12px;
+  /* color: rgba(255,255,255.5); */
+  color: rgba(0,0,0,.5);
+}
+.hamburger_close-icon{
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 12px;
+  margin-left: 12px;
+  color: rgba(0,0,0,.5);
 }
 
 

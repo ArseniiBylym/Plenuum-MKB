@@ -43,7 +43,8 @@ const SidebarContainer = (props, context) => {
         createNewFeedback:newFeedbackButton,
         createRequest:newRequestButton,
         answerCards:answerCardsButton,
-        version:"Plenuum " + version + " (" + buildNumber + ")"});
+        version:"Plenuum " + version + " (" + buildNumber + ")",
+        hamburgerClick:props.hamburgerClick});
 };
 
 SidebarContainer.contextTypes = {

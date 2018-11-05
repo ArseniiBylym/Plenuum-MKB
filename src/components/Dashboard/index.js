@@ -25,7 +25,8 @@ class DashboardContainer extends Component {
             users: undefined,
             notifications: OrderedSet(),
             count: 0,
-            user: undefined
+            user: undefined,
+            isSidebarShow: false
         };
 
         this.setProfilePicture = this.setProfilePicture.bind(this);
@@ -60,7 +61,7 @@ class DashboardContainer extends Component {
         });
     }
     componentDidUpdate = () => {
-        // console.log(this.state.user)
+        console.log(this.state.isSidebarShow)
     }
 
     removeNotification (count){
@@ -109,6 +110,14 @@ class DashboardContainer extends Component {
         window.clearTimeout(this.timeout);
     }
 
+    hamburgerClick = () => {
+        this.setState((prevState) => {
+            return{
+                isSidebarShow: !prevState.isSidebarShow
+            }
+        })
+    }
+
     render(){
         if (this.state.user !== undefined) {
             this.notification = (
@@ -146,7 +155,7 @@ class DashboardContainer extends Component {
                 <ProfileCardContainer {...this.user} handleLogout={this.handleLogout} leaveProfile={this.menuClicked} />
             );
             this.options = (
-                <SidebarContainer profile={this.profile}/>
+                <SidebarContainer hamburgerClick={this.hamburgerClick} profile={this.profile}/>
             );
 
             let routes = DashboardRoutes(this);
@@ -157,7 +166,9 @@ class DashboardContainer extends Component {
                 menuObject:this.state,
                 options:this.options,
                 profile:this.profile,
-                notification:this.notification});
+                notification:this.notification,
+                hamburgerClick: this.hamburgerClick,
+                isSidebarShow: this.state.isSidebarShow});
         } else {
             return spinner();
         }
