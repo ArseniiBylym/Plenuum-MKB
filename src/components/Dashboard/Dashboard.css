@@ -301,6 +301,9 @@ color: #ffffff;
 @import './IE_styles.css';
 /*IE styles*/
 
+@import './Adaptive_styles.css'
+
+
 
 
 /*  -----------------mkb-bank------------*/

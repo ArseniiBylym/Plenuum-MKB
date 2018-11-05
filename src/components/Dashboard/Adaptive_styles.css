@@ -1,0 +1,46 @@
+@media screen and (max-width: 768px){
+    .main-Container .sidebar-main-container{
+        display: none;
+    }
+    .main-Container .component{
+        margin-left: 0;
+        width: 100%;
+    }
+    .main-Container .profile-main-container{
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .main-Container .settings-form-information{
+        margin-left: 0;
+    }
+    .main-Container .settings-data > input:read-only{
+        margin-left: 0;
+    }
+    .main-Container .navi-navbar-default{
+        width: 100%;
+    }
+    .main-Container .navbar.navbar-default{
+        width: 100%;
+    }
+    .main-Container .survey-container,
+    .main-Container .todo-container,
+    .main-Container .request-container,
+    .main-Container .feedback-container,
+    .main-Container .Card{
+        width: 350px;
+    }
+    .main-Container .SurveyForm,
+    .main-Container .DetailsContainer{
+        width: 80%
+    }
+    .main-Container .feedback-detail-center{
+        min-width: 350px;
+    }
+    .main-Container .MyTeam,
+    .main-Container .SurveyForm-container,
+    .main-Container .DetailsContainer-wrapper,
+    .main-Container .FullSurveysList{
+        width: 100%
+    }
+}
