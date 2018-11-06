@@ -11,7 +11,9 @@ class MyTeam extends Component {
     state = {
         selectedUser: '',
         isRequestSended: false, //this value for set is visible flow
-        usersList: []
+        usersList: [],
+        isFeedbackFull: false,
+        isSkillsFull: false
     }
     componentDidMount = () => {
         const token = window.localStorage.getItem('token');
@@ -43,8 +45,22 @@ class MyTeam extends Component {
         })
 
     }
-    componentDidUpdate = () => {
-        // console.log(this.state)
+    componentDidUpdate = (prevProps, prevState) => {
+        if(this.state.selectedUser._id != prevState.selectedUser._id) {
+            console.log('user has changes')
+            Api.getFeedbackSkillsPoints(this.props.currentUser.orgId, this.state.selectedUser._id)
+                .then(response => {
+                    console.log(response)
+                    this.setState({
+                        isFeedbackFull: response.numberOfpublicFeedback > 0 ? true : false,
+                        isSkillsFull: response.numberOfSkillScores > 0 ? true : false,
+                    })
+                })
+                .catch(error => {
+                    console.log(error.message)
+                })
+        }
+        console.log(this.state)
     }
 
     returnUsersToMyTeamFlow = (firstUser) => {
@@ -56,8 +72,6 @@ class MyTeam extends Component {
     }
 
     renderPage() {
-        // console.log(this.state.isRequestSended);
-        // console.log(this.state.usersList.length)
         return (
             <div className="request-pre-container request-pre-container--my-team">
                 <DefaultNavigationBarContainer
@@ -76,6 +90,8 @@ class MyTeam extends Component {
                         pictureUrl={this.state.selectedUser.pictureUrl}
                         firstName={this.state.selectedUser.firstName}
                         lastName={this.state.selectedUser.lastName}
+                        isFeedbackFull={this.state.isFeedbackFull}
+                        isSkillsFull={this.state.isSkillsFull}
                     /> :
                     this.state.isRequestSended && this.state.usersList.length == 0 ? 
                     <MyTeamEmptyState /> : 

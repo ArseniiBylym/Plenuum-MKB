@@ -60,7 +60,7 @@ const getApiBaseUrl = (app) => {
     port: "5000",
     host: getApiBaseUrl(process.env.REACT_APP_SERVER_ENVIRONMENT),
     domain: "http://localhost:3000/",
-    version: '1.0.0',
+    version: '2.1.0',
     buildNumber: '86',
     googleAnalyticsId: getGAId(process.env.REACT_APP_SERVER_ENVIRONMENT)
  };
