@@ -214,4 +214,7 @@
     .main-Container .create-request-components-container{
         padding-bottom: 30px;
     }
+    .main-Container .action-icons{
+        display: none;
+    }
 }
