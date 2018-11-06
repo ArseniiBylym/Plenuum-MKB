@@ -58,6 +58,7 @@
     .main-Container .request-pre-container--create-new-main-wrapper,
     .main-Container .CreateNewSurveyTemplate,
     .main-Container .dropzone,
+    .main-Container .MyTeam__empty-state,
     .main-Container .feedback-detail-super-container.container-fluid,
     .main-Container .FullSurveysList{
         width: 100%
