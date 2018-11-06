@@ -8,6 +8,7 @@ import {OrderedSet} from 'immutable';
 import {NotificationStack} from 'react-notification';
 import {Errors} from '../../lib/errors.js';
 import { DashboardRoutes } from '../../routes/index';
+import { connect } from 'react-redux';
 
 //Containers
 import Constants, {Colors} from "../../lib/constants";
@@ -25,7 +26,8 @@ class DashboardContainer extends Component {
             users: undefined,
             notifications: OrderedSet(),
             count: 0,
-            user: undefined
+            user: undefined,
+            isSidebarShow: false
         };
 
         this.setProfilePicture = this.setProfilePicture.bind(this);
@@ -60,7 +62,8 @@ class DashboardContainer extends Component {
         });
     }
     componentDidUpdate = () => {
-        // console.log(this.state.user)
+        console.log(this.state.isSidebarShow)
+        console.log(this.props.sidebarState)
     }
 
     removeNotification (count){
@@ -93,6 +96,9 @@ class DashboardContainer extends Component {
     }
 
     componentDidMount() {
+        // setTimeout(()=>this.props.openSidebar(), 2000)
+        // setTimeout(()=>this.props.closeSidebar(), 4000)
+        // console.log(this.props.sidebarState)
         Api.userMySelf()
             .then((response) => {
                 this.store.dispatch({type: Constants.ReducersActionType.ADD_CURRENT_USER, currentUser: response});
@@ -107,6 +113,14 @@ class DashboardContainer extends Component {
 
     componentWillUnmount(){
         window.clearTimeout(this.timeout);
+    }
+
+    hamburgerClick = () => {
+        this.setState((prevState) => {
+            return{
+                isSidebarShow: !prevState.isSidebarShow
+            }
+        })
     }
 
     render(){
@@ -146,7 +160,7 @@ class DashboardContainer extends Component {
                 <ProfileCardContainer {...this.user} handleLogout={this.handleLogout} leaveProfile={this.menuClicked} />
             );
             this.options = (
-                <SidebarContainer profile={this.profile}/>
+                <SidebarContainer hamburgerClick={this.props.closeSidebar} profile={this.profile}/>
             );
 
             let routes = DashboardRoutes(this);
@@ -157,7 +171,9 @@ class DashboardContainer extends Component {
                 menuObject:this.state,
                 options:this.options,
                 profile:this.profile,
-                notification:this.notification});
+                notification:this.notification,
+                openSidebar: this.props.openSidebar,
+                isSidebarShow: this.props.sidebarState});
         } else {
             return spinner();
         }
@@ -169,4 +185,17 @@ DashboardContainer.contextTypes = {
     router: PropTypes.object.isRequired
 };
 
-export default DashboardContainer;
+const mapStateToProps = state => {
+    return {
+        sidebarState: state.sidebarState.isOpen
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        openSidebar: () => {dispatch({type: 'OPEN'})},
+        closeSidebar: () => {dispatch({type: 'CLOSE'})},
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);

@@ -29,11 +29,55 @@ const URLPath = {
     groups:"users/me/groups",
     surveys: "surveysTodo",
     searchManager: "surveys/search/manager",
+    refreshToken: "session/refresh-token"
 };
 
 const baseURL = EnvVariable.host + "/api/";
 
 export default class Api_v2 extends Networking {
+
+    async refreshTokenIfNeeded() {
+        const token = window.localStorage.getItem("token");
+        if(token) {
+            const parseJwt = await this.parseJWT(token);
+            if (parseJwt.expiryDate && new Date(parseJwt.expiryDate) < new Date()) {
+                const parameters = {
+                    method: HTTPMethod.POST,
+                    headers: {
+                        "api-version": "2.1.0",
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: encodeURIComponent("refreshToken")+"="+encodeURIComponent(window.localStorage.getItem("refreshToken"))
+                }
+                await super.fetchFromAPI(baseURL + URLPath.refreshToken, parameters).then((response) => {
+                    window.localStorage.removeItem('token');
+                    window.localStorage.removeItem('refreshToken');
+                    window.localStorage.setItem('token', response.token + '');
+                    window.localStorage.setItem('refreshToken', response.refreshToken + '');
+                }).catch((exp) => {
+                    window.location = "/";
+                });
+            }
+        }
+    }
+
+    async parseJWT(token) {
+        try {
+            return JSON.parse(atob(token.split('.')[1]));
+        } catch (e) {
+            return null;
+        }
+    }
+
+    async fetchFromAPI(url, parameters){
+        await this.refreshTokenIfNeeded();
+        return super.fetchFromAPI(url, parameters);
+    }
+
+    async fetchFromAPI_excel(url, parameters){
+        await this.refreshTokenIfNeeded();
+        super.fetchFromAPI_excel(url, parameters);
+    }
 
     //SURVEY
     async getAllSurveysToDoForCurrentUser( orgId ){
@@ -154,7 +198,7 @@ export default class Api_v2 extends Networking {
             cache: "no-store"
         };
         console.log(parameters)
-        return this.fetchFromAPI(baseURL + URLPath.session, parameters);
+        return super.fetchFromAPI(baseURL + URLPath.session, parameters);
     }
 
     async logout(){
@@ -168,7 +212,7 @@ export default class Api_v2 extends Networking {
             },
             cache: "no-store"
         };
-        return this.fetchFromAPI(baseURL + URLPath.session, parameters);
+        return super.fetchFromAPI(baseURL + URLPath.session, parameters);
     }
 
     async setPassword(token, password) {
@@ -183,7 +227,7 @@ export default class Api_v2 extends Networking {
 
     async validateToken(token){
         const parameters = this.basePostParams(JSON.stringify({token: token}));
-        return this.fetchFromAPI(baseURL + URLPath.validToken, parameters);
+        return super.fetchFromAPI(baseURL + URLPath.validToken, parameters);
     }
 
     //TAG

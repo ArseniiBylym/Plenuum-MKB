@@ -1,0 +1,224 @@
+@media screen and (max-width: 768px){
+    .main-Container .sidebar-main-container{
+        transform: translateX(-100%);
+        /* display: none; */
+        transition: all .5s ease;
+    }
+    .main-Container .showSidebar .sidebar-main-container{
+        /* display: block */
+        transform: translateX(0);
+        /* transition: all .5s ease; */
+    }
+    .main-Container .component{
+        margin-left: 0;
+        width: 100%;
+    }
+    .main-Container .profile-main-container{
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .main-Container .settings-form-information{
+        margin-left: 0;
+    }
+    .main-Container .settings-data > input:read-only{
+        margin-left: 0;
+    }
+    .main-Container .navi-navbar-default{
+        width: 100%;
+    }
+    .main-Container .navbar.navbar-default{
+        width: 100%;
+    }
+    .main-Container .sidebar-actions{
+        width: 100%;
+    }
+    .main-Container .survey-container,
+    .main-Container .todo-container,
+    .main-Container .request-container,
+    .main-Container .feedback-container,
+    .main-Container .Card{
+        width: 350px;
+    }
+    .main-Container .SurveyForm,
+    .main-Container .template-content-wrapper,
+    .main-Container .FormContainer,
+    .main-Container .DetailsContainer{
+        width: 80%
+    }
+    .main-Container .feedback-detail-center{
+        min-width: 350px;
+    }
+    .main-Container .MyTeam,
+    .main-Container .SurveyForm-container,
+    .main-Container .DetailsContainer-wrapper,
+    .main-Container .createFeedback-container,
+    .main-Container .compass-users-list-components,
+    .main-Container .create-request-container,
+    .main-Container .request-pre-container--create-new-main-wrapper,
+    .main-Container .CreateNewSurveyTemplate,
+    .main-Container .dropzone,
+    .main-Container .feedback-detail-super-container.container-fluid,
+    .main-Container .FullSurveysList{
+        width: 100%
+    }
+    .main-Container .hamburger_open-icon{
+        display: block;
+    }
+    .main-Container .showSidebar .hamburger_open-icon{
+        display: none;
+    }
+    .main-Container .showSidebar .hamburger_close-icon{
+        display: block;
+    }
+    .main-Container .userCell-container-no-hover{
+        width: auto;
+    }
+    .main-Container .DownloadAnswersButton,
+    .main-Container .CreateNewButton{
+        padding: 10px;
+        font-size: 12px;
+    }
+    .main-Container .CreateNewButton__text,
+    .main-Container .DownloadAnswersButton__text{
+        font-size: 14px;
+    }
+    .main-Container .CreateNew__footer-wrapper--left{
+        flex-flow: column nowrap;
+        padding-bottom: 0;
+        align-items: center;
+    }
+    .main-Container .AddAnotherButton{
+        position: relative;
+        margin: 0;
+        left: 0;
+        padding: 10px 30px;
+    }
+    .main-Container .ErrorNotification{
+        margin: 0;
+    }
+    .main-Container .Button__create-new-action{
+        margin: 10px 0;
+        width: auto;
+    }
+    .main-Container .skills-top-main-container,
+    .main-Container .skills-main-container{
+        width: 100%;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+    .main-Container .compass-nav-buttons{
+        margin-right: 0;
+    }
+    .main-Container .createFeedback-details{
+        /* width: 100%; */
+    }
+    .main-Container .feedback-message-style,
+    .main-Container .message-container,
+    .main-Container .border-div-options,
+    .main-Container .selectedUsers-horizontal,
+    .main-Container .border-div-single,
+    .main-Container .sentRequest-container,
+    .main-Container .createFeedback-feedback-type,
+    .main-Container .createFeedback-message-div{
+        width: 350px;
+        margin: 0 auto;
+    }
+    .main-Container .back-button-title--survey-header{
+        transform: translateX(30px);
+    }
+    .main-Container .CreateNew__footer-wrapper--right{
+        margin-right: 20px;
+        width: auto;
+    }
+    .main-Container .Button__create-new-action {
+        width: auto;
+    }
+    .main-Container .QuestionItem__select-wrapper{
+        flex-flow: column nowrap;
+    }
+    .main-Container .QuestionItem__select-wrapper > div {
+        width: 100%;
+    }
+    .main-Container .QuestionItem:hover .BasketContainer--side{
+        display: none;
+    }
+    .main-Container .QuestionItem:hover .BasketContainer.BasketContainer--bottom {
+        position: static;
+        display: flex;
+        visibility: visible;
+    }
+    .main-Container .QuestionItem .BasketContainer.BasketContainer--bottom {
+        position: static;
+        display: flex;
+        visibility: hidden;
+    }
+    .main-Container .dropzone-container{
+        width: 350px;
+    }
+    .main-Container .dropzone-lib{
+        margin: 0;
+        width: 100%;
+    }
+    .main-Container .dropzone-button-disabled,
+    .main-Container .dropzone-button-enable{
+        margin: 35px auto 0 auto;
+        align-items: center;
+        justify-content: center;
+    }
+    .main-Container .dropzone-button-disabled p{
+        display: block;
+    }
+    .main-Container .MyTeam__search-container{
+        width: 40%;
+    }
+    .main-Container .MyTeam__current-user-container{
+        width: 60%;
+    }
+
+    .main-Container .MyTeam .download-wrapper__statistic-wrapper{
+        flex-flow: column nowrap;
+        text-align: center;
+    }
+    .main-Container .MyTeam .current-user-container__main--user-profile{
+        flex-flow: column nowrap;
+        padding: 0;
+        padding-top: 30px;
+    }
+    .main-Container .MyTeam .user-profile--name{
+        margin: 0;
+        margin-top: 10px;
+    }
+    .main-Container .MyTeam .create-request-container{
+        padding: 0;
+    }
+    .main-Container .previous-next-container{
+        left: 0;
+        margin-left: 0
+    }
+    .main-Container .next-next-container{
+        margin-right: 0
+    }
+    .main-Container .back-button-title{
+        transform: translateX(30px)
+    }
+    .main-Container .abusive-modal-backdrop{
+        left: 0
+    }
+    .main-Container .button-next-enable,
+    .main-Container .button-next-disabled{
+        bottom: 10px;
+        right: initial;
+        margin-left: 0;
+    }
+    .main-Container .create-request-components-container{
+        padding-bottom: 30px;
+    }
+    .main-Container .action-icons{
+        display: none;
+    }
+
+    .main-Container .QuestionItem:last-child{
+        margin-bottom: 0;
+    }
+}

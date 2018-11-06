@@ -1,5 +1,6 @@
 import React from 'react';
 import './Dashboard.css';
+import {Icon, Button} from 'react-materialize'
 
 const Dashboard = (props) => {
   let currentTheme = '';
@@ -14,8 +15,11 @@ const Dashboard = (props) => {
     }
   return (
     <div className={`super-container ${ currentTheme }`}>
-      <div className="main-Container" >
-        <div className="content">
+      <div className="main-Container" > 
+        <div className={props.isSidebarShow ? "content showSidebar" : "content"}>
+        <div  onClick={props.openSidebar} className='hamburger_open-icon'>
+          <Icon medium className='hamburger_icon'>navigate_next</Icon>
+        </div>
           {props.options}
           <div className="dashboard-notification">
             {props.notification}

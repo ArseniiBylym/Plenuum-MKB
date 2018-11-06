@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Sidebar from './Sidebar.js';
 import OptionsListContainer from './OptionsList/index.js';
 import {EnvVariable} from '../../../config';
+import { connect } from 'react-redux'
 
 const ReactGA = require('react-ga');
 
@@ -43,11 +44,21 @@ const SidebarContainer = (props, context) => {
         createNewFeedback:newFeedbackButton,
         createRequest:newRequestButton,
         answerCards:answerCardsButton,
-        version:"Plenuum " + version + " (" + buildNumber + ")"});
+        version:"Plenuum " + version + " (" + buildNumber + ")",
+        hamburgerClick:props.hamburgerClick,
+        closeSidebar: props.closeSidebar});
 };
 
 SidebarContainer.contextTypes = {
   router: PropTypes.object.isRequired
 };
 
-export default SidebarContainer;
+
+const mapDispatchToProps = dispatch => {
+  return{
+    closeSidebar: () => {dispatch({type: 'CLOSE'})}
+  }
+}
+
+// export default SidebarContainer;
+export default connect(null,mapDispatchToProps)(SidebarContainer);

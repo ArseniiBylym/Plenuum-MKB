@@ -1,6 +1,8 @@
 import React from 'react';
 import './Sidebar.css';
 import { NavLink } from 'react-router-dom';
+import {Icon} from 'react-materialize'
+import { connect } from 'react-redux'
 
 const Sidebar = (props) => {
   return (
@@ -15,6 +17,9 @@ const Sidebar = (props) => {
          props.profile.props.orgId === "mkb-bank-test5"
          ) && (
           <div className="orgLogoContainer">
+            <div className='hamburger_close-icon' onClick={props.hamburgerClick}>
+              <Icon medium className='hamburger_icon'>navigate_before</Icon>
+            </div>
             <NavLink className="orgLogoLink" to="/">
               <img src="/mkb-large.png" />
             </NavLink>
@@ -30,7 +35,7 @@ const Sidebar = (props) => {
           </div>
         </div>
         <hr className='divider '/>
-        <div className='row  margin-top-1 grow'>
+        <div className='row  margin-top-1 grow shrink'>
           <div className="col-sm-12">
             <div className="sidebar-mycontent">
               {props.options}
@@ -50,6 +55,7 @@ const Sidebar = (props) => {
                   }}
                 replace={props.replace}
                 activeClassName='active'
+                onClick={props.closeSidebar}
                 >
                 Új visszajelzés
               </NavLink>
@@ -57,6 +63,7 @@ const Sidebar = (props) => {
                 to={props.createRequest.pathname}
                 activeClassName='active'
                 replace={props.replace}
+                onClick={props.closeSidebar}
                 >
                 Visszajelzés kérése
               </NavLink>
@@ -64,6 +71,7 @@ const Sidebar = (props) => {
                 to={props.answerCards.pathname}
                 activeClassName='active'
                 replace={props.replace}
+                onClick={props.closeSidebar}
                 >
                 Készség értékelés
               </NavLink>
@@ -78,4 +86,11 @@ const Sidebar = (props) => {
   );
 }
 
+const mapDispatchToProps = dispatch => {
+  return{
+    closeSidebar: () => {dispatch({type: 'CLOSE'})}
+  }
+}
+
 export default Sidebar;
+// export default connect(null,mapDispatchToProps)(Sidebar);

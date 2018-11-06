@@ -14,7 +14,11 @@ class OptionsListContainer extends Component {
         this.onClick = this.props.onClick.bind(this);
     }
 
-  createComponents(options) {
+    onClick = () => {
+        
+    }
+
+    createComponents(options, func) {
     return options.map((option, index) => {
       return <OptionCellContainer
         key={index}
@@ -24,9 +28,7 @@ class OptionsListContainer extends Component {
     });
   }
 
-    onClick() {
 
-    }
 
     getItems(strings) {
         return [
@@ -40,7 +42,7 @@ class OptionsListContainer extends Component {
 
     render() {
         let items = this.getItems(strings);
-        const optionsList = this.createComponents(items);
+        const optionsList = this.createComponents(items, this.onClick);
         return OptionsList({options:optionsList});
     }
 }

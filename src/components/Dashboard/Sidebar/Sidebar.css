@@ -21,6 +21,11 @@
     flex-grow: 1;
     margin-top: 0.2em;
 }
+.sidebar-main-container .shrink{
+    flex-basis: 0px;
+    flex-shrink: 1;
+    overflow: auto;
+}
 
 .last-side{
 /*flex-grow: 1;*/
@@ -47,6 +52,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    padding: 0 10px;
 }
 
 .divider{
@@ -66,7 +72,8 @@
 }
 
 .action-button {
-  width: 173px;
+    width: 100%;
+  /* width: 173px; */
     height: 39px;
     min-height: 39px;
     border-radius: 2.7px;
@@ -90,7 +97,8 @@ color: #35a9db;
 }
 
 .action-button:hover {
-  width: 173px;
+  width: 100%;
+  /* width: 173px; */
  height: 39px;
  border-radius: 2.7px;
  background-color: #35a9db;
@@ -116,7 +124,8 @@ color: #35a9db;
 
 .sidebar-actions a.active {
   text-decoration: none;
-  width: 173px;
+  width: 100%;
+  /* width: 173px; */
   height: 39px;
   border-radius: 2.7px;
   background-color: #319ecc;
@@ -127,7 +136,8 @@ color: #35a9db;
 
 .sidebar-actions a:active {
   text-decoration: none;
-  width: 173px;
+  width: 100%;
+  /* width: 173px; */
   height: 39px;
   border-radius: 2.7px;
   background-color: #319ecc;
@@ -163,4 +173,17 @@ a.active .action-button {
 
 .plenuum-verion:hover {
   opacity: 1.0;
+}
+
+.wrapping-for-padding{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    height: 100%;
+}
+.sidebar-main-container .row{
+    margin-bottom: 0;
+}
+.sidebar-main-container .margin-top-1{
+    margin-top: 0;
 }
