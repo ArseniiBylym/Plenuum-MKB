@@ -3,6 +3,7 @@ import ProfileCard from './ProfileCard';
 import {NavLink} from 'react-router-dom';
 import {EnvVariable} from '../../../config';
 import Api from '../../../lib/api'
+import { connect } from 'react-redux';
 
 const ReactGA=require('react-ga');
 
@@ -31,8 +32,8 @@ class ProfileCardContainer extends Component {
             this.setState({opened: false});
         }else {
             this.options=[
-                  <NavLink key="profile" to={{ pathname: '/profile' }} activeClassName="active">Profilbeállítások</NavLink>,
-                  <NavLink key="privacy_policy" to={{pathname: '/privacy'}}>Adatvédelmi irányelvek</NavLink>,
+                  <NavLink onClick={this.props.closeSidebar} key="profile" to={{ pathname: '/profile' }} activeClassName="active">Profilbeállítások</NavLink>,
+                  <NavLink onClick={this.props.closeSidebar} key="privacy_policy" to={{pathname: '/privacy'}}>Adatvédelmi irányelvek</NavLink>,
                   <NavLink key="login" to="/login" activeClassName="active" onClick={this.logout}>Kijelentkezés</NavLink>
             ];
             this.setState({opened: true});
@@ -40,6 +41,7 @@ class ProfileCardContainer extends Component {
     }
 
     logout(){
+        this.props.closeSidebar()
         ReactGA.event({
             category: 'UI',
             action: 'Click',
@@ -61,4 +63,10 @@ class ProfileCardContainer extends Component {
     }
 }
 
-export default ProfileCardContainer;
+const mapDispatchToProps = dispatch => {
+    return {
+        closeSidebar: () => {dispatch({type: 'CLOSE'})},
+    }
+}
+
+export default connect(null, mapDispatchToProps)(ProfileCardContainer);

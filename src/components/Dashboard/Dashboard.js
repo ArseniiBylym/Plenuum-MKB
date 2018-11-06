@@ -17,7 +17,7 @@ const Dashboard = (props) => {
     <div className={`super-container ${ currentTheme }`}>
       <div className="main-Container" > 
         <div className={props.isSidebarShow ? "content showSidebar" : "content"}>
-        <div  onClick={props.hamburgerClick} className='hamburger_open-icon'>
+        <div  onClick={props.openSidebar} className='hamburger_open-icon'>
           <Icon medium className='hamburger_icon'>navigate_next</Icon>
         </div>
           {props.options}

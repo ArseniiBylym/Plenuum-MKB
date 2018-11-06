@@ -2,6 +2,7 @@ import React from 'react';
 import './Sidebar.css';
 import { NavLink } from 'react-router-dom';
 import {Icon} from 'react-materialize'
+import { connect } from 'react-redux'
 
 const Sidebar = (props) => {
   return (
@@ -54,6 +55,7 @@ const Sidebar = (props) => {
                   }}
                 replace={props.replace}
                 activeClassName='active'
+                onClick={props.closeSidebar}
                 >
                 Új visszajelzés
               </NavLink>
@@ -61,6 +63,7 @@ const Sidebar = (props) => {
                 to={props.createRequest.pathname}
                 activeClassName='active'
                 replace={props.replace}
+                onClick={props.closeSidebar}
                 >
                 Visszajelzés kérése
               </NavLink>
@@ -68,6 +71,7 @@ const Sidebar = (props) => {
                 to={props.answerCards.pathname}
                 activeClassName='active'
                 replace={props.replace}
+                onClick={props.closeSidebar}
                 >
                 Készség értékelés
               </NavLink>
@@ -82,4 +86,11 @@ const Sidebar = (props) => {
   );
 }
 
+const mapDispatchToProps = dispatch => {
+  return{
+    closeSidebar: () => {dispatch({type: 'CLOSE'})}
+  }
+}
+
 export default Sidebar;
+// export default connect(null,mapDispatchToProps)(Sidebar);

@@ -171,6 +171,23 @@ const incomingSurveys = (state = incoming_surv, action) => {
     }
 }
 
+const sidebarState = (state = {isOpen: false}, action) => {
+    switch (action.type) {
+        case 'OPEN':
+            return {
+                isOpen: true
+            }
+        case 'CLOSE':
+            return {
+                isOpen: false
+            }
+        default: 
+            return {
+                ...state
+            }
+    }
+}
+
 const rememberMe = (state, action) => {
     switch (action.type) {
         case Constants.ReducersActionType.FORGET_ME:
@@ -296,7 +313,8 @@ const reducers = combineReducers({
     notificationState,
     createSurvey,
     incomingSurveys,
-    syrveyTemplates
+    syrveyTemplates,
+    sidebarState
 });
 
 export default reducers;

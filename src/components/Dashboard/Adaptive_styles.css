@@ -217,4 +217,8 @@
     .main-Container .action-icons{
         display: none;
     }
+
+    .main-Container .QuestionItem:last-child{
+        margin-bottom: 0;
+    }
 }
