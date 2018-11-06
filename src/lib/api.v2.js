@@ -276,7 +276,7 @@ export default class Api_v2 extends Networking {
             method: HTTPMethod.GET,
             headers: {
                 'Content-Type': `application/x-www-form-urlencoded`,
-                'Authorization': `Bearer ${token}`
+                // 'Authorization': `Bearer ${token}`
             },
         };
         return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/users/me/feedbacks/${feedbackId}/reportAbusive`, parameters);
@@ -322,7 +322,7 @@ export default class Api_v2 extends Networking {
         const parameters = {
             method: HTTPMethod.PATCH,
             headers: {
-                'Authorization': `Bearer ${token}`,
+                // 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
             },
             body: formBody,
@@ -457,5 +457,15 @@ export default class Api_v2 extends Networking {
         }
         // return this.fetchFromAPI_excel(baseURL + URLPath.organisations + `${orgId}/${userId}/feedbacks/excel`, parameters)
         return this.fetchFromAPI_excel(baseURL + URLPath.organisations + `${orgId}/${userId}/feedbacks/excel`, parameters)
+    }
+
+    async getFeedbackSkillsPoints(orgId, userId) {
+        const parameters = {
+            method: HTTPMethod.GET,
+            headers: {
+                // 'Authorization': `Bearer ${token}`
+            }
+        }
+        return this.fetchFromAPI(baseURL + URLPath.organisations + `${orgId}/${userId}/numberOfPublicFeedbacksAndSkillScores`, parameters)
     }
 };
