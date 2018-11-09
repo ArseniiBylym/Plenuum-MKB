@@ -19,6 +19,14 @@ const defaultParameters = {
 export default class Networking {
 
     // HELPERS
+    async fetchFromAPILogout(url, parameters = defaultParameters){
+        parameters = this.addTokenToRequestHeader(parameters);
+        console.log(parameters)
+        return fetch(url, parameters)
+            .then(
+                this.handleErrorsLogout
+            );
+    }
 
     async fetchFromAPI(url, parameters = defaultParameters){
         parameters = this.addTokenToRequestHeader(parameters);
@@ -47,6 +55,15 @@ export default class Networking {
     }
 
     //ERRORS
+
+    handleErrorsLogout(response){
+        if (!response.ok) {
+            if (response.status === 401 && window.location.pathname !== loginPath) {
+                window.location = loginPath;
+            }
+            throw Error(response.status);
+        }
+    }
 
     handleErrors(response){
         if (!response.ok) {

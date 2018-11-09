@@ -212,7 +212,7 @@ export default class Api_v2 extends Networking {
             },
             cache: "no-store"
         };
-        return super.fetchFromAPI(baseURL + URLPath.session, parameters);
+        return super.fetchFromAPILogout(baseURL + URLPath.session, parameters);
     }
 
     async setPassword(token, password) {
